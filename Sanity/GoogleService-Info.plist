@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>52831059983-9egefehpo1ia06pvf1bcs3itoe4osan1.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.52831059983-9egefehpo1ia06pvf1bcs3itoe4osan1</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBthwch6o7uKtEVtqFDmXKHZN8nxYAOqNk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>52831059983</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.cs310.team22.Sanity</string>
+	<key>PROJECT_ID</key>
+	<string>sanity-4e951</string>
+	<key>STORAGE_BUCKET</key>
+	<string>sanity-4e951.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:52831059983:ios:922ab5f144cb4cf1</string>
+	<key>DATABASE_URL</key>
+	<string>https://sanity-4e951.firebaseio.com</string>
+</dict>
+</plist>

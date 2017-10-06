@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C958C5BDD903A8BFF9E2E5D /* Pods_Sanity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C772DE7D2F5C4DC837699DC2 /* Pods_Sanity.framework */; };
 		A037A9D01F81BE2E00D2FA55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A037A9CF1F81BE2E00D2FA55 /* AppDelegate.swift */; };
 		A037A9D21F81BE2E00D2FA55 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A037A9D11F81BE2E00D2FA55 /* ViewController.swift */; };
 		A037A9D51F81BE2E00D2FA55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A037A9D31F81BE2E00D2FA55 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		083E82D98C88E70BD3D26AAE /* Pods-Sanity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sanity.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sanity/Pods-Sanity.release.xcconfig"; sourceTree = "<group>"; };
 		A037A9CC1F81BE2E00D2FA55 /* Sanity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sanity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A037A9CF1F81BE2E00D2FA55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A037A9D11F81BE2E00D2FA55 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +24,9 @@
 		A037A9D61F81BE2E00D2FA55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A037A9D91F81BE2E00D2FA55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A037A9DB1F81BE2E00D2FA55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C772DE7D2F5C4DC837699DC2 /* Pods_Sanity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sanity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D043DE201F8710D700E9A870 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E2D219E7D1211EA36781CDE4 /* Pods-Sanity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sanity.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sanity/Pods-Sanity.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +34,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C958C5BDD903A8BFF9E2E5D /* Pods_Sanity.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05F1D0F25378F50DE09A2011 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C772DE7D2F5C4DC837699DC2 /* Pods_Sanity.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A037A9C31F81BE2E00D2FA55 = {
 			isa = PBXGroup;
 			children = (
 				A037A9CE1F81BE2E00D2FA55 /* Sanity */,
 				A037A9CD1F81BE2E00D2FA55 /* Products */,
+				B11DF68F412F9C9F6BACF30A /* Pods */,
+				05F1D0F25378F50DE09A2011 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,6 +70,7 @@
 		A037A9CE1F81BE2E00D2FA55 /* Sanity */ = {
 			isa = PBXGroup;
 			children = (
+				D043DE201F8710D700E9A870 /* GoogleService-Info.plist */,
 				A037A9CF1F81BE2E00D2FA55 /* AppDelegate.swift */,
 				A037A9D11F81BE2E00D2FA55 /* ViewController.swift */,
 				A037A9D31F81BE2E00D2FA55 /* Main.storyboard */,
@@ -64,6 +81,15 @@
 			path = Sanity;
 			sourceTree = "<group>";
 		};
+		B11DF68F412F9C9F6BACF30A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E2D219E7D1211EA36781CDE4 /* Pods-Sanity.debug.xcconfig */,
+				083E82D98C88E70BD3D26AAE /* Pods-Sanity.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +97,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A037A9DE1F81BE2E00D2FA55 /* Build configuration list for PBXNativeTarget "Sanity" */;
 			buildPhases = (
+				82E4110F00023A26401CB621 /* [CP] Check Pods Manifest.lock */,
 				A037A9C81F81BE2E00D2FA55 /* Sources */,
 				A037A9C91F81BE2E00D2FA55 /* Frameworks */,
 				A037A9CA1F81BE2E00D2FA55 /* Resources */,
+				7A40BD6D5A89A61BCFF867BB /* [CP] Embed Pods Frameworks */,
+				FE86FE3297232811AB1AABF5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,6 +159,64 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7A40BD6D5A89A61BCFF867BB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Sanity/Pods-Sanity-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Sanity/Pods-Sanity-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		82E4110F00023A26401CB621 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Sanity-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FE86FE3297232811AB1AABF5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Sanity/Pods-Sanity-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A037A9C81F81BE2E00D2FA55 /* Sources */ = {
@@ -272,6 +359,7 @@
 		};
 		A037A9DF1F81BE2E00D2FA55 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2D219E7D1211EA36781CDE4 /* Pods-Sanity.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -286,6 +374,7 @@
 		};
 		A037A9E01F81BE2E00D2FA55 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 083E82D98C88E70BD3D26AAE /* Pods-Sanity.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
