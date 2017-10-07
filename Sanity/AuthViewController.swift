@@ -17,24 +17,20 @@ class AuthViewController: UIViewController {
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     
-    @IBAction func submitButton(_ sender: Any) {
-        print("submit")
-        
+    @IBAction func submitButton(_ sender: UIButton) {
         if emailTextField.text != "" && passwordTextField.text != ""{
             
             if !isValidEmail(email: emailTextField.text!){
                 self.errorLabel.text = "Invalid email"
             }else if !isComplexPassword(password: passwordTextField.text!){
-                self.errorLabel.text = "Password must be at least 3 characters long"
+                self.errorLabel.text = "Password must be at least 8 characters long"
             }
             /* If login */
             else if segmentControl.selectedSegmentIndex == 0 {
                 Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: {(user, error) in
                     if user != nil{
-                        print("LOGIN Success")
                         self.performSegue(withIdentifier: "loginSegue", sender: self)
                     }else{
-                        print("error")
                         self.errorLabel.text = "Invalid login"
                     }
                 })
@@ -43,10 +39,8 @@ class AuthViewController: UIViewController {
             else if segmentControl.selectedSegmentIndex == 1{
                 Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
                     if user != nil{
-                        print("Sign up Success")
                         self.performSegue(withIdentifier: "loginSegue", sender: self)
                     }else{
-                        print("error")
                         self.errorLabel.text = "Invalid login"
                     }
                     
@@ -81,7 +75,7 @@ class AuthViewController: UIViewController {
     
     func isComplexPassword(password:String) -> Bool {
         //TODO: password validation
-        return password.count >= 3
+        return password.count >= 8
     }
     
     func isValidEmail(email:String) -> Bool {
@@ -91,6 +85,12 @@ class AuthViewController: UIViewController {
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: email)
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }
+
+
 
 
