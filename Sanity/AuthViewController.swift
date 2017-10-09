@@ -41,7 +41,7 @@ class AuthViewController: UIViewController {
                     if user != nil{
                         self.performSegue(withIdentifier: "loginSegue", sender: self)
                     }else{
-                        self.errorLabel.text = "Invalid login"
+                        self.errorLabel.text = "Email is taken"
                     }
                     
                 })
