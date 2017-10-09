@@ -15,7 +15,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        budgets = fetchBudgets()
+        fetchBudgets()
         tableView.reloadData()
     }
 
@@ -30,27 +30,36 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return budgets.count
     }
     
     //Currently
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let dequeued = tableView.dequeueReusableCell(withIdentifier: "budget", for: indexPath)
         if let cell = dequeued as? BudgetOverviewCell {
-            cell.budgetName.text = "Test"
+            let currentBudget = budgets[indexPath.row]
+            cell.budgetName.text = currentBudget.name
+            cell.budgetRemaining.text = String(describing: currentBudget.budgetRemaining!)
+            //Stub for now, remember to actually calculate
+            cell.daysUntilReset.text = "10"
             return cell
         }
         return dequeued
     }
     
-    func fetchBudgets() -> [Budget]{
-        let collRef: CollectionReference = Firestore.firestore().collection("Users/\(userEmail)/budgets")
+    func fetchBudgets(){
+        let collRef: CollectionReference = Firestore.firestore().collection("Users/\(userEmail!)/Budgets")
+        print("Users/\(userEmail!)/Budgets")
         collRef.getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print(err)
             } else {
-                self.tableView.numberOfRows(inSection: (querySnapshot?.count)!)
-                
+//                self.tableView.numberOfRows(inSection: (querySnapshot?.count)!)
+                //Look into why this needs to be async
+                self.budgets = querySnapshot!.documents.flatMap({Budget(dictionary: $0.data())})
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             }
         }
     }

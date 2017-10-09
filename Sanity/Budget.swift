@@ -17,7 +17,15 @@ class Budget {
     var totalBudget:Double?
     var budgetRemaining:Double?
     
-    init(){
-        
+    
+    //Will definitely need to implement more, but for now this stub works
+    init(dictionary:[String:Any]) {
+        self.name = dictionary["name"] as? String
+        self.budgetRemaining = dictionary["budgetRemaining"] as? Double
+        self.totalBudget = dictionary["totalBudget"] as? Double
     }
+    
+    //Fill in rest of methods
+    
+    
 }
