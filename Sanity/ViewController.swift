@@ -25,17 +25,14 @@ class ViewController: UIViewController {
         // Create the action sheet
         let myActionSheet = UIAlertController(title: "Add", message: "Add new budget or transaction?", preferredStyle: UIAlertControllerStyle.actionSheet)
         
-        // blue action button
         let transactionAction = UIAlertAction(title: "Transaction", style: UIAlertActionStyle.default) { (action) in
             self.performSegue(withIdentifier: "addTransactionSegue", sender: self)
         }
         
-        // red action button
         let budgetAction = UIAlertAction(title: "Budget", style: UIAlertActionStyle.default) { (action) in
             self.performSegue(withIdentifier: "addBudgetSegue", sender: self)
         }
         
-        // cancel action button
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (action) in
         }
         
