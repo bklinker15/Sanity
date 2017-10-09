@@ -10,12 +10,12 @@ import UIKit
 import Firebase
 class DashboardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var userEmail: String!
-    //var budgets = [Budget]
+    var budgets = [Budget]()
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchBudgets()
+        budgets = fetchBudgets()
         tableView.reloadData()
     }
 
@@ -43,7 +43,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         return dequeued
     }
     
-    func fetchBudgets() {
+    func fetchBudgets() -> [Budget]{
         let collRef: CollectionReference = Firestore.firestore().collection("Users/\(userEmail)/budgets")
         collRef.getDocuments() { (querySnapshot, err) in
             if let err = err {
