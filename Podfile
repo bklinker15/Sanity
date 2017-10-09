@@ -8,6 +8,7 @@ target 'Sanity' do
   # Pods for Sanity
 
   pod 'Firebase/Core'
-  pod 'Firebase/Auth’
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
 
 end

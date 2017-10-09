@@ -44,8 +44,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
-                                    <action selector="submitButton:" destination="fPx-3H-jwL" eventType="touchUpInside" id="goS-dj-xtU"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="loginSegue" id="OeV-N0-OT4"/>
+                                    <action selector="submitButton:" destination="fPx-3H-jwL" eventType="touchUpInside" id="hhl-jS-rD1"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WTr-mZ-F47">
@@ -70,11 +69,12 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="emailTextField" destination="Afs-EB-N6G" id="r8O-Wx-O09"/>
-                        <outlet property="errorLabel" destination="WTr-mZ-F47" id="8dq-V9-Pu2"/>
-                        <outlet property="passwordTextField" destination="E32-A1-eYP" id="p5E-E0-oTe"/>
-                        <outlet property="segmentControl" destination="HWy-YL-DWb" id="egR-jn-1YX"/>
-                        <outlet property="submitButton" destination="dKR-gP-pNF" id="iFu-sB-ctI"/>
+                        <outlet property="emailTextField" destination="Afs-EB-N6G" id="RH3-0G-Shq"/>
+                        <outlet property="errorLabel" destination="WTr-mZ-F47" id="2xX-Ll-1gn"/>
+                        <outlet property="passwordTextField" destination="E32-A1-eYP" id="8bC-PC-sHL"/>
+                        <outlet property="segmentControl" destination="HWy-YL-DWb" id="scu-7E-3Lo"/>
+                        <outlet property="submitButton" destination="dKR-gP-pNF" id="nUu-l6-uZP"/>
+                        <segue destination="QEw-Oi-P1e" kind="show" identifier="loginSegue" id="gFa-jg-16e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yIy-9S-miQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -82,32 +82,157 @@
             <point key="canvasLocation" x="-743.20000000000005" y="113.79310344827587"/>
         </scene>
         <!--View Controller-->
+        <scene sceneID="4ht-xs-aKf">
+            <objects>
+                <viewController id="cAO-H4-nSU" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u9W-c2-d9m">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="1B8-c6-BOx"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pv0-Um-ciG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1497" y="-602"/>
+        </scene>
+        <!--Budgets-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Sanity" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="DashboardViewController" customModule="Sanity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJ2-FO-SDz">
-                                <rect key="frame" x="27" y="20" width="48" height="30"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="88A-pa-bMB">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Logout"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="budget" rowHeight="101" id="wZu-7D-nA2" customClass="BudgetOverviewCell" customModule="Sanity" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="101"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wZu-7D-nA2" id="63F-wJ-HU8">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="100.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5z-lp-acA">
+                                                    <rect key="frame" x="8" y="57" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOE-fm-aMm">
+                                                    <rect key="frame" x="8" y="8" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Jbb-aU-ncr">
+                                                    <rect key="frame" x="130" y="49" width="150" height="2"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </progressView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="74F-8R-Fz4">
+                                                    <rect key="frame" x="184" y="59" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="budgetName" destination="cOE-fm-aMm" id="Doo-ma-N52"/>
+                                            <outlet property="budgetRemaining" destination="74F-8R-Fz4" id="PLK-9d-3fW"/>
+                                            <outlet property="daysUntilReset" destination="k5z-lp-acA" id="vfM-FB-NVC"/>
+                                            <outlet property="progressBar" destination="63F-wJ-HU8" id="jx0-gM-Lic"/>
+                                            <segue destination="OoQ-JI-ohB" kind="showDetail" identifier="budgetDetail" trigger="accessoryAction" id="jh9-Q7-jvc"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
-                                    <action selector="logoutButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qdv-wb-MNR"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="BcV-X4-yKP"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="G4h-0V-vlh"/>
                                 </connections>
-                            </button>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Budgets" id="WFS-eb-Anx">
+                        <barButtonItem key="leftBarButtonItem" image="Settings" id="8HT-tw-JGn">
+                            <connections>
+                                <segue destination="cAO-H4-nSU" kind="show" identifier="settings" id="lN6-Hr-OsN"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="Webp.net-resizeimage" id="8wH-py-7sb">
+                            <connections>
+                                <segue destination="71f-Rb-lTb" kind="show" identifier="newAddition" id="03g-w8-lpN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="tableView" destination="88A-pa-bMB" id="32Y-4H-3IN"/>
                         <segue destination="fPx-3H-jwL" kind="show" identifier="logoutSegue" id="kd8-6N-S0r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="172" y="114"/>
+            <point key="canvasLocation" x="1496.8" y="113.79310344827587"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Wil-y4-xxC">
+            <objects>
+                <viewController id="71f-Rb-lTb" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xpm-PE-N6x">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="YlE-Ex-QWm"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="miu-7m-Lpo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2366" y="114"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="qfK-E6-4Dp">
+            <objects>
+                <viewController id="OoQ-JI-ohB" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rlb-05-CIq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="r1D-oI-Ixt"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oPG-Ni-eRE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1497" y="887"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="pFG-fy-Au9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QEw-Oi-P1e" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hg4-9d-BxW">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="rT9-YY-QOL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CB3-2C-SC6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="426" y="114"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Settings" width="20" height="20"/>
+        <image name="Webp.net-resizeimage" width="20" height="20"/>
+    </resources>
 </document>

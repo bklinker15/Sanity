@@ -10,14 +10,13 @@ import UIKit
 import FirebaseAuth
 
 class AuthViewController: UIViewController {
-
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     
-    @IBAction func submitButton(_ sender: Any) {
+    @IBAction func submitButton(_ sender: UIButton) {
         print("submit")
         
         if emailTextField.text != "" && passwordTextField.text != ""{
@@ -27,7 +26,7 @@ class AuthViewController: UIViewController {
             }else if !isComplexPassword(password: passwordTextField.text!){
                 self.errorLabel.text = "Password must be at least 3 characters long"
             }
-            /* If login */
+                /* If login */
             else if segmentControl.selectedSegmentIndex == 0 {
                 Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: {(user, error) in
                     if user != nil{
@@ -39,14 +38,14 @@ class AuthViewController: UIViewController {
                     }
                 })
             }
-            /* If sign up */
+                /* If sign up */
             else if segmentControl.selectedSegmentIndex == 1{
                 Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
                     if user != nil{
                         print("Sign up Success")
                         self.performSegue(withIdentifier: "loginSegue", sender: self)
                     }else{
-                        print("error")
+                        print(error!)
                         self.errorLabel.text = "Invalid login"
                     }
                     
@@ -54,6 +53,20 @@ class AuthViewController: UIViewController {
             }
         }else{
             self.errorLabel.text = "Fields cannot be empty"
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+                case "loginSegue":
+                    //Target VC is embedded in NavVC, need to pull it out
+                    let destination = segue.destination as? UINavigationController
+                    if let vc = destination?.topViewController as? DashboardViewController {
+                        vc.userEmail = emailTextField.text!
+                    }
+                default: break
+            }
         }
     }
     
