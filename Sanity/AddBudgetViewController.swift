@@ -8,9 +8,28 @@
 
 import UIKit
 
-class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+    var resetPeriods = ["Never", "Daily", "Weekly", "Bi-weekly", "Monthly", "3 Months", "6 Months", "9 Months", "Yearly"]
     var numRows = 1
+    var selectedResetIndex = 0
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return resetPeriods.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return resetPeriods[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedResetIndex = row
+    }
+    
+
     
     @IBOutlet weak var categoryTableView: UITableView!
     @IBOutlet weak var budgetNameTextField: UITextField!
@@ -69,6 +88,8 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableV
                 categories[catKey] = limitVal
             }
         }
+        
+        //Send categories and resetPeriods[index] to backend
         
     }
     
