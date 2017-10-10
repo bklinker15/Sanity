@@ -54,8 +54,6 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
             if let err = err {
                 print(err)
             } else {
-//                self.tableView.numberOfRows(inSection: (querySnapshot?.count)!)
-                //Look into why this needs to be async
                 self.budgets = querySnapshot!.documents.flatMap({Budget(dictionary: $0.data())})
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
