@@ -10,7 +10,6 @@ import UIKit
 import FirebaseAuth
 
 class AuthViewController: UIViewController {
-
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var segmentControl: UISegmentedControl!
@@ -25,7 +24,7 @@ class AuthViewController: UIViewController {
             }else if !isComplexPassword(password: passwordTextField.text!){
                 self.errorLabel.text = "Password must be at least 8 characters long"
             }
-            /* If login */
+                /* If login */
             else if segmentControl.selectedSegmentIndex == 0 {
                 Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: {(user, error) in
                     if user != nil{
@@ -36,7 +35,7 @@ class AuthViewController: UIViewController {
                     }
                 })
             }
-            /* If sign up */
+                /* If sign up */
             else if segmentControl.selectedSegmentIndex == 1{
                 Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
                     if user != nil{
@@ -52,10 +51,25 @@ class AuthViewController: UIViewController {
         }
     }
     
+
     func resetTextFields(){
         self.errorLabel.text = ""
         self.emailTextField.text = "";
         self.passwordTextField.text = ""
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+                case "loginSegue":
+                    //Target VC is embedded in NavVC, need to pull it out
+                    let destination = segue.destination as? UINavigationController
+                    if let vc = destination?.topViewController as? DashboardViewController {
+                        vc.userEmail = emailTextField.text!
+                    }
+                default: break
+            }
+        }
+
     }
     
     override func viewDidLoad() {
@@ -96,7 +110,6 @@ class AuthViewController: UIViewController {
         self.view.endEditing(true)
     }
 }
-
 
 
 
