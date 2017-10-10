@@ -40,9 +40,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKR-gP-pNF">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKR-gP-pNF">
                                 <rect key="frame" x="163" y="346" width="49" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
                                     <action selector="submitButton:" destination="fPx-3H-jwL" eventType="touchUpInside" id="hh1-js-rD1"/>
@@ -103,7 +102,7 @@
             <objects>
                 <viewController id="cAO-H4-nSU" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u9W-c2-d9m">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="1B8-c6-BOx"/>
@@ -111,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pv0-Um-ciG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1497" y="-602"/>
+            <point key="canvasLocation" x="2571" y="926"/>
         </scene>
         <!--Budgets-->
         <scene sceneID="tne-QT-ifu">
@@ -122,7 +121,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="88A-pa-bMB">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="budget" rowHeight="101" id="wZu-7D-nA2" customClass="BudgetOverviewCell" customModule="Sanity" customModuleProvider="target">
@@ -203,9 +202,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="tableView" destination="88A-pa-bMB" id="32Y-4H-3IN"/>
                         <segue destination="aC4-xr-Muu" kind="presentation" identifier="addBudgetSegue" id="PUx-t1-1SJ"/>
                         <segue destination="ShU-31-v0c" kind="presentation" identifier="addTransactionSegue" id="5TS-hj-mCZ"/>
-                        <outlet property="tableView" destination="88A-pa-bMB" id="32Y-4H-3IN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -217,7 +216,7 @@
             <objects>
                 <viewController id="71f-Rb-lTb" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xpm-PE-N6x">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="YlE-Ex-QWm"/>
@@ -232,7 +231,7 @@
             <objects>
                 <viewController id="OoQ-JI-ohB" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rlb-05-CIq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="r1D-oI-Ixt"/>
@@ -248,7 +247,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QEw-Oi-P1e" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hg4-9d-BxW">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -274,7 +273,7 @@
                                 <items>
                                     <navigationItem title="Add Budget" id="43r-0i-9aR">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="pcz-xO-NJn">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dg9-gB-6N5">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dg9-gB-6N5">
                                                 <rect key="frame" x="16" y="7" width="48" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Cancel"/>
@@ -383,7 +382,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i87-tB-1NE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1126.875" y="-651.76056338028172"/>
+            <point key="canvasLocation" x="426" y="-694"/>
         </scene>
         <!--AddTransactionController-->
         <scene sceneID="Nyk-8i-deB">
@@ -399,7 +398,7 @@
                                 <items>
                                     <navigationItem title="Add Transaction" id="cYQ-mI-pnZ">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="VRg-6y-3E0">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="oBa-2Y-US6">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="oBa-2Y-US6">
                                                 <rect key="frame" x="16" y="7" width="48" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Cancel"/>
@@ -418,11 +417,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sZC-fI-ngt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1948" y="-652"/>
+            <point key="canvasLocation" x="2539" y="-694"/>
         </scene>
     </scenes>
     <resources>
         <image name="Settings" width="20" height="20"/>
         <image name="Webp.net-resizeimage" width="20" height="20"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="rT9-YY-QOL"/>
+    </inferredMetricsTieBreakers>
 </document>
