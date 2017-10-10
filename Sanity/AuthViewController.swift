@@ -30,6 +30,7 @@ class AuthViewController: UIViewController {
                 Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: {(user, error) in
                     if user != nil{
                         self.performSegue(withIdentifier: "loginSegue", sender: self)
+                        self.resetTextFields()
                     }else{
                         self.errorLabel.text = "Invalid login"
                     }
@@ -40,10 +41,10 @@ class AuthViewController: UIViewController {
                 Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
                     if user != nil{
                         self.performSegue(withIdentifier: "loginSegue", sender: self)
+                        self.resetTextFields()
                     }else{
                         self.errorLabel.text = "Email is taken"
                     }
-                    
                 })
             }
         }else{
@@ -51,10 +52,15 @@ class AuthViewController: UIViewController {
         }
     }
     
+    func resetTextFields(){
+        self.errorLabel.text = ""
+        self.emailTextField.text = "";
+        self.passwordTextField.text = ""
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.resetTextFields()
     }
 
     override func didReceiveMemoryWarning() {

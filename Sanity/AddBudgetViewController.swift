@@ -8,31 +8,91 @@
 
 import UIKit
 
-class AddBudgetViewController: UIViewController {
-
+class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    var numRows = 1
+    
+    @IBOutlet weak var categoryTableView: UITableView!
+    @IBOutlet weak var budgetNameTextField: UITextField!
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return numRows
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = categoryTableView.dequeueReusableCell(withIdentifier: "categoryCell") as! CategoryCell
+        
+        cell.setup()
+        return cell
+    }
+    
+    @IBAction func addCategoryButtonPress(_ sender: Any) {
+        numRows = numRows + 1
+        categoryTableView.beginUpdates()
+        categoryTableView.insertRows(at: [IndexPath(row: numRows-1, section: 0)], with: .automatic)
+        categoryTableView.endUpdates()
+    }
+    
+    @IBAction func removeCategoryButtonPress(_ sender: Any) {
+        if numRows > 1{
+            numRows = numRows - 1
+            categoryTableView.beginUpdates()
+            categoryTableView.deleteRows(at: [IndexPath(row: numRows, section: 0)], with: .automatic)
+            categoryTableView.endUpdates()
+        }else{
+            showErrorAlert(message: "Budget must have at least one category")
+        }
+    }
+    
+    @IBAction func createBudgetButtonPress(_ sender: Any) {
+        let cells = self.categoryTableView.visibleCells as! Array<CategoryCell>
+        var categories = [String: Float]()
+        
+        if(budgetNameTextField.text == ""){
+            showErrorAlert(message: "Budget must have a name")
+            return
+        }
+        
+        for cell in cells{
+            if cell.categoryNameTextField?.text == "" || cell.limitTextField?.text == ""{
+                showErrorAlert(message: "Please enter a value for all category fields or remove a category")
+                return
+            }else{
+                let catKey = cell.categoryNameTextField.text!
+                let limitVal = Float(cell.limitTextField.text!)
+                
+                if categories[catKey] != nil {
+                    showErrorAlert(message: "Category names must be unique")
+                    return
+                }
+                
+                categories[catKey] = limitVal
+            }
+        }
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    func showErrorAlert(message: String){
+        let alertController = UIAlertController(title: "Oops!", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func cancelButtonPress(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

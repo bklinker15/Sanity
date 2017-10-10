@@ -17,6 +17,7 @@
 		D043DE241F8764ED00E9A870 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D043DE231F8764ED00E9A870 /* GoogleService-Info.plist */; };
 		D0EA5BAC1F8B1B2A00D5F99E /* AddBudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA5BAB1F8B1B2A00D5F99E /* AddBudgetViewController.swift */; };
 		D0EA5BB01F8B24A200D5F99E /* AddTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA5BAF1F8B24A200D5F99E /* AddTransactionViewController.swift */; };
+		D0EA5BB41F8C372500D5F99E /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA5BB31F8C372500D5F99E /* CategoryCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		D043DE231F8764ED00E9A870 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D0EA5BAB1F8B1B2A00D5F99E /* AddBudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetViewController.swift; sourceTree = "<group>"; };
 		D0EA5BAF1F8B24A200D5F99E /* AddTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewController.swift; sourceTree = "<group>"; };
+		D0EA5BB31F8C372500D5F99E /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		E2D219E7D1211EA36781CDE4 /* Pods-Sanity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sanity.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sanity/Pods-Sanity.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,6 +89,7 @@
 				D043DE211F8753D900E9A870 /* AuthViewController.swift */,
 				D0EA5BAB1F8B1B2A00D5F99E /* AddBudgetViewController.swift */,
 				D0EA5BAF1F8B24A200D5F99E /* AddTransactionViewController.swift */,
+				D0EA5BB31F8C372500D5F99E /* CategoryCell.swift */,
 			);
 			path = Sanity;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				D0EA5BB01F8B24A200D5F99E /* AddTransactionViewController.swift in Sources */,
 				A037A9D01F81BE2E00D2FA55 /* AppDelegate.swift in Sources */,
 				D0EA5BAC1F8B1B2A00D5F99E /* AddBudgetViewController.swift in Sources */,
+				D0EA5BB41F8C372500D5F99E /* CategoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
