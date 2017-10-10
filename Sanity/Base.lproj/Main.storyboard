@@ -47,7 +47,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
-                                    <action selector="submitButton:" destination="fPx-3H-jwL" eventType="touchUpInside" id="goS-dj-xtU"/>
+                                    <action selector="submitButton:" destination="fPx-3H-jwL" eventType="touchUpInside" id="hh1-js-rD1"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WTr-mZ-F47">
@@ -72,12 +72,12 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="emailTextField" destination="Afs-EB-N6G" id="r8O-Wx-O09"/>
-                        <outlet property="errorLabel" destination="WTr-mZ-F47" id="8dq-V9-Pu2"/>
-                        <outlet property="passwordTextField" destination="E32-A1-eYP" id="p5E-E0-oTe"/>
-                        <outlet property="segmentControl" destination="HWy-YL-DWb" id="egR-jn-1YX"/>
-                        <outlet property="submitButton" destination="dKR-gP-pNF" id="iFu-sB-ctI"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="loginSegue" id="1J3-Yo-8kJ"/>
+                        <outlet property="emailTextField" destination="Afs-EB-N6G" id="RH3-0G-Shq"/>
+                        <outlet property="errorLabel" destination="WTr-mZ-F47" id="2xX-L1-1gn"/>
+                        <outlet property="passwordTextField" destination="E32-A1-eYP" id="8bC-PC-sHL"/>
+                        <outlet property="segmentControl" destination="HWy-YL-DWb" id="scu-7E-3Lo"/>
+                        <outlet property="submitButton" destination="dKR-gP-pNF" id="nUu-16-uZP"/>
+                        <segue destination="QEw-Oi-P1e" kind="show" identifier="loginSegue" id="gFa-jg-16e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yIy-9S-miQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
