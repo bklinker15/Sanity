@@ -92,12 +92,12 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="emailTextField" destination="Afs-EB-N6G" id="r80-Wx-O09"/>
-                        <outlet property="errorLabel" destination="WTr-mZ-F47" id="WTr-mZ-F47"/>
-                        <outlet property="passwordTextField" destination="E32-A1-eYP" id="E32-A1-eYP"/>
-                        <outlet property="segmentControl" destination="HWy-YL-DWb" id="HWy-YL-DWb"/>
-                        <outlet property="submitButton" destination="dKR-gP-pNF" id="DKR-gP-pNF"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="loginSegue" id="1J3-Yo-8kJ"/>
+                        <outlet property="emailTextField" destination="Afs-EB-N6G" id="r8O-Wx-O09"/>
+                        <outlet property="errorLabel" destination="WTr-mZ-F47" id="8dq-V9-Pu2"/>
+                        <outlet property="passwordTextField" destination="E32-A1-eYP" id="p5E-E0-oTe"/>
+                        <outlet property="segmentControl" destination="HWy-YL-DWb" id="egR-jn-1YX"/>
+                        <outlet property="submitButton" destination="dKR-gP-pNF" id="iFu-sB-ctI"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="loginSegue" id="1J3-Yo-8kJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yIy-9S-miQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
