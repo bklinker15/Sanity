@@ -39,7 +39,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         if let cell = dequeued as? BudgetOverviewCell {
             let currentBudget = budgets[indexPath.row]
             cell.budgetName.text = currentBudget.name
-            cell.budgetRemaining.text = String(describing: currentBudget.budgetRemaining!)
+            cell.budgetRemaining.text = String(describing: currentBudget.budgetRemaining)
             //Stub for now, remember to actually calculate
             cell.daysUntilReset.text = "10"
             return cell

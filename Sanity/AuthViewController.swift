@@ -56,6 +56,7 @@ class AuthViewController: UIViewController {
         self.errorLabel.text = ""
         self.emailTextField.text = "";
         self.passwordTextField.text = ""
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
