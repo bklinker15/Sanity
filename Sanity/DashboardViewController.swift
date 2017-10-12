@@ -12,6 +12,30 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     var userEmail: String!
     var budgets = [Budget]()
     
+    @IBAction func addButtonPress(_ sender: Any) {
+        // Create the action sheet
+        let myActionSheet = UIAlertController(title: "Add", message: "Add new budget or transaction?", preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        let transactionAction = UIAlertAction(title: "Transaction", style: UIAlertActionStyle.default) { (action) in
+            self.performSegue(withIdentifier: "addTransactionSegue", sender: self)
+        }
+        
+        let budgetAction = UIAlertAction(title: "Budget", style: UIAlertActionStyle.default) { (action) in
+            self.performSegue(withIdentifier: "addBudgetSegue", sender: self)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (action) in
+        }
+        
+        // add action buttons to action sheet
+        myActionSheet.addAction(transactionAction)
+        myActionSheet.addAction(budgetAction)
+        myActionSheet.addAction(cancelAction)
+        
+        // present the action sheet
+        self.present(myActionSheet, animated: true, completion: nil)
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +82,22 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "addTransactionSegue":
+                let backItem = UIBarButtonItem()
+                backItem.title = "Cancel"
+                navigationItem.backBarButtonItem = backItem
+            case "addBudgetSegue":
+                let backItem = UIBarButtonItem()
+                backItem.title = "Cancel"
+                navigationItem.backBarButtonItem = backItem
+            default: break
             }
         }
     }
