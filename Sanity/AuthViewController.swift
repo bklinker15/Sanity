@@ -22,7 +22,7 @@ class AuthViewController: UIViewController {
             if !isValidEmail(email: emailTextField.text!){
                 self.errorLabel.text = "Invalid email"
             }else if !isComplexPassword(password: passwordTextField.text!){
-                self.errorLabel.text = "Password must be at least 8 characters long"
+                self.errorLabel.text = "Password must be at least 6 characters long"
             }
                 /* If login */
             else if segmentControl.selectedSegmentIndex == 0 {
@@ -96,7 +96,7 @@ class AuthViewController: UIViewController {
     
     func isComplexPassword(password:String) -> Bool {
         //TODO: password validation
-        return password.count >= 8
+        return password.count >= 6
     }
     
     func isValidEmail(email:String) -> Bool {
