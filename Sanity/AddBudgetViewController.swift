@@ -89,7 +89,8 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableV
             }
         }
         
-        //Send categories and resetPeriods[index] to backend
+        //Send categories and resetPeriods[index] to
+        
         
     }
     
@@ -115,5 +116,7 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableV
     @IBAction func cancelButtonPress(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    
 
 }
