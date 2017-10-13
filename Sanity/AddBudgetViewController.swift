@@ -9,7 +9,7 @@
 import UIKit
 
 class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
-    var resetPeriods = ["Never", "Daily", "Weekly", "Bi-weekly", "Monthly", "3 Months", "6 Months", "9 Months", "Yearly"]
+    var resetPeriods = ["Never", "Daily", "Weekly", "Bi-weekly", "Monthly", "3 Months", "6 Months", "Yearly"]
     var numRows = 1
     var selectedResetIndex = 0
     
@@ -89,7 +89,8 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableV
             }
         }
         
-        //Send categories and resetPeriods[index] to backend
+        //Send categories and resetPeriods[index] to
+        
         
     }
     
@@ -115,5 +116,7 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableV
     @IBAction func cancelButtonPress(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    
 
 }

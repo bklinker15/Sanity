@@ -9,7 +9,29 @@
 import UIKit
 
 class AddTransactionViewController: UIViewController {
-
+    var paymentMethod = ["Cash", "Debit Card", "Credit Card"]
+    var numRows = 1
+    var selectedPaymentIndex = 0
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return paymentMethod.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return paymentMethod[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedPaymentIndex = row
+    }
+    
+    //budget drop down menu
+    //category drop down menu
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

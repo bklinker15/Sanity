@@ -32,6 +32,9 @@ struct Budget {
     }
     //Fill in rest of methods
     
+//    mutating func setResetInterval(ri: String){
+//        self.resetInterval = ri
+//    }
     
 }
 
