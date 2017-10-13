@@ -9,7 +9,9 @@
 import UIKit
 
 class AddTransactionViewController: UIViewController {
-
+    const paymentMethod = ["Cash", "Debit Card", "Credit Card"]
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
