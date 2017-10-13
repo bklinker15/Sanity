@@ -12,6 +12,8 @@
 		A037A9D51F81BE2E00D2FA55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A037A9D31F81BE2E00D2FA55 /* Main.storyboard */; };
 		A037A9D71F81BE2E00D2FA55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A037A9D61F81BE2E00D2FA55 /* Assets.xcassets */; };
 		A037A9DA1F81BE2E00D2FA55 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A037A9D81F81BE2E00D2FA55 /* LaunchScreen.storyboard */; };
+		A056C4E41F9185410071E242 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A056C4E31F9185410071E242 /* Transaction.swift */; };
+		A056C4E61F91854F0071E242 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A056C4E51F91854F0071E242 /* Category.swift */; };
 		A0688C711F89A01500E4EA14 /* BudgetOverviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0688C701F89A01500E4EA14 /* BudgetOverviewCell.swift */; };
 		A0765C601F8A02B2002C603E /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0765C5F1F8A02B2002C603E /* DashboardViewController.swift */; };
 		A0851DDD1F8C657B003357F7 /* FirestoreSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0851DDC1F8C657B003357F7 /* FirestoreSerializable.swift */; };
@@ -31,6 +33,8 @@
 		A037A9D61F81BE2E00D2FA55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A037A9D91F81BE2E00D2FA55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A037A9DB1F81BE2E00D2FA55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A056C4E31F9185410071E242 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		A056C4E51F91854F0071E242 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		A0688C701F89A01500E4EA14 /* BudgetOverviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetOverviewCell.swift; sourceTree = "<group>"; };
 		A0765C5F1F8A02B2002C603E /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		A0851DDC1F8C657B003357F7 /* FirestoreSerializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreSerializable.swift; sourceTree = "<group>"; };
@@ -89,6 +93,8 @@
 				A037A9CF1F81BE2E00D2FA55 /* AppDelegate.swift */,
 				A0765C5F1F8A02B2002C603E /* DashboardViewController.swift */,
 				A08780191F8B045800F6AB15 /* Budget.swift */,
+				A056C4E31F9185410071E242 /* Transaction.swift */,
+				A056C4E51F91854F0071E242 /* Category.swift */,
 				A0851DDC1F8C657B003357F7 /* FirestoreSerializable.swift */,
 				A037A9D31F81BE2E00D2FA55 /* Main.storyboard */,
 				A0688C701F89A01500E4EA14 /* BudgetOverviewCell.swift */,
@@ -264,11 +270,13 @@
 				A087801A1F8B045800F6AB15 /* Budget.swift in Sources */,
 				A0688C711F89A01500E4EA14 /* BudgetOverviewCell.swift in Sources */,
 				D043DE221F8753D900E9A870 /* AuthViewController.swift in Sources */,
+				A056C4E41F9185410071E242 /* Transaction.swift in Sources */,
 				D0EA5BB01F8B24A200D5F99E /* AddTransactionViewController.swift in Sources */,
 				A037A9D01F81BE2E00D2FA55 /* AppDelegate.swift in Sources */,
 				D0EA5BAC1F8B1B2A00D5F99E /* AddBudgetViewController.swift in Sources */,
 				D0EA5BB41F8C372500D5F99E /* CategoryCell.swift in Sources */,
 				A0851DDD1F8C657B003357F7 /* FirestoreSerializable.swift in Sources */,
+				A056C4E61F91854F0071E242 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
