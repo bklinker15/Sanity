@@ -14,7 +14,6 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableV
     var resetPeriods = ["Never", "Daily", "Weekly", "Bi-weekly", "Monthly", "3 Months", "6 Months", "Yearly"]
     var numRows = 1
     var selectedResetIndex = 0
-    var userEmail: String!
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -105,11 +104,11 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableV
         
         let budget = Budget(name: budgetName, resetDate: Date(), lastReset: Date(), resetInterval: -1, totalBudget: sum, budgetRemaining: sum)
         
-        Firestore.firestore().collection("Users").document(userEmail).collection("Budgets").document(budgetName).setData(budget.dictionary)
+        Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document(budgetName).setData(budget.dictionary)
         
         for (name, limit) in categories{
             let category = Category(name: name, paymentMethods: [], spendingLimit: limit)
-            Firestore.firestore().collection("Users").document(userEmail).collection("Budgets").document(budgetName).collection("Categories").document(name).setData(category.dictionary)
+            Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document(budgetName).collection("Categories").document(name).setData(category.dictionary)
         }
         
         self.navigationController?.popViewController(animated: true)

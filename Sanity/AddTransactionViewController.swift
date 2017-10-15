@@ -9,6 +9,7 @@
 import UIKit
 
 class AddTransactionViewController: UIViewController {
+    var userEmail:String?
     var paymentMethod = ["Cash", "Debit Card", "Credit Card"]
     var numRows = 1
     var selectedPaymentIndex = 0

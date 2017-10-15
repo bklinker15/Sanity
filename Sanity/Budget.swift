@@ -11,10 +11,10 @@ import Foundation
 //Made this a struct instead of a class to leverage convenience intializer
 //Can change - Jordan
 struct Budget {
-    private var name:String
-    private var resetDate:Date
-    private var lastReset:Date
-    private var resetInterval:Int
+    var name:String
+    var resetDate:Date
+    var lastReset:Date
+    var resetInterval:Int
     //I don't think we need categories TBH, will just query Firebase
     var totalBudget:Double
     var budgetRemaining:Double
