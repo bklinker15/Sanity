@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 
 class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+    var userEmail:String?
     var resetPeriods = ["Never", "Daily", "Weekly", "Bi-weekly", "Monthly", "3 Months", "6 Months", "Yearly"]
     var numRows = 1
     var selectedResetIndex = 0
