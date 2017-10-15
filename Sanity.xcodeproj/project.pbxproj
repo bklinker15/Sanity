@@ -29,7 +29,6 @@
 
 /* Begin PBXFileReference section */
 		01AA355B1F91C1F600F23B37 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		01AA355D1F928FF000F23B37 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Settings.storyboard; path = /Users/Nick/Documents/Code/xcode/Sanity/Sanity/Settings.storyboard; sourceTree = "<absolute>"; };
 		083E82D98C88E70BD3D26AAE /* Pods-Sanity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sanity.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sanity/Pods-Sanity.release.xcconfig"; sourceTree = "<group>"; };
 		740B9E0E1F92E7F100388C9A /* BudgetInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BudgetInfo.storyboard; sourceTree = "<group>"; };
 		A037A9CC1F81BE2E00D2FA55 /* Sanity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sanity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,7 +100,6 @@
 				A056C4E31F9185410071E242 /* Transaction.swift */,
 				A056C4E51F91854F0071E242 /* Category.swift */,
 				A0851DDC1F8C657B003357F7 /* FirestoreSerializable.swift */,
-				01AA355D1F928FF000F23B37 /* Settings.storyboard */,
 				A037A9D31F81BE2E00D2FA55 /* Main.storyboard */,
 				740B9E0E1F92E7F100388C9A /* BudgetInfo.storyboard */,
 				01AA355B1F91C1F600F23B37 /* SettingsViewController.swift */,
