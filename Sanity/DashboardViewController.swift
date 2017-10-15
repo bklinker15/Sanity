@@ -71,6 +71,11 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         return dequeued
     }
     
+    //Trigger segue to budget detail view once a budget row is tapped in the table
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "budgetDetail", sender: tableView.cellForRow(at: indexPath))
+    }
+    
     func fetchBudgets(){
         let collRef: CollectionReference = Firestore.firestore().collection("Users/\(userEmail!)/Budgets")
         print("Users/\(userEmail!)/Budgets")
@@ -97,6 +102,10 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 let backItem = UIBarButtonItem()
                 backItem.title = "Cancel"
                 navigationItem.backBarButtonItem = backItem
+            case "budgetDetail":
+                let vc = segue.destination as? BudgetDetailViewController
+                let cell = sender as? BudgetOverviewCell
+                vc?.budgetName = cell?.budgetName.text!
             default: break
             }
         }
