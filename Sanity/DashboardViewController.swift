@@ -62,8 +62,8 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         let dequeued = tableView.dequeueReusableCell(withIdentifier: "budget", for: indexPath)
         if let cell = dequeued as? BudgetOverviewCell {
             let currentBudget = budgets[indexPath.row]
-            cell.budgetName.text = currentBudget.name
-            cell.budgetRemaining.text = String(describing: currentBudget.budgetRemaining)
+            cell.budgetName.text = currentBudget.getName()
+            cell.budgetRemaining.text = String(describing: currentBudget.getBudgetRemaining)
             //Stub for now, remember to actually calculate
             cell.daysUntilReset.text = "10"
             return cell
@@ -98,14 +98,19 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 let backItem = UIBarButtonItem()
                 backItem.title = "Cancel"
                 navigationItem.backBarButtonItem = backItem
+                let vc = segue.destination as? AddTransactionViewController
+                vc?.userEmail = userEmail
             case "addBudgetSegue":
                 let backItem = UIBarButtonItem()
                 backItem.title = "Cancel"
                 navigationItem.backBarButtonItem = backItem
+                let vc = segue.destination as? AddBudgetViewController
+                vc?.userEmail = userEmail
             case "budgetDetail":
                 let vc = segue.destination as? BudgetDetailViewController
                 let cell = sender as? BudgetOverviewCell
                 vc?.budgetName = cell?.budgetName.text!
+                vc?.userEmail = userEmail
             default: break
             }
         }

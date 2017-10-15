@@ -11,6 +11,7 @@ import Firebase
 
 class BudgetDetailViewController: UIViewController {
     var budgetName:String?
+    var userEmail:String?
     var categories = [Category]()
     
     override func viewDidLoad() {

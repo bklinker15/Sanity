@@ -11,14 +11,14 @@ import Foundation
 //Made this a struct instead of a class to leverage convenience intializer
 //Can change - Jordan
 struct Budget {
-    var name:String
-    var resetDate:Date
-    var lastReset:Date
-    var resetInterval:Int
+    private var name:String
+    private var resetDate:Date
+    private var lastReset:Date
+    private var resetInterval:Int
     //I don't think we need categories TBH, will just query Firebase
-    var categories: [Category]
-    var totalBudget:Double
-    var budgetRemaining:Double
+    private var categories: [Category]
+    private var totalBudget:Double
+    private var budgetRemaining:Double
     
     var dictionary:[String:Any] {
         return [
@@ -30,11 +30,30 @@ struct Budget {
             "resetInterval":resetInterval
         ]
     }
-    //Fill in rest of methods
     
-//    mutating func setResetInterval(ri: String){
-//        self.resetInterval = ri
-//    }
+    func getName() -> String {
+        return name
+    }
+    
+    func getResetDate() -> Date {
+        return resetDate
+    }
+    
+    func getLastReset() -> Date {
+        return lastReset
+    }
+    
+    func getResetInterval() -> Int {
+        return resetInterval
+    }
+    
+    func getTotalBudget() -> Double {
+        return totalBudget
+    }
+    
+    func getBudgetRemaining() -> Double {
+        return budgetRemaining
+    }
     
 }
 
