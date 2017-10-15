@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01AA355C1F91C1F600F23B37 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AA355B1F91C1F600F23B37 /* SettingsViewController.swift */; };
 		1C958C5BDD903A8BFF9E2E5D /* Pods_Sanity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C772DE7D2F5C4DC837699DC2 /* Pods_Sanity.framework */; };
 		A037A9D01F81BE2E00D2FA55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A037A9CF1F81BE2E00D2FA55 /* AppDelegate.swift */; };
 		A037A9D51F81BE2E00D2FA55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A037A9D31F81BE2E00D2FA55 /* Main.storyboard */; };
@@ -26,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01AA355B1F91C1F600F23B37 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		01AA355D1F928FF000F23B37 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Settings.storyboard; path = /Users/Nick/Documents/Code/xcode/Sanity/Sanity/Settings.storyboard; sourceTree = "<absolute>"; };
 		083E82D98C88E70BD3D26AAE /* Pods-Sanity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sanity.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sanity/Pods-Sanity.release.xcconfig"; sourceTree = "<group>"; };
 		A037A9CC1F81BE2E00D2FA55 /* Sanity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sanity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A037A9CF1F81BE2E00D2FA55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -96,7 +99,9 @@
 				A056C4E31F9185410071E242 /* Transaction.swift */,
 				A056C4E51F91854F0071E242 /* Category.swift */,
 				A0851DDC1F8C657B003357F7 /* FirestoreSerializable.swift */,
+				01AA355D1F928FF000F23B37 /* Settings.storyboard */,
 				A037A9D31F81BE2E00D2FA55 /* Main.storyboard */,
+				01AA355B1F91C1F600F23B37 /* SettingsViewController.swift */,
 				A0688C701F89A01500E4EA14 /* BudgetOverviewCell.swift */,
 				A037A9D61F81BE2E00D2FA55 /* Assets.xcassets */,
 				A037A9D81F81BE2E00D2FA55 /* LaunchScreen.storyboard */,
@@ -241,7 +246,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FE86FE3297232811AB1AABF5 /* [CP] Copy Pods Resources */ = {
@@ -277,6 +282,7 @@
 				D0EA5BB41F8C372500D5F99E /* CategoryCell.swift in Sources */,
 				A0851DDD1F8C657B003357F7 /* FirestoreSerializable.swift in Sources */,
 				A056C4E61F91854F0071E242 /* Category.swift in Sources */,
+				01AA355C1F91C1F600F23B37 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
