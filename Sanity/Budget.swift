@@ -16,7 +16,6 @@ struct Budget {
     var lastReset:Date
     var resetInterval:Int
     //I don't think we need categories TBH, will just query Firebase
-    var categories: [Category]
     var totalBudget:Double
     var budgetRemaining:Double
     
@@ -48,7 +47,7 @@ extension Budget : FirestoreSerializable {
             let resetInterval = dictionary["resetInterval"] as? Int else {return nil}
         
         self.init(name: name, resetDate: resetDate, lastReset: lastReset,
-                  resetInterval: resetInterval, categories: [],
+                  resetInterval: resetInterval,
                   totalBudget: totalBudget, budgetRemaining: budgetRemaining)
     }
 }

@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import Firebase
 
 class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     var resetPeriods = ["Never", "Daily", "Weekly", "Bi-weekly", "Monthly", "3 Months", "6 Months", "Yearly"]
     var numRows = 1
     var selectedResetIndex = 0
+    var userEmail: String!
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -65,7 +67,7 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBAction func createBudgetButtonPress(_ sender: Any) {
         let cells = self.categoryTableView.visibleCells as! Array<CategoryCell>
-        var categories = [String: Float]()
+        var categories = [String: Double]()
         
         if(budgetNameTextField.text == ""){
             showErrorAlert(message: "Budget must have a name")
@@ -78,7 +80,7 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableV
                 return
             }else{
                 let catKey = cell.categoryNameTextField.text!
-                let limitVal = Float(cell.limitTextField.text!)
+                let limitVal = Double(cell.limitTextField.text!)
                 
                 if categories[catKey] != nil {
                     showErrorAlert(message: "Category names must be unique")
@@ -90,8 +92,29 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableV
         }
         
         //Send categories and resetPeriods[index] to
+        createBudget(budgetName: budgetNameTextField.text! ,categories: categories, resetPeriod: resetPeriods[selectedResetIndex])
+    }
+    
+    func createBudget(budgetName: String, categories:[String: Double], resetPeriod: String){
+        var sum = 0.0
         
+        for (_, limit) in categories{
+            sum = sum + limit
+        }
         
+        let budget = Budget(name: budgetName, resetDate: Date(), lastReset: Date(), resetInterval: -1, totalBudget: sum, budgetRemaining: sum)
+        
+        Firestore.firestore().collection("Users").document(userEmail).collection("Budgets").document(budgetName).setData(budget.dictionary)
+        
+        for (name, limit) in categories{
+            let category = Category(name: name, paymentMethods: [], spendingLimit: limit)
+            Firestore.firestore().collection("Users").document(userEmail).collection("Budgets").document(budgetName).collection("Categories").document(name).setData(category.dictionary)
+        }
+        
+        self.navigationController?.popViewController(animated: true)
+        if let dash = self.navigationController?.topViewController as? DashboardViewController{
+            dash.fetchBudgets()
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
