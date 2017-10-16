@@ -110,6 +110,10 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
     
     @IBAction func addTransactionsButtonPress(_ sender: Any) {
         let cells = self.transactionTableView.visibleCells as! Array<AddTransactionCell>
+        var amountAdded:Double = 0
+        //Unsure if I need this, don't remove -Jordan
+//        var updatedCategories = [Category]()
+//        updatedCategories = categories.map { $0 }
         for cell in cells{
             //Each component is a wheel in the picker
             let chosenCategory = categories[cell.categoryPicker.selectedRow(inComponent: 0)]
@@ -117,18 +121,28 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
             let optionalMemo = cell.optionalMemo.text
             let mTransaction = Transaction(memo: optionalMemo, linkedBudgets: [], paymentMethod: "",
                                           amount: Double(amountSpent)!, timestamp: Date())
-            //Add Transaction
-    Firestore.firestore().collection("Users").document(self.userEmail!).collection("Budgets").document(budgets[selectedBudgetIndex].getName()).collection("Categories").document(chosenCategory.getName()).collection("Transactions").addDocument(data: mTransaction.dictionary)
+            let mCategory = Category(name: chosenCategory.getName(), paymentMethods: chosenCategory.getPaymentMethods(), spendingLimit: chosenCategory.getSpendingLimit(), amountSpent: (chosenCategory.getAmountSpent() + Double(amountSpent)!))
             
-            //Update Category and Budget Limits
+            //Mirror database update locally so we're working with correct values for subsequent updates
+            categories[cell.categoryPicker.selectedRow(inComponent: 0)] = Category(name: chosenCategory.getName(), paymentMethods: chosenCategory.getPaymentMethods(), spendingLimit: chosenCategory.getSpendingLimit(), amountSpent:(chosenCategory.getAmountSpent() + Double(amountSpent)!))
+            amountAdded += Double(amountSpent)!
+            
+            //Add Transaction
+            Firestore.firestore().collection("Users").document(self.userEmail!).collection("Budgets").document(budgets[selectedBudgetIndex].getName()).collection("Categories").document(chosenCategory.getName()).collection("Transactions").addDocument(data: mTransaction.dictionary)
+            
+            //Update Category
+            Firestore.firestore().collection("Users/\(userEmail!)/Budgets/\(budgets[selectedBudgetIndex].getName())/Categories").document(chosenCategory.getName()).setData(mCategory.dictionary)
+            
         }
-        
+        //Update the selected budget with the total amount added to decrement what we have left
+        Firestore.firestore().document("Users/\(userEmail!)/Budgets/\(budgets[selectedBudgetIndex].getName())").updateData(["budgetRemaining":budgets[selectedBudgetIndex].getBudgetRemaining() - amountAdded])
         self.navigationController?.popViewController(animated: true)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
     func showErrorAlert(message: String){
         let alertController = UIAlertController(title: "Oops!", message: message, preferredStyle: UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
@@ -136,10 +150,6 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
         self.present(alertController, animated: true, completion: nil)
         
     }
-    
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -155,6 +165,7 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
     @IBAction func cancelButtonPress(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
     
     
 
