@@ -10,13 +10,12 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     var userEmail: String?
     var notificationSettingsIndex: Int = 0
     
-    var pickerData = ["budget exceeded and threshold exceeded","budget exceeded only","none"]
-    
-    @IBOutlet weak var notificationsPicker: UIPickerView!
+    @IBOutlet weak var picker: UIPickerView!
+    var pickerData: [String] = [String]()
     
     //function to get notification settings index from firebase, creates it if DNE
     func getNotificationsIndex()->Int{
@@ -68,13 +67,12 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Connect data:
-        self.notificationsPicker.delegate = self as? UIPickerViewDelegate
-        self.notificationsPicker.dataSource = self as? UIPickerViewDataSource
+        self.picker.delegate = self
+        self.picker.dataSource = self
+        pickerData = ["budget exceeded and threshold exceeded","budget exceeded only","none"]
+    
         //        var index: Int = getNotificationsIndex()
         //TODO: set picker view to correct index
-        
-        // Do any additional setup after loading the view.
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -83,30 +81,19 @@ class SettingsViewController: UIViewController {
     }
     
     // The number of columns of data
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     // The number of rows of data
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData.count
     }
     
     // The data to return for the row and component (column) that's being passed in
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[row]
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
 
