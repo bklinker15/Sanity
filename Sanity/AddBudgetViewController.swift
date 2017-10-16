@@ -11,9 +11,9 @@ import Firebase
 
 class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     var userEmail:String?
-    var resetPeriods = ["Never", "Daily", "Weekly", "Bi-weekly", "Monthly", "3 Months", "6 Months", "Yearly"]
+    var resetPeriods = ["Never", "Daily", "Weekly", "Bi-Weekly", "Monthly", "Semi-Annually", "Annually"]
     var numRows = 1
-    var selectedResetIndex = 0
+    var resetInterval = 0
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -28,7 +28,23 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedResetIndex = row
+        guard let reset = ResetEnum(rawValue: resetPeriods[row]) else { return }
+        switch reset {
+            case .Never:
+                resetInterval = 0
+            case .Daily:
+                resetInterval = 1
+            case .Weekly:
+                resetInterval = 7
+            case .BiWeekly:
+                resetInterval = 14
+            case .Monthly:
+                resetInterval = 31
+            case .SemiAnnually:
+                resetInterval = 178
+            case .Annually:
+                resetInterval = 356
+        }
     }
     
 
@@ -91,18 +107,17 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableV
             }
         }
         
-        //Send categories and resetPeriods[index] to
-        createBudget(budgetName: budgetNameTextField.text! ,categories: categories, resetPeriod: resetPeriods[selectedResetIndex])
+        createBudget(budgetName: budgetNameTextField.text!, categories: categories)
     }
     
-    func createBudget(budgetName: String, categories:[String: Double], resetPeriod: String){
+    func createBudget(budgetName: String, categories:[String: Double]){
         var sum = 0.0
         
         for (_, limit) in categories{
             sum = sum + limit
         }
         
-        let budget = Budget(name: budgetName, resetDate: Date(), lastReset: Date(), resetInterval: -1, totalBudget: sum, budgetRemaining: sum)
+        let budget = Budget(name: budgetName, resetDate: Date(), lastReset: Date(), resetInterval: self.resetInterval, totalBudget: sum, budgetRemaining: sum)
         
         Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document(budgetName).setData(budget.dictionary)
         
