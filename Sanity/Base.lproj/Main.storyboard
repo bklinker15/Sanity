@@ -213,6 +213,7 @@
         <!--Budget Detail View Controller-->
         <scene sceneID="qfK-E6-4Dp">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oPG-Ni-eRE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="OoQ-JI-ohB" customClass="BudgetDetailViewController" customModule="Sanity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rlb-05-CIq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -221,7 +222,6 @@
                         <viewLayoutGuide key="safeArea" id="r1D-oI-Ixt"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oPG-Ni-eRE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1497" y="887"/>
         </scene>

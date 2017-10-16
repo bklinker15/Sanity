@@ -6,9 +6,7 @@ target 'Sanity' do
   use_frameworks!
 
   # Pods for Sanity
-
-  pod 'Firebase/Core'
-  pod 'Firebase/Auth'
+  pod 'Firebase'
+  pod 'FirebaseAuth'
   pod 'Firebase/Firestore'
-
 end
