@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:budgetInfo.storyboard">
+      location = "group:/Users/Nick/Documents/Code/xcode/Sanity/Sanity/Settings.storyboard">
    </FileRef>
    <FileRef
       location = "group:Sanity.xcodeproj">
