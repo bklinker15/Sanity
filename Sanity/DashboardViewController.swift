@@ -63,11 +63,13 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         if let cell = dequeued as? BudgetOverviewCell {
             let currentBudget = budgets[indexPath.row]
             cell.budgetName.text = currentBudget.getName()
-            cell.budgetRemaining.text = String(describing: currentBudget.getBudgetRemaining)
+            
+            var budgetRemainingString = String(describing: currentBudget.getBudgetRemaining())
+            cell.budgetRemaining.text = "$" + budgetRemainingString;
             
             cell.budgetRemaining.textColor = UIColor.green
             
-            if currentBudget.budgetRemaining > 0 {
+            if currentBudget.getBudgetRemaining() > 0.0 {
                 cell.budgetRemaining.textColor = UIColor.green
                 cell.backgroundColor = UIColor(red: 212.00, green: 255.00, blue: 212.00, alpha: 1.00)
             }
@@ -75,10 +77,13 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 cell.budgetRemaining.textColor = UIColor.red
                 cell.backgroundColor = UIColor(red: 255.00, green: 196.00, blue: 196.00, alpha: 1.00)
             }
-            
+            ß
             //need to somehow draw rectangle or update progress bar (unable to access it right now)
-            var floatBudgetRemaining = Float(currentBudget.budgetRemaining)
-            cell.progressBar.setProgress(floatBudgetRemaining, animated: true)
+            var floatBudgetRemaining = Float(currentBudget.getBudgetRemaining())
+            floatBudgetRemaining = floatBudgetRemaining / Float(currentBudget.getTotalBudget())
+            cell.progressBar.setProgress(floatBudgetRemaining, animated: false)
+            
+           
             //Stub for now, remember to actually calculate
             let calendar = NSCalendar.current
             
@@ -88,7 +93,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
             
             let components = calendar.dateComponents([.day], from: date1, to: date2)
             
-            cell.daysUntilReset.text = String(describing: components.day)
+            cell.daysUntilReset.text = (String(describing: components.day!)) + " days left"
             return cell
         }
         return dequeued
