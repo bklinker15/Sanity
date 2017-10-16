@@ -64,8 +64,30 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
             let currentBudget = budgets[indexPath.row]
             cell.budgetName.text = currentBudget.getName()
             cell.budgetRemaining.text = String(describing: currentBudget.getBudgetRemaining)
+            
+            cell.budgetRemaining.textColor = UIColor.green
+            
+            if currentBudget.budgetRemaining > 0 {
+                cell.budgetRemaining.textColor = UIColor.green
+                cell.backgroundColor = UIColor(red: 212.00, green: 255.00, blue: 212.00, alpha: 1.00)
+            }
+            else {
+                cell.budgetRemaining.textColor = UIColor.red
+                cell.backgroundColor = UIColor(red: 255.00, green: 196.00, blue: 196.00, alpha: 1.00)
+            }
+            
+            
+            
             //Stub for now, remember to actually calculate
-            cell.daysUntilReset.text = "10"
+            let calendar = NSCalendar.current
+            
+            // Replace the hour (time) of both dates with 00:00
+            let date1 = calendar.startOfDay(for: Date())
+            let date2 = calendar.startOfDay(for: currentBudget.getResetDate())
+            
+            let components = calendar.dateComponents([.day], from: date1, to: date2)
+            
+            cell.daysUntilReset.text = String(describing: components.day)
             return cell
         }
         return dequeued
