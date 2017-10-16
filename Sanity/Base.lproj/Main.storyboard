@@ -182,7 +182,7 @@
                                             <outlet property="budgetName" destination="cOE-fm-aMm" id="Doo-ma-N52"/>
                                             <outlet property="budgetRemaining" destination="74F-8R-Fz4" id="PLK-9d-3fW"/>
                                             <outlet property="daysUntilReset" destination="k5z-lp-acA" id="vfM-FB-NVC"/>
-                                            <outlet property="progressBar" destination="63F-wJ-HU8" id="jx0-gM-Lic"/>
+                                            <outlet property="progressBar" destination="Jbb-aU-ncr" id="tFz-oa-85o"/>
                                             <segue destination="MnQ-fy-aKS" kind="showDetail" identifier="budgetDetail" trigger="accessoryAction" id="gko-Ou-MAY"/>
                                         </connections>
                                     </tableViewCell>
