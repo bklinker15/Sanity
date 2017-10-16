@@ -218,6 +218,7 @@
                         <outlet property="tableView" destination="88A-pa-bMB" id="32Y-4H-3IN"/>
                         <segue destination="aC4-xr-Muu" kind="show" identifier="addBudgetSegue" id="PUx-t1-1SJ"/>
                         <segue destination="ShU-31-v0c" kind="show" identifier="addTransactionSegue" id="5TS-hj-mCZ"/>
+                        <segue destination="MnQ-fy-aKS" kind="show" id="ST3-PP-gAs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -482,4 +483,7 @@
         <image name="Settings" width="20" height="20"/>
         <image name="Webp.net-resizeimage" width="20" height="20"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="gko-Ou-MAY"/>
+    </inferredMetricsTieBreakers>
 </document>
