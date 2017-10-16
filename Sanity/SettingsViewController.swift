@@ -18,6 +18,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var picker: UIPickerView!
     var pickerData: [String] = [String]()
     
+    @IBOutlet weak var newPassword: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     
     //function to get notification settings index from firebase, creates it if DNE
@@ -46,10 +47,12 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     func updatePassword(password: String){
         if password == "" || password.count < 6 {
             self.errorLabel.text = "password must be at least 6 characters long"
+            self.newPassword.text = ""
         }
         else{
             self.errorLabel.text = "password updated"
             self.errorLabel.textColor = UIColor.green
+            self.newPassword.text = ""
             
             
         }
@@ -79,6 +82,8 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.picker.delegate = self
         self.picker.dataSource = self
         pickerData = ["budget and threshold","budget only","none"]
+        self.errorLabel.text = ""
+        self.newPassword.text = ""
         
         //        var index: Int = getNotificationsIndex()
         //TODO: set picker view to correct index

@@ -518,6 +518,7 @@
                     </view>
                     <connections>
                         <outlet property="errorLabel" destination="rMk-oA-iZj" id="gqP-XN-weC"/>
+                        <outlet property="newPassword" destination="zFm-Qk-7OD" id="ImN-if-3Vz"/>
                         <outlet property="picker" destination="9hi-RF-bV7" id="0oN-FA-BKh"/>
                     </connections>
                 </viewController>
