@@ -50,11 +50,18 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             self.newPassword.text = ""
         }
         else{
-            self.errorLabel.text = "password updated"
-            self.errorLabel.textColor = UIColor.green
-            self.newPassword.text = ""
-            
-            
+            let user = Auth.auth().currentUser
+            user?.updatePassword(to: password, completion: { error in
+                if error != nil{
+                    self.errorLabel.text = "error updating password"
+                    self.errorLabel.textColor = UIColor.red
+                } else {
+                    //success
+                    self.errorLabel.text = "password updated"
+                    self.errorLabel.textColor = UIColor.green
+                }
+                self.newPassword.text = ""
+            })
         }
     }
     
