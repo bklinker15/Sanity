@@ -11,6 +11,7 @@
 		01AE74731F945FC40039396E /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01AE74721F945C5C0039396E /* Settings.storyboard */; };
 		01AE74751F9462950039396E /* ResetEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AE74741F9462940039396E /* ResetEnums.swift */; };
 		1C958C5BDD903A8BFF9E2E5D /* Pods_Sanity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C772DE7D2F5C4DC837699DC2 /* Pods_Sanity.framework */; };
+		363394BD1F945E7C00A095BF /* ResetEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363394BC1F945E7C00A095BF /* ResetEnums.swift */; };
 		740B9E0F1F92E7F100388C9A /* BudgetInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 740B9E0E1F92E7F100388C9A /* BudgetInfo.storyboard */; };
 		7423EE851F9453DB0095722E /* budgetInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7423EE841F9453D40095722E /* budgetInfo.storyboard */; };
 		A0033F291F93D67100BB728F /* BudgetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0033F281F93D67100BB728F /* BudgetDetailViewController.swift */; };
@@ -36,6 +37,7 @@
 		01AE74721F945C5C0039396E /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Settings.storyboard; path = /Users/Nick/Documents/Code/xcode/Sanity/Sanity/Settings.storyboard; sourceTree = "<absolute>"; };
 		01AE74741F9462940039396E /* ResetEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetEnums.swift; sourceTree = "<group>"; };
 		083E82D98C88E70BD3D26AAE /* Pods-Sanity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sanity.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sanity/Pods-Sanity.release.xcconfig"; sourceTree = "<group>"; };
+		363394BC1F945E7C00A095BF /* ResetEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetEnums.swift; sourceTree = "<group>"; };
 		740B9E0E1F92E7F100388C9A /* BudgetInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BudgetInfo.storyboard; sourceTree = "<group>"; };
 		7423EE841F9453D40095722E /* budgetInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = budgetInfo.storyboard; path = Base.lproj/budgetInfo.storyboard; sourceTree = "<group>"; };
 		A0033F281F93D67100BB728F /* BudgetDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDetailViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				A037A9D61F81BE2E00D2FA55 /* Assets.xcassets */,
 				A037A9D81F81BE2E00D2FA55 /* LaunchScreen.storyboard */,
 				A037A9DB1F81BE2E00D2FA55 /* Info.plist */,
+				363394BC1F945E7C00A095BF /* ResetEnums.swift */,
 				D043DE211F8753D900E9A870 /* AuthViewController.swift */,
 				D0EA5BAB1F8B1B2A00D5F99E /* AddBudgetViewController.swift */,
 				D0EA5BAF1F8B24A200D5F99E /* AddTransactionViewController.swift */,
@@ -290,6 +293,7 @@
 				A0765C601F8A02B2002C603E /* DashboardViewController.swift in Sources */,
 				A0033F291F93D67100BB728F /* BudgetDetailViewController.swift in Sources */,
 				01AE74751F9462950039396E /* ResetEnums.swift in Sources */,
+				363394BD1F945E7C00A095BF /* ResetEnums.swift in Sources */,
 				A087801A1F8B045800F6AB15 /* Budget.swift in Sources */,
 				A0688C711F89A01500E4EA14 /* BudgetOverviewCell.swift in Sources */,
 				D043DE221F8753D900E9A870 /* AuthViewController.swift in Sources */,
