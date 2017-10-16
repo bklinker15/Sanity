@@ -40,8 +40,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKR-gP-pNF">
-                                <rect key="frame" x="163" y="346" width="49" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKR-gP-pNF">
+                                <rect key="frame" x="136" y="339" width="49" height="30"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
                                     <action selector="submitButton:" destination="fPx-3H-jwL" eventType="touchUpInside" id="hh1-js-rD1"/>
@@ -61,6 +61,13 @@
                                     <segment title="Sign Up"/>
                                 </segments>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tT8-cW-JiQ">
+                                <rect key="frame" x="102" y="393" width="115" height="30"/>
+                                <state key="normal" title="Forgot Password"/>
+                                <connections>
+                                    <action selector="forgotPasswordPress:" destination="fPx-3H-jwL" eventType="touchUpInside" id="C3V-Ow-hQj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -68,9 +75,12 @@
                             <constraint firstItem="HWy-YL-DWb" firstAttribute="leading" secondItem="b6D-uY-W8R" secondAttribute="leading" constant="97" id="6Bm-ZQ-SYX"/>
                             <constraint firstItem="b6D-uY-W8R" firstAttribute="trailing" secondItem="HWy-YL-DWb" secondAttribute="trailing" constant="97" id="Cev-KQ-w4h"/>
                             <constraint firstItem="b6D-uY-W8R" firstAttribute="trailing" secondItem="dKR-gP-pNF" secondAttribute="trailing" constant="135" id="D50-k2-OFc"/>
+                            <constraint firstItem="b6D-uY-W8R" firstAttribute="trailing" secondItem="tT8-cW-JiQ" secondAttribute="trailing" constant="103" id="EPn-Ux-Drj"/>
                             <constraint firstItem="b6D-uY-W8R" firstAttribute="trailing" secondItem="Afs-EB-N6G" secondAttribute="trailing" constant="50" id="JTU-H6-ayQ"/>
                             <constraint firstItem="bLW-aa-n4o" firstAttribute="top" secondItem="b6D-uY-W8R" secondAttribute="top" constant="85" id="Llh-qd-AeS"/>
+                            <constraint firstItem="tT8-cW-JiQ" firstAttribute="top" secondItem="dKR-gP-pNF" secondAttribute="bottom" constant="24" id="W0K-MH-hre"/>
                             <constraint firstItem="Afs-EB-N6G" firstAttribute="top" secondItem="HWy-YL-DWb" secondAttribute="bottom" constant="30" id="eGc-8k-87o"/>
+                            <constraint firstItem="tT8-cW-JiQ" firstAttribute="leading" secondItem="b6D-uY-W8R" secondAttribute="leading" constant="102" id="f27-RO-DpI"/>
                             <constraint firstItem="E32-A1-eYP" firstAttribute="leading" secondItem="b6D-uY-W8R" secondAttribute="leading" constant="50" id="gy7-wJ-IrD"/>
                             <constraint firstItem="b6D-uY-W8R" firstAttribute="trailing" secondItem="E32-A1-eYP" secondAttribute="trailing" constant="50" id="jm4-i9-wJc"/>
                             <constraint firstItem="dKR-gP-pNF" firstAttribute="top" secondItem="E32-A1-eYP" secondAttribute="bottom" constant="30" id="jqb-Xc-ive"/>
