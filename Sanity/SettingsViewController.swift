@@ -21,6 +21,25 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var newPassword: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     
+
+    @IBAction func saveNotificationSettings(_ sender: Any) {
+        let collRef: CollectionReference = Firestore.firestore().collection("Users/\(userEmail!)")
+        var ref: DocumentReference? = nil
+        ref = collRef.addDocument(data: [
+            "notificationsSettingsIndex": index
+        ]) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document added with ID: \(ref!.documentID)")
+            }
+        }
+    }
+    @IBAction func savePassword(_ sender: Any) {
+        updatePassword(password: newPassword.text)
+    }
+
+    
     //function to get notification settings index from firebase, creates it if DNE
     func getNotificationsIndex()->Int{
         var index: Int?
@@ -63,23 +82,6 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 self.newPassword.text = ""
             })
         }
-    }
-    
-    func setNotificationIndex(){
-        let collRef: CollectionReference = Firestore.firestore().collection("Users/\(userEmail!)")
-        var ref: DocumentReference? = nil
-        ref = collRef.addDocument(data: [
-            "notificationsSettingsIndex": index
-        ]) { err in
-            if let err = err {
-                print("Error adding document: \(err)")
-            } else {
-                print("Document added with ID: \(ref!.documentID)")
-            }
-        }
-
-        //set the value as the new value chosen on the picker
-
     }
     
     
