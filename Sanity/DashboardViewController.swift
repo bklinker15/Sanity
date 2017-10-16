@@ -63,9 +63,37 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         if let cell = dequeued as? BudgetOverviewCell {
             let currentBudget = budgets[indexPath.row]
             cell.budgetName.text = currentBudget.getName()
-            cell.budgetRemaining.text = String(describing: currentBudget.getBudgetRemaining)
+            
+            var budgetRemainingString = String(describing: currentBudget.getBudgetRemaining())
+            cell.budgetRemaining.text = "$" + budgetRemainingString;
+            
+            cell.budgetRemaining.textColor = UIColor.green
+            
+            if currentBudget.getBudgetRemaining() > 0.0 {
+                cell.budgetRemaining.textColor = UIColor.green
+                cell.backgroundColor = UIColor(red: 212.00, green: 255.00, blue: 212.00, alpha: 1.00)
+            }
+            else {
+                cell.budgetRemaining.textColor = UIColor.red
+                cell.backgroundColor = UIColor(red: 255.00, green: 196.00, blue: 196.00, alpha: 1.00)
+            }
+            ß
+            //need to somehow draw rectangle or update progress bar (unable to access it right now)
+            var floatBudgetRemaining = Float(currentBudget.getBudgetRemaining())
+            floatBudgetRemaining = floatBudgetRemaining / Float(currentBudget.getTotalBudget())
+            cell.progressBar.setProgress(floatBudgetRemaining, animated: false)
+            
+           
             //Stub for now, remember to actually calculate
-            cell.daysUntilReset.text = "10"
+            let calendar = NSCalendar.current
+            
+            // Replace the hour (time) of both dates with 00:00
+            let date1 = calendar.startOfDay(for: Date())
+            let date2 = calendar.startOfDay(for: currentBudget.getResetDate())
+            
+            let components = calendar.dateComponents([.day], from: date1, to: date2)
+            
+            cell.daysUntilReset.text = (String(describing: components.day!)) + " days left"
             return cell
         }
         return dequeued
@@ -73,7 +101,9 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     
     //Trigger segue to budget detail view once a budget row is tapped in the table
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "budgetDetail", sender: tableView.cellForRow(at: indexPath))
+        //performSegue(withIdentifier: "budgetDetail", sender: tableView.cellForRow(at: indexPath))
+        
+        performSegue(withIdentifier: "budgetDetail", sender: budgets[indexPath.row])
     }
     
     func fetchBudgets(){
@@ -108,9 +138,11 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 vc?.userEmail = userEmail
             case "budgetDetail":
                 let vc = segue.destination as? BudgetDetailViewController
-                let cell = sender as? BudgetOverviewCell
-                vc?.budgetName = cell?.budgetName.text!
-                vc?.userEmail = userEmail
+//                let cell = sender as? BudgetOverviewCell
+//                vc?.budgetName = cell?.budgetName.text!
+//                vc?.userEmail = userEmail
+                let budget = sender as? Budget
+                vc?.budget = budget
             default: break
             }
         }
