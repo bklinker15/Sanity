@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0126E55D1F95204700F64EBB /* ResetEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0126E55C1F95204700F64EBB /* ResetEnums.swift */; };
 		01AA355C1F91C1F600F23B37 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AA355B1F91C1F600F23B37 /* SettingsViewController.swift */; };
 		1C958C5BDD903A8BFF9E2E5D /* Pods_Sanity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C772DE7D2F5C4DC837699DC2 /* Pods_Sanity.framework */; };
 		740B9E0F1F92E7F100388C9A /* BudgetInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 740B9E0E1F92E7F100388C9A /* BudgetInfo.storyboard */; };
 		7423EE851F9453DB0095722E /* budgetInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7423EE841F9453D40095722E /* budgetInfo.storyboard */; };
-		7423EE891F946CDB0095722E /* ResetEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7423EE881F946CDB0095722E /* ResetEnums.swift */; };
 		A0033F291F93D67100BB728F /* BudgetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0033F281F93D67100BB728F /* BudgetDetailViewController.swift */; };
 		A037A9D01F81BE2E00D2FA55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A037A9CF1F81BE2E00D2FA55 /* AppDelegate.swift */; };
 		A037A9D51F81BE2E00D2FA55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A037A9D31F81BE2E00D2FA55 /* Main.storyboard */; };
@@ -31,11 +31,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0126E55C1F95204700F64EBB /* ResetEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetEnums.swift; sourceTree = "<group>"; };
 		01AA355B1F91C1F600F23B37 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		083E82D98C88E70BD3D26AAE /* Pods-Sanity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sanity.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sanity/Pods-Sanity.release.xcconfig"; sourceTree = "<group>"; };
 		740B9E0E1F92E7F100388C9A /* BudgetInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BudgetInfo.storyboard; sourceTree = "<group>"; };
 		7423EE841F9453D40095722E /* budgetInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = budgetInfo.storyboard; path = Base.lproj/budgetInfo.storyboard; sourceTree = "<group>"; };
-		7423EE881F946CDB0095722E /* ResetEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResetEnums.swift; path = ../../../../.Trash/ResetEnums.swift; sourceTree = "<group>"; };
 		A0033F281F93D67100BB728F /* BudgetDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDetailViewController.swift; sourceTree = "<group>"; };
 		A037A9CC1F81BE2E00D2FA55 /* Sanity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sanity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A037A9CF1F81BE2E00D2FA55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 				A0688C701F89A01500E4EA14 /* BudgetOverviewCell.swift */,
 				A037A9D61F81BE2E00D2FA55 /* Assets.xcassets */,
 				A037A9D81F81BE2E00D2FA55 /* LaunchScreen.storyboard */,
-				7423EE881F946CDB0095722E /* ResetEnums.swift */,
+				0126E55C1F95204700F64EBB /* ResetEnums.swift */,
 				A037A9DB1F81BE2E00D2FA55 /* Info.plist */,
 				D043DE211F8753D900E9A870 /* AuthViewController.swift */,
 				D0EA5BAB1F8B1B2A00D5F99E /* AddBudgetViewController.swift */,
@@ -285,7 +285,6 @@
 			files = (
 				A0765C601F8A02B2002C603E /* DashboardViewController.swift in Sources */,
 				A0033F291F93D67100BB728F /* BudgetDetailViewController.swift in Sources */,
-				7423EE891F946CDB0095722E /* ResetEnums.swift in Sources */,
 				A087801A1F8B045800F6AB15 /* Budget.swift in Sources */,
 				A0688C711F89A01500E4EA14 /* BudgetOverviewCell.swift in Sources */,
 				D043DE221F8753D900E9A870 /* AuthViewController.swift in Sources */,
@@ -295,6 +294,7 @@
 				D0EA5BAC1F8B1B2A00D5F99E /* AddBudgetViewController.swift in Sources */,
 				D0EA5BB41F8C372500D5F99E /* CategoryCell.swift in Sources */,
 				A0851DDD1F8C657B003357F7 /* FirestoreSerializable.swift in Sources */,
+				0126E55D1F95204700F64EBB /* ResetEnums.swift in Sources */,
 				A056C4E61F91854F0071E242 /* Category.swift in Sources */,
 				01AA355C1F91C1F600F23B37 /* SettingsViewController.swift in Sources */,
 			);
