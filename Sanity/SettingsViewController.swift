@@ -16,6 +16,8 @@ class SettingsViewController: UIViewController {
     
     var notificationSettings = ["budget exceeded and threshold exceeded","budget exceeded only","none"]
     
+    @IBOutlet weak var notificationsPicker: UIPickerView!
+    
     //function to get notification settings index from firebase, creates it if DNE
     func getNotificationsIndex()->Int{
         var index: Int?

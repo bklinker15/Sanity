@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		01AA355C1F91C1F600F23B37 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AA355B1F91C1F600F23B37 /* SettingsViewController.swift */; };
+		01AE74731F945FC40039396E /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01AE74721F945C5C0039396E /* Settings.storyboard */; };
 		1C958C5BDD903A8BFF9E2E5D /* Pods_Sanity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C772DE7D2F5C4DC837699DC2 /* Pods_Sanity.framework */; };
 		740B9E0F1F92E7F100388C9A /* BudgetInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 740B9E0E1F92E7F100388C9A /* BudgetInfo.storyboard */; };
 		7423EE851F9453DB0095722E /* budgetInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7423EE841F9453D40095722E /* budgetInfo.storyboard */; };
@@ -200,6 +201,7 @@
 				A037A9D71F81BE2E00D2FA55 /* Assets.xcassets in Resources */,
 				A037A9D51F81BE2E00D2FA55 /* Main.storyboard in Resources */,
 				7423EE851F9453DB0095722E /* budgetInfo.storyboard in Resources */,
+				01AE74731F945FC40039396E /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
