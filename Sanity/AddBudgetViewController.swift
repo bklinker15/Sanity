@@ -15,6 +15,9 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableV
     var numRows = 1
     var resetInterval = 0
     
+
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -117,7 +120,7 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableV
             sum = sum + limit
         }
         
-        let budget = Budget(name: budgetName, resetDate: Date(), lastReset: Date(), resetInterval: self.resetInterval, totalBudget: sum, budgetRemaining: sum)
+        let budget = Budget(name: budgetName, resetDate: datePicker.date, lastReset: Date(), resetInterval: self.resetInterval, totalBudget: sum, budgetRemaining: sum)
         
         Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document(budgetName).setData(budget.dictionary)
         
@@ -145,16 +148,12 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.datePicker.minimumDate = Date()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    @IBAction func cancelButtonPress(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
+    }  
     
 
 }

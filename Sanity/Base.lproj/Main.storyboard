@@ -213,7 +213,6 @@
         <!--Budget Detail View Controller-->
         <scene sceneID="qfK-E6-4Dp">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oPG-Ni-eRE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="OoQ-JI-ohB" customClass="BudgetDetailViewController" customModule="Sanity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rlb-05-CIq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -222,6 +221,7 @@
                         <viewLayoutGuide key="safeArea" id="r1D-oI-Ixt"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oPG-Ni-eRE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1497" y="887"/>
         </scene>
@@ -332,20 +332,37 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reset Period:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y5C-yO-glw">
-                                <rect key="frame" x="41" y="433" width="102" height="21"/>
+                                <rect key="frame" x="31" y="466" width="102" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zfj-Wz-clF">
-                                <rect key="frame" x="155" y="426" width="134" height="35"/>
+                                <rect key="frame" x="155" y="459" width="134" height="35"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="aC4-xr-Muu" id="Qik-HF-zSQ"/>
                                     <outlet property="delegate" destination="aC4-xr-Muu" id="S6C-Bd-fCP"/>
                                 </connections>
                             </pickerView>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="5jp-mP-SoD">
+                                <rect key="frame" x="11" y="411" width="298" height="47"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <date key="date" timeIntervalSinceReferenceDate="529807486.75295103">
+                                    <!--2017-10-16 00:44:46 +0000-->
+                                </date>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
+                                    <!--1970-01-01 11:00:00 +0000-->
+                                </date>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="First Reset Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gVS-eZ-p70">
+                                <rect key="frame" x="32" y="393" width="127" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="RFG-HE-Ykh"/>
@@ -353,11 +370,12 @@
                     <connections>
                         <outlet property="budgetNameTextField" destination="Fuy-7Q-l8C" id="YU0-nM-Nn3"/>
                         <outlet property="categoryTableView" destination="xNF-0l-3Fm" id="4Td-Tr-XAy"/>
+                        <outlet property="datePicker" destination="5jp-mP-SoD" id="BZu-Ra-edQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i87-tB-1NE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1457" y="-694"/>
+            <point key="canvasLocation" x="1456.875" y="-694.0140845070423"/>
         </scene>
         <!--Add a Transaction-->
         <scene sceneID="Nyk-8i-deB">
