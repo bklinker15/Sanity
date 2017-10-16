@@ -118,7 +118,7 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
             let mTransaction = Transaction(memo: optionalMemo, linkedBudgets: [], paymentMethod: "",
                                           amount: Double(amountSpent)!, timestamp: Date())
             //Add Transaction
-        Firestore.firestore().collection("Users").document(self.userEmail!).collection("Budgets").document(budgets[selectedBudgetIndex].getName()).collection("Categories").document(chosenCategory.getName()).collection("Transactions").addDocument(data: mTransaction.dictionary)
+    Firestore.firestore().collection("Users").document(self.userEmail!).collection("Budgets").document(budgets[selectedBudgetIndex].getName()).collection("Categories").document(chosenCategory.getName()).collection("Transactions").addDocument(data: mTransaction.dictionary)
             
             //Update Category and Budget Limits
         }
