@@ -205,7 +205,7 @@
                     <navigationItem key="navigationItem" title="Budgets" id="WFS-eb-Anx">
                         <barButtonItem key="leftBarButtonItem" image="Settings" id="8HT-tw-JGn">
                             <connections>
-                                <segue destination="KhG-uf-Z9u" kind="show" id="fUR-Ht-UB3"/>
+                                <segue destination="H7q-XJ-KSK" kind="show" id="QGz-Bf-9AJ"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="Webp.net-resizeimage" id="8wH-py-7sb">
@@ -461,14 +461,6 @@
             </objects>
             <point key="canvasLocation" x="2538.75" y="-694.0140845070423"/>
         </scene>
-        <!--Settings-->
-        <scene sceneID="Gg5-Z5-eal">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Settings" id="KhG-uf-Z9u" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Rw1-dH-mAQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="351" y="-724"/>
-        </scene>
         <!--budgetInfo-->
         <scene sceneID="Rq5-Jk-DxI">
             <objects>
@@ -476,6 +468,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="elg-om-DnV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1497" y="887"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="MTI-Xh-tfg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" id="H7q-XJ-KSK" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jfn-zG-xlW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="386" y="-699"/>
         </scene>
     </scenes>
     <resources>
