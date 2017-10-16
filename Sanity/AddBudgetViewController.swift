@@ -15,7 +15,7 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableV
     var numRows = 1
     var resetInterval = 0
     
-
+    
     @IBOutlet weak var datePicker: UIDatePicker!
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -33,24 +33,24 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableV
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard let reset = ResetEnum(rawValue: resetPeriods[row]) else { return }
         switch reset {
-            case .Never:
-                resetInterval = 0
-            case .Daily:
-                resetInterval = 1
-            case .Weekly:
-                resetInterval = 7
-            case .BiWeekly:
-                resetInterval = 14
-            case .Monthly:
-                resetInterval = 31
-            case .SemiAnnually:
-                resetInterval = 178
-            case .Annually:
-                resetInterval = 356
+        case .Never:
+            resetInterval = 0
+        case .Daily:
+            resetInterval = 1
+        case .Weekly:
+            resetInterval = 7
+        case .BiWeekly:
+            resetInterval = 14
+        case .Monthly:
+            resetInterval = 31
+        case .SemiAnnually:
+            resetInterval = 178
+        case .Annually:
+            resetInterval = 356
         }
     }
     
-
+    
     
     @IBOutlet weak var categoryTableView: UITableView!
     @IBOutlet weak var budgetNameTextField: UITextField!
@@ -116,23 +116,32 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableV
     func createBudget(budgetName: String, categories:[String: Double]){
         var sum = 0.0
         
-        for (_, limit) in categories{
-            sum = sum + limit
-        }
+        let budgetRef = Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document(budgetName)
         
-        let budget = Budget(name: budgetName, resetDate: datePicker.date, lastReset: Date(), resetInterval: self.resetInterval, totalBudget: sum, budgetRemaining: sum)
-        
-        Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document(budgetName).setData(budget.dictionary)
-        
-        for (name, limit) in categories{
-            let category = Category(name: name, paymentMethods: [], spendingLimit: limit)
-            Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document(budgetName).collection("Categories").document(name).setData(category.dictionary)
-        }
-        
-        self.navigationController?.popViewController(animated: true)
-        if let dash = self.navigationController?.topViewController as? DashboardViewController{
-            dash.fetchBudgets()
-        }
+        budgetRef.getDocument(completion: {(document, error) in
+            if  document?.exists ?? true{
+                self.showErrorAlert(message: "Budget with name \(self.budgetNameTextField.text!) already exists")
+                return
+            }else{
+                for (_, limit) in categories{
+                    sum = sum + limit
+                }
+                
+                let budget = Budget(name: budgetName, resetDate: self.datePicker.date, lastReset: Date(), resetInterval: self.resetInterval, totalBudget: sum, budgetRemaining: sum)
+                
+                Firestore.firestore().collection("Users").document(self.userEmail!).collection("Budgets").document(budgetName).setData(budget.dictionary)
+                
+                for (name, limit) in categories{
+                    let category = Category(name: name, paymentMethods: [], spendingLimit: limit)
+                    Firestore.firestore().collection("Users").document(self.userEmail!).collection("Budgets").document(budgetName).collection("Categories").document(name).setData(category.dictionary)
+                }
+                
+                self.navigationController?.popViewController(animated: true)
+                if let dash = self.navigationController?.topViewController as? DashboardViewController{
+                    dash.fetchBudgets()
+                }
+            }
+        })
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -150,10 +159,11 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         self.datePicker.minimumDate = Date()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }  
+    }
     
-
+    
 }
+
