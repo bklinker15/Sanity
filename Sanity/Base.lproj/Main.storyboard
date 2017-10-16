@@ -193,7 +193,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Budgets" id="WFS-eb-Anx">
-                        <barButtonItem key="leftBarButtonItem" image="Settings" id="8HT-tw-JGn"/>
+                        <barButtonItem key="leftBarButtonItem" image="Settings" id="8HT-tw-JGn">
+                            <connections>
+                                <segue destination="KhG-uf-Z9u" kind="show" id="fUR-Ht-UB3"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="Webp.net-resizeimage" id="8wH-py-7sb">
                             <connections>
                                 <action selector="addButtonPress:" destination="BYZ-38-t0r" id="xhj-Xx-wGG"/>
@@ -461,6 +465,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sZC-fI-ngt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2538.75" y="-694.0140845070423"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="Gg5-Z5-eal">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" id="KhG-uf-Z9u" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rw1-dH-mAQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="351" y="-724"/>
         </scene>
     </scenes>
     <resources>
