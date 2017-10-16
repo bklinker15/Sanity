@@ -77,7 +77,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 cell.budgetRemaining.textColor = UIColor.red
                 cell.backgroundColor = UIColor(red: 255.00, green: 196.00, blue: 196.00, alpha: 1.00)
             }
-            ß
+            
             //need to somehow draw rectangle or update progress bar (unable to access it right now)
             var floatBudgetRemaining = Float(currentBudget.getBudgetRemaining())
             floatBudgetRemaining = floatBudgetRemaining / Float(currentBudget.getTotalBudget())

@@ -24,13 +24,58 @@ class BudgetDetailViewController: UIViewController {
     @IBOutlet weak var fundsLeft: UILabel!
     
     
+    @IBOutlet weak var numTotal: UILabel!
     
+    @IBOutlet weak var numFunds: UILabel!
     
+    @IBOutlet weak var numLeft: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        budgetNm.text = budgetName;
+        budgetNm.text = budget?.name;
+
+
+        
+        //budget limit
+        var tot: Double
+        tot = (budget?.totalBudget)!;
+        numTotal.text = String(format:"%f", tot)
+        
+        // funds spent
+        var spent: Double
+        spent = (budget?.budgetRemaining)!;
+        spent = tot-spent
+        if spent < 0{
+            spent = spent*(-1)
+        }
+        numFunds.text = String(format:"%f", spent)
+        
+        
+        //remaining funds
+        var rem: Double
+        rem = (budget?.budgetRemaining)!;
+        numLeft.text = String(format:"%f", rem)
+        
+        if (tot != 0){
+            var percent:Float = Float(spent/tot)
+            budgetProg.progress = (percent)
+        }
+        
+        //days reset
+        let calendar = NSCalendar.current
+        
+        // Replace the hour (time) of both dates with 00:00
+        let date1 = calendar.startOfDay(for: Date())
+        let date2 = calendar.startOfDay(for: (budget?.getResetDate())!)
+        
+        let components = calendar.dateComponents([.day], from: date1, to: date2)
+        
+        daysReset.text = (String(describing: components.day!))
+        
+        
+    
+    
     }
 
     override func didReceiveMemoryWarning() {
