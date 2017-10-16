@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import FirebaseAuth
 
 class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     var userEmail: String?
@@ -16,6 +17,9 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     @IBOutlet weak var picker: UIPickerView!
     var pickerData: [String] = [String]()
+    
+    @IBOutlet weak var newPassword: UITextField!
+    @IBOutlet weak var errorLabel: UILabel!
     
     //function to get notification settings index from firebase, creates it if DNE
     func getNotificationsIndex()->Int{
@@ -32,7 +36,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 }
             }
         }
-        
+
         if index != nil{
             return index!
         } else {
@@ -42,7 +46,22 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     func updatePassword(password: String){
         if password == "" || password.count < 6 {
-            //show error message "password must be at least 6 characters"
+            self.errorLabel.text = "password must be at least 6 characters long"
+            self.newPassword.text = ""
+        }
+        else{
+            let user = Auth.auth().currentUser
+            user?.updatePassword(to: password, completion: { error in
+                if error != nil{
+                    self.errorLabel.text = "error updating password"
+                    self.errorLabel.textColor = UIColor.red
+                } else {
+                    //success
+                    self.errorLabel.text = "password updated"
+                    self.errorLabel.textColor = UIColor.green
+                }
+                self.newPassword.text = ""
+            })
         }
     }
     
@@ -58,9 +77,9 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 print("Document added with ID: \(ref!.documentID)")
             }
         }
-        
+
         //set the value as the new value chosen on the picker
-        
+
     }
     
     
@@ -69,7 +88,9 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         // Connect data:
         self.picker.delegate = self
         self.picker.dataSource = self
-        pickerData = ["budget exceeded and threshold exceeded","budget exceeded only","none"]
+        pickerData = ["budget and threshold","budget only","none"]
+        self.errorLabel.text = ""
+        self.newPassword.text = ""
         
         //        var index: Int = getNotificationsIndex()
         //TODO: set picker view to correct index
