@@ -142,6 +142,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
 //                vc?.userEmail = userEmail
                 let budget = sender as? Budget
                 vc?.budget = budget
+                vc?.userEmail = userEmail
             default: break
             }
         }

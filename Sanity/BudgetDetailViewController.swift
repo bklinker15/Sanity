@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class BudgetDetailViewController: UIViewController {
+class BudgetDetailViewController: UIViewController, UITableViewDelegate {
     var budgetName:String?
     var userEmail:String?
     var categories = [Category]()
@@ -27,6 +27,8 @@ class BudgetDetailViewController: UIViewController {
     @IBOutlet weak var numTotal: UILabel!
     
     @IBOutlet weak var numFunds: UILabel!
+    
+    @IBOutlet weak var categoryTableView: UITableView!
     
     @IBOutlet weak var numLeft: UILabel!
     override func viewDidLoad() {
@@ -74,15 +76,90 @@ class BudgetDetailViewController: UIViewController {
         daysReset.text = (String(describing: components.day!))
         
         
-    
+        fetchCategories()
+        print("success")
+        //tableView.registerClass(MyCell.self, forCellReuseIdentifer: "cellId")
+        //addCats()
+        
     
     }
+    
+//    func addCats(){
+//        var i = 0
+//        for category in categories{
+//            categoryTableView.beginUpdates()
+//            categoryTableView.insertRows(at: [IndexPath(row: i, section: 0)], with: .automatic)
+//            categoryTableView.endUpdates()
+//            i = i+1
+//        }
+//    }
 
+    
+    func fetchCategories(){
+        let collRef: CollectionReference = Firestore.firestore().collection("Users/\(userEmail!)/Budgets/\(budget?.getName())/Categories")
+        print("Users/\(userEmail!)/Budgets/\(budget?.getName())/Categories")
+        collRef.getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("In error block")
+                print(err)
+            } else {
+                print("In categories flatMap")
+                self.categories = querySnapshot!.documents.flatMap({Category(dictionary: $0.data())})
+                //self.transactionTableView.reloadData()
+            }
+        }
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return categories.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = categoryTableView.dequeueReusableCell(withIdentifier: "categoryBudgetCell") as! CategoryBudgetCell
+        
+        var nm: String
+        nm = categories[indexPath.row].name;
+        
+        var tot: Double
+        tot = (categories[indexPath.row].spendingLimit);
+        numTotal.text = String(format:"%f", tot)
+
+        
+        // funds spent
+//        var spent: Double
+//        spent = (budget?.budgetRemaining)!;
+//        spent = tot-spent
+//        if spent < 0{
+//            spent = spent*(-1)
+//        }
+//        numFunds.text = String(format:"%f", spent)
+//
+        
+        //remaining funds
+//        var rem: Double
+//        rem = (categories[indexPath.row].)!;
+//        numLeft.text = String(format:"%f", rem)
+//
+//
+//
+//        if (tot != 0){
+//            var percent:Float = Float(spent/tot)
+//            budgetProg.progress = (percent)
+//        }
+//
+//
+//
+        
+        //cell.setup(name: categories[indexPath.row]?.name,  )
+        return cell
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     
 
     /*
@@ -96,3 +173,4 @@ class BudgetDetailViewController: UIViewController {
     */
 
 }
+
