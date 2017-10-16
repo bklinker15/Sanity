@@ -70,6 +70,7 @@
                     </view>
                     <connections>
                         <outlet property="budgetLim" destination="85T-Bf-rQT" id="sYT-Tv-fo8"/>
+                        <outlet property="budgetNm" destination="YVV-2q-n0g" id="lJa-6v-jaV"/>
                         <outlet property="budgetProg" destination="gz3-xQ-aWt" id="w0q-fv-JEM"/>
                         <outlet property="daysReset" destination="cQK-Xp-6ja" id="xOt-jx-5tn"/>
                         <outlet property="fundsLeft" destination="EP9-NJ-IUp" id="L8C-Nh-IjO"/>
