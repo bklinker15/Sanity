@@ -479,7 +479,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vCf-Da-ISa">
-                                <rect key="frame" x="47" y="147" width="320" height="314"/>
+                                <rect key="frame" x="47" y="147" width="320" height="364"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9hi-RF-bV7">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
@@ -500,6 +500,12 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="save new password"/>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rMk-oA-iZj">
+                                        <rect key="frame" x="93.666666666666686" y="314" width="133" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="zFm-Qk-7OD" secondAttribute="trailing" constant="10" id="GIM-Lx-asu"/>
@@ -511,12 +517,13 @@
                         <viewLayoutGuide key="safeArea" id="wJ3-iG-h60"/>
                     </view>
                     <connections>
+                        <outlet property="errorLabel" destination="rMk-oA-iZj" id="gqP-XN-weC"/>
                         <outlet property="picker" destination="9hi-RF-bV7" id="0oN-FA-BKh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IAf-Ai-vP3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="384.80000000000001" y="-699.40029985007504"/>
+            <point key="canvasLocation" x="384.05797101449281" y="-699.45652173913049"/>
         </scene>
     </scenes>
     <resources>
