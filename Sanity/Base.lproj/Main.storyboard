@@ -385,7 +385,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WZw-d8-Qkl">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WZw-d8-Qkl">
                                 <rect key="frame" x="0.0" y="160" width="414" height="441"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -397,7 +397,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7vF-da-2Ci">
-                                                    <rect key="frame" x="24" y="8" width="169" height="21"/>
+                                                    <rect key="frame" x="24" y="8" width="75" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="75" id="AwY-An-wpt"/>
+                                                        <constraint firstAttribute="height" constant="21" id="wUI-dB-RfM"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -406,35 +410,35 @@
                                                     <rect key="frame" x="8" y="98" width="398" height="22"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                 </textField>
-                                                <pickerView tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nBT-KN-MbF">
-                                                    <rect key="frame" x="217" y="8" width="189" height="66"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="189" id="7qs-ZU-yEw"/>
-                                                        <constraint firstAttribute="height" constant="66" id="hhe-qK-Ydj"/>
-                                                    </constraints>
-                                                    <connections>
-                                                        <outlet property="dataSource" destination="ShU-31-v0c" id="DYl-Po-e9u"/>
-                                                        <outlet property="delegate" destination="ShU-31-v0c" id="dWL-uB-ZMl"/>
-                                                    </connections>
-                                                </pickerView>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="What'd you buy?" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IvQ-ca-2t4">
                                                     <rect key="frame" x="8" y="144" width="398" height="22"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
+                                                <pickerView tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="orD-66-dfS">
+                                                    <rect key="frame" x="205" y="8" width="201" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="201" id="kno-dY-nnm"/>
+                                                        <constraint firstAttribute="height" constant="80" id="ymi-V0-gjw"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="ShU-31-v0c" id="buL-3K-3Cw"/>
+                                                        <outlet property="delegate" destination="ShU-31-v0c" id="K6Q-z8-CTH"/>
+                                                    </connections>
+                                                </pickerView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="4wG-y9-kyE" firstAttribute="leading" secondItem="YJk-ws-2x4" secondAttribute="leadingMargin" id="3ba-rA-44C"/>
-                                                <constraint firstItem="nBT-KN-MbF" firstAttribute="trailing" secondItem="YJk-ws-2x4" secondAttribute="trailingMargin" id="Ex4-Gx-OP2"/>
-                                                <constraint firstItem="nBT-KN-MbF" firstAttribute="leading" secondItem="7vF-da-2Ci" secondAttribute="trailing" constant="24" id="Ltc-9n-IXa"/>
+                                                <constraint firstItem="4wG-y9-kyE" firstAttribute="top" secondItem="orD-66-dfS" secondAttribute="bottom" constant="10" id="IWw-WR-kGi"/>
+                                                <constraint firstItem="orD-66-dfS" firstAttribute="trailing" secondItem="YJk-ws-2x4" secondAttribute="trailingMargin" id="Ler-AQ-5AH"/>
                                                 <constraint firstItem="7vF-da-2Ci" firstAttribute="top" secondItem="YJk-ws-2x4" secondAttribute="topMargin" id="PCb-q6-jhH"/>
                                                 <constraint firstItem="7vF-da-2Ci" firstAttribute="leading" secondItem="YJk-ws-2x4" secondAttribute="leadingMargin" constant="16" id="Sqa-G2-mPn"/>
-                                                <constraint firstItem="nBT-KN-MbF" firstAttribute="top" secondItem="YJk-ws-2x4" secondAttribute="topMargin" id="VDi-y1-HN7"/>
-                                                <constraint firstItem="4wG-y9-kyE" firstAttribute="top" secondItem="nBT-KN-MbF" secondAttribute="bottom" constant="24" id="Z4M-62-h0T"/>
+                                                <constraint firstItem="orD-66-dfS" firstAttribute="top" secondItem="YJk-ws-2x4" secondAttribute="topMargin" id="T5B-pP-DFC"/>
                                                 <constraint firstItem="4wG-y9-kyE" firstAttribute="trailing" secondItem="YJk-ws-2x4" secondAttribute="trailingMargin" id="a5S-3H-Co8"/>
+                                                <constraint firstItem="orD-66-dfS" firstAttribute="leading" secondItem="7vF-da-2Ci" secondAttribute="trailing" constant="106" id="cee-N3-fpW"/>
                                                 <constraint firstItem="IvQ-ca-2t4" firstAttribute="leading" secondItem="YJk-ws-2x4" secondAttribute="leadingMargin" id="jnw-Xu-kay"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="IvQ-ca-2t4" secondAttribute="bottom" constant="8.5" id="mhb-kn-4Oi"/>
                                                 <constraint firstItem="IvQ-ca-2t4" firstAttribute="top" secondItem="4wG-y9-kyE" secondAttribute="bottom" constant="24" id="yEW-hq-mCf"/>
@@ -443,7 +447,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="amountSpent" destination="4wG-y9-kyE" id="aeW-CG-nES"/>
-                                            <outlet property="categoryPicker" destination="nBT-KN-MbF" id="N3d-tX-Vlh"/>
+                                            <outlet property="categoryPicker" destination="orD-66-dfS" id="S0k-ng-1GP"/>
                                             <outlet property="optionalMemo" destination="IvQ-ca-2t4" id="450-cO-YZm"/>
                                         </connections>
                                     </tableViewCell>
