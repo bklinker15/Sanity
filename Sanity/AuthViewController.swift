@@ -83,7 +83,20 @@ class AuthViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func forgotPasswordPress(_ sender: Any) {
+        if emailTextField.text != nil && isValidEmail(email: self.emailTextField.text!){
+            Auth.auth().sendPasswordReset(withEmail: self.emailTextField.text!, completion: {error in
+                if error != nil {
+                    self.errorLabel.text = "Unknown email"
+                }else{
+                    self.errorLabel.text = "Reset email sent"
+                }
+            })
+        }else{
+            self.errorLabel.text = "Please specify a valid email"
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
