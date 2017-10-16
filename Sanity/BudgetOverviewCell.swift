@@ -14,7 +14,8 @@ class BudgetOverviewCell: UITableViewCell {
     @IBOutlet weak var daysUntilReset: UILabel!
     @IBOutlet weak var budgetRemaining: UILabel!
     @IBOutlet weak var progressBar: UIView!
-    
+
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

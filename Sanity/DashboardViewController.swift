@@ -95,7 +95,9 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     
     //Trigger segue to budget detail view once a budget row is tapped in the table
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "budgetDetail", sender: tableView.cellForRow(at: indexPath))
+        //performSegue(withIdentifier: "budgetDetail", sender: tableView.cellForRow(at: indexPath))
+        
+        performSegue(withIdentifier: "budgetDetail", sender: budgets[indexPath.row])
     }
     
     func fetchBudgets(){
@@ -130,9 +132,11 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 vc?.userEmail = userEmail
             case "budgetDetail":
                 let vc = segue.destination as? BudgetDetailViewController
-                let cell = sender as? BudgetOverviewCell
-                vc?.budgetName = cell?.budgetName.text!
-                vc?.userEmail = userEmail
+//                let cell = sender as? BudgetOverviewCell
+//                vc?.budgetName = cell?.budgetName.text!
+//                vc?.userEmail = userEmail
+                let budget = sender as? Budget
+                vc?.budget = budget
             default: break
             }
         }

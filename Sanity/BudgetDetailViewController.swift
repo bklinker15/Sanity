@@ -14,12 +14,17 @@ class BudgetDetailViewController: UIViewController {
     var userEmail:String?
     var categories = [Category]()
     
+    var budget:Budget?
+    
     @IBOutlet weak var budgetNm: UILabel!
     @IBOutlet weak var daysReset: UILabel!
     @IBOutlet weak var budgetProg: UIProgressView!
     @IBOutlet weak var budgetLim: UILabel!
     @IBOutlet weak var fundsSpent: UILabel!
     @IBOutlet weak var fundsLeft: UILabel!
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
