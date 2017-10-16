@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Sanity/Base.lproj/budgetView.storyboard">
+   </FileRef>
+   <FileRef
       location = "group:Sanity.xcodeproj">
    </FileRef>
    <FileRef
