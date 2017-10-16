@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class BudgetDetailViewController: UIViewController, UITableViewDelegate {
+class BudgetDetailViewController: UIViewController,UITableViewDataSource, UITableViewDelegate {
     var budgetName:String?
     var userEmail:String?
     var categories = [Category]()
@@ -77,6 +77,8 @@ class BudgetDetailViewController: UIViewController, UITableViewDelegate {
         
         
         fetchCategories()
+        
+        print(categories.count)
         print("success")
         //tableView.registerClass(MyCell.self, forCellReuseIdentifer: "cellId")
         //addCats()
@@ -110,7 +112,7 @@ class BudgetDetailViewController: UIViewController, UITableViewDelegate {
         }
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories.count
     }
     
@@ -120,12 +122,13 @@ class BudgetDetailViewController: UIViewController, UITableViewDelegate {
         var nm: String
         nm = categories[indexPath.row].name;
         
-        var tot: Double
-        tot = (categories[indexPath.row].spendingLimit);
-        numTotal.text = String(format:"%f", tot)
+        var to: Double
+        to = (categories[indexPath.row].spendingLimit);
+        var tot: String
+        tot = String(format:"%f", to)
 
         
-        // funds spent
+//         funds spent
 //        var spent: Double
 //        spent = (budget?.budgetRemaining)!;
 //        spent = tot-spent
@@ -133,13 +136,18 @@ class BudgetDetailViewController: UIViewController, UITableViewDelegate {
 //            spent = spent*(-1)
 //        }
 //        numFunds.text = String(format:"%f", spent)
-//
+
+        var spent: String
+        spent = " "
         
         //remaining funds
 //        var rem: Double
 //        rem = (categories[indexPath.row].)!;
 //        numLeft.text = String(format:"%f", rem)
 //
+        var rem: String
+        rem = " "
+        
 //
 //
 //        if (tot != 0){
@@ -149,8 +157,9 @@ class BudgetDetailViewController: UIViewController, UITableViewDelegate {
 //
 //
 //
-        
-        //cell.setup(name: categories[indexPath.row]?.name,  )
+        var prog: Float
+        prog = 0.0
+        cell.setup(name: nm, prog: prog, limit: tot, spent: spent, left: rem)
         return cell
     }
     

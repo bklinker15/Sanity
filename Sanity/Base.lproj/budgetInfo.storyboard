@@ -90,7 +90,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="121" id="b0u-DB-LdF" customClass="CategoryBudgetCell" customModule="Sanity" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryBudgetCell" rowHeight="121" id="b0u-DB-LdF" customClass="CategoryBudgetCell" customModule="Sanity" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="121"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="b0u-DB-LdF" id="Zmy-k3-Rsf">
@@ -162,6 +162,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="OoQ-JI-ohB" id="9AA-Bx-48g"/>
+                                    <outlet property="delegate" destination="OoQ-JI-ohB" id="eei-Sl-a7c"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -177,7 +181,6 @@
                         <outlet property="numFunds" destination="4sd-pu-foq" id="rQE-c8-pDB"/>
                         <outlet property="numLeft" destination="sWT-hQ-gn3" id="07m-uz-R2f"/>
                         <outlet property="numTotal" destination="I6g-Ca-eBy" id="RL8-4w-n5X"/>
-                        <outlet property="tableView" destination="Ucu-Tc-Dt8" id="yeH-xO-ukA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oPG-Ni-eRE" userLabel="First Responder" sceneMemberID="firstResponder"/>
