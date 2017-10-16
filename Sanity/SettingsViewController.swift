@@ -70,7 +70,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.picker.delegate = self
         self.picker.dataSource = self
         pickerData = ["budget exceeded and threshold exceeded","budget exceeded only","none"]
-    
+        
         //        var index: Int = getNotificationsIndex()
         //TODO: set picker view to correct index
     }
