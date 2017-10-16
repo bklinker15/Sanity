@@ -23,6 +23,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
 
     @IBAction func saveNotificationSettings(_ sender: Any) {
+        let index = self.picker.selectedRow(inComponent: 0)
         let collRef: CollectionReference = Firestore.firestore().collection("Users/\(userEmail!)")
         var ref: DocumentReference? = nil
         ref = collRef.addDocument(data: [
@@ -36,7 +37,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
     }
     @IBAction func savePassword(_ sender: Any) {
-        updatePassword(password: newPassword.text)
+        updatePassword(password: newPassword.text!)
     }
 
     
@@ -93,9 +94,9 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         pickerData = ["budget and threshold","budget only","none"]
         self.errorLabel.text = ""
         self.newPassword.text = ""
-        
-        //        var index: Int = getNotificationsIndex()
-        //TODO: set picker view to correct index
+        //set notifications index to that stored in FB
+        let notificationsIndex: Int = getNotificationsIndex()
+        picker.selectRow(notificationsIndex, inComponent:0, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
