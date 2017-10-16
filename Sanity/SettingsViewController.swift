@@ -49,7 +49,7 @@ class SettingsViewController: UIViewController {
         let collRef: CollectionReference = Firestore.firestore().collection("Users/\(userEmail!)")
         var ref: DocumentReference? = nil
         ref = collRef.addDocument(data: [
-            "notificationsSettingsIndex":
+            "notificationsSettingsIndex": index
         ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
