@@ -10,7 +10,7 @@ import Foundation
 
 struct Transaction {
     //In their requirements they said they wanted an optional memo I believe
-    var memo:String
+    var memo:String?
     var linkedBudgets:[String]
     var paymentMethod:String
     var amount:Double

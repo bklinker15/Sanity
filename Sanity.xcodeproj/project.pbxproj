@@ -11,6 +11,7 @@
 		1C958C5BDD903A8BFF9E2E5D /* Pods_Sanity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C772DE7D2F5C4DC837699DC2 /* Pods_Sanity.framework */; };
 		740B9E0F1F92E7F100388C9A /* BudgetInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 740B9E0E1F92E7F100388C9A /* BudgetInfo.storyboard */; };
 		A0033F291F93D67100BB728F /* BudgetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0033F281F93D67100BB728F /* BudgetDetailViewController.swift */; };
+		A0033F2B1F94204900BB728F /* AddTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0033F2A1F94204900BB728F /* AddTransactionCell.swift */; };
 		A037A9D01F81BE2E00D2FA55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A037A9CF1F81BE2E00D2FA55 /* AppDelegate.swift */; };
 		A037A9D51F81BE2E00D2FA55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A037A9D31F81BE2E00D2FA55 /* Main.storyboard */; };
 		A037A9D71F81BE2E00D2FA55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A037A9D61F81BE2E00D2FA55 /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 		083E82D98C88E70BD3D26AAE /* Pods-Sanity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sanity.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sanity/Pods-Sanity.release.xcconfig"; sourceTree = "<group>"; };
 		740B9E0E1F92E7F100388C9A /* BudgetInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BudgetInfo.storyboard; sourceTree = "<group>"; };
 		A0033F281F93D67100BB728F /* BudgetDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDetailViewController.swift; sourceTree = "<group>"; };
+		A0033F2A1F94204900BB728F /* AddTransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionCell.swift; sourceTree = "<group>"; };
 		A037A9CC1F81BE2E00D2FA55 /* Sanity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sanity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A037A9CF1F81BE2E00D2FA55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A037A9D41F81BE2E00D2FA55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				D043DE211F8753D900E9A870 /* AuthViewController.swift */,
 				D0EA5BAB1F8B1B2A00D5F99E /* AddBudgetViewController.swift */,
 				D0EA5BAF1F8B24A200D5F99E /* AddTransactionViewController.swift */,
+				A0033F2A1F94204900BB728F /* AddTransactionCell.swift */,
 				D0EA5BB31F8C372500D5F99E /* CategoryCell.swift */,
 			);
 			path = Sanity;
@@ -282,6 +285,7 @@
 				A0688C711F89A01500E4EA14 /* BudgetOverviewCell.swift in Sources */,
 				D043DE221F8753D900E9A870 /* AuthViewController.swift in Sources */,
 				A056C4E41F9185410071E242 /* Transaction.swift in Sources */,
+				A0033F2B1F94204900BB728F /* AddTransactionCell.swift in Sources */,
 				D0EA5BB01F8B24A200D5F99E /* AddTransactionViewController.swift in Sources */,
 				A037A9D01F81BE2E00D2FA55 /* AppDelegate.swift in Sources */,
 				D0EA5BAC1F8B1B2A00D5F99E /* AddBudgetViewController.swift in Sources */,
