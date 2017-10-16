@@ -14,6 +14,7 @@ class BudgetDetailViewController: UIViewController {
     var userEmail:String?
     var categories = [Category]()
     
+    @IBOutlet weak var budgetNm: UILabel!
     @IBOutlet weak var daysReset: UILabel!
     @IBOutlet weak var budgetProg: UIProgressView!
     @IBOutlet weak var budgetLim: UILabel!
