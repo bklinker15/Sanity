@@ -43,10 +43,10 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView.tag == 1 {
-            selectedBudgetIndex = 1
+            selectedBudgetIndex = row
             fetchCategories()
         } else {
-            selectedCategoryIndex = 2
+            selectedCategoryIndex = row
         }
     }
     
@@ -75,7 +75,7 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
             } else {
                 print("In categories flatMap")
                 self.categories = querySnapshot!.documents.flatMap({Category(dictionary: $0.data())})
-                //self.transactionTableView.reloadData()
+                self.transactionTableView.reloadData()
             }
         }
     }
@@ -86,6 +86,7 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = transactionTableView.dequeueReusableCell(withIdentifier: "transactionCell") as! AddTransactionCell
+        cell.categoryPicker.reloadAllComponents()
         return cell
     }
     
@@ -109,41 +110,20 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
     
     @IBAction func addTransactionsButtonPress(_ sender: Any) {
         let cells = self.transactionTableView.visibleCells as! Array<AddTransactionCell>
-//        var categories = [String: Float]()
-        
-//        if(budgetNameTextField.text == ""){
-//            showErrorAlert(message: "Budget must have a name")
-//            return
-//        }
-        
         for cell in cells{
-//            if cell.categoryNameTextField?.text == "" || cell.limitTextField?.text == ""{
-//                showErrorAlert(message: "Please enter a value for all category fields or remove a category")
-//                return
-//            }else{
             //Each component is a wheel in the picker
             let chosenCategory = categories[cell.categoryPicker.selectedRow(inComponent: 0)]
             let amountSpent = cell.amountSpent.text!
             let optionalMemo = cell.optionalMemo.text
-                
-//            if categories[catKey] != nil {
-//                showErrorAlert(message: "Category names must be unique")
-//                return
-//            }
-//
-//            categories[catKey] = limitVal
-//            }
             let mTransaction = Transaction(memo: optionalMemo, linkedBudgets: [], paymentMethod: "",
                                           amount: Double(amountSpent)!, timestamp: Date())
+            //Add Transaction
+        Firestore.firestore().collection("Users").document(self.userEmail!).collection("Budgets").document(budgets[selectedBudgetIndex].getName()).collection("Categories").document(chosenCategory.getName()).collection("Transactions").addDocument(data: mTransaction.dictionary)
             
-            print(mTransaction)
-            
-            Firestore.firestore().collection("Users/\(userEmail!)/Budgets/\(budgets[selectedBudgetIndex].getName)/\(chosenCategory)/Transactions").document().setData(mTransaction.dictionary)
+            //Update Category and Budget Limits
         }
         
-        //Send categories and resetPeriods[index] to
-        
-        
+        self.navigationController?.popViewController(animated: true)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

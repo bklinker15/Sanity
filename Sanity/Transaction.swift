@@ -17,6 +17,7 @@ struct Transaction {
     var timestamp:Date
     
     var dictionary:[String:Any] {
+        print("in transaction dict")
         return [
             "memo":memo,
             "linkedBudgets":linkedBudgets,

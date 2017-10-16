@@ -381,11 +381,11 @@
                                 <rect key="frame" x="0.0" y="144" width="320" height="289"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="transactionCell" rowHeight="114" id="zGP-vY-5rJ" customClass="AddTransactionCell" customModule="Sanity" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="114"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="transactionCell" rowHeight="183" id="zGP-vY-5rJ" customClass="AddTransactionCell" customModule="Sanity" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="183"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zGP-vY-5rJ" id="YJk-ws-2x4">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="113.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="182.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7vF-da-2Ci">
@@ -394,51 +394,43 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What'd you buy?" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IvQ-ca-2t4">
-                                                    <rect key="frame" x="8" y="75" width="304" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="qnw-Bl-0tp"/>
-                                                    </constraints>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="What'd you buy?" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IvQ-ca-2t4">
+                                                    <rect key="frame" x="8" y="144" width="304" height="22"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Amout Spent" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4wG-y9-kyE">
+                                                    <rect key="frame" x="8" y="98" width="304" height="22"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <pickerView tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nBT-KN-MbF">
-                                                    <rect key="frame" x="156" y="9" width="156" height="18"/>
+                                                    <rect key="frame" x="123" y="8" width="189" height="66"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="156" id="AnB-fq-aii"/>
-                                                        <constraint firstAttribute="height" constant="18" id="iAe-kx-K4e"/>
+                                                        <constraint firstAttribute="width" constant="189" id="7qs-ZU-yEw"/>
+                                                        <constraint firstAttribute="height" constant="66" id="hhe-qK-Ydj"/>
                                                     </constraints>
                                                     <connections>
                                                         <outlet property="dataSource" destination="ShU-31-v0c" id="DYl-Po-e9u"/>
                                                         <outlet property="delegate" destination="ShU-31-v0c" id="dWL-uB-ZMl"/>
                                                     </connections>
                                                 </pickerView>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Amout Spent" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4wG-y9-kyE">
-                                                    <rect key="frame" x="8" y="41" width="304" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="304" id="z9h-Ds-epQ"/>
-                                                    </constraints>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="IvQ-ca-2t4" firstAttribute="top" secondItem="4wG-y9-kyE" secondAttribute="bottom" constant="4" id="3d6-FM-Q1n"/>
-                                                <constraint firstItem="4wG-y9-kyE" firstAttribute="leading" secondItem="YJk-ws-2x4" secondAttribute="leadingMargin" id="53d-R6-dG4"/>
-                                                <constraint firstItem="IvQ-ca-2t4" firstAttribute="trailing" secondItem="YJk-ws-2x4" secondAttribute="trailingMargin" id="AjA-h4-59A"/>
-                                                <constraint firstItem="nBT-KN-MbF" firstAttribute="top" secondItem="YJk-ws-2x4" secondAttribute="topMargin" constant="1" id="Ikx-PI-4By"/>
+                                                <constraint firstItem="4wG-y9-kyE" firstAttribute="leading" secondItem="YJk-ws-2x4" secondAttribute="leadingMargin" id="3ba-rA-44C"/>
+                                                <constraint firstItem="nBT-KN-MbF" firstAttribute="trailing" secondItem="YJk-ws-2x4" secondAttribute="trailingMargin" id="Ex4-Gx-OP2"/>
+                                                <constraint firstItem="nBT-KN-MbF" firstAttribute="leading" secondItem="7vF-da-2Ci" secondAttribute="trailing" constant="24" id="Ltc-9n-IXa"/>
                                                 <constraint firstItem="7vF-da-2Ci" firstAttribute="top" secondItem="YJk-ws-2x4" secondAttribute="topMargin" id="PCb-q6-jhH"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="IvQ-ca-2t4" secondAttribute="bottom" constant="0.5" id="Qdf-eu-ohj"/>
                                                 <constraint firstItem="7vF-da-2Ci" firstAttribute="leading" secondItem="YJk-ws-2x4" secondAttribute="leadingMargin" constant="16" id="Sqa-G2-mPn"/>
-                                                <constraint firstItem="4wG-y9-kyE" firstAttribute="top" secondItem="7vF-da-2Ci" secondAttribute="bottom" constant="12" id="UXd-ef-AtD"/>
-                                                <constraint firstItem="IvQ-ca-2t4" firstAttribute="leading" secondItem="YJk-ws-2x4" secondAttribute="leadingMargin" id="XJc-JP-uTX"/>
-                                                <constraint firstItem="nBT-KN-MbF" firstAttribute="leading" secondItem="7vF-da-2Ci" secondAttribute="trailing" constant="57" id="exa-L7-Bp6"/>
-                                                <constraint firstItem="IvQ-ca-2t4" firstAttribute="top" secondItem="4wG-y9-kyE" secondAttribute="bottom" constant="4" id="k1U-Ol-Bq4"/>
-                                                <constraint firstItem="nBT-KN-MbF" firstAttribute="leading" secondItem="7vF-da-2Ci" secondAttribute="trailing" constant="57" id="m7F-01-RW1"/>
-                                                <constraint firstItem="nBT-KN-MbF" firstAttribute="trailing" secondItem="YJk-ws-2x4" secondAttribute="trailingMargin" id="snB-Oa-T0J"/>
-                                                <constraint firstItem="4wG-y9-kyE" firstAttribute="trailing" secondItem="YJk-ws-2x4" secondAttribute="trailingMargin" id="wst-4W-Bna"/>
+                                                <constraint firstItem="nBT-KN-MbF" firstAttribute="top" secondItem="YJk-ws-2x4" secondAttribute="topMargin" id="VDi-y1-HN7"/>
+                                                <constraint firstItem="4wG-y9-kyE" firstAttribute="top" secondItem="nBT-KN-MbF" secondAttribute="bottom" constant="24" id="Z4M-62-h0T"/>
+                                                <constraint firstItem="4wG-y9-kyE" firstAttribute="trailing" secondItem="YJk-ws-2x4" secondAttribute="trailingMargin" id="a5S-3H-Co8"/>
+                                                <constraint firstItem="IvQ-ca-2t4" firstAttribute="leading" secondItem="YJk-ws-2x4" secondAttribute="leadingMargin" id="jnw-Xu-kay"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="IvQ-ca-2t4" secondAttribute="bottom" constant="8.5" id="mhb-kn-4Oi"/>
+                                                <constraint firstItem="IvQ-ca-2t4" firstAttribute="top" secondItem="4wG-y9-kyE" secondAttribute="bottom" constant="24" id="yEW-hq-mCf"/>
+                                                <constraint firstItem="IvQ-ca-2t4" firstAttribute="trailing" secondItem="YJk-ws-2x4" secondAttribute="trailingMargin" id="z6M-T7-hKj"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -471,7 +463,7 @@
                                 <rect key="frame" x="95" y="518" width="130" height="30"/>
                                 <state key="normal" title="Add Transaction(s)"/>
                                 <connections>
-                                    <action selector="createBudgetButtonPress:" destination="ShU-31-v0c" eventType="touchUpInside" id="QHH-IC-qvP"/>
+                                    <action selector="addTransactionsButtonPress:" destination="ShU-31-v0c" eventType="touchUpInside" id="VLb-cM-5So"/>
                                 </connections>
                             </button>
                             <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9uM-e6-CUc">
