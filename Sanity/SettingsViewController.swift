@@ -11,6 +11,7 @@ import Firebase
 import FirebaseFirestore
 import FirebaseAuth
 
+
 class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     var userEmail: String?
     var notificationSettingsIndex: Int = 0
@@ -44,7 +45,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     //function to get notification settings index from firebase, creates it if DNE
     func getNotificationsIndex() -> Int {
         var index: Int = 0
-        let collRef: CollectionReference = Firestore.firestore().collection("Users/\(userEmail!)")
+        let collRef: CollectionReference = Firestore.firestore().collection("Users/\(userEmail!)") /*TODO: Users/me@me.com is a document.  Idk where we save notifications settings but theyll probs just be fields on this document of the user  */
         collRef.getDocuments(){ (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -81,6 +82,16 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
     }
     
+    @IBAction func logoutButtonPress(_ sender: Any) {
+        do{
+            try Auth.auth().signOut()
+        }catch{
+            
+        }
+        self.navigationController?.popViewController(animated: false)
+        performSegue(withIdentifier: "logoutSegue", sender: self)
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,8 +102,10 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.errorLabel.text = ""
         self.newPassword.text = ""
         //set notifications index to that stored in FB
-        let notificationsIndex: Int = getNotificationsIndex()
-        picker.selectRow(notificationsIndex, inComponent:0, animated: true)
+        
+/* TODO: Uncomment next two lines */
+        //let notificationsIndex: Int = getNotificationsIndex()
+        //picker.selectRow(notificationsIndex, inComponent:0, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
