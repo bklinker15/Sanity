@@ -21,27 +21,43 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var newPassword: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     
+
+    @IBAction func saveNotificationSettings(_ sender: Any) {
+        let index = self.picker.selectedRow(inComponent: 0)
+        let collRef: CollectionReference = Firestore.firestore().collection("Users/\(userEmail!)")
+        var ref: DocumentReference? = nil
+        ref = collRef.addDocument(data: [
+            "notificationsSettingsIndex": index
+        ]) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document added with ID: \(ref!.documentID)")
+            }
+        }
+    }
+    @IBAction func savePassword(_ sender: Any) {
+        updatePassword(password: newPassword.text!)
+    }
+
+    
     //function to get notification settings index from firebase, creates it if DNE
-    func getNotificationsIndex()->Int{
-        var index: Int?
+    func getNotificationsIndex() -> Int {
+        var index: Int = 0
         let collRef: CollectionReference = Firestore.firestore().collection("Users/\(userEmail!)")
         collRef.getDocuments(){ (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-                    if(document.documentID == "notificationsSettingsIndex"){
-                        index = (document.data()["notificationsSettingsIndex"] as! Int)
+                    if document.value(forKey: "notificationsSettingsIndex") != nil {
+                        index = document.value(forKey: "notificationsSettingsIndex") as! Int
                     }
                 }
             }
-        }
-
-        if index != nil{
-            return index!
-        } else {
-            return 0
         }
+        return index
+        
     }
     
     func updatePassword(password: String){
@@ -65,23 +81,6 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
     }
     
-    func setNotificationIndex(){
-        let collRef: CollectionReference = Firestore.firestore().collection("Users/\(userEmail!)")
-        var ref: DocumentReference? = nil
-        ref = collRef.addDocument(data: [
-            "notificationsSettingsIndex": index
-        ]) { err in
-            if let err = err {
-                print("Error adding document: \(err)")
-            } else {
-                print("Document added with ID: \(ref!.documentID)")
-            }
-        }
-
-        //set the value as the new value chosen on the picker
-
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,9 +90,9 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         pickerData = ["budget and threshold","budget only","none"]
         self.errorLabel.text = ""
         self.newPassword.text = ""
-        
-        //        var index: Int = getNotificationsIndex()
-        //TODO: set picker view to correct index
+        //set notifications index to that stored in FB
+        let notificationsIndex: Int = getNotificationsIndex()
+        picker.selectRow(notificationsIndex, inComponent:0, animated: true)
     }
     
     override func didReceiveMemoryWarning() {

@@ -557,6 +557,9 @@
                                         <rect key="frame" x="59.666666666666671" y="216" width="201" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="save notification settings"/>
+                                        <connections>
+                                            <action selector="saveNotificationSettings:" destination="Oh5-yo-wv8" eventType="touchUpInside" id="Qv3-SS-3bi"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zFm-Qk-7OD">
                                         <rect key="frame" x="10" y="250" width="300" height="30"/>
@@ -568,6 +571,9 @@
                                         <rect key="frame" x="81" y="280" width="158" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="save new password"/>
+                                        <connections>
+                                            <action selector="savePassword:" destination="Oh5-yo-wv8" eventType="touchUpInside" id="0IW-bS-ZGY"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rMk-oA-iZj">
                                         <rect key="frame" x="93.666666666666686" y="314" width="133" height="50"/>
@@ -589,6 +595,8 @@
                         <outlet property="errorLabel" destination="rMk-oA-iZj" id="gqP-XN-weC"/>
                         <outlet property="newPassword" destination="zFm-Qk-7OD" id="ImN-if-3Vz"/>
                         <outlet property="picker" destination="9hi-RF-bV7" id="0oN-FA-BKh"/>
+                        <outlet property="saveNotificationsButton" destination="vAe-ML-1cx" id="QHw-XR-QeN"/>
+                        <outlet property="savePasswordButton" destination="Kor-SX-KuH" id="Xrb-ug-ZD3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IAf-Ai-vP3" userLabel="First Responder" sceneMemberID="firstResponder"/>
