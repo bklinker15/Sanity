@@ -136,6 +136,13 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
         }
         //Update the selected budget with the total amount added to decrement what we have left
         Firestore.firestore().document("Users/\(userEmail!)/Budgets/\(budgets[selectedBudgetIndex].getName())").updateData(["budgetRemaining":budgets[selectedBudgetIndex].getBudgetRemaining() - amountAdded])
+        
+        let budgetRemainingDouble = budgets[selectedBudgetIndex].getBudgetRemaining() - amountAdded
+        
+        if budgetRemainingDouble <= 0 {
+            createAlert(title: "Budget Alert", message: "Budget has been exceeded! Balance is at or below zero")
+        }
+        
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -166,7 +173,15 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-    
+    func createAlert (title:String, message:String)
+    {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+            self.navigationController?.popViewController(animated: true)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
 
 }
