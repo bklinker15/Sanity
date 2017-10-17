@@ -163,6 +163,9 @@ class BudgetDetailViewController: UIViewController,UITableViewDataSource, UITabl
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 110
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
