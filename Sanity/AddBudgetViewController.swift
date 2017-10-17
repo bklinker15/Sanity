@@ -114,7 +114,7 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func createBudget(budgetName: String, categories:[String: Double]){
-        var sum = 0.0
+        var sum = 0.00
         
         let budgetRef = Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document(budgetName)
         
@@ -132,7 +132,7 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableV
                 Firestore.firestore().collection("Users").document(self.userEmail!).collection("Budgets").document(budgetName).setData(budget.dictionary)
                 
                 for (name, limit) in categories{
-                    let category = Category(name: name, paymentMethods: [], spendingLimit: limit, amountSpent: 0)
+                    let category = Category(name: name, paymentMethods: [], spendingLimit: limit, amountSpent: 0.00)
                     Firestore.firestore().collection("Users").document(self.userEmail!).collection("Budgets").document(budgetName).collection("Categories").document(name).setData(category.dictionary)
                 }
                 

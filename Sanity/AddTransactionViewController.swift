@@ -110,7 +110,7 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
     
     @IBAction func addTransactionsButtonPress(_ sender: Any) {
         let cells = self.transactionTableView.visibleCells as! Array<AddTransactionCell>
-        var amountAdded:Double = 0
+        var amountAdded:Double = 0.00
         //Unsure if I need this, don't remove -Jordan
 //        var updatedCategories = [Category]()
 //        updatedCategories = categories.map { $0 }
