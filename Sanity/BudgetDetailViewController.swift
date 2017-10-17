@@ -98,8 +98,8 @@ class BudgetDetailViewController: UIViewController,UITableViewDataSource, UITabl
 
     
     func fetchCategories(){
-        let collRef: CollectionReference = Firestore.firestore().collection("Users/\(userEmail!)/Budgets/\(budget?.getName())/Categories")
-        print("Users/\(userEmail!)/Budgets/\(budget?.getName())/Categories")
+        let collRef: CollectionReference = Firestore.firestore().collection("Users/\(userEmail!)/Budgets/\((budget?.getName())!)/Categories")
+        print("Users/\(userEmail!)/Budgets/\((budget?.getName())!)/Categories")
         collRef.getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("In error block")
