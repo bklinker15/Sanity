@@ -13,7 +13,7 @@ Preparation:
 1. Install Xcode 9
 2. Clone or download repository
 3. Install CocoaPods (explained here: https://guides.cocoapods.org/using/getting-started.html)
-4. In Terminal and within the cloned directory, run the command "pod install" to install the necessary dependencies
+4. In Terminal and within the cloned repository, run the command "pod install" to install the necessary dependencies
 
 Build and Run:
 --------------
