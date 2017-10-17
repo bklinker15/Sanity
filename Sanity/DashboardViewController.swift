@@ -41,6 +41,19 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         fetchBudgets()
         tableView.reloadData()
+        tableView.refreshControl = self.refreshControl
+    }
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: UIControlEvents.valueChanged)
+        
+        return refreshControl
+    }()
+    
+    @objc func handleRefresh(refreshControl: UIRefreshControl){
+        self.fetchBudgets()
+        refreshControl.endRefreshing()
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,7 +77,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
             let currentBudget = budgets[indexPath.row]
             cell.budgetName.text = currentBudget.getName()
             
-            var budgetRemainingString = String(describing: currentBudget.getBudgetRemaining())
+            let budgetRemainingString = String(describing: currentBudget.getBudgetRemaining())
             cell.budgetRemaining.text = "$" + budgetRemainingString;
             
             cell.budgetRemaining.textColor = UIColor.green
@@ -134,6 +147,9 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 backItem.title = "Cancel"
                 navigationItem.backBarButtonItem = backItem
                 let vc = segue.destination as? AddBudgetViewController
+                vc?.userEmail = userEmail
+            case "settingsSegue":
+                let vc = segue.destination as? SettingsViewController
                 vc?.userEmail = userEmail
             case "budgetDetail":
                 let vc = segue.destination as? BudgetDetailViewController
