@@ -19,8 +19,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Afs-EB-N6G">
-                                <rect key="frame" x="50" y="223" width="220" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Afs-EB-N6G">
+                                <rect key="frame" x="50" y="279" width="220" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="username"/>
@@ -28,21 +28,17 @@
                                     <action selector="touchOutsideText:" destination="fPx-3H-jwL" eventType="touchUpOutside" id="6oa-Wr-frb"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E32-A1-eYP">
-                                <rect key="frame" x="50" y="279" width="220" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E32-A1-eYP">
+                                <rect key="frame" x="50" y="335" width="220" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sanity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLW-aa-n4o">
-                                <rect key="frame" x="102" y="105" width="116" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKR-gP-pNF">
-                                <rect key="frame" x="136" y="339" width="49" height="30"/>
-                                <state key="normal" title="Submit"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKR-gP-pNF">
+                                <rect key="frame" x="136" y="393" width="49" height="30"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" white="0.25915178570000003" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="submitButton:" destination="fPx-3H-jwL" eventType="touchUpInside" id="hh1-js-rD1"/>
                                 </connections>
@@ -54,22 +50,32 @@
                                 <color key="textColor" red="1" green="0.0" blue="0.079394028178770171" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="HWy-YL-DWb">
-                                <rect key="frame" x="97" y="165" width="126" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="HWy-YL-DWb">
+                                <rect key="frame" x="97" y="227" width="126" height="29"/>
                                 <segments>
                                     <segment title="Login"/>
                                     <segment title="Sign Up"/>
                                 </segments>
+                                <color key="tintColor" white="0.25915178571428571" alpha="1" colorSpace="calibratedWhite"/>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tT8-cW-JiQ">
-                                <rect key="frame" x="102" y="393" width="115" height="30"/>
-                                <state key="normal" title="Forgot Password"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tT8-cW-JiQ">
+                                <rect key="frame" x="102" y="431" width="115" height="30"/>
+                                <state key="normal" title="Forgot Password">
+                                    <color key="titleColor" white="0.25915178570000003" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="forgotPasswordPress:" destination="fPx-3H-jwL" eventType="touchUpInside" id="C3V-Ow-hQj"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="sanity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLW-aa-n4o">
+                                <rect key="frame" x="102" y="84" width="116" height="42"/>
+                                <color key="tintColor" white="0.25915178570000003" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <color key="textColor" white="0.25915178570000003" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.80169546338377706" green="0.9735305392136141" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="dKR-gP-pNF" firstAttribute="leading" secondItem="b6D-uY-W8R" secondAttribute="leading" constant="136" id="1Ns-FN-hkb"/>
                             <constraint firstItem="HWy-YL-DWb" firstAttribute="leading" secondItem="b6D-uY-W8R" secondAttribute="leading" constant="97" id="6Bm-ZQ-SYX"/>
@@ -97,7 +103,9 @@
                     <connections>
                         <outlet property="emailTextField" destination="Afs-EB-N6G" id="r8O-Wx-O09"/>
                         <outlet property="errorLabel" destination="WTr-mZ-F47" id="8dq-V9-Pu2"/>
+                        <outlet property="forgotPasswordButton" destination="tT8-cW-JiQ" id="WnY-eL-6UP"/>
                         <outlet property="passwordTextField" destination="E32-A1-eYP" id="p5E-E0-oTe"/>
+                        <outlet property="sanity" destination="bLW-aa-n4o" id="Bza-fV-qyx"/>
                         <outlet property="segmentControl" destination="HWy-YL-DWb" id="egR-jn-1YX"/>
                         <outlet property="submitButton" destination="dKR-gP-pNF" id="iFu-sB-ctI"/>
                         <segue destination="QEw-Oi-P1e" kind="modal" identifier="loginSegue" id="E1N-z8-Oim"/>

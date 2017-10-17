@@ -89,9 +89,12 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.errorLabel.text = ""
         self.newPassword.text = ""
         
+        
         //set notifications index to the setting stored in FB
         setNotificationsIndexUI()
     }
+    
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

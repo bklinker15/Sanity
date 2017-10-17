@@ -35,6 +35,9 @@ class BudgetDetailViewController: UIViewController,UITableViewDataSource, UITabl
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        
+        setFonts()
+        
         budgetNm.text = budget?.name;
 
 
@@ -96,6 +99,10 @@ class BudgetDetailViewController: UIViewController,UITableViewDataSource, UITabl
 //        }
 //    }
 
+    
+    func setFonts(){
+        budgetNm.font = UIFont(name: "DidactGothic-Regular", size: 35)
+    }
     
     func fetchCategories(){
         let collRef: CollectionReference = Firestore.firestore().collection("Users/\(userEmail!)/Budgets/\((budget?.getName())!)/Categories")
