@@ -87,6 +87,7 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = transactionTableView.dequeueReusableCell(withIdentifier: "transactionCell") as! AddTransactionCell
         cell.categoryPicker.reloadAllComponents()
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         return cell
     }
     
