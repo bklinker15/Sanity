@@ -20,6 +20,6 @@ Build and Run:
 1. Open Sanity.xcworkspace
 2. Choose your desired device to build on, we recommend iPhone 8 Plus
 3. Select the 'Build' button within Xcode to build the project. This will take a few minutes, but a simulator window
-will display the application on the device chosen in step 6
+will display the application on the device chosen in step 2
 4. A test login was created for email: coppert@usc.edu and password: tester but feel free to sign up with your own USC email!
 5. Enjoy!
