@@ -64,7 +64,7 @@ class BudgetDetailViewController: UIViewController,UITableViewDataSource, UITabl
         
         if (tot != 0){
             var percent:Float = Float(spent/tot)
-            budgetProg.progress = (percent)
+            budgetProg.setProgress(percent, animated: false)
         }
         
         //days reset
