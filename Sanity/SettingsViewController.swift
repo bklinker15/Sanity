@@ -42,26 +42,22 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
 
     
     //function to get notification settings index from firebase, creates it if DNE
-    func getNotificationsIndex()->Int{
-        var index: Int?
+    func getNotificationsIndex() -> Int {
+        var index: Int = 0
         let collRef: CollectionReference = Firestore.firestore().collection("Users/\(userEmail!)")
         collRef.getDocuments(){ (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-                    if(document.documentID == "notificationsSettingsIndex"){
-                        index = (document.data()["notificationsSettingsIndex"] as! Int)
+                    if document.value(forKey: "notificationsSettingsIndex") != nil {
+                        index = document.value(forKey: "notificationsSettingsIndex") as! Int
                     }
                 }
             }
-        }
-
-        if index != nil{
-            return index!
-        } else {
-            return 0
         }
+        return index
+        
     }
     
     func updatePassword(password: String){
