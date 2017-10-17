@@ -42,7 +42,7 @@ class BudgetDetailViewController: UIViewController,UITableViewDataSource, UITabl
         //budget limit
         var tot: Double
         tot = (budget?.totalBudget)!;
-        numTotal.text = String(format:"%f", tot)
+        numTotal.text = String(format:"%.2f", tot)
         
         // funds spent
         var spent: Double
@@ -51,13 +51,13 @@ class BudgetDetailViewController: UIViewController,UITableViewDataSource, UITabl
         if spent < 0{
             spent = spent*(-1)
         }
-        numFunds.text = String(format:"%f", spent)
+        numFunds.text = String(format:"%.2f", spent)
         
         
         //remaining funds
         var rem: Double
         rem = (budget?.budgetRemaining)!;
-        numLeft.text = String(format:"%f", rem)
+        numLeft.text = String(format:"%.2f", rem)
         
         if (tot != 0){
             var percent:Float = Float(spent/tot)
@@ -125,40 +125,43 @@ class BudgetDetailViewController: UIViewController,UITableViewDataSource, UITabl
         var to: Double
         to = (categories[indexPath.row].spendingLimit);
         var tot: String
-        tot = String(format:"%f", to)
-
+        tot = String(format:"%.2f", to)
         
-//         funds spent
-//        var spent: Double
-//        spent = (budget?.budgetRemaining)!;
-//        spent = tot-spent
-//        if spent < 0{
-//            spent = spent*(-1)
-//        }
-//        numFunds.text = String(format:"%f", spent)
-
+        
+        //         funds spent
+        var spen: Double
+        spen = (categories[indexPath.row].amountSpent);
+        if spen < 0{
+            spen = spen*(-1)
+        }
+        
         var spent: String
-        spent = " "
+        spent = String(format:"%.2f", spen)
         
         //remaining funds
-//        var rem: Double
-//        rem = (categories[indexPath.row].)!;
-//        numLeft.text = String(format:"%f", rem)
-//
-        var rem: String
-        rem = " "
+        var remm: Double
+        remm = to-spen
         
-//
-//
-//        if (tot != 0){
-//            var percent:Float = Float(spent/tot)
-//            budgetProg.progress = (percent)
-//        }
-//
-//
-//
+        var rem: String
+        rem = String(format:"%.2f", remm)
+        
+        //
+        //
         var prog: Float
         prog = 0.0
+        if (to != 0){
+            var percent:Float = Float(spen/to)
+            if to >= 1.0{
+                prog = percent
+            } else{
+                prog = 1.0
+            }
+        }
+        //
+        //
+        //
+        
+        
         cell.setup(name: nm, prog: prog, limit: tot, spent: spent, left: rem)
         return cell
     }
