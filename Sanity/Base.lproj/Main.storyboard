@@ -125,7 +125,7 @@
         <!--Budgets-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="DashboardViewController" customModule="Sanity" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="DashboardViewController" customModule="Sanity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -380,7 +380,7 @@
         <!--Add a Transaction-->
         <scene sceneID="Nyk-8i-deB">
             <objects>
-                <viewController title="Add a Transaction" id="ShU-31-v0c" customClass="AddTransactionViewController" customModule="Sanity" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Add a Transaction" automaticallyAdjustsScrollViewInsets="NO" id="ShU-31-v0c" customClass="AddTransactionViewController" customModule="Sanity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vso-0U-Imv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
