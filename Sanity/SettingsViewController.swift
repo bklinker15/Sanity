@@ -92,6 +92,13 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         //set notifications index to the setting stored in FB
         setNotificationsIndexUI()
+        setFont()
+        
+    }
+    
+    func setFont(){
+        errorLabel.font = UIFont(name: "DidactGothic-Regular", size: 20)
+        newPassword.font = UIFont(name: "DidactGothic-Regular", size: 20)
     }
     
 

@@ -90,6 +90,7 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
         fundsSpentLabel.font = UIFont(name: "DidactGothic-Regular", size: 20)
         budgetNameLabel.font = UIFont(name: "DidactGothic-Regular", size: 40)
 
+   
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
