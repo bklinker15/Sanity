@@ -141,6 +141,12 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 let budget = sender as? Budget
                 vc?.budget = budget
                 vc?.userEmail = userEmail
+            case "settingsSegue":
+                let backItem = UIBarButtonItem()
+                backItem.title = "Budgets"
+                navigationItem.backBarButtonItem = backItem
+                let vc = segue.destination as? SettingsViewController
+                vc?.userEmail = userEmail
             default: break
             }
         }
