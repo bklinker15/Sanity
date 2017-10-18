@@ -20,18 +20,23 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     @IBOutlet weak var picker: UIPickerView!
     @IBOutlet weak var newPassword: UITextField!
-    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var notificationsErrorLabel: UILabel!
+    @IBOutlet weak var passwordErrorLabel: UILabel!
     
-    @IBAction func saveNotificationSettings(_ sender: UIButton) {
+    @IBAction func updateNotifications(_ sender: UIButton) {
         let index = self.picker.selectedRow(inComponent: 0)
         let docRef = Firestore.firestore().collection("Users").document(userEmail!)
         docRef.setData(["notificationsSettingsIndex": index])
-        self.errorLabel.text = "settings saved"
-        self.errorLabel.textColor = UIColor.green
+        self.notificationsErrorLabel.text = "settings saved"
+        self.passwordErrorLabel.text = ""
+        self.notificationsErrorLabel.textColor = UIColor.green
     }
-    @IBAction func savePassword(_ sender: Any) {
+    
+    
+    @IBAction func updatePassword(_ sender: UIButton) {
         updatePassword(password: newPassword.text!)
     }
+    
     
     //function to set notification settings index in UI from firebase, creates it if DNE
     func setNotificationsIndexUI() {
@@ -52,19 +57,20 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     func updatePassword(password: String){
         if password == "" || password.count < 6 {
-            self.errorLabel.text = "password must be at least 6 characters long"
+            self.passwordErrorLabel.text = "password must be at least 6 characters long"
             self.newPassword.text = ""
         }
         else{
             let user = Auth.auth().currentUser
             user?.updatePassword(to: password, completion: { error in
                 if error != nil{
-                    self.errorLabel.text = "error updating password"
-                    self.errorLabel.textColor = UIColor.red
+                    self.passwordErrorLabel.text = "error updating password"
+                    self.passwordErrorLabel.textColor = UIColor.red
                 } else {
                     //success
-                    self.errorLabel.text = "password updated"
-                    self.errorLabel.textColor = UIColor.green
+                    self.notificationsErrorLabel.text = ""
+                    self.passwordErrorLabel.text = "password updated"
+                    self.passwordErrorLabel.textColor = UIColor.green
                 }
                 self.newPassword.text = ""
             })
@@ -85,10 +91,11 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         // Connect data:
         self.picker.delegate = self
         self.picker.dataSource = self
+        // populate fields with default values
         pickerData = ["budget and threshold","budget only","none"]
-        self.errorLabel.text = ""
+        self.passwordErrorLabel.text = ""
+        self.notificationsErrorLabel.text = ""
         self.newPassword.text = ""
-        
         
         //set notifications index to the setting stored in FB
         setNotificationsIndexUI()
