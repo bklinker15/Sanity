@@ -86,6 +86,9 @@ class AuthViewController: UIViewController {
         submitButton.titleLabel!.font =  UIFont(name: "DidactGothic-Regular", size: 20)
         errorLabel.font = UIFont(name: "DidactGothic-Regular", size: 20)
         forgotPasswordButton.titleLabel!.font =  UIFont(name: "DidactGothic-Regular", size: 20)
+        emailTextField.font = UIFont(name: "DidactGothic-Regular", size: 20)
+        passwordTextField.font = UIFont(name: "DidactGothic-Regular", size: 20)
+
     }
     
     override func didReceiveMemoryWarning() {

@@ -19,8 +19,14 @@ class AddTransactionCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        setFont()
     }
 
+    func setFont(){
+        amountSpent.font = UIFont(name: "DidactGothic-Regular", size: 20)
+        optionalMemo.font = UIFont(name: "DidactGothic-Regular", size: 20)
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
