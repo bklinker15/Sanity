@@ -127,7 +127,8 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableV
                     sum = sum + limit
                 }
                 
-                let budget = Budget(name: budgetName, resetDate: self.datePicker.date, lastReset: Date(), resetInterval: self.resetInterval, totalBudget: sum, budgetRemaining: sum)
+                let budget = Budget(name: budgetName, resetDate: self.datePicker.date, lastReset: Date(), resetInterval: self.resetInterval,
+                                    totalBudget: sum, budgetRemaining: sum, previousBudgetRemains: [Double](), previousBudgetLimits: [Double]())
                 
                 Firestore.firestore().collection("Users").document(self.userEmail!).collection("Budgets").document(budgetName).setData(budget.dictionary)
                 
