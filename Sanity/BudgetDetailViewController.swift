@@ -8,7 +8,10 @@
 import UIKit
 import Firebase
 
-class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+    
+    
+    
     var budgetName:String?
     var userEmail:String?
     var categories = [Category]()
