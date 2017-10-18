@@ -8,16 +8,15 @@
 
 import Foundation
 
-//Made this a struct instead of a class to leverage convenience intializer
-//Can change - Jordan
 struct Budget {
     var name:String
     var resetDate:Date
     var lastReset:Date
     var resetInterval:Int
-    //I don't think we need categories TBH, will just query Firebase
     var totalBudget:Double
     var budgetRemaining:Double
+    var previousBudgetRemains:[Double]
+    var previousBudgetLimits:[Double]
     
     var dictionary:[String:Any] {
         return [
@@ -26,7 +25,9 @@ struct Budget {
             "totalBudget":totalBudget,
             "lastReset":lastReset,
             "resetDate":resetDate,
-            "resetInterval":resetInterval
+            "resetInterval":resetInterval,
+            "previousBudgetRemains" : previousBudgetRemains,
+            "previousBudgetLimits": previousBudgetLimits
         ]
     }
     
@@ -54,6 +55,29 @@ struct Budget {
         return budgetRemaining
     }
     
+    /* Returns last six budget limits starting with the least recent */
+    func getPreviousSixBudgetLimits() ->  [Double] {
+        let n = min(6, previousBudgetLimits.count)
+        var ret = [Double]()
+        
+        for i in (n-6)...n{
+            ret.append(previousBudgetLimits[i])
+        }
+        
+        return ret
+    }
+    
+    /* Returns last six budget remains starting with the least recent */
+    func getPreviousSixBudgetRemains() -> [Double] {
+        let n = min(6, previousBudgetRemains.count)
+        var ret = [Double]()
+        
+        for i in (n-6)...n{
+            ret.append(previousBudgetRemains[i])
+        }
+        
+        return ret
+    }
 }
 
 extension Budget : FirestoreSerializable {
@@ -63,10 +87,12 @@ extension Budget : FirestoreSerializable {
             let totalBudget = dictionary["totalBudget"] as? Double,
             let lastReset = dictionary["lastReset"]  as? Date,
             let resetDate = dictionary["resetDate"]  as? Date,
-            let resetInterval = dictionary["resetInterval"] as? Int else {return nil}
+            let resetInterval = dictionary["resetInterval"] as? Int,
+            let previousBudgetRemains = dictionary["previousBudgetRemains"] as? [Double],
+            let previousBudgetLimits = dictionary["previousBudgetLimits"] as? [Double] else {return nil}
         
         self.init(name: name, resetDate: resetDate, lastReset: lastReset,
                   resetInterval: resetInterval,
-                  totalBudget: totalBudget, budgetRemaining: budgetRemaining)
+                  totalBudget: totalBudget, budgetRemaining: budgetRemaining, previousBudgetRemains: previousBudgetRemains, previousBudgetLimits: previousBudgetLimits)
     }
 }

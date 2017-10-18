@@ -40,6 +40,19 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         fetchBudgets()
         tableView.reloadData()
+        tableView.refreshControl = self.refreshControl
+    }
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: UIControlEvents.valueChanged)
+        
+        return refreshControl
+    }()
+    
+    @objc func handleRefresh(refreshControl: UIRefreshControl){
+        self.fetchBudgets()
+        refreshControl.endRefreshing()
     }
     
     override func didReceiveMemoryWarning() {
@@ -62,18 +75,18 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
             let currentBudget = budgets[indexPath.row]
             cell.budgetName.text = currentBudget.getName()
             
-            var budgetRemainingString = String(describing: currentBudget.getBudgetRemaining())
+            let budgetRemainingString = String(describing: currentBudget.getBudgetRemaining())
             cell.budgetRemaining.text = "$" + budgetRemainingString;
             
             cell.budgetRemaining.textColor = UIColor.green
             
             if currentBudget.getBudgetRemaining() > 0.0 {
                 cell.budgetRemaining.textColor = UIColor.green
-                cell.backgroundColor = UIColor(red: 212.00, green: 255.00, blue: 212.00, alpha: 1.00)
+                cell.backgroundColor = UIColor(red: 212, green: 255, blue: 212, alpha: 1)
             }
             else {
                 cell.budgetRemaining.textColor = UIColor.red
-                cell.backgroundColor = UIColor(red: 255.00, green: 196.00, blue: 196.00, alpha: 1.00)
+                cell.backgroundColor = UIColor(red: 255, green: 196, blue: 196, alpha: 1)
             }
             //need to somehow draw rectangle or update progress bar (unable to access it right now)
             var floatBudgetRemaining = Float(currentBudget.getBudgetRemaining())
