@@ -14,7 +14,7 @@ class EditCategoryCell: UITableViewCell {
         // Initialization code
     }
     
-    @IBOutlet weak var catLimitLabel: UILabel!
+    @IBOutlet weak var catLimitField: UITextField!
     @IBOutlet weak var catNameLabel: UILabel!
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -26,7 +26,10 @@ class EditCategoryCell: UITableViewCell {
         
         setFont()
     }
+    @IBOutlet weak var editCategory: UIButton!
     
+    @IBAction func deleteCategory(_ sender: Any) {
+    }
     func setFont(){
        
     }
