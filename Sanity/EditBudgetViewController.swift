@@ -14,24 +14,71 @@ class EditBudgetViewController: UIViewController, UITableViewDelegate, UITableVi
     var budgetName:String?
     var userEmail:String?
     var categories = [Category]()
-    
     var budget:Budget?
+    @IBOutlet weak var budgetNameLabel: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
     
     @IBOutlet weak var categoryTableView: UITableView!
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = categoryTableView.dequeueReusableCell(withIdentifier: "cell") as! CategoryBudgetCell
+        let cell = categoryTableView.dequeueReusableCell(withIdentifier: "editCell") as! EditCategoryCell
+        
+        var catName:String = categories[indexPath.row].name
+        var catLimit:Double = categories[indexPath.row].spendingLimit
+        var catLimitString:String = String(format:"%.2f", catLimit)
+        
+        cell.setup(catName: catName, catLimit: catLimitString)
         
         return cell
     }
     
+    func setFont(){
+        budgetNameLabel.font = UIFont(name: "DidactGothic-Regular", size: 40)
+        categoryLabel.font = UIFont(name: "DidactGothic-Regular", size: 20)
+    }
     
-    @IBOutlet weak var budgetNameLabel: UILabel!
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete{
+            categories.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
+
+    }
+    
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fetchCategories()
+        
+        budgetNameLabel.text = budget?.name
+        setFont()
+        
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 54
+    }
+    
+    func fetchCategories(){
+        let collRef: CollectionReference = Firestore.firestore().collection("Users/\(userEmail!)/Budgets/\((budget?.getName())!)/Categories")
+        print("Users/\(userEmail!)/Budgets/\((budget?.getName())!)/Categories")
+        collRef.getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("In error block")
+                print(err)
+            } else {
+                print("In categories flatMap")
+                self.categories = querySnapshot!.documents.flatMap({Category(dictionary: $0.data())})
+                self.categoryTableView.reloadData()
+            }
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

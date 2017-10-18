@@ -94,18 +94,21 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let identifier = segue.identifier {
-            switch identifier {
-            case "editSeque":
+//        if let identifier = segue.identifier {
+//            switch identifier {
+//            case "editSegue":
                 let backItem = UIBarButtonItem()
                 backItem.title = "Cancel"
                 navigationItem.backBarButtonItem = backItem
-                let vc = segue.destination as? SettingsViewController
+                
+                let vc = segue.destination as? EditBudgetViewController
+                //let budget = sender as? Budget
+                vc?.budget = budget
                 vc?.userEmail = userEmail
-            default:
-                break
-            }
-        }
+//            default:
+//                break
+//            }
+//        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
