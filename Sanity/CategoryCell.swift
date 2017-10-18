@@ -30,5 +30,6 @@ class CategoryCell: UITableViewCell {
         limitTextField.placeholder = "Limit"
         limitTextField.keyboardType = UIKeyboardType.numberPad
         self.selectionStyle = UITableViewCellSelectionStyle.none
+        
     }
 }
