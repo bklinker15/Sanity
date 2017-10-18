@@ -716,7 +716,7 @@
                                 <rect key="frame" x="0.0" y="69" width="375" height="593"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="250" axis="vertical" distribution="fillProportionally" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="kZY-bz-lka">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="374"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="374.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="notification frequency:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIR-VB-SYo">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="21.5"/>
@@ -736,7 +736,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmk-Z0-KWF">
-                                                <rect key="frame" x="0.0" y="274.5" width="375" height="99.5"/>
+                                                <rect key="frame" x="0.0" y="274.5" width="375" height="100"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -747,7 +747,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Dq1-MD-CN8">
-                                        <rect key="frame" x="0.0" y="375" width="375" height="187"/>
+                                        <rect key="frame" x="0.0" y="375.5" width="375" height="186.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="new password:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18w-zq-vAU">
                                                 <rect key="frame" x="127" y="0.0" width="121" height="21.5"/>
@@ -770,7 +770,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itc-e9-ksh">
-                                                <rect key="frame" x="20" y="88.5" width="335" height="98.5"/>
+                                                <rect key="frame" x="20" y="88.5" width="335" height="98"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -807,7 +807,9 @@
                     <connections>
                         <outlet property="newPassword" destination="f8s-Jb-Pc9" id="r53-BF-kj5"/>
                         <outlet property="notificationsErrorLabel" destination="Bmk-Z0-KWF" id="ZbA-IX-Ilz"/>
+                        <outlet property="notificationsTitleLabel" destination="bIR-VB-SYo" id="qdm-vr-OQT"/>
                         <outlet property="passwordErrorLabel" destination="itc-e9-ksh" id="hnC-2Z-vwv"/>
+                        <outlet property="passwordTitleLabel" destination="18w-zq-vAU" id="ATk-5R-UtV"/>
                         <outlet property="picker" destination="9hi-RF-bV7" id="0oN-FA-BKh"/>
                         <segue destination="fPx-3H-jwL" kind="presentation" identifier="logoutSegue" animates="NO" id="1I8-6m-xld"/>
                     </connections>

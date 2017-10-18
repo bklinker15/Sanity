@@ -143,7 +143,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 vc?.userEmail = userEmail
             case "settingsSegue":
                 let backItem = UIBarButtonItem()
-                backItem.title = "Back"
+                backItem.title = "Budgets"
                 navigationItem.backBarButtonItem = backItem
                 let vc = segue.destination as? SettingsViewController
                 vc?.userEmail = userEmail

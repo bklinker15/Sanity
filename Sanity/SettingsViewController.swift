@@ -22,6 +22,8 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var newPassword: UITextField!
     @IBOutlet weak var notificationsErrorLabel: UILabel!
     @IBOutlet weak var passwordErrorLabel: UILabel!
+    @IBOutlet weak var notificationsTitleLabel: UILabel!
+    @IBOutlet weak var passwordTitleLabel: UILabel!
     
     @IBAction func updateNotifications(_ sender: UIButton) {
         let index = self.picker.selectedRow(inComponent: 0)
@@ -104,8 +106,12 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     func setFont(){
-        errorLabel.font = UIFont(name: "DidactGothic-Regular", size: 20)
-        newPassword.font = UIFont(name: "DidactGothic-Regular", size: 20)
+        notificationsErrorLabel.font = UIFont(name: "DidactGothic-Regular", size: 18)
+        notificationsTitleLabel.font = UIFont(name: "DidactGothic-Regular", size: 18)
+        passwordTitleLabel.font = UIFont(name: "DidactGothic-Regular", size: 18)
+        passwordErrorLabel.font = UIFont(name: "DidactGothic-Regular", size: 18)
+        newPassword.font = UIFont(name: "DidactGothic-Regular", size: 18)
+        passwordErrorLabel.font = UIFont(name: "DidactGothic-Regular", size: 18)
     }
     
 
