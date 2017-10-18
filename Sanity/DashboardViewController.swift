@@ -5,7 +5,6 @@
 //  Created by Jordan Coppert on 10/7/17.
 //  Copyright © 2017 CSC310Team22. All rights reserved.
 //
-
 import UIKit
 import Firebase
 class DashboardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -41,31 +40,17 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         fetchBudgets()
         tableView.reloadData()
-        tableView.refreshControl = self.refreshControl
     }
     
-    lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(handleRefresh), for: UIControlEvents.valueChanged)
-        
-        return refreshControl
-    }()
-    
-    @objc func handleRefresh(refreshControl: UIRefreshControl){
-        self.fetchBudgets()
-        refreshControl.endRefreshing()
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     // MARK: - Table view data source
-
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return budgets.count
     }
@@ -77,7 +62,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
             let currentBudget = budgets[indexPath.row]
             cell.budgetName.text = currentBudget.getName()
             
-            let budgetRemainingString = String(describing: currentBudget.getBudgetRemaining())
+            var budgetRemainingString = String(describing: currentBudget.getBudgetRemaining())
             cell.budgetRemaining.text = "$" + budgetRemainingString;
             
             cell.budgetRemaining.textColor = UIColor.green
@@ -95,7 +80,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
             floatBudgetRemaining = floatBudgetRemaining / Float(currentBudget.getTotalBudget())
             cell.progressBar.setProgress(floatBudgetRemaining, animated: false)
             
-           
+            
             //Stub for now, remember to actually calculate
             let calendar = NSCalendar.current
             
@@ -115,7 +100,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //performSegue(withIdentifier: "budgetDetail", sender: tableView.cellForRow(at: indexPath))
         
-        performSegue(withIdentifier: "budgetDetail", sender: budgets[indexPath.row])
+        performSegue(withIdentifier: "budgetDet", sender: budgets[indexPath.row])
     }
     
     func fetchBudgets(){
@@ -148,14 +133,11 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 navigationItem.backBarButtonItem = backItem
                 let vc = segue.destination as? AddBudgetViewController
                 vc?.userEmail = userEmail
-            case "settingsSegue":
-                let vc = segue.destination as? SettingsViewController
-                vc?.userEmail = userEmail
-            case "budgetDetail":
+            case "budgetDet":
                 let vc = segue.destination as? BudgetDetailViewController
-//                let cell = sender as? BudgetOverviewCell
-//                vc?.budgetName = cell?.budgetName.text!
-//                vc?.userEmail = userEmail
+                //                let cell = sender as? BudgetOverviewCell
+                //                vc?.budgetName = cell?.budgetName.text!
+                //                vc?.userEmail = userEmail
                 let budget = sender as? Budget
                 vc?.budget = budget
                 vc?.userEmail = userEmail
@@ -163,5 +145,5 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
             }
         }
     }
-
+    
 }

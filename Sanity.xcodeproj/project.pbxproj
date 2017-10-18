@@ -11,9 +11,10 @@
 		01AA355C1F91C1F600F23B37 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AA355B1F91C1F600F23B37 /* SettingsViewController.swift */; };
 		1C958C5BDD903A8BFF9E2E5D /* Pods_Sanity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C772DE7D2F5C4DC837699DC2 /* Pods_Sanity.framework */; };
 		740B9E0F1F92E7F100388C9A /* BudgetInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 740B9E0E1F92E7F100388C9A /* BudgetInfo.storyboard */; };
+		740DA1FB1F96E80D00600C67 /* DidactGothic-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 740DA1FA1F96E3D400600C67 /* DidactGothic-Regular.ttf */; };
 		7423EE851F9453DB0095722E /* budgetInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7423EE841F9453D40095722E /* budgetInfo.storyboard */; };
+		744EA2001F970CBB00120102 /* PageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744EA1FF1F970CBB00120102 /* PageVC.swift */; };
 		747AB9F21F955A2E004E3C7D /* CategoryBudgetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747AB9F11F955A2E004E3C7D /* CategoryBudgetCell.swift */; };
-		7490DCF71F95F9D700E3FDA4 /* DidactGothic-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7490DCF61F95F95B00E3FDA4 /* DidactGothic-Regular.ttf */; };
 		A0033F291F93D67100BB728F /* BudgetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0033F281F93D67100BB728F /* BudgetDetailViewController.swift */; };
 		A0033F2B1F94204900BB728F /* AddTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0033F2A1F94204900BB728F /* AddTransactionCell.swift */; };
 		A037A9D01F81BE2E00D2FA55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A037A9CF1F81BE2E00D2FA55 /* AppDelegate.swift */; };
@@ -38,9 +39,10 @@
 		01AA355B1F91C1F600F23B37 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		083E82D98C88E70BD3D26AAE /* Pods-Sanity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sanity.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sanity/Pods-Sanity.release.xcconfig"; sourceTree = "<group>"; };
 		740B9E0E1F92E7F100388C9A /* BudgetInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BudgetInfo.storyboard; sourceTree = "<group>"; };
+		740DA1FA1F96E3D400600C67 /* DidactGothic-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DidactGothic-Regular.ttf"; path = "../../../Desktop/DidactGothic-Regular.ttf"; sourceTree = "<group>"; };
 		7423EE841F9453D40095722E /* budgetInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = budgetInfo.storyboard; path = Base.lproj/budgetInfo.storyboard; sourceTree = "<group>"; };
+		744EA1FF1F970CBB00120102 /* PageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageVC.swift; sourceTree = "<group>"; };
 		747AB9F11F955A2E004E3C7D /* CategoryBudgetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBudgetCell.swift; sourceTree = "<group>"; };
-		7490DCF61F95F95B00E3FDA4 /* DidactGothic-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DidactGothic-Regular.ttf"; path = "../../../Downloads/Didact_Gothic/DidactGothic-Regular.ttf"; sourceTree = "<group>"; };
 		A0033F281F93D67100BB728F /* BudgetDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDetailViewController.swift; sourceTree = "<group>"; };
 		A0033F2A1F94204900BB728F /* AddTransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionCell.swift; sourceTree = "<group>"; };
 		A037A9CC1F81BE2E00D2FA55 /* Sanity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sanity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,7 +89,7 @@
 		7490DCF51F95F93A00E3FDA4 /* New Group */ = {
 			isa = PBXGroup;
 			children = (
-				7490DCF61F95F95B00E3FDA4 /* DidactGothic-Regular.ttf */,
+				740DA1FA1F96E3D400600C67 /* DidactGothic-Regular.ttf */,
 			);
 			name = "New Group";
 			sourceTree = "<group>";
@@ -126,14 +128,15 @@
 				740B9E0E1F92E7F100388C9A /* BudgetInfo.storyboard */,
 				A0688C701F89A01500E4EA14 /* BudgetOverviewCell.swift */,
 				A056C4E51F91854F0071E242 /* Category.swift */,
-				D0EA5BB31F8C372500D5F99E /* CategoryCell.swift */,
 				747AB9F11F955A2E004E3C7D /* CategoryBudgetCell.swift */,
+				D0EA5BB31F8C372500D5F99E /* CategoryCell.swift */,
 				A0765C5F1F8A02B2002C603E /* DashboardViewController.swift */,
 				A0851DDC1F8C657B003357F7 /* FirestoreSerializable.swift */,
 				D043DE231F8764ED00E9A870 /* GoogleService-Info.plist */,
 				A037A9DB1F81BE2E00D2FA55 /* Info.plist */,
 				A037A9D81F81BE2E00D2FA55 /* LaunchScreen.storyboard */,
 				A037A9D31F81BE2E00D2FA55 /* Main.storyboard */,
+				744EA1FF1F970CBB00120102 /* PageVC.swift */,
 				0126E55C1F95204700F64EBB /* ResetEnums.swift */,
 				01AA355B1F91C1F600F23B37 /* SettingsViewController.swift */,
 				A056C4E31F9185410071E242 /* Transaction.swift */,
@@ -212,7 +215,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7490DCF71F95F9D700E3FDA4 /* DidactGothic-Regular.ttf in Resources */,
+				740DA1FB1F96E80D00600C67 /* DidactGothic-Regular.ttf in Resources */,
 				A037A9DA1F81BE2E00D2FA55 /* LaunchScreen.storyboard in Resources */,
 				D043DE241F8764ED00E9A870 /* GoogleService-Info.plist in Resources */,
 				740B9E0F1F92E7F100388C9A /* BudgetInfo.storyboard in Resources */,
@@ -305,6 +308,7 @@
 				A0033F291F93D67100BB728F /* BudgetDetailViewController.swift in Sources */,
 				A087801A1F8B045800F6AB15 /* Budget.swift in Sources */,
 				A0688C711F89A01500E4EA14 /* BudgetOverviewCell.swift in Sources */,
+				744EA2001F970CBB00120102 /* PageVC.swift in Sources */,
 				D043DE221F8753D900E9A870 /* AuthViewController.swift in Sources */,
 				A056C4E41F9185410071E242 /* Transaction.swift in Sources */,
 				A0033F2B1F94204900BB728F /* AddTransactionCell.swift in Sources */,
