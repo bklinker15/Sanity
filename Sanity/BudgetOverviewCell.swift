@@ -18,9 +18,16 @@ class BudgetOverviewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        
+        setFonts()
         // Initialization code
     }
-
+    func setFonts(){
+        budgetName.font = UIFont(name: "DidactGothic-Regular", size: 20)
+        daysUntilReset.font = UIFont(name: "DidactGothic-Regular", size: 20)
+        budgetRemaining.font = UIFont(name: "DidactGothic-Regular", size: 20)
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
