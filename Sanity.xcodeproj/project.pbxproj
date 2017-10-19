@@ -9,9 +9,10 @@
 /* Begin PBXBuildFile section */
 		0126E55D1F95204700F64EBB /* ResetEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0126E55C1F95204700F64EBB /* ResetEnums.swift */; };
 		01AA355C1F91C1F600F23B37 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AA355B1F91C1F600F23B37 /* SettingsViewController.swift */; };
+		01DE4F201F988083006575AF /* DidactGothic-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01DE4F1F1F98804A006575AF /* DidactGothic-Regular.ttf */; };
+		01DE4F2C1F988197006575AF /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE4F271F988107006575AF /* Charts.framework */; };
 		1C958C5BDD903A8BFF9E2E5D /* Pods_Sanity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C772DE7D2F5C4DC837699DC2 /* Pods_Sanity.framework */; };
 		740B9E0F1F92E7F100388C9A /* BudgetInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 740B9E0E1F92E7F100388C9A /* BudgetInfo.storyboard */; };
-		741C85281F97F29000539B6C /* DidactGothic-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 741C85271F97F22400539B6C /* DidactGothic-Regular.ttf */; };
 		741C852A1F97FDB800539B6C /* EditCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741C85291F97FDB800539B6C /* EditCategoryCell.swift */; };
 		7423EE851F9453DB0095722E /* budgetInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7423EE841F9453D40095722E /* budgetInfo.storyboard */; };
 		747AB9F21F955A2E004E3C7D /* CategoryBudgetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747AB9F11F955A2E004E3C7D /* CategoryBudgetCell.swift */; };
@@ -35,12 +36,30 @@
 		D0EA5BB41F8C372500D5F99E /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA5BB31F8C372500D5F99E /* CategoryCell.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		01DE4F261F988107006575AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01DE4F211F988106006575AF /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
+			remoteInfo = Charts;
+		};
+		01DE4F281F988107006575AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01DE4F211F988106006575AF /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
+			remoteInfo = ChartsTests;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		0126E55C1F95204700F64EBB /* ResetEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetEnums.swift; sourceTree = "<group>"; };
 		01AA355B1F91C1F600F23B37 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		01DE4F1F1F98804A006575AF /* DidactGothic-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DidactGothic-Regular.ttf"; path = "../../../../Desktop/DidactGothic-Regular.ttf"; sourceTree = "<group>"; };
+		01DE4F211F988106006575AF /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../../../Downloads/Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
 		083E82D98C88E70BD3D26AAE /* Pods-Sanity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sanity.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sanity/Pods-Sanity.release.xcconfig"; sourceTree = "<group>"; };
 		740B9E0E1F92E7F100388C9A /* BudgetInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BudgetInfo.storyboard; sourceTree = "<group>"; };
-		741C85271F97F22400539B6C /* DidactGothic-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DidactGothic-Regular.ttf"; path = "../../../Desktop/DidactGothic-Regular.ttf"; sourceTree = "<group>"; };
 		741C85291F97FDB800539B6C /* EditCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryCell.swift; sourceTree = "<group>"; };
 		7423EE841F9453D40095722E /* budgetInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = budgetInfo.storyboard; path = Base.lproj/budgetInfo.storyboard; sourceTree = "<group>"; };
 		747AB9F11F955A2E004E3C7D /* CategoryBudgetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBudgetCell.swift; sourceTree = "<group>"; };
@@ -73,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01DE4F2C1F988197006575AF /* Charts.framework in Frameworks */,
 				1C958C5BDD903A8BFF9E2E5D /* Pods_Sanity.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -80,9 +100,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01DE4F221F988106006575AF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				01DE4F271F988107006575AF /* Charts.framework */,
+				01DE4F291F988107006575AF /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		05F1D0F25378F50DE09A2011 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				01DE4F211F988106006575AF /* Charts.xcodeproj */,
 				C772DE7D2F5C4DC837699DC2 /* Pods_Sanity.framework */,
 			);
 			name = Frameworks;
@@ -91,7 +121,7 @@
 		7490DCF51F95F93A00E3FDA4 /* New Group */ = {
 			isa = PBXGroup;
 			children = (
-				741C85271F97F22400539B6C /* DidactGothic-Regular.ttf */,
+				01DE4F1F1F98804A006575AF /* DidactGothic-Regular.ttf */,
 			);
 			name = "New Group";
 			sourceTree = "<group>";
@@ -206,6 +236,12 @@
 			mainGroup = A037A9C31F81BE2E00D2FA55;
 			productRefGroup = A037A9CD1F81BE2E00D2FA55 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 01DE4F221F988106006575AF /* Products */;
+					ProjectRef = 01DE4F211F988106006575AF /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				A037A9CB1F81BE2E00D2FA55 /* Sanity */,
@@ -213,13 +249,30 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		01DE4F271F988107006575AF /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 01DE4F261F988107006575AF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		01DE4F291F988107006575AF /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = 01DE4F281F988107006575AF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		A037A9CA1F81BE2E00D2FA55 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				741C85281F97F29000539B6C /* DidactGothic-Regular.ttf in Resources */,
 				A037A9DA1F81BE2E00D2FA55 /* LaunchScreen.storyboard in Resources */,
+				01DE4F201F988083006575AF /* DidactGothic-Regular.ttf in Resources */,
 				D043DE241F8764ED00E9A870 /* GoogleService-Info.plist in Resources */,
 				740B9E0F1F92E7F100388C9A /* BudgetInfo.storyboard in Resources */,
 				A037A9D71F81BE2E00D2FA55 /* Assets.xcassets in Resources */,
@@ -239,6 +292,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Sanity/Pods-Sanity-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
@@ -252,6 +306,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",

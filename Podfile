@@ -9,4 +9,5 @@ target 'Sanity' do
   pod 'Firebase'
   pod 'FirebaseAuth'
   pod 'Firebase/Firestore'
+  pod 'Charts'
 end
