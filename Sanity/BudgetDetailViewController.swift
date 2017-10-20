@@ -23,10 +23,7 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
     
     @IBOutlet weak var daysLeftLabel: UILabel!
     @IBOutlet weak var daysLeft: UILabel!
-    @IBOutlet weak var budgetProgress: UIProgressView!
-    @IBOutlet weak var budgetLimitLabel: UILabel!
-    @IBOutlet weak var fundsSpentLabel: UILabel!
-    @IBOutlet weak var remainingFundsLabel: UILabel!
+    @IBOutlet weak var budgetLeftLabel: UILabel!
     @IBOutlet weak var pieChart: PieChartView!
 
     @IBOutlet weak var categoryTableView: UITableView!
@@ -44,10 +41,12 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
         
         let spentEntry = PieChartDataEntry(value: Double(fundsSpent), label: "Spent")
         let remainingEntry = PieChartDataEntry(value: Double(remainingFunds), label: "Remaining")
-        let dataSet = PieChartDataSet(values: [spentEntry, remainingEntry], label: "Widget Types")
+        let dataSet = PieChartDataSet(values: [spentEntry, remainingEntry], label: "")
+        dataSet.colors = ChartColorTemplates.joyful()
+        dataSet.valueColors = [UIColor.black]
         let data = PieChartData(dataSet: dataSet)
         pieChart.data = data
-        pieChart.chartDescription?.text = "Share of Widgets by Type"
+        pieChart.chartDescription?.text = "Progress"
         
         //This must stay at end
         pieChart.notifyDataSetChanged()
@@ -68,19 +67,14 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
         
         let budgetLimitString:String = String(format:"%.2f", budgetLimit )
         let remainingFundsString:String = String(format:"%.2f", remainingFunds )
-        let fundsSpentString:String = String(format:"%.2f", fundsSpent )
+        //let fundsSpentString:String = String(format:"%.2f", fundsSpent )
         
-        budgetLimitLabel.text = "Budget Limit: " + budgetLimitString
-        fundsSpentLabel.text = "Funds spent so far: " + fundsSpentString
-        remainingFundsLabel.text = "Remaining funds: " + remainingFundsString
+        categoryTableView.delegate = self
+        categoryTableView.dataSource = self
+        budgetLeftLabel.text = remainingFundsString + " remaining of " + budgetLimitString
+//        fundsSpentLabel.text = "Funds spent so far: " + fundsSpentString
+//        remainingFundsLabel.text = "Remaining funds: " + remainingFundsString
         
-        
-        var percent:Float = Float(fundsSpent/budgetLimit)
-        if percent >= 1.0{
-            percent = 1.0
-        }
-        budgetProgress.progress = percent
-        pieChartUpdate()
         
         //days reset
         let calendar = NSCalendar.current
@@ -100,6 +94,7 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
 
         fetchCategories()
         print(categories.count)
+        pieChartUpdate()
     }
    
     override func didReceiveMemoryWarning() {
@@ -111,31 +106,29 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func setFonts(){
-        budgetLimitLabel.font = UIFont(name: "DidactGothic-Regular", size: 20)
-        daysLeftLabel.font = UIFont(name: "DidactGothic-Regular", size: 20)
-        remainingFundsLabel.font = UIFont(name: "DidactGothic-Regular", size: 20)
-        fundsSpentLabel.font = UIFont(name: "DidactGothic-Regular", size: 20)
-        budgetNameLabel.font = UIFont(name: "DidactGothic-Regular", size: 40)
+        budgetLeftLabel.font = UIFont(name: "DidactGothic-Regular", size: 15)
+        daysLeftLabel.font = UIFont(name: "DidactGothic-Regular", size: 15)
+        budgetNameLabel.font = UIFont(name: "DidactGothic-Regular", size: 20)
 
    
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let identifier = segue.identifier {
-//            switch identifier {
-//            case "editSegue":
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "editSegue":
                 let backItem = UIBarButtonItem()
                 backItem.title = "Cancel"
                 navigationItem.backBarButtonItem = backItem
                 
                 let vc = segue.destination as? EditBudgetViewController
-                //let budget = sender as? Budget
+                let budget = sender as? Budget
                 vc?.budget = budget
                 vc?.userEmail = userEmail
-//            default:
-//                break
-//            }
-//        }
+            default:
+                break
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -143,19 +136,19 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = categoryTableView.dequeueReusableCell(withIdentifier: "cell") as! CategoryBudgetCell
+        var cell = categoryTableView.dequeueReusableCell(withIdentifier: "cell") as! CategoryBudgetCell
         
         
         
-        let catName:String = categories[indexPath.row].name
+        var catName:String = categories[indexPath.row].name
 
-        let catLimit:Double = categories[indexPath.row].spendingLimit
-        let catSpent:Double = categories[indexPath.row].amountSpent
-        let catRemaining:Double = catLimit - catSpent
+        var catLimit:Double = categories[indexPath.row].spendingLimit
+        var catSpent:Double = categories[indexPath.row].amountSpent
+        var catRemaining:Double = catLimit - catSpent
         
-        let catLimitString:String = String(format: "%.2f", catLimit)
-        let catSpentString:String = String(format: "%.2f", catSpent)
-        let catRemainingString:String = String(format: "%.2f", catRemaining)
+        var catLimitString:String = String(format: "%.2f", catLimit)
+        var catSpentString:String = String(format: "%.2f", catSpent)
+        var catRemainingString:String = String(format: "%.2f", catRemaining)
         
         var percent:Float = Float(catSpent/catLimit)
         if (percent >= 1.0){
