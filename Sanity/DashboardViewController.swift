@@ -68,16 +68,14 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         return budgets.count
     }
     
-    //Currently
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let dequeued = tableView.dequeueReusableCell(withIdentifier: "budget", for: indexPath)
         if let cell = dequeued as? BudgetOverviewCell {
             let currentBudget = budgets[indexPath.row]
             cell.budgetName.text = currentBudget.getName()
             
-            let budgetRemainingString = String(describing: currentBudget.getBudgetRemaining())
-            cell.budgetRemaining.text = "$" + budgetRemainingString;
-            
+            cell.budgetRemaining.text = "$" + String(format: "%.2f", currentBudget.getBudgetRemaining());
+         
             cell.budgetRemaining.textColor = UIColor.green
             
             if currentBudget.getBudgetRemaining() > 0.0 {
@@ -88,13 +86,11 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 cell.budgetRemaining.textColor = UIColor.red
                 cell.backgroundColor = UIColor(red: 255, green: 196, blue: 196, alpha: 1)
             }
-            //need to somehow draw rectangle or update progress bar (unable to access it right now)
             var floatBudgetRemaining = Float(currentBudget.getBudgetRemaining())
             floatBudgetRemaining = floatBudgetRemaining / Float(currentBudget.getTotalBudget())
             cell.progressBar.setProgress(floatBudgetRemaining, animated: false)
             
             
-            //Stub for now, remember to actually calculate
             let calendar = NSCalendar.current
             
             // Replace the hour (time) of both dates with 00:00
