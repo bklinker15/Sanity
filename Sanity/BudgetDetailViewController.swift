@@ -27,8 +27,31 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet weak var budgetLimitLabel: UILabel!
     @IBOutlet weak var fundsSpentLabel: UILabel!
     @IBOutlet weak var remainingFundsLabel: UILabel!
+    @IBOutlet weak var pieChart: PieChartView!
 
     @IBOutlet weak var categoryTableView: UITableView!
+    
+    //call when any values change within a budget
+    @IBAction func renderCharts() {
+        pieChartUpdate()
+    }
+    
+    func pieChartUpdate () {
+        //update this later to show category dispersion
+        let budgetLimit:Double = (budget?.totalBudget)!
+        let remainingFunds:Double = (budget?.budgetRemaining)!
+        let fundsSpent:Double = budgetLimit-remainingFunds
+        
+        let spentEntry = PieChartDataEntry(value: Double(fundsSpent), label: "Spent")
+        let remainingEntry = PieChartDataEntry(value: Double(remainingFunds), label: "Remaining")
+        let dataSet = PieChartDataSet(values: [spentEntry, remainingEntry], label: "Widget Types")
+        let data = PieChartData(dataSet: dataSet)
+        pieChart.data = data
+        pieChart.chartDescription?.text = "Share of Widgets by Type"
+        
+        //This must stay at end
+        pieChart.notifyDataSetChanged()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,16 +59,16 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
         
         budgetNameLabel.text = budget?.name
         
-        var budgetLimit:Double = (budget?.totalBudget)!
-        var remainingFunds:Double = (budget?.budgetRemaining)!
+        let budgetLimit:Double = (budget?.totalBudget)!
+        let remainingFunds:Double = (budget?.budgetRemaining)!
         var fundsSpent:Double = budgetLimit-remainingFunds
         if (fundsSpent < 0){
             fundsSpent = fundsSpent * -1
         }
         
-        var budgetLimitString:String = String(format:"%.2f", budgetLimit )
-        var remainingFundsString:String = String(format:"%.2f", remainingFunds )
-        var fundsSpentString:String = String(format:"%.2f", fundsSpent )
+        let budgetLimitString:String = String(format:"%.2f", budgetLimit )
+        let remainingFundsString:String = String(format:"%.2f", remainingFunds )
+        let fundsSpentString:String = String(format:"%.2f", fundsSpent )
         
         budgetLimitLabel.text = "Budget Limit: " + budgetLimitString
         fundsSpentLabel.text = "Funds spent so far: " + fundsSpentString
@@ -57,7 +80,7 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
             percent = 1.0
         }
         budgetProgress.progress = percent
-        
+        pieChartUpdate()
         
         //days reset
         let calendar = NSCalendar.current
@@ -68,7 +91,7 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
         
         let components = calendar.dateComponents([.day], from: date1, to: date2)
         
-        var days:String = (String(describing: components.day!))
+        let days:String = (String(describing: components.day!))
         if (Int(days)! > 0){
             daysLeftLabel.text = days + " days until reset"
         } else{
@@ -124,15 +147,15 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
         
         
         
-        var catName:String = categories[indexPath.row].name
+        let catName:String = categories[indexPath.row].name
 
-        var catLimit:Double = categories[indexPath.row].spendingLimit
-        var catSpent:Double = categories[indexPath.row].amountSpent
-        var catRemaining:Double = catLimit - catSpent
+        let catLimit:Double = categories[indexPath.row].spendingLimit
+        let catSpent:Double = categories[indexPath.row].amountSpent
+        let catRemaining:Double = catLimit - catSpent
         
-        var catLimitString:String = String(format: "%.2f", catLimit)
-        var catSpentString:String = String(format: "%.2f", catSpent)
-        var catRemainingString:String = String(format: "%.2f", catRemaining)
+        let catLimitString:String = String(format: "%.2f", catLimit)
+        let catSpentString:String = String(format: "%.2f", catSpent)
+        let catRemainingString:String = String(format: "%.2f", catRemaining)
         
         var percent:Float = Float(catSpent/catLimit)
         if (percent >= 1.0){

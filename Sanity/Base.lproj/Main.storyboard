@@ -449,6 +449,11 @@
                                     <segue destination="guR-BK-8jQ" kind="show" identifier="editSeque" id="RcH-YN-o45"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9q3-4Z-Hnf" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="119" y="163" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.80169546339999997" green="0.97353053919999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="uVr-ex-xh6"/>
@@ -458,8 +463,10 @@
                         <outlet property="budgetNameLabel" destination="Owm-aG-fEv" id="c9Y-ek-FOL"/>
                         <outlet property="budgetProgress" destination="8ns-Ei-eQD" id="EHi-0K-Dm5"/>
                         <outlet property="categoryTableView" destination="j61-zQ-0pl" id="TKs-iA-JtC"/>
+                        <outlet property="daysLeft" destination="mxO-Be-JeZ" id="ngY-r2-UBr"/>
                         <outlet property="daysLeftLabel" destination="mxO-Be-JeZ" id="RJZ-7H-wwH"/>
                         <outlet property="fundsSpentLabel" destination="EHA-CN-gPy" id="G4L-s8-78C"/>
+                        <outlet property="pieChart" destination="9q3-4Z-Hnf" id="D57-aY-7rv"/>
                         <outlet property="remainingFundsLabel" destination="HZV-f4-8hK" id="ZGh-GZ-IUl"/>
                     </connections>
                 </viewController>
