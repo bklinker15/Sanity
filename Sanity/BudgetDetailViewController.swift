@@ -7,6 +7,7 @@
 //
 import UIKit
 import Firebase
+import Charts
 
 class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
@@ -68,11 +69,14 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
         let components = calendar.dateComponents([.day], from: date1, to: date2)
         
         var days:String = (String(describing: components.day!))
-        daysLeftLabel.text =  days + " left until the budget will reset."
+        if (Int(days)! > 0){
+            daysLeftLabel.text = days + " days until reset"
+        } else{
+            daysLeftLabel.text = "last day before reset"
+        }
 
         fetchCategories()
         print(categories.count)
-        
     }
    
     override func didReceiveMemoryWarning() {
