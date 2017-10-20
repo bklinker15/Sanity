@@ -42,45 +42,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sanity/EditBudgetViewController.swift"
-            timestampString = "530063510.268119"
+            timestampString = "530171036.418179"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "didReceiveMemoryWarning()"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "fetchCategories()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sanity/EditBudgetViewController.swift"
-            timestampString = "530063510.268597"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sanity/EditBudgetViewController.swift"
-            timestampString = "530063510.268739"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sanity.EditBudgetViewController.fetchCategories() -&gt; ()"
+                  moduleName = "Sanity"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/katiewasserman/Documents/Sanity/Sanity/EditBudgetViewController.swift"
+                  timestampString = "530171036.586534"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "2708">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__ObjC.QuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Sanity.EditBudgetViewController.fetchCategories() -&gt; ()"
+                  moduleName = "Sanity"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/katiewasserman/Documents/Sanity/Sanity/EditBudgetViewController.swift"
+                  timestampString = "530171036.588019"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "1232">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -112,6 +112,102 @@
             startingLineNumber = "31"
             endingLineNumber = "31"
             landmarkName = "setup(catName:catLimit:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sanity/DashboardViewController.swift"
+            timestampString = "530166677.118365"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sanity/DashboardViewController.swift"
+            timestampString = "530166677.11849"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "addButtonPress(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sanity.DashboardViewController.addButtonPress(Any) -&gt; ()"
+                  moduleName = "Sanity"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/katiewasserman/Documents/Sanity/Sanity/DashboardViewController.swift"
+                  timestampString = "530171036.599485"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "380">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (__ObjC.UIAlertAction) -&gt; () in Sanity.DashboardViewController.addButtonPress(Any) -&gt; ()"
+                  moduleName = "Sanity"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/katiewasserman/Documents/Sanity/Sanity/DashboardViewController.swift"
+                  timestampString = "530171036.600834"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sanity/DashboardViewController.swift"
+            timestampString = "530166677.118547"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "addButtonPress(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sanity/EditBudgetViewController.swift"
+            timestampString = "530171036.41862"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "tableView(_:commit:forRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

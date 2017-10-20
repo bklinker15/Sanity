@@ -26,7 +26,6 @@ class EditCategoryCell: UITableViewCell {
     public func setup(catName:String, catLimit: String){
         catNameField.text = catName
         catLimitField.text = catLimit
-        
         catNameField.isUserInteractionEnabled = false
         catLimitField.isUserInteractionEnabled = false
         
@@ -34,7 +33,6 @@ class EditCategoryCell: UITableViewCell {
     }
 
     @IBAction func editCategory(_ sender: UIButton) {
-        catNameField.isUserInteractionEnabled = true
         catLimitField.isUserInteractionEnabled = true
     }
     

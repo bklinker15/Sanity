@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		0126E55D1F95204700F64EBB /* ResetEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0126E55C1F95204700F64EBB /* ResetEnums.swift */; };
 		01AA355C1F91C1F600F23B37 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AA355B1F91C1F600F23B37 /* SettingsViewController.swift */; };
-		01DE4F201F988083006575AF /* DidactGothic-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01DE4F1F1F98804A006575AF /* DidactGothic-Regular.ttf */; };
 		01DE4F2C1F988197006575AF /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE4F271F988107006575AF /* Charts.framework */; };
 		1C958C5BDD903A8BFF9E2E5D /* Pods_Sanity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C772DE7D2F5C4DC837699DC2 /* Pods_Sanity.framework */; };
 		740B9E0F1F92E7F100388C9A /* BudgetInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 740B9E0E1F92E7F100388C9A /* BudgetInfo.storyboard */; };
 		741C852A1F97FDB800539B6C /* EditCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741C85291F97FDB800539B6C /* EditCategoryCell.swift */; };
 		7423EE851F9453DB0095722E /* budgetInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7423EE841F9453D40095722E /* budgetInfo.storyboard */; };
+		743D203C1F99A04B003D72C9 /* DidactGothic-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 743D203B1F99A009003D72C9 /* DidactGothic-Regular.ttf */; };
 		747AB9F21F955A2E004E3C7D /* CategoryBudgetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747AB9F11F955A2E004E3C7D /* CategoryBudgetCell.swift */; };
 		747E37B91F97E8F900B5ABF8 /* EditBudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747E37B81F97E8F900B5ABF8 /* EditBudgetViewController.swift */; };
 		A0033F291F93D67100BB728F /* BudgetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0033F281F93D67100BB728F /* BudgetDetailViewController.swift */; };
@@ -56,12 +56,12 @@
 /* Begin PBXFileReference section */
 		0126E55C1F95204700F64EBB /* ResetEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetEnums.swift; sourceTree = "<group>"; };
 		01AA355B1F91C1F600F23B37 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		01DE4F1F1F98804A006575AF /* DidactGothic-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DidactGothic-Regular.ttf"; path = "../../../../Desktop/DidactGothic-Regular.ttf"; sourceTree = "<group>"; };
 		01DE4F211F988106006575AF /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../../../Downloads/Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
 		083E82D98C88E70BD3D26AAE /* Pods-Sanity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sanity.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sanity/Pods-Sanity.release.xcconfig"; sourceTree = "<group>"; };
 		740B9E0E1F92E7F100388C9A /* BudgetInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BudgetInfo.storyboard; sourceTree = "<group>"; };
 		741C85291F97FDB800539B6C /* EditCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryCell.swift; sourceTree = "<group>"; };
 		7423EE841F9453D40095722E /* budgetInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = budgetInfo.storyboard; path = Base.lproj/budgetInfo.storyboard; sourceTree = "<group>"; };
+		743D203B1F99A009003D72C9 /* DidactGothic-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DidactGothic-Regular.ttf"; path = "../../Desktop/DidactGothic-Regular.ttf"; sourceTree = "<group>"; };
 		747AB9F11F955A2E004E3C7D /* CategoryBudgetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBudgetCell.swift; sourceTree = "<group>"; };
 		747E37B81F97E8F900B5ABF8 /* EditBudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBudgetViewController.swift; sourceTree = "<group>"; };
 		A0033F281F93D67100BB728F /* BudgetDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDetailViewController.swift; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 		7490DCF51F95F93A00E3FDA4 /* New Group */ = {
 			isa = PBXGroup;
 			children = (
-				01DE4F1F1F98804A006575AF /* DidactGothic-Regular.ttf */,
+				743D203B1F99A009003D72C9 /* DidactGothic-Regular.ttf */,
 			);
 			name = "New Group";
 			sourceTree = "<group>";
@@ -271,8 +271,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				743D203C1F99A04B003D72C9 /* DidactGothic-Regular.ttf in Resources */,
 				A037A9DA1F81BE2E00D2FA55 /* LaunchScreen.storyboard in Resources */,
-				01DE4F201F988083006575AF /* DidactGothic-Regular.ttf in Resources */,
 				D043DE241F8764ED00E9A870 /* GoogleService-Info.plist in Resources */,
 				740B9E0F1F92E7F100388C9A /* BudgetInfo.storyboard in Resources */,
 				A037A9D71F81BE2E00D2FA55 /* Assets.xcassets in Resources */,
@@ -519,7 +519,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A2PH6V2VJ2;
+				DEVELOPMENT_TEAM = VNPFXH73M5;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -532,7 +532,7 @@
 				INFOPLIST_FILE = Sanity/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cs310.team22.Sanity;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cs310.team22.Sanit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -547,7 +547,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A2PH6V2VJ2;
+				DEVELOPMENT_TEAM = VNPFXH73M5;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -560,7 +560,7 @@
 				INFOPLIST_FILE = Sanity/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cs310.team22.Sanity;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cs310.team22.Sanit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;

@@ -18,7 +18,12 @@ class EditBudgetViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var budgetNameLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     
+    
+    
     @IBOutlet weak var categoryTableView: UITableView!
+    
+    
+    var docRef:DocumentReference!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories.count
@@ -43,12 +48,21 @@ class EditBudgetViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete{
+            deleteCat(catName:categories[indexPath.row].name)
             categories.remove(at: indexPath.row)
             tableView.reloadData()
         }
 
     }
     
+    func deleteCat(catName:String){
+        //var ref: DocumentReference?? = nil
+    
+        docRef = Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document((budget?.name)!).collection("Categories").document(catName)
+            
+        docRef.delete()
+        
+    }
     
 
     override func viewDidLoad() {

@@ -137,6 +137,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 let vc = segue.destination as? AddTransactionViewController
                 vc?.userEmail = userEmail
             case "addBudgetSegue":
+                print("here")
                 let backItem = UIBarButtonItem()
                 backItem.title = "Cancel"
                 navigationItem.backBarButtonItem = backItem
