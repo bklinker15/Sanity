@@ -17,7 +17,7 @@ class EditBudgetViewController: UIViewController, UITableViewDelegate, UITableVi
     var budget:Budget?
     @IBOutlet weak var budgetNameLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
-    
+    var numRows:Int!
     
     
     @IBOutlet weak var categoryTableView: UITableView!
@@ -26,18 +26,25 @@ class EditBudgetViewController: UIViewController, UITableViewDelegate, UITableVi
     var docRef:DocumentReference!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categories.count
+        var v:String = String(numRows)
+        print("number of robs" + v)
+        return 15
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = categoryTableView.dequeueReusableCell(withIdentifier: "editCell") as! EditCategoryCell
-        
-        var catName:String = categories[indexPath.row].name
-        var catLimit:Double = categories[indexPath.row].spendingLimit
-        var catLimitString:String = String(format:"%.2f", catLimit)
-        
-        cell.setup(catName: catName, catLimit: catLimitString)
-        
+        if indexPath.row < categories.count{
+            var catName:String = categories[indexPath.row].name
+            var catLimit:Double = categories[indexPath.row].spendingLimit
+            var catLimitString:String = String(format:"%.2f", catLimit)
+            cell.setup(catName: catName, catLimit: catLimitString,budName:(budget?.name)!, email:userEmail!, cat: categories[indexPath.row])
+        } else {
+            let p = [String]()
+            let category = Category(name: "", paymentMethods: p, spendingLimit: 0.0, amountSpent: 0.0)
+            
+            cell.setup(catName:"", catLimit:"", budName:(budget?.name)!, email:userEmail!, cat: category)
+        }
+
         return cell
     }
     
@@ -48,9 +55,16 @@ class EditBudgetViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete{
-            deleteCat(catName:categories[indexPath.row].name)
-            categories.remove(at: indexPath.row)
-            tableView.reloadData()
+            print (indexPath.row)
+            if indexPath.row >= numRows-1{
+                numRows = numRows - 1
+                categoryTableView.reloadData()
+            }
+            else{
+                deleteCat(catName:categories[indexPath.row].name)
+                categories.remove(at: indexPath.row)
+                tableView.reloadData()
+            }
         }
 
     }
@@ -69,15 +83,20 @@ class EditBudgetViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         
         fetchCategories()
-        
         budgetNameLabel.text = budget?.name
         setFont()
-        
         
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 54
+        var rowHeight:CGFloat
+        if (indexPath.row >= numRows){
+            rowHeight = 0
+        } else{
+            rowHeight = 54
+        }
+        
+        return rowHeight
     }
     
     func fetchCategories(){
@@ -99,6 +118,9 @@ class EditBudgetViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func addCategory(_ sender: Any) {
+        numRows = numRows + 1
+        categoryTableView.reloadData()
+        
     }
     
     
