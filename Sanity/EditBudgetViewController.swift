@@ -9,8 +9,10 @@
 import UIKit
 import Firebase
 
-class EditBudgetViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class EditBudgetViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource {
+
     
+  var resetPeriods = ["Never", "Daily", "Weekly", "Bi-Weekly", "Monthly", "Semi-Annually", "Annually"]
     var budgetName:String?
     var userEmail:String?
     var categories = [Category]()
@@ -18,18 +20,68 @@ class EditBudgetViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var budgetNameLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     var numRows:Int!
+    var resetInterval = 0
     
     
     @IBOutlet weak var categoryTableView: UITableView!
     
+    @IBOutlet weak var budgetPicker: UIPickerView!
     
     var docRef:DocumentReference!
     
+    @IBOutlet weak var resetBudgetPeriod: UIButton!
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var v:String = String(numRows)
         print("number of robs" + v)
         return 15
     }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return resetPeriods[row]
+    }
+    
+    @IBAction func resetPeriod(_ sender: Any) {
+        var df:DocumentReference
+        
+        let budg = Budget(name: (budget?.name)!, resetDate: (budget?.resetDate)!, lastReset: (budget?.lastReset)!, resetInterval: self.resetInterval,
+                          totalBudget: (budget?.totalBudget)!, budgetRemaining: (budget?.budgetRemaining)!, previousBudgetRemains: (budget?.previousBudgetRemains)!, previousBudgetLimits:(budget?.previousBudgetLimits)!)
+        
+        
+        df = Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document((budget?.name)!)
+        
+        df.delete()
+        
+        Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document(budg.name).setData(budg.dictionary)
+        
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        guard let reset = ResetEnum(rawValue: resetPeriods[row]) else { return }
+        switch reset {
+        case .Never:
+            resetInterval = 0
+        case .Daily:
+            resetInterval = 1
+        case .Weekly:
+            resetInterval = 7
+        case .BiWeekly:
+            resetInterval = 14
+        case .Monthly:
+            resetInterval = 31
+        case .SemiAnnually:
+            resetInterval = 178
+        case .Annually:
+            resetInterval = 356
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return resetPeriods.count
+    }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = categoryTableView.dequeueReusableCell(withIdentifier: "editCell") as! EditCategoryCell
