@@ -114,22 +114,30 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-  //      if let identifier = segue.identifier {
-//            switch identifier {
-//            case "editSegue":
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "editSegue":
                 let backItem = UIBarButtonItem()
                 backItem.title = "Budgets"
                 navigationItem.backBarButtonItem = backItem
                 
                 let vc = segue.destination as? EditBudgetViewController
-                //let budget = sender as? Budget
-                vc?.budget = budget
-                vc?.userEmail = userEmail
-                vc?.numRows = categories.count
-//            default:
-//                break
-//            }
- //       }
+                vc?.budget = self.budget
+                vc?.userEmail = self.userEmail
+                vc?.numRows = self.categories.count
+            case "historySegue":
+                let backItem = UIBarButtonItem()
+                backItem.title = "Budget Detail"
+                navigationItem.backBarButtonItem = backItem
+                
+                let vc = segue.destination as? BudgetHistoryViewController
+                vc?.budget = self.budget
+                vc?.budgetName = self.budget?.name
+                vc?.userEmail = self.userEmail
+            default:
+                break
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -176,15 +184,6 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
             }
         }
     }
-    
-    /*
-     // MARK: - Navigation
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
 
