@@ -41,7 +41,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     func getNotificationsIndex() -> Int {
         var indexTwo: Int = 0
         let docRef = Firestore.firestore().collection("Users").document(userEmail!)
-        
+        print(userEmail!)
         docRef.getDocument { (document, error) in
             if let document = document {
                 if document.data()["notificationsSettingsIndex"] != nil {

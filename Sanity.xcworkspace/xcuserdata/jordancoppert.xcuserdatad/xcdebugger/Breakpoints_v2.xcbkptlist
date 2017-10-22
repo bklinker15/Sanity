@@ -2,4 +2,54 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sanity/SettingsViewController.swift"
+            timestampString = "529905524.813746"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "getNotificationsIndex()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sanity.SettingsViewController.getNotificationsIndex() -&gt; Swift.Int"
+                  moduleName = "Sanity"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jordancoppert/Desktop/Fall%202017/CSCI%20310/Final%20Project/Sanity/Sanity/SettingsViewController.swift"
+                  timestampString = "529905525.960902"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "612">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__ObjC.DocumentSnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Sanity.SettingsViewController.getNotificationsIndex() -&gt; Swift.Int"
+                  moduleName = "Sanity"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jordancoppert/Desktop/Fall%202017/CSCI%20310/Final%20Project/Sanity/Sanity/SettingsViewController.swift"
+                  timestampString = "529905525.963544"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "25">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
