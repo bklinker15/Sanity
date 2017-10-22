@@ -5,7 +5,6 @@
 //  Created by Jordan Coppert on 10/7/17.
 //  Copyright © 2017 CSC310Team22. All rights reserved.
 //
-
 import UIKit
 import Firebase
 class DashboardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -55,48 +54,43 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         self.fetchBudgets()
         refreshControl.endRefreshing()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     // MARK: - Table view data source
-
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return budgets.count
     }
     
-    //Currently
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let dequeued = tableView.dequeueReusableCell(withIdentifier: "budget", for: indexPath)
         if let cell = dequeued as? BudgetOverviewCell {
             let currentBudget = budgets[indexPath.row]
             cell.budgetName.text = currentBudget.getName()
             
-            let budgetRemainingString = String(describing: currentBudget.getBudgetRemaining())
-            cell.budgetRemaining.text = "$" + budgetRemainingString;
-            
+            cell.budgetRemaining.text = "$" + String(format: "%.2f", currentBudget.getBudgetRemaining());
+         
             cell.budgetRemaining.textColor = UIColor.green
             
             if currentBudget.getBudgetRemaining() > 0.0 {
                 cell.budgetRemaining.textColor = UIColor.green
-                cell.backgroundColor = UIColor(red: 212.00, green: 255.00, blue: 212.00, alpha: 1.00)
+                cell.backgroundColor = UIColor(red: 212, green: 255, blue: 212, alpha: 1)
             }
             else {
                 cell.budgetRemaining.textColor = UIColor.red
-                cell.backgroundColor = UIColor(red: 255.00, green: 196.00, blue: 196.00, alpha: 1.00)
+                cell.backgroundColor = UIColor(red: 255, green: 196, blue: 196, alpha: 1)
             }
-            //need to somehow draw rectangle or update progress bar (unable to access it right now)
             var floatBudgetRemaining = Float(currentBudget.getBudgetRemaining())
             floatBudgetRemaining = floatBudgetRemaining / Float(currentBudget.getTotalBudget())
             cell.progressBar.setProgress(floatBudgetRemaining, animated: false)
             
-           
-            //Stub for now, remember to actually calculate
+            
             let calendar = NSCalendar.current
             
             // Replace the hour (time) of both dates with 00:00
@@ -115,7 +109,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //performSegue(withIdentifier: "budgetDetail", sender: tableView.cellForRow(at: indexPath))
         
-        performSegue(withIdentifier: "budgetDetail", sender: budgets[indexPath.row])
+        performSegue(withIdentifier: "budgetDet", sender: budgets[indexPath.row])
     }
     
     func fetchBudgets(){
@@ -143,25 +137,29 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 let vc = segue.destination as? AddTransactionViewController
                 vc?.userEmail = userEmail
             case "addBudgetSegue":
+                print("here")
                 let backItem = UIBarButtonItem()
                 backItem.title = "Cancel"
                 navigationItem.backBarButtonItem = backItem
                 let vc = segue.destination as? AddBudgetViewController
                 vc?.userEmail = userEmail
-            case "settingsSegue":
-                let vc = segue.destination as? SettingsViewController
-                vc?.userEmail = userEmail
-            case "budgetDetail":
+            case "budgetDet":
                 let vc = segue.destination as? BudgetDetailViewController
-//                let cell = sender as? BudgetOverviewCell
-//                vc?.budgetName = cell?.budgetName.text!
-//                vc?.userEmail = userEmail
+                //                let cell = sender as? BudgetOverviewCell
+                //                vc?.budgetName = cell?.budgetName.text!
+                //                vc?.userEmail = userEmail
                 let budget = sender as? Budget
                 vc?.budget = budget
+                vc?.userEmail = userEmail
+            case "settingsSegue":
+                let backItem = UIBarButtonItem()
+                backItem.title = "Budgets"
+                navigationItem.backBarButtonItem = backItem
+                let vc = segue.destination as? SettingsViewController
                 vc?.userEmail = userEmail
             default: break
             }
         }
     }
-
+    
 }

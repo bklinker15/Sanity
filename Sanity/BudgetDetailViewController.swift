@@ -5,64 +5,76 @@
 //  Created by Jordan Coppert on 10/15/17.
 //  Copyright © 2017 CSC310Team22. All rights reserved.
 //
-
 import UIKit
 import Firebase
+import Charts
 
-class BudgetDetailViewController: UIViewController,UITableViewDataSource, UITableViewDelegate {
+class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+    
+    
+    
     var budgetName:String?
     var userEmail:String?
     var categories = [Category]()
     
     var budget:Budget?
     
-    @IBOutlet weak var budgetNm: UILabel!
-    @IBOutlet weak var daysReset: UILabel!
-    @IBOutlet weak var budgetProg: UIProgressView!
-    @IBOutlet weak var budgetLim: UILabel!
-    @IBOutlet weak var fundsSpent: UILabel!
-    @IBOutlet weak var fundsLeft: UILabel!
+    @IBOutlet weak var budgetNameLabel: UILabel!
     
-    
-    @IBOutlet weak var numTotal: UILabel!
-    
-    @IBOutlet weak var numFunds: UILabel!
-    
+    @IBOutlet weak var daysLeftLabel: UILabel!
+    @IBOutlet weak var daysLeft: UILabel!
+    @IBOutlet weak var budgetLeftLabel: UILabel!
+    @IBOutlet weak var pieChart: PieChartView!
+
     @IBOutlet weak var categoryTableView: UITableView!
     
-    @IBOutlet weak var numLeft: UILabel!
+    //call when any values change within a budget
+    @IBAction func renderCharts() {
+        pieChartUpdate()
+    }
+    
+    func pieChartUpdate () {
+        //update this later to show category dispersion
+        let budgetLimit:Double = (budget?.totalBudget)!
+        let remainingFunds:Double = (budget?.budgetRemaining)!
+        let fundsSpent:Double = budgetLimit-remainingFunds
+        
+        let spentEntry = PieChartDataEntry(value: Double(fundsSpent), label: "Spent")
+        let remainingEntry = PieChartDataEntry(value: Double(remainingFunds), label: "Remaining")
+        let dataSet = PieChartDataSet(values: [spentEntry, remainingEntry], label: "")
+        dataSet.colors = ChartColorTemplates.joyful()
+        dataSet.valueColors = [UIColor.black]
+        let data = PieChartData(dataSet: dataSet)
+        pieChart.data = data
+        pieChart.chartDescription?.text = "Progress"
+        
+        //This must stay at end
+        pieChart.notifyDataSetChanged()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        setFonts()
         
-        budgetNm.text = budget?.name;
-
-
+        budgetNameLabel.text = budget?.name
         
-        //budget limit
-        var tot: Double
-        tot = (budget?.totalBudget)!;
-        numTotal.text = String(format:"%f", tot)
-        
-        // funds spent
-        var spent: Double
-        spent = (budget?.budgetRemaining)!;
-        spent = tot-spent
-        if spent < 0{
-            spent = spent*(-1)
+        let budgetLimit:Double = (budget?.totalBudget)!
+        let remainingFunds:Double = (budget?.budgetRemaining)!
+        var fundsSpent:Double = budgetLimit-remainingFunds
+        if (fundsSpent < 0){
+            fundsSpent = fundsSpent * -1
         }
-        numFunds.text = String(format:"%f", spent)
         
+        let budgetLimitString:String = String(format:"%.2f", budgetLimit )
+        let remainingFundsString:String = String(format:"%.2f", remainingFunds )
+        //let fundsSpentString:String = String(format:"%.2f", fundsSpent )
         
-        //remaining funds
-        var rem: Double
-        rem = (budget?.budgetRemaining)!;
-        numLeft.text = String(format:"%f", rem)
+        categoryTableView.delegate = self
+        categoryTableView.dataSource = self
+        budgetLeftLabel.text = remainingFundsString + " remaining of " + budgetLimitString
+//        fundsSpentLabel.text = "Funds spent so far: " + fundsSpentString
+//        remainingFundsLabel.text = "Remaining funds: " + remainingFundsString
         
-        if (tot != 0){
-            var percent:Float = Float(spent/tot)
-            budgetProg.progress = (percent)
-        }
         
         //days reset
         let calendar = NSCalendar.current
@@ -73,30 +85,82 @@ class BudgetDetailViewController: UIViewController,UITableViewDataSource, UITabl
         
         let components = calendar.dateComponents([.day], from: date1, to: date2)
         
-        daysReset.text = (String(describing: components.day!))
-        
-        
+        let days:String = (String(describing: components.day!))
+        if (Int(days)! > 0){
+            daysLeftLabel.text = days + " days until reset"
+        } else{
+            daysLeftLabel.text = "last day before reset"
+        }
+
         fetchCategories()
-        
         print(categories.count)
-        print("success")
-        //tableView.registerClass(MyCell.self, forCellReuseIdentifer: "cellId")
-        //addCats()
-        
-    
+        pieChartUpdate()
+    }
+   
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
     
-//    func addCats(){
-//        var i = 0
-//        for category in categories{
-//            categoryTableView.beginUpdates()
-//            categoryTableView.insertRows(at: [IndexPath(row: i, section: 0)], with: .automatic)
-//            categoryTableView.endUpdates()
-//            i = i+1
-//        }
-//    }
-
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 125
+    }
     
+    func setFonts(){
+        budgetLeftLabel.font = UIFont(name: "DidactGothic-Regular", size: 15)
+        daysLeftLabel.font = UIFont(name: "DidactGothic-Regular", size: 15)
+        budgetNameLabel.font = UIFont(name: "DidactGothic-Regular", size: 20)
+
+   
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+  //      if let identifier = segue.identifier {
+//            switch identifier {
+//            case "editSegue":
+                let backItem = UIBarButtonItem()
+                backItem.title = "Budgets"
+                navigationItem.backBarButtonItem = backItem
+                
+                let vc = segue.destination as? EditBudgetViewController
+                //let budget = sender as? Budget
+                vc?.budget = budget
+                vc?.userEmail = userEmail
+                vc?.numRows = categories.count
+//            default:
+//                break
+//            }
+ //       }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return categories.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = categoryTableView.dequeueReusableCell(withIdentifier: "cell") as! CategoryBudgetCell
+        
+        
+        
+        var catName:String = categories[indexPath.row].name
+
+        var catLimit:Double = categories[indexPath.row].spendingLimit
+        var catSpent:Double = categories[indexPath.row].amountSpent
+        var catRemaining:Double = catLimit - catSpent
+        
+        var catLimitString:String = String(format: "%.2f", catLimit)
+        var catSpentString:String = String(format: "%.2f", catSpent)
+        var catRemainingString:String = String(format: "%.2f", catRemaining)
+        
+        var percent:Float = Float(catSpent/catLimit)
+        if (percent >= 1.0){
+            percent = 1.0
+        }
+        
+    
+        cell.setup(name: catName, prog: percent, limit: catLimitString, spent: catSpentString, left: catRemainingString)
+        return cell
+    }
+
     func fetchCategories(){
         let collRef: CollectionReference = Firestore.firestore().collection("Users/\(userEmail!)/Budgets/\((budget?.getName())!)/Categories")
         print("Users/\(userEmail!)/Budgets/\((budget?.getName())!)/Categories")
@@ -108,81 +172,19 @@ class BudgetDetailViewController: UIViewController,UITableViewDataSource, UITabl
                 print("In categories flatMap")
                 self.categories = querySnapshot!.documents.flatMap({Category(dictionary: $0.data())})
                 self.categoryTableView.reloadData()
+                print(self.categories.count)
             }
         }
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categories.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = categoryTableView.dequeueReusableCell(withIdentifier: "categoryBudgetCell") as! CategoryBudgetCell
-        
-        var nm: String
-        nm = categories[indexPath.row].name;
-        
-        var to: Double
-        to = (categories[indexPath.row].spendingLimit);
-        var tot: String
-        tot = String(format:"%f", to)
-
-        
-//         funds spent
-//        var spent: Double
-//        spent = (budget?.budgetRemaining)!;
-//        spent = tot-spent
-//        if spent < 0{
-//            spent = spent*(-1)
-//        }
-//        numFunds.text = String(format:"%f", spent)
-
-        var spent: String
-        spent = " "
-        
-        //remaining funds
-//        var rem: Double
-//        rem = (categories[indexPath.row].)!;
-//        numLeft.text = String(format:"%f", rem)
-//
-        var rem: String
-        rem = " "
-        
-//
-//
-//        if (tot != 0){
-//            var percent:Float = Float(spent/tot)
-//            budgetProg.progress = (percent)
-//        }
-//
-//
-//
-        var prog: Float
-        prog = 0.0
-        cell.setup(name: nm, prog: prog, limit: tot, spent: spent, left: rem)
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 110
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 

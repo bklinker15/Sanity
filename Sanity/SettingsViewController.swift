@@ -16,71 +16,64 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     var userEmail: String?
     var notificationSettingsIndex: Int = 0
     var index: Int = 0
-    
-    
-    @IBOutlet weak var picker: UIPickerView!
     var pickerData: [String] = [String]()
     
+    @IBOutlet weak var picker: UIPickerView!
     @IBOutlet weak var newPassword: UITextField!
-    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var notificationsErrorLabel: UILabel!
+    @IBOutlet weak var passwordErrorLabel: UILabel!
+    @IBOutlet weak var notificationsTitleLabel: UILabel!
+    @IBOutlet weak var passwordTitleLabel: UILabel!
     
-    
-    @IBAction func saveNotificationSettings(_ sender: UIButton) {
+    @IBAction func updateNotifications(_ sender: UIButton) {
         let index = self.picker.selectedRow(inComponent: 0)
         let docRef = Firestore.firestore().collection("Users").document(userEmail!)
         docRef.setData(["notificationsSettingsIndex": index])
-        self.errorLabel.text = "settings saved"
-        self.errorLabel.textColor = UIColor.green
+        self.notificationsErrorLabel.text = "settings saved"
+        self.passwordErrorLabel.text = ""
+        self.notificationsErrorLabel.textColor = UIColor.green
     }
-    @IBAction func savePassword(_ sender: Any) {
+    
+    
+    @IBAction func updatePassword(_ sender: UIButton) {
         updatePassword(password: newPassword.text!)
     }
     
     
-    //function to get notification settings index from firebase, creates it if DNE
-    func getNotificationsIndex() -> Int {
-        var indexTwo: Int = 0
+    //function to set notification settings index in UI from firebase, creates it if DNE
+    func setNotificationsIndexUI() {
         let docRef = Firestore.firestore().collection("Users").document(userEmail!)
         print(userEmail!)
         docRef.getDocument { (document, error) in
             if let document = document {
                 if document.data()["notificationsSettingsIndex"] != nil {
-                    self.index = document.data()["notificationsSettingsIndex"] as! Int
-                    indexTwo = self.index
-                    print("VALUE DOES NOT EQUAL nil: \(self.index)")
+                    self.picker.selectRow(document.data()["notificationsSettingsIndex"] as! Int, inComponent:0, animated: true)
                 } else {
-                    print("VALUE DOES EQUAL nil!!!!")
                     docRef.setData(["notificationsSettingsIndex": 0])
-                    self.index = 0
+                    self.picker.selectRow(0, inComponent:0, animated: true)
                 }
             } else {
                 print("Document does not exist")
             }
         }
-        print("index before return: \(self.index)")
-        print("indexTwo before return: \(indexTwo)")
-        return self.index
-    }
-    
-    func setIndex(newIndex: Int){
-        self.index = newIndex
     }
     
     func updatePassword(password: String){
         if password == "" || password.count < 6 {
-            self.errorLabel.text = "password must be at least 6 characters long"
+            self.passwordErrorLabel.text = "password must be at least 6 characters long"
             self.newPassword.text = ""
         }
         else{
             let user = Auth.auth().currentUser
             user?.updatePassword(to: password, completion: { error in
                 if error != nil{
-                    self.errorLabel.text = "error updating password"
-                    self.errorLabel.textColor = UIColor.red
+                    self.passwordErrorLabel.text = "error updating password"
+                    self.passwordErrorLabel.textColor = UIColor.red
                 } else {
                     //success
-                    self.errorLabel.text = "password updated"
-                    self.errorLabel.textColor = UIColor.green
+                    self.notificationsErrorLabel.text = ""
+                    self.passwordErrorLabel.text = "password updated"
+                    self.passwordErrorLabel.textColor = UIColor.green
                 }
                 self.newPassword.text = ""
             })
@@ -101,15 +94,28 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         // Connect data:
         self.picker.delegate = self
         self.picker.dataSource = self
+        // populate fields with default values
         pickerData = ["budget and threshold","budget only","none"]
-        self.errorLabel.text = ""
+        self.passwordErrorLabel.text = ""
+        self.notificationsErrorLabel.text = ""
         self.newPassword.text = ""
         
-        //set notifications index to that stored in FB
-        let notificationsIndex: Int = getNotificationsIndex()
-        print("notifications index = \(notificationsIndex)")
-        picker.selectRow(notificationsIndex, inComponent:0, animated: true)
+        //set notifications index to the setting stored in FB
+        setNotificationsIndexUI()
+        setFont()
+        
     }
+    
+    func setFont(){
+        notificationsErrorLabel.font = UIFont(name: "DidactGothic-Regular", size: 18)
+        notificationsTitleLabel.font = UIFont(name: "DidactGothic-Regular", size: 18)
+        passwordTitleLabel.font = UIFont(name: "DidactGothic-Regular", size: 18)
+        passwordErrorLabel.font = UIFont(name: "DidactGothic-Regular", size: 18)
+        newPassword.font = UIFont(name: "DidactGothic-Regular", size: 18)
+        passwordErrorLabel.font = UIFont(name: "DidactGothic-Regular", size: 18)
+    }
+    
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -130,6 +136,5 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[row]
     }
-    
 }
 

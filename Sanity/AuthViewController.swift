@@ -11,10 +11,12 @@ import FirebaseAuth
 
 class AuthViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var sanity: UILabel!
     
     @IBAction func submitButton(_ sender: UIButton) {
         if emailTextField.text != "" && passwordTextField.text != ""{
@@ -76,8 +78,19 @@ class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.resetTextFields()
+        setFonts()
     }
+    
+    func setFonts(){
+        sanity.font = UIFont(name: "DidactGothic-Regular", size: 60)
+        submitButton.titleLabel!.font =  UIFont(name: "DidactGothic-Regular", size: 20)
+        errorLabel.font = UIFont(name: "DidactGothic-Regular", size: 20)
+        forgotPasswordButton.titleLabel!.font =  UIFont(name: "DidactGothic-Regular", size: 20)
+        emailTextField.font = UIFont(name: "DidactGothic-Regular", size: 20)
+        passwordTextField.font = UIFont(name: "DidactGothic-Regular", size: 20)
 
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

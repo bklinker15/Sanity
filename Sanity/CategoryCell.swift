@@ -30,5 +30,12 @@ class CategoryCell: UITableViewCell {
         limitTextField.placeholder = "Limit"
         limitTextField.keyboardType = UIKeyboardType.numberPad
         self.selectionStyle = UITableViewCellSelectionStyle.none
+        setFont()
     }
+    
+    func setFont(){
+        categoryNameTextField.font = UIFont(name: "DidactGothic-Regular", size: 20)
+        limitTextField.font = UIFont(name: "DidactGothic-Regular", size: 20)
+    }
+    
 }

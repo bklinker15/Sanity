@@ -9,10 +9,14 @@
 /* Begin PBXBuildFile section */
 		0126E55D1F95204700F64EBB /* ResetEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0126E55C1F95204700F64EBB /* ResetEnums.swift */; };
 		01AA355C1F91C1F600F23B37 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AA355B1F91C1F600F23B37 /* SettingsViewController.swift */; };
+		01DE4F2C1F988197006575AF /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE4F271F988107006575AF /* Charts.framework */; };
 		1C958C5BDD903A8BFF9E2E5D /* Pods_Sanity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C772DE7D2F5C4DC837699DC2 /* Pods_Sanity.framework */; };
 		740B9E0F1F92E7F100388C9A /* BudgetInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 740B9E0E1F92E7F100388C9A /* BudgetInfo.storyboard */; };
+		741C852A1F97FDB800539B6C /* EditCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741C85291F97FDB800539B6C /* EditCategoryCell.swift */; };
 		7423EE851F9453DB0095722E /* budgetInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7423EE841F9453D40095722E /* budgetInfo.storyboard */; };
 		747AB9F21F955A2E004E3C7D /* CategoryBudgetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747AB9F11F955A2E004E3C7D /* CategoryBudgetCell.swift */; };
+		747E37B91F97E8F900B5ABF8 /* EditBudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747E37B81F97E8F900B5ABF8 /* EditBudgetViewController.swift */; };
+		74C1B0301F9ACE60008864CA /* DidactGothic-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 742767741F9ACBAD00BB56DD /* DidactGothic-Regular.ttf */; };
 		A0033F291F93D67100BB728F /* BudgetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0033F281F93D67100BB728F /* BudgetDetailViewController.swift */; };
 		A0033F2B1F94204900BB728F /* AddTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0033F2A1F94204900BB728F /* AddTransactionCell.swift */; };
 		A037A9D01F81BE2E00D2FA55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A037A9CF1F81BE2E00D2FA55 /* AppDelegate.swift */; };
@@ -32,13 +36,34 @@
 		D0EA5BB41F8C372500D5F99E /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA5BB31F8C372500D5F99E /* CategoryCell.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		01DE4F261F988107006575AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01DE4F211F988106006575AF /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
+			remoteInfo = Charts;
+		};
+		01DE4F281F988107006575AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01DE4F211F988106006575AF /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
+			remoteInfo = ChartsTests;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		0126E55C1F95204700F64EBB /* ResetEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetEnums.swift; sourceTree = "<group>"; };
 		01AA355B1F91C1F600F23B37 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		01DE4F211F988106006575AF /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../../../Downloads/Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
 		083E82D98C88E70BD3D26AAE /* Pods-Sanity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sanity.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sanity/Pods-Sanity.release.xcconfig"; sourceTree = "<group>"; };
 		740B9E0E1F92E7F100388C9A /* BudgetInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BudgetInfo.storyboard; sourceTree = "<group>"; };
+		741C85291F97FDB800539B6C /* EditCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryCell.swift; sourceTree = "<group>"; };
 		7423EE841F9453D40095722E /* budgetInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = budgetInfo.storyboard; path = Base.lproj/budgetInfo.storyboard; sourceTree = "<group>"; };
+		742767741F9ACBAD00BB56DD /* DidactGothic-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DidactGothic-Regular.ttf"; path = "../../../Desktop/DidactGothic-Regular.ttf"; sourceTree = "<group>"; };
 		747AB9F11F955A2E004E3C7D /* CategoryBudgetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBudgetCell.swift; sourceTree = "<group>"; };
+		747E37B81F97E8F900B5ABF8 /* EditBudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBudgetViewController.swift; sourceTree = "<group>"; };
 		A0033F281F93D67100BB728F /* BudgetDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDetailViewController.swift; sourceTree = "<group>"; };
 		A0033F2A1F94204900BB728F /* AddTransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionCell.swift; sourceTree = "<group>"; };
 		A037A9CC1F81BE2E00D2FA55 /* Sanity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sanity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01DE4F2C1F988197006575AF /* Charts.framework in Frameworks */,
 				1C958C5BDD903A8BFF9E2E5D /* Pods_Sanity.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,17 +100,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01DE4F221F988106006575AF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				01DE4F271F988107006575AF /* Charts.framework */,
+				01DE4F291F988107006575AF /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		05F1D0F25378F50DE09A2011 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				01DE4F211F988106006575AF /* Charts.xcodeproj */,
 				C772DE7D2F5C4DC837699DC2 /* Pods_Sanity.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7490DCF51F95F93A00E3FDA4 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				742767741F9ACBAD00BB56DD /* DidactGothic-Regular.ttf */,
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		A037A9C31F81BE2E00D2FA55 = {
 			isa = PBXGroup;
 			children = (
+				7490DCF51F95F93A00E3FDA4 /* New Group */,
 				A037A9CE1F81BE2E00D2FA55 /* Sanity */,
 				A037A9CD1F81BE2E00D2FA55 /* Products */,
 				B11DF68F412F9C9F6BACF30A /* Pods */,
@@ -115,14 +160,16 @@
 				740B9E0E1F92E7F100388C9A /* BudgetInfo.storyboard */,
 				A0688C701F89A01500E4EA14 /* BudgetOverviewCell.swift */,
 				A056C4E51F91854F0071E242 /* Category.swift */,
-				D0EA5BB31F8C372500D5F99E /* CategoryCell.swift */,
 				747AB9F11F955A2E004E3C7D /* CategoryBudgetCell.swift */,
+				D0EA5BB31F8C372500D5F99E /* CategoryCell.swift */,
 				A0765C5F1F8A02B2002C603E /* DashboardViewController.swift */,
+				741C85291F97FDB800539B6C /* EditCategoryCell.swift */,
 				A0851DDC1F8C657B003357F7 /* FirestoreSerializable.swift */,
 				D043DE231F8764ED00E9A870 /* GoogleService-Info.plist */,
 				A037A9DB1F81BE2E00D2FA55 /* Info.plist */,
 				A037A9D81F81BE2E00D2FA55 /* LaunchScreen.storyboard */,
 				A037A9D31F81BE2E00D2FA55 /* Main.storyboard */,
+				747E37B81F97E8F900B5ABF8 /* EditBudgetViewController.swift */,
 				0126E55C1F95204700F64EBB /* ResetEnums.swift */,
 				01AA355B1F91C1F600F23B37 /* SettingsViewController.swift */,
 				A056C4E31F9185410071E242 /* Transaction.swift */,
@@ -189,6 +236,12 @@
 			mainGroup = A037A9C31F81BE2E00D2FA55;
 			productRefGroup = A037A9CD1F81BE2E00D2FA55 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 01DE4F221F988106006575AF /* Products */;
+					ProjectRef = 01DE4F211F988106006575AF /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				A037A9CB1F81BE2E00D2FA55 /* Sanity */,
@@ -196,11 +249,29 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		01DE4F271F988107006575AF /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 01DE4F261F988107006575AF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		01DE4F291F988107006575AF /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = 01DE4F281F988107006575AF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		A037A9CA1F81BE2E00D2FA55 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74C1B0301F9ACE60008864CA /* DidactGothic-Regular.ttf in Resources */,
 				A037A9DA1F81BE2E00D2FA55 /* LaunchScreen.storyboard in Resources */,
 				D043DE241F8764ED00E9A870 /* GoogleService-Info.plist in Resources */,
 				740B9E0F1F92E7F100388C9A /* BudgetInfo.storyboard in Resources */,
@@ -221,6 +292,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Sanity/Pods-Sanity-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
@@ -234,6 +306,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
@@ -292,6 +365,7 @@
 				A0765C601F8A02B2002C603E /* DashboardViewController.swift in Sources */,
 				A0033F291F93D67100BB728F /* BudgetDetailViewController.swift in Sources */,
 				A087801A1F8B045800F6AB15 /* Budget.swift in Sources */,
+				741C852A1F97FDB800539B6C /* EditCategoryCell.swift in Sources */,
 				A0688C711F89A01500E4EA14 /* BudgetOverviewCell.swift in Sources */,
 				D043DE221F8753D900E9A870 /* AuthViewController.swift in Sources */,
 				A056C4E41F9185410071E242 /* Transaction.swift in Sources */,
@@ -304,6 +378,7 @@
 				747AB9F21F955A2E004E3C7D /* CategoryBudgetCell.swift in Sources */,
 				0126E55D1F95204700F64EBB /* ResetEnums.swift in Sources */,
 				A056C4E61F91854F0071E242 /* Category.swift in Sources */,
+				747E37B91F97E8F900B5ABF8 /* EditBudgetViewController.swift in Sources */,
 				01AA355C1F91C1F600F23B37 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -444,7 +519,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A2PH6V2VJ2;
+				DEVELOPMENT_TEAM = VNPFXH73M5;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -457,7 +532,7 @@
 				INFOPLIST_FILE = Sanity/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cs310.team22.Sanity;
+				PRODUCT_BUNDLE_IDENTIFIER = "kawasser-usc.edu";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -472,7 +547,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A2PH6V2VJ2;
+				DEVELOPMENT_TEAM = VNPFXH73M5;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -485,7 +560,7 @@
 				INFOPLIST_FILE = Sanity/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cs310.team22.Sanity;
+				PRODUCT_BUNDLE_IDENTIFIER = "kawasser-usc.edu";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
