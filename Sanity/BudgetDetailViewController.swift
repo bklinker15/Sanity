@@ -22,7 +22,7 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet weak var daysLeft: UILabel!
     @IBOutlet weak var budgetLeftLabel: UILabel!
     @IBOutlet weak var pieChart: PieChartView!
-
+    
     @IBOutlet weak var categoryTableView: UITableView!
     
     //call when any values change within a budget
@@ -36,14 +36,17 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
         let remainingFunds:Double = (budget?.budgetRemaining)!
         let fundsSpent:Double = budgetLimit-remainingFunds
         
-        let spentEntry = PieChartDataEntry(value: Double(fundsSpent), label: "Spent")
-        let remainingEntry = PieChartDataEntry(value: Double(remainingFunds), label: "Remaining")
+        let spentEntry = PieChartDataEntry(value: Double(fundsSpent), label: "Total Spent")
+        let remainingEntry = PieChartDataEntry(value: Double(remainingFunds), label: "Total Remaining")
         let dataSet = PieChartDataSet(values: [spentEntry, remainingEntry], label: "")
         dataSet.colors = ChartColorTemplates.joyful()
         dataSet.valueColors = [UIColor.black]
         let data = PieChartData(dataSet: dataSet)
         pieChart.data = data
-        pieChart.chartDescription?.text = "Current Period"
+        pieChart.chartDescription?.text = "Total Current Spending"
+        pieChart.chartDescription?.font = UIFont(name: "DidactGothic-Regular", size: 16)!
+        dataSet.entryLabelFont = UIFont(name: "DidactGothic-Regular", size: 12)!
+        dataSet.valueFont = UIFont(name: "DidactGothic-Regular", size: 12)!
         
         //This must stay at end
         pieChart.notifyDataSetChanged()
@@ -95,14 +98,13 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 125
+        return 150
     }
     
     func setFonts(){
         budgetLeftLabel.font = UIFont(name: "DidactGothic-Regular", size: 15)
         daysLeftLabel.font = UIFont(name: "DidactGothic-Regular", size: 15)
         budgetNameLabel.font = UIFont(name: "DidactGothic-Regular", size: 20)
-   
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -139,24 +141,13 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = categoryTableView.dequeueReusableCell(withIdentifier: "cell") as! CategoryBudgetCell
         
-        
-        
         let catName:String = categories[indexPath.row].name
 
         let catLimit:Double = categories[indexPath.row].spendingLimit
         let catSpent:Double = categories[indexPath.row].amountSpent
         let catRemaining:Double = catLimit - catSpent
-        
-        let catLimitString:String = String(format: "%.2f", catLimit)
-        let catSpentString:String = String(format: "%.2f", catSpent)
-        let catRemainingString:String = String(format: "%.2f", catRemaining)
-        
-        var percent:Float = Float(catSpent/catLimit)
-        if (percent >= 1.0){
-            percent = 1.0
-        }
     
-        cell.setup(name: catName, prog: percent, limit: catLimitString, spent: catSpentString, left: catRemainingString)
+        cell.setup(name: catName, spent: catSpent, remaining: catRemaining)
         return cell
     }
 

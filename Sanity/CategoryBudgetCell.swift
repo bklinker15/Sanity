@@ -7,14 +7,12 @@
 //
 
 import UIKit
+import Charts
 
 class CategoryBudgetCell: UITableViewCell {
-    @IBOutlet weak var catProg: UIProgressView!
-    
-    @IBOutlet weak var catRemainingLabel: UILabel!
-    @IBOutlet weak var catSpentLabel: UILabel!
-    @IBOutlet weak var catLimitLabel: UILabel!
-    @IBOutlet weak var catNameLabel: UILabel!
+
+    @IBOutlet weak var catLabel: UILabel!
+    @IBOutlet weak var pieChart: PieChartView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,20 +26,23 @@ class CategoryBudgetCell: UITableViewCell {
     }
     
     
-    public func setup(name:String, prog:Float, limit:String, spent:String, left:String){
-        catNameLabel.text = name
-        catLimitLabel.text = "Category Limit: " + limit
-        catSpentLabel.text = "Funds spent in category: " + spent
-        catRemainingLabel.text = "Remaining funds in category: " + left
-        catProg.progress = prog
-        setFonts()
-    }
-    func setFonts(){
-        catNameLabel.font = UIFont(name: "DidactGothic-Regular", size: 20)
-        catLimitLabel.font = UIFont(name: "DidactGothic-Regular", size: 20)
-        catSpentLabel.font = UIFont(name: "DidactGothic-Regular", size: 20)
-        catRemainingLabel.font = UIFont(name: "DidactGothic-Regular", size: 20)
+    public func setup(name:String, spent:Double, remaining:Double){
+        catLabel.text = name
+        catLabel.font = UIFont(name: "DidactGothic-Regular", size: 15)
+        let spentEntry = PieChartDataEntry(value: Double(spent), label: "Spent")
+        let remainingEntry = PieChartDataEntry(value: Double(remaining), label: "Remaining")
+        let dataSet = PieChartDataSet(values: [spentEntry, remainingEntry], label: "")
+        dataSet.colors = ChartColorTemplates.joyful()
+        dataSet.valueColors = [UIColor.black]
+        dataSet.entryLabelFont = UIFont(name: "DidactGothic-Regular", size: 10)!
+        dataSet.valueFont = UIFont(name: "DidactGothic-Regular", size: 10)!
+        let data = PieChartData(dataSet: dataSet)
+        pieChart.data = data
+        pieChart.chartDescription?.text = ""
+        //pieChart.chartDescription?.font = UIFont(name: "DidactGothic-Regular", size: 15)!
+        pieChart.entryLabelFont = UIFont(name: "DidactGothic-Regular", size: 10)!
         
+        //This must stay at end
+        pieChart.notifyDataSetChanged()
     }
-    
 }
