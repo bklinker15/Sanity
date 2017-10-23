@@ -34,10 +34,10 @@ class BudgetHistoryViewController: UIViewController, UITableViewDataSource, UITa
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = HistoryTableView.dequeueReusableCell(withIdentifier: "cell") as! HistoryTableViewCell
+        let cell = HistoryTableView.dequeueReusableCell(withIdentifier: "cell") as! HistoryTableViewCell
         let row:Int = indexPath.row
         let periodText:String = arrayOfCellData[row].period!
-        let spent:Double = arrayOfCellData[row].limit! - arrayOfCellData[row].remaining!
+        let spent: Double = arrayOfCellData[row].limit! - arrayOfCellData[row].remaining!
         let remaining: Double = arrayOfCellData[row].remaining!
         
         cell.setup(period: periodText, spent: spent, remaining: remaining)
@@ -53,11 +53,13 @@ class BudgetHistoryViewController: UIViewController, UITableViewDataSource, UITa
             for i in 0..<countPrevious {
                 if i == 0{
                     currentPeriod = "last period"
+                } else if i == 1 {
+                    currentPeriod = "1 period ago"
                 } else {
                     currentPeriod = String(i) + " periods ago"
                 }
                 
-                cellToAdd = cellData(period: currentPeriod, limit: self.prevLimits[i], remaining: self.prevRemaining[0])
+                cellToAdd = cellData(period: currentPeriod, limit: self.prevLimits[i], remaining: self.prevRemaining[i])
                 arrayOfCellData.append(cellToAdd)
             }
         }
@@ -69,9 +71,10 @@ class BudgetHistoryViewController: UIViewController, UITableViewDataSource, UITa
         super.viewDidLoad()
         self.HistoryTableView.delegate = self
         self.HistoryTableView.dataSource = self
-        self.nameLabel.text = budget?.name
+        self.nameLabel.text = (budget?.name)! + " budget history"
         self.prevLimits = (self.budget?.previousBudgetLimits)!
         self.prevRemaining = (self.budget?.previousBudgetRemains)!
+        self.nameLabel.font = UIFont(name: "DidactGothic-Regular", size: 20)
         setHistory()
     }
     
