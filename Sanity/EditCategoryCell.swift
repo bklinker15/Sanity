@@ -63,21 +63,21 @@ class EditCategoryCell: UITableViewCell {
     func saveEdit(){
         if catNameField.isUserInteractionEnabled == true{
             //if it's a new category story in database
-            var li:String = catLimitField.text!
-            var lim:Double = Double(li)!
-            var p = [String]()
+            let li:String = catLimitField.text!
+            let lim:Double = Double(li)!
+            let p = [String]()
             let category = Category(name: catNameField.text!, paymentMethods: p, spendingLimit: lim, amountSpent: 0.00)
         Firestore.firestore().collection("Users").document(userEmail).collection("Budgets").document(budgetName).collection("Categories").document(catNameField.text!).setData(category.dictionary)
             catNameField.isUserInteractionEnabled = false
             catLimitField.isUserInteractionEnabled = false
             editButton.setImage(UIImage(named:"edit.png"), for: .normal)
         } else{
-            var li:String = catLimitField.text!
-            var lim:Double = Double(li)!
+            let li:String = catLimitField.text!
+            let lim:Double = Double(li)!
             let categor = Category(name: catNameField.text!, paymentMethods: category.paymentMethods, spendingLimit: lim, amountSpent: category.amountSpent)
 //            Firestore.firestore().collection("Users/\(userEmail!)/Budgets/\(budgetName)/Categories").document(category.name).setData(categor.dictionary)
             
-            var docRef:DocumentReference = Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document(budgetName).collection("Categories").document(category.name)
+            let docRef:DocumentReference = Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document(budgetName).collection("Categories").document(category.name)
             
             docRef.delete()
             

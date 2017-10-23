@@ -137,17 +137,19 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = categoryTableView.dequeueReusableCell(withIdentifier: "cell") as! CategoryBudgetCell
+        let cell = categoryTableView.dequeueReusableCell(withIdentifier: "cell") as! CategoryBudgetCell
         
-        var catName:String = categories[indexPath.row].name
+        
+        
+        let catName:String = categories[indexPath.row].name
 
-        var catLimit:Double = categories[indexPath.row].spendingLimit
-        var catSpent:Double = categories[indexPath.row].amountSpent
-        var catRemaining:Double = catLimit - catSpent
+        let catLimit:Double = categories[indexPath.row].spendingLimit
+        let catSpent:Double = categories[indexPath.row].amountSpent
+        let catRemaining:Double = catLimit - catSpent
         
-        var catLimitString:String = String(format: "%.2f", catLimit)
-        var catSpentString:String = String(format: "%.2f", catSpent)
-        var catRemainingString:String = String(format: "%.2f", catRemaining)
+        let catLimitString:String = String(format: "%.2f", catLimit)
+        let catSpentString:String = String(format: "%.2f", catSpent)
+        let catRemainingString:String = String(format: "%.2f", catRemaining)
         
         var percent:Float = Float(catSpent/catLimit)
         if (percent >= 1.0){
