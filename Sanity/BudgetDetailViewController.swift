@@ -43,7 +43,7 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
         dataSet.valueColors = [UIColor.black]
         let data = PieChartData(dataSet: dataSet)
         pieChart.data = data
-        pieChart.chartDescription?.text = "Progress"
+        pieChart.chartDescription?.text = "Current Period"
         
         //This must stay at end
         pieChart.notifyDataSetChanged()
