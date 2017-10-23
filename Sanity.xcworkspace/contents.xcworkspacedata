@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:HistoryTableViewCell.swift">
+   </FileRef>
+   <FileRef
       location = "group:Sanity.xcodeproj">
    </FileRef>
    <FileRef
