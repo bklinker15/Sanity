@@ -11,8 +11,6 @@ import Charts
 
 class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
-    
-    
     var budgetName:String?
     var userEmail:String?
     var categories = [Category]()
@@ -20,7 +18,6 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
     var budget:Budget?
     
     @IBOutlet weak var budgetNameLabel: UILabel!
-    
     @IBOutlet weak var daysLeftLabel: UILabel!
     @IBOutlet weak var daysLeft: UILabel!
     @IBOutlet weak var budgetLeftLabel: UILabel!
@@ -67,14 +64,10 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
         
         let budgetLimitString:String = String(format:"%.2f", budgetLimit )
         let remainingFundsString:String = String(format:"%.2f", remainingFunds )
-        //let fundsSpentString:String = String(format:"%.2f", fundsSpent )
         
         categoryTableView.delegate = self
         categoryTableView.dataSource = self
         budgetLeftLabel.text = remainingFundsString + " remaining of " + budgetLimitString
-//        fundsSpentLabel.text = "Funds spent so far: " + fundsSpentString
-//        remainingFundsLabel.text = "Remaining funds: " + remainingFundsString
-        
         
         //days reset
         let calendar = NSCalendar.current
@@ -109,7 +102,6 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
         budgetLeftLabel.font = UIFont(name: "DidactGothic-Regular", size: 15)
         daysLeftLabel.font = UIFont(name: "DidactGothic-Regular", size: 15)
         budgetNameLabel.font = UIFont(name: "DidactGothic-Regular", size: 20)
-
    
     }
     
@@ -163,7 +155,6 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
         if (percent >= 1.0){
             percent = 1.0
         }
-        
     
         cell.setup(name: catName, prog: percent, limit: catLimitString, spent: catSpentString, left: catRemainingString)
         return cell
