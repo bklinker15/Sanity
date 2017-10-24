@@ -30,7 +30,7 @@ class CategoryBudgetCell: UITableViewCell {
         catLabel.text = name
         catLabel.font = UIFont(name: "DidactGothic-Regular", size: 15)
         let spentEntry = PieChartDataEntry(value: Double(spent), label: "Spent")
-        let remainingEntry = PieChartDataEntry(value: Double(remaining), label: "Remaining")
+        let remainingEntry = remaining < 0 ? PieChartDataEntry(value: 0.0, label: "Remaining") : PieChartDataEntry(value: Double(remaining), label: "Remaining")
         let dataSet = PieChartDataSet(values: [spentEntry, remainingEntry], label: "")
         dataSet.colors = ChartColorTemplates.joyful()
         dataSet.valueColors = [UIColor.black]

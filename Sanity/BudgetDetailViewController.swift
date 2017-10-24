@@ -33,7 +33,7 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
     func pieChartUpdate () {
         //update this later to show category dispersion
         let budgetLimit:Double = (budget?.totalBudget)!
-        let remainingFunds:Double = (budget?.budgetRemaining)!
+        let remainingFunds:Double = (budget?.budgetRemaining)! < 0.0 ? 0.0 : (budget?.budgetRemaining)!
         let fundsSpent:Double = budgetLimit-remainingFunds
         
         let spentEntry = PieChartDataEntry(value: Double(fundsSpent), label: "Total Spent")
