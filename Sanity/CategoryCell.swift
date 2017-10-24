@@ -28,7 +28,7 @@ class CategoryCell: UITableViewCell {
     public func setup(){
         categoryNameTextField.placeholder = "Category"
         limitTextField.placeholder = "Limit"
-        limitTextField.keyboardType = UIKeyboardType.numberPad
+        limitTextField.keyboardType = UIKeyboardType.decimalPad
         self.selectionStyle = UITableViewCellSelectionStyle.none
         setFont()
     }
