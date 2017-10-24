@@ -1,16 +1,18 @@
 //
 //  HistoryTableViewCell.swift
-//  Sanity
+//  
 //
 //  Created by Nicholas Kaimakis on 10/22/17.
-//  Copyright © 2017 CSC310Team22. All rights reserved.
 //
 
 import UIKit
+import Charts
 
 class HistoryTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var historyCellTitle: UILabel!
+    @IBOutlet weak var periodLabel: UILabel!
+    @IBOutlet weak var pieChart: PieChartView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,13 +25,27 @@ class HistoryTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    public func setup(){
-        self.historyCellTitle.text = " periods ago"
-        self.selectionStyle = UITableViewCellSelectionStyle.none
-        setFont()
+    public func setup(period:String, spent:Double, remaining:Double){
+        periodLabel.text = period
+        let spentEntry = PieChartDataEntry(value: Double(spent), label: "Spent")
+        let remainingEntry = PieChartDataEntry(value: Double(remaining), label: "Remaining")
+        let dataSet = PieChartDataSet(values: [spentEntry, remainingEntry], label: "")
+        dataSet.colors = ChartColorTemplates.joyful()
+        dataSet.valueColors = [UIColor.black]
+        dataSet.entryLabelFont = UIFont(name: "DidactGothic-Regular", size: 10)!
+        dataSet.valueFont = UIFont(name: "DidactGothic-Regular", size: 10)!
+        let data = PieChartData(dataSet: dataSet)
+        pieChart.data = data
+        pieChart.chartDescription?.text = "" //period
+        //pieChart.chartDescription?.font = UIFont(name: "DidactGothic-Regular", size: 10)!
+        pieChart.entryLabelFont = UIFont(name: "DidactGothic-Regular", size: 10)!
+        
+        //This must stay at end
+        pieChart.notifyDataSetChanged()
+        setFonts()
     }
-    
-    func setFont(){
-         historyCellTitle.font = UIFont(name: "DidactGothic-Regular", size: 20)
+    func setFonts(){
+        periodLabel.font = UIFont(name: "DidactGothic-Regular", size: 15)
     }
+
 }
