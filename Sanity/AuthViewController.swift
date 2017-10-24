@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseAuth
 
-class AuthViewController: UIViewController {
+class AuthViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -78,8 +78,15 @@ class AuthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        passwordTextField.delegate = self
+        emailTextField.delegate = self
         self.resetTextFields()
         setFonts()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
     
     func setFonts(){

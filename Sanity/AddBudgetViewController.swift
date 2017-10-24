@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class AddBudgetViewController: UIViewController, UITableViewDataSource, UITextFieldDelegate, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     var userEmail:String?
     var resetPeriods = ["Never", "Daily", "Weekly", "Bi-Weekly", "Monthly", "Semi-Annually", "Annually"]
     var numRows = 1
@@ -61,7 +61,8 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = categoryTableView.dequeueReusableCell(withIdentifier: "categoryCell") as! CategoryCell
-        
+        cell.limitTextField.delegate = self
+        cell.categoryNameTextField.delegate = self
         cell.setup()
         return cell
     }
@@ -146,7 +147,15 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)    }
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
+    
     func showErrorAlert(message: String){
         let alertController = UIAlertController(title: "Oops!", message: message, preferredStyle: UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
@@ -157,6 +166,7 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        budgetNameTextField.delegate = self
         self.datePicker.minimumDate = Date()
     }
     

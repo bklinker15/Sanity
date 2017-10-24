@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource {
+class AddTransactionViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var budgetPicker: UIPickerView!
     var userEmail:String?
     var budgets = [Budget]()
@@ -87,6 +87,8 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = transactionTableView.dequeueReusableCell(withIdentifier: "transactionCell") as! AddTransactionCell
         cell.categoryPicker.reloadAllComponents()
+        cell.amountSpent.delegate = self
+        cell.optionalMemo.delegate = self
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         return cell
     }
@@ -155,6 +157,11 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
         }
         
 
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
