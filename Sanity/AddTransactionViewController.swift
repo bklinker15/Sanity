@@ -136,15 +136,25 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
             
         }
         //Update the selected budget with the total amount added to decrement what we have left
-        Firestore.firestore().document("Users/\(userEmail!)/Budgets/\(budgets[selectedBudgetIndex].getName())").updateData(["budgetRemaining":budgets[selectedBudgetIndex].getBudgetRemaining() - amountAdded])
-        
-        let budgetRemainingDouble = budgets[selectedBudgetIndex].getBudgetRemaining() - amountAdded
-        
-        if budgetRemainingDouble <= 0 {
-            createAlert(title: "Budget Alert", message: "Budget has been exceeded! Balance is at or below zero")
+        Firestore.firestore().document("Users/\(userEmail!)/Budgets/\(budgets[selectedBudgetIndex].getName())").updateData(["budgetRemaining":budgets[selectedBudgetIndex].getBudgetRemaining() - amountAdded]){ err in
+            if err == nil{
+                let budgetRemainingDouble = self.budgets[self.selectedBudgetIndex].getBudgetRemaining() - amountAdded
+                
+                if budgetRemainingDouble <= 0 {
+                    self.createAlert(title: "Budget Alert", message: "Budget has been exceeded! Balance is at or below zero")
+                }
+                
+            }else{
+                print("Error updating budget remaining amount")
+            }
+            
+            self.navigationController?.popViewController(animated: true)
+            if let dash = self.navigationController?.topViewController as? DashboardViewController{
+                dash.fetchBudgets()
+            }
         }
         
-        self.navigationController?.popViewController(animated: true)
+
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
