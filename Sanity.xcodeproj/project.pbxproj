@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		0126E55D1F95204700F64EBB /* ResetEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0126E55C1F95204700F64EBB /* ResetEnums.swift */; };
 		01AA355C1F91C1F600F23B37 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AA355B1F91C1F600F23B37 /* SettingsViewController.swift */; };
-		01B5FF3F1F9D271E001F4E70 /* DidactGothic-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01B5FF3C1F9D2719001F4E70 /* DidactGothic-Regular.ttf */; };
 		01B5FF411F9D3236001F4E70 /* BudgetHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B5FF401F9D3236001F4E70 /* BudgetHistoryViewController.swift */; };
-		01B5FF4F1F9D6DB9001F4E70 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B5FF4E1F9D6DB8001F4E70 /* HistoryTableViewCell.swift */; };
 		01DE4F2C1F988197006575AF /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE4F271F988107006575AF /* Charts.framework */; };
 		1C958C5BDD903A8BFF9E2E5D /* Pods_Sanity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C772DE7D2F5C4DC837699DC2 /* Pods_Sanity.framework */; };
 		741C852A1F97FDB800539B6C /* EditCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741C85291F97FDB800539B6C /* EditCategoryCell.swift */; };
@@ -31,6 +29,8 @@
 		A087801A1F8B045800F6AB15 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08780191F8B045800F6AB15 /* Budget.swift */; };
 		D043DE221F8753D900E9A870 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D043DE211F8753D900E9A870 /* AuthViewController.swift */; };
 		D043DE241F8764ED00E9A870 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D043DE231F8764ED00E9A870 /* GoogleService-Info.plist */; };
+		D09BD8EF1F9F070F0013274B /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09BD8ED1F9F070D0013274B /* HistoryTableViewCell.swift */; };
+		D09BD8F01F9F070F0013274B /* DidactGothic-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D09BD8EE1F9F070E0013274B /* DidactGothic-Regular.ttf */; };
 		D0EA5BAC1F8B1B2A00D5F99E /* AddBudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA5BAB1F8B1B2A00D5F99E /* AddBudgetViewController.swift */; };
 		D0EA5BB01F8B24A200D5F99E /* AddTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA5BAF1F8B24A200D5F99E /* AddTransactionViewController.swift */; };
 		D0EA5BB41F8C372500D5F99E /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA5BB31F8C372500D5F99E /* CategoryCell.swift */; };
@@ -56,9 +56,7 @@
 /* Begin PBXFileReference section */
 		0126E55C1F95204700F64EBB /* ResetEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetEnums.swift; sourceTree = "<group>"; };
 		01AA355B1F91C1F600F23B37 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		01B5FF3C1F9D2719001F4E70 /* DidactGothic-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DidactGothic-Regular.ttf"; path = "../../../../Desktop/DidactGothic-Regular.ttf"; sourceTree = "<group>"; };
 		01B5FF401F9D3236001F4E70 /* BudgetHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetHistoryViewController.swift; sourceTree = "<group>"; };
-		01B5FF4E1F9D6DB8001F4E70 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HistoryTableViewCell.swift; path = ../HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		01DE4F211F988106006575AF /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../../../Downloads/Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
 		083E82D98C88E70BD3D26AAE /* Pods-Sanity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sanity.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sanity/Pods-Sanity.release.xcconfig"; sourceTree = "<group>"; };
 		741C85291F97FDB800539B6C /* EditCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryCell.swift; sourceTree = "<group>"; };
@@ -81,6 +79,8 @@
 		C772DE7D2F5C4DC837699DC2 /* Pods_Sanity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sanity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D043DE211F8753D900E9A870 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		D043DE231F8764ED00E9A870 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D09BD8ED1F9F070D0013274B /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		D09BD8EE1F9F070E0013274B /* DidactGothic-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DidactGothic-Regular.ttf"; sourceTree = "<group>"; };
 		D0EA5BAB1F8B1B2A00D5F99E /* AddBudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetViewController.swift; sourceTree = "<group>"; };
 		D0EA5BAF1F8B24A200D5F99E /* AddTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewController.swift; sourceTree = "<group>"; };
 		D0EA5BB31F8C372500D5F99E /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
@@ -118,18 +118,9 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7490DCF51F95F93A00E3FDA4 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-				01B5FF3C1F9D2719001F4E70 /* DidactGothic-Regular.ttf */,
-			);
-			name = "New Group";
-			sourceTree = "<group>";
-		};
 		A037A9C31F81BE2E00D2FA55 = {
 			isa = PBXGroup;
 			children = (
-				7490DCF51F95F93A00E3FDA4 /* New Group */,
 				A037A9CE1F81BE2E00D2FA55 /* Sanity */,
 				A037A9CD1F81BE2E00D2FA55 /* Products */,
 				B11DF68F412F9C9F6BACF30A /* Pods */,
@@ -148,6 +139,8 @@
 		A037A9CE1F81BE2E00D2FA55 /* Sanity */ = {
 			isa = PBXGroup;
 			children = (
+				D09BD8EE1F9F070E0013274B /* DidactGothic-Regular.ttf */,
+				D09BD8ED1F9F070D0013274B /* HistoryTableViewCell.swift */,
 				D0EA5BAB1F8B1B2A00D5F99E /* AddBudgetViewController.swift */,
 				A0033F2A1F94204900BB728F /* AddTransactionCell.swift */,
 				D0EA5BAF1F8B24A200D5F99E /* AddTransactionViewController.swift */,
@@ -164,7 +157,6 @@
 				741C85291F97FDB800539B6C /* EditCategoryCell.swift */,
 				A0851DDC1F8C657B003357F7 /* FirestoreSerializable.swift */,
 				D043DE231F8764ED00E9A870 /* GoogleService-Info.plist */,
-				01B5FF4E1F9D6DB8001F4E70 /* HistoryTableViewCell.swift */,
 				A037A9DB1F81BE2E00D2FA55 /* Info.plist */,
 				A037A9D81F81BE2E00D2FA55 /* LaunchScreen.storyboard */,
 				A037A9D31F81BE2E00D2FA55 /* Main.storyboard */,
@@ -272,8 +264,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A037A9DA1F81BE2E00D2FA55 /* LaunchScreen.storyboard in Resources */,
-				01B5FF3F1F9D271E001F4E70 /* DidactGothic-Regular.ttf in Resources */,
 				D043DE241F8764ED00E9A870 /* GoogleService-Info.plist in Resources */,
+				D09BD8F01F9F070F0013274B /* DidactGothic-Regular.ttf in Resources */,
 				A037A9D71F81BE2E00D2FA55 /* Assets.xcassets in Resources */,
 				A037A9D51F81BE2E00D2FA55 /* Main.storyboard in Resources */,
 			);
@@ -374,7 +366,7 @@
 				D0EA5BB41F8C372500D5F99E /* CategoryCell.swift in Sources */,
 				01B5FF411F9D3236001F4E70 /* BudgetHistoryViewController.swift in Sources */,
 				A0851DDD1F8C657B003357F7 /* FirestoreSerializable.swift in Sources */,
-				01B5FF4F1F9D6DB9001F4E70 /* HistoryTableViewCell.swift in Sources */,
+				D09BD8EF1F9F070F0013274B /* HistoryTableViewCell.swift in Sources */,
 				747AB9F21F955A2E004E3C7D /* CategoryBudgetCell.swift in Sources */,
 				0126E55D1F95204700F64EBB /* ResetEnums.swift in Sources */,
 				A056C4E61F91854F0071E242 /* Category.swift in Sources */,
@@ -532,7 +524,6 @@
 				INFOPLIST_FILE = Sanity/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "kawasser-usc.edu";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -560,7 +551,6 @@
 				INFOPLIST_FILE = Sanity/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "kawasser-usc.edu";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
