@@ -31,7 +31,6 @@
 		D043DE241F8764ED00E9A870 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D043DE231F8764ED00E9A870 /* GoogleService-Info.plist */; };
 		D09BD8EF1F9F070F0013274B /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09BD8ED1F9F070D0013274B /* HistoryTableViewCell.swift */; };
 		D09BD8F01F9F070F0013274B /* DidactGothic-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D09BD8EE1F9F070E0013274B /* DidactGothic-Regular.ttf */; };
-		D09BD8FA1F9F16350013274B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09BD8F91F9F16250013274B /* XCTest.framework */; };
 		D09BD9041F9F16A40013274B /* SanityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09BD9031F9F16A40013274B /* SanityUITests.swift */; };
 		D09BD9121F9F16C20013274B /* SanityUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09BD9111F9F16C20013274B /* SanityUnitTests.swift */; };
 		D09BD91A1F9F17000013274B /* AuthenticationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09BD9191F9F17000013274B /* AuthenticationUITests.swift */; };
@@ -118,7 +117,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D09BD8FA1F9F16350013274B /* XCTest.framework in Frameworks */,
 				01DE4F2C1F988197006575AF /* Charts.framework in Frameworks */,
 				1C958C5BDD903A8BFF9E2E5D /* Pods_Sanity.framework in Frameworks */,
 			);
