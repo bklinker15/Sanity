@@ -146,8 +146,7 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
+        self.view.endEditing(true)    }
     func showErrorAlert(message: String){
         let alertController = UIAlertController(title: "Oops!", message: message, preferredStyle: UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))

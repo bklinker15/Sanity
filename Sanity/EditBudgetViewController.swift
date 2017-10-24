@@ -86,9 +86,9 @@ class EditBudgetViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = categoryTableView.dequeueReusableCell(withIdentifier: "editCell") as! EditCategoryCell
         if indexPath.row < categories.count{
-            var catName:String = categories[indexPath.row].name
-            var catLimit:Double = categories[indexPath.row].spendingLimit
-            var catLimitString:String = String(format:"%.2f", catLimit)
+            let catName:String = categories[indexPath.row].name
+            let catLimit:Double = categories[indexPath.row].spendingLimit
+            let catLimitString:String = String(format:"%.2f", catLimit)
             cell.setup(catName: catName, catLimit: catLimitString,budName:(budget?.name)!, email:userEmail!, cat: categories[indexPath.row])
         } else {
             let p = [String]()
@@ -173,6 +173,10 @@ class EditBudgetViewController: UIViewController, UITableViewDelegate, UITableVi
         numRows = numRows + 1
         categoryTableView.reloadData()
         
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     
