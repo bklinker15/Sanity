@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class EditBudgetViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource {
+class EditBudgetViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource {
 
     
   var resetPeriods = ["Never", "Daily", "Weekly", "Bi-Weekly", "Monthly", "Semi-Annually", "Annually"]
@@ -31,7 +31,7 @@ class EditBudgetViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet weak var resetBudgetPeriod: UIButton!
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var v:String = String(numRows)
+        let v:String = String(numRows)
         print("number of robs" + v)
         return 15
     }
@@ -85,10 +85,12 @@ class EditBudgetViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = categoryTableView.dequeueReusableCell(withIdentifier: "editCell") as! EditCategoryCell
+        cell.catLimitField.delegate = self
+        cell.catNameField.delegate = self
         if indexPath.row < categories.count{
-            var catName:String = categories[indexPath.row].name
-            var catLimit:Double = categories[indexPath.row].spendingLimit
-            var catLimitString:String = String(format:"%.2f", catLimit)
+            let catName:String = categories[indexPath.row].name
+            let catLimit:Double = categories[indexPath.row].spendingLimit
+            let catLimitString:String = String(format:"%.2f", catLimit)
             cell.setup(catName: catName, catLimit: catLimitString,budName:(budget?.name)!, email:userEmail!, cat: categories[indexPath.row])
         } else {
             let p = [String]()
@@ -173,6 +175,15 @@ class EditBudgetViewController: UIViewController, UITableViewDelegate, UITableVi
         numRows = numRows + 1
         categoryTableView.reloadData()
         
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     

@@ -12,7 +12,7 @@ import FirebaseFirestore
 import FirebaseAuth
 
 
-class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     var userEmail: String?
     var notificationSettingsIndex: Int = 0
     var index: Int = 0
@@ -91,6 +91,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        newPassword.delegate = self
         // Connect data:
         self.picker.delegate = self
         self.picker.dataSource = self
@@ -115,6 +116,14 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         passwordErrorLabel.font = UIFont(name: "DidactGothic-Regular", size: 18)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
 
     
     override func didReceiveMemoryWarning() {

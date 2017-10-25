@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseAuth
 
-class AuthViewController: UIViewController {
+class AuthViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -20,15 +20,16 @@ class AuthViewController: UIViewController {
     
     @IBAction func submitButton(_ sender: UIButton) {
         if emailTextField.text != "" && passwordTextField.text != ""{
+            let emailText = emailTextField.text!.lowercased()
             
-            if !isValidEmail(email: emailTextField.text!){
+            if !isValidEmail(email: emailText){
                 self.errorLabel.text = "Invalid email"
             }else if !isComplexPassword(password: passwordTextField.text!){
                 self.errorLabel.text = "Password must be at least 6 characters long"
             }
                 /* If login */
             else if segmentControl.selectedSegmentIndex == 0 {
-                Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: {(user, error) in
+                Auth.auth().signIn(withEmail: emailText, password: passwordTextField.text!, completion: {(user, error) in
                     if user != nil{
                         self.performSegue(withIdentifier: "loginSegue", sender: self)
                         self.resetTextFields()
@@ -39,7 +40,7 @@ class AuthViewController: UIViewController {
             }
                 /* If sign up */
             else if segmentControl.selectedSegmentIndex == 1{
-                Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
+                Auth.auth().createUser(withEmail: emailText, password: passwordTextField.text!, completion: { (user, error) in
                     if user != nil{
                         self.performSegue(withIdentifier: "loginSegue", sender: self)
                         self.resetTextFields()
@@ -67,7 +68,7 @@ class AuthViewController: UIViewController {
                     //Target VC is embedded in NavVC, need to pull it out
                     let destination = segue.destination as? UINavigationController
                     if let vc = destination?.topViewController as? DashboardViewController {
-                        vc.userEmail = emailTextField.text!
+                        vc.userEmail = emailTextField.text!.lowercased()
                     }
                 default: break
             }
@@ -77,8 +78,15 @@ class AuthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        passwordTextField.delegate = self
+        emailTextField.delegate = self
         self.resetTextFields()
         setFonts()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
     
     func setFonts(){
@@ -98,7 +106,7 @@ class AuthViewController: UIViewController {
     
     @IBAction func forgotPasswordPress(_ sender: Any) {
         if emailTextField.text != nil && isValidEmail(email: self.emailTextField.text!){
-            Auth.auth().sendPasswordReset(withEmail: self.emailTextField.text!, completion: {error in
+            Auth.auth().sendPasswordReset(withEmail: self.emailTextField.text!.lowercased(), completion: {error in
                 if error != nil {
                     self.errorLabel.text = "Unknown email"
                 }else{

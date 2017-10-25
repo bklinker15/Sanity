@@ -114,7 +114,6 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     
     func fetchBudgets(){
         let collRef: CollectionReference = Firestore.firestore().collection("Users/\(userEmail!)/Budgets")
-        print("Users/\(userEmail!)/Budgets")
         collRef.getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print(err)
@@ -137,7 +136,6 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 let vc = segue.destination as? AddTransactionViewController
                 vc?.userEmail = userEmail
             case "addBudgetSegue":
-                print("here")
                 let backItem = UIBarButtonItem()
                 backItem.title = "Cancel"
                 navigationItem.backBarButtonItem = backItem

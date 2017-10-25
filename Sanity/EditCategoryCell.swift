@@ -34,6 +34,7 @@ class EditCategoryCell: UITableViewCell {
     public func setup(catName:String, catLimit: String, budName:String, email:String, cat:Category){
         catNameField.text = catName
         catLimitField.text = catLimit
+        catLimitField.keyboardType = UIKeyboardType.decimalPad
         budgetName = budName
         userEmail = email
         category = cat

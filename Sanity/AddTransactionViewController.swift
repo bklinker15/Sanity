@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource {
+class AddTransactionViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var budgetPicker: UIPickerView!
     var userEmail:String?
     var budgets = [Budget]()
@@ -87,6 +87,8 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = transactionTableView.dequeueReusableCell(withIdentifier: "transactionCell") as! AddTransactionCell
         cell.categoryPicker.reloadAllComponents()
+        cell.amountSpent.delegate = self
+        cell.optionalMemo.delegate = self
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         return cell
     }
@@ -136,15 +138,30 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
             
         }
         //Update the selected budget with the total amount added to decrement what we have left
-        Firestore.firestore().document("Users/\(userEmail!)/Budgets/\(budgets[selectedBudgetIndex].getName())").updateData(["budgetRemaining":budgets[selectedBudgetIndex].getBudgetRemaining() - amountAdded])
-        
-        let budgetRemainingDouble = budgets[selectedBudgetIndex].getBudgetRemaining() - amountAdded
-        
-        if budgetRemainingDouble <= 0 {
-            createAlert(title: "Budget Alert", message: "Budget has been exceeded! Balance is at or below zero")
+        Firestore.firestore().document("Users/\(userEmail!)/Budgets/\(budgets[selectedBudgetIndex].getName())").updateData(["budgetRemaining":budgets[selectedBudgetIndex].getBudgetRemaining() - amountAdded]){ err in
+            if err == nil{
+                let budgetRemainingDouble = self.budgets[self.selectedBudgetIndex].getBudgetRemaining() - amountAdded
+                
+                if budgetRemainingDouble <= 0 {
+                    self.createAlert(title: "Budget Alert", message: "Budget has been exceeded! Balance is at or below zero")
+                }
+                
+            }else{
+                print("Error updating budget remaining amount")
+            }
+            
+            self.navigationController?.popViewController(animated: true)
+            if let dash = self.navigationController?.topViewController as? DashboardViewController{
+                dash.fetchBudgets()
+            }
         }
         
-        self.navigationController?.popViewController(animated: true)
+
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

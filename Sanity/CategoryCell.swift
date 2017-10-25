@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoryCell: UITableViewCell {
+class CategoryCell: UITableViewCell, UITextFieldDelegate {
 
     @IBOutlet weak var categoryNameTextField: UITextField!
     
@@ -18,6 +18,7 @@ class CategoryCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -28,7 +29,7 @@ class CategoryCell: UITableViewCell {
     public func setup(){
         categoryNameTextField.placeholder = "Category"
         limitTextField.placeholder = "Limit"
-        limitTextField.keyboardType = UIKeyboardType.numberPad
+        limitTextField.keyboardType = UIKeyboardType.decimalPad
         self.selectionStyle = UITableViewCellSelectionStyle.none
         setFont()
     }
