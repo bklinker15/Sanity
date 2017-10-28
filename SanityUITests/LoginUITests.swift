@@ -1,5 +1,5 @@
 //
-//  AuthenticationUITests.swift
+//  LoginUITests.swift
 //  SanityUITests
 //
 //  Created by Brooks Klinker on 10/23/17.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import Sanity
 
-class AuthenticationUITests: XCTestCase {
+class LoginUITests: XCTestCase {
     var app: XCUIApplication!
     let username:String = "coppert@usc.edu"
     let password:String = "tester"

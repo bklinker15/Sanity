@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		010BFA951FA51B54004A4D33 /* SettingsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010BFA941FA51B54004A4D33 /* SettingsUITests.swift */; };
 		010BFA971FA52111004A4D33 /* BudgetHistoryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010BFA961FA52111004A4D33 /* BudgetHistoryUITests.swift */; };
+		010BFA991FA53500004A4D33 /* SignUpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010BFA981FA53500004A4D33 /* SignUpUITests.swift */; };
 		0126E55D1F95204700F64EBB /* ResetEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0126E55C1F95204700F64EBB /* ResetEnums.swift */; };
 		01AA355C1F91C1F600F23B37 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AA355B1F91C1F600F23B37 /* SettingsViewController.swift */; };
 		01B5FF411F9D3236001F4E70 /* BudgetHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B5FF401F9D3236001F4E70 /* BudgetHistoryViewController.swift */; };
@@ -37,7 +38,7 @@
 		D09BD8F01F9F070F0013274B /* DidactGothic-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D09BD8EE1F9F070E0013274B /* DidactGothic-Regular.ttf */; };
 		D09BD9041F9F16A40013274B /* SanityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09BD9031F9F16A40013274B /* SanityUITests.swift */; };
 		D09BD9121F9F16C20013274B /* SanityUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09BD9111F9F16C20013274B /* SanityUnitTests.swift */; };
-		D09BD91A1F9F17000013274B /* AuthenticationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09BD9191F9F17000013274B /* AuthenticationUITests.swift */; };
+		D09BD91A1F9F17000013274B /* LoginUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09BD9191F9F17000013274B /* LoginUITests.swift */; };
 		D0EA5BAC1F8B1B2A00D5F99E /* AddBudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA5BAB1F8B1B2A00D5F99E /* AddBudgetViewController.swift */; };
 		D0EA5BB01F8B24A200D5F99E /* AddTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA5BAF1F8B24A200D5F99E /* AddTransactionViewController.swift */; };
 		D0EA5BB41F8C372500D5F99E /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA5BB31F8C372500D5F99E /* CategoryCell.swift */; };
@@ -77,6 +78,7 @@
 /* Begin PBXFileReference section */
 		010BFA941FA51B54004A4D33 /* SettingsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUITests.swift; sourceTree = "<group>"; };
 		010BFA961FA52111004A4D33 /* BudgetHistoryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetHistoryUITests.swift; sourceTree = "<group>"; };
+		010BFA981FA53500004A4D33 /* SignUpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUITests.swift; sourceTree = "<group>"; };
 		0126E55C1F95204700F64EBB /* ResetEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetEnums.swift; sourceTree = "<group>"; };
 		01AA355B1F91C1F600F23B37 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		01B5FF401F9D3236001F4E70 /* BudgetHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetHistoryViewController.swift; sourceTree = "<group>"; };
@@ -117,7 +119,7 @@
 		D09BD90F1F9F16C20013274B /* SanityUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SanityUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D09BD9111F9F16C20013274B /* SanityUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanityUnitTests.swift; sourceTree = "<group>"; };
 		D09BD9131F9F16C20013274B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D09BD9191F9F17000013274B /* AuthenticationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationUITests.swift; sourceTree = "<group>"; };
+		D09BD9191F9F17000013274B /* LoginUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUITests.swift; sourceTree = "<group>"; };
 		D0EA5BAB1F8B1B2A00D5F99E /* AddBudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetViewController.swift; sourceTree = "<group>"; };
 		D0EA5BAF1F8B24A200D5F99E /* AddTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewController.swift; sourceTree = "<group>"; };
 		D0EA5BB31F8C372500D5F99E /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
@@ -247,7 +249,8 @@
 			children = (
 				D09BD9031F9F16A40013274B /* SanityUITests.swift */,
 				D09BD9051F9F16A40013274B /* Info.plist */,
-				D09BD9191F9F17000013274B /* AuthenticationUITests.swift */,
+				D09BD9191F9F17000013274B /* LoginUITests.swift */,
+				010BFA981FA53500004A4D33 /* SignUpUITests.swift */,
 				010BFA941FA51B54004A4D33 /* SettingsUITests.swift */,
 				010BFA961FA52111004A4D33 /* BudgetHistoryUITests.swift */,
 			);
@@ -630,7 +633,8 @@
 			files = (
 				D09BD9041F9F16A40013274B /* SanityUITests.swift in Sources */,
 				010BFA951FA51B54004A4D33 /* SettingsUITests.swift in Sources */,
-				D09BD91A1F9F17000013274B /* AuthenticationUITests.swift in Sources */,
+				D09BD91A1F9F17000013274B /* LoginUITests.swift in Sources */,
+				010BFA991FA53500004A4D33 /* SignUpUITests.swift in Sources */,
 				010BFA971FA52111004A4D33 /* BudgetHistoryUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
