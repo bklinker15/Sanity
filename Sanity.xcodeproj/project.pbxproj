@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		010BFA951FA51B54004A4D33 /* SettingsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010BFA941FA51B54004A4D33 /* SettingsUITests.swift */; };
 		0126E55D1F95204700F64EBB /* ResetEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0126E55C1F95204700F64EBB /* ResetEnums.swift */; };
 		01AA355C1F91C1F600F23B37 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AA355B1F91C1F600F23B37 /* SettingsViewController.swift */; };
 		01B5FF411F9D3236001F4E70 /* BudgetHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B5FF401F9D3236001F4E70 /* BudgetHistoryViewController.swift */; };
@@ -73,6 +74,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		010BFA941FA51B54004A4D33 /* SettingsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUITests.swift; sourceTree = "<group>"; };
 		0126E55C1F95204700F64EBB /* ResetEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetEnums.swift; sourceTree = "<group>"; };
 		01AA355B1F91C1F600F23B37 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		01B5FF401F9D3236001F4E70 /* BudgetHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetHistoryViewController.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				D09BD9031F9F16A40013274B /* SanityUITests.swift */,
 				D09BD9051F9F16A40013274B /* Info.plist */,
 				D09BD9191F9F17000013274B /* AuthenticationUITests.swift */,
+				010BFA941FA51B54004A4D33 /* SettingsUITests.swift */,
 			);
 			path = SanityUITests;
 			sourceTree = "<group>";
@@ -623,6 +626,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D09BD9041F9F16A40013274B /* SanityUITests.swift in Sources */,
+				010BFA951FA51B54004A4D33 /* SettingsUITests.swift in Sources */,
 				D09BD91A1F9F17000013274B /* AuthenticationUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
