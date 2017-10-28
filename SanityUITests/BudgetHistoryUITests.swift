@@ -1,5 +1,5 @@
 //
-//  SettingsUITests.swift
+//  BudgetHistoryUITests.swift
 //  SanityUITests
 //
 //  Created by Nicholas Kaimakis on 10/28/17.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import Sanity
 
-class SettingsUITests: XCTestCase {
+class BudgetHistoryUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()
@@ -23,23 +23,15 @@ class SettingsUITests: XCTestCase {
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
+    
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testUpdateNotificationSettings() {
-        //update notifications settings index in app
-        
-        
-        //then verify with firebase
+    func testExample() {
+        // Use recording to get started writing UI tests.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
-    func testUpdatePassword() {
-        
-    }
-    
-    func testLogout() {
-        
-    }
 }

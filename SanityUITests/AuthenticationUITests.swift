@@ -7,30 +7,107 @@
 //
 
 import XCTest
+@testable import Sanity
 
 class AuthenticationUITests: XCTestCase {
-        
+    var app: XCUIApplication!
+    let username:String = "coppert@usc.edu"
+    let password:String = "tester"
+    
     override func setUp() {
         super.setUp()
-        
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        app = XCUIApplication()
+        // We send a command line argument to our app,
+        // to enable it to reset its state
+        app.launchArguments.append("--uitesting")
+        app.launch()
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testCorrectLogin(){
+        let emailTextField = app.textFields["email"]
+        emailTextField.tap()
+        emailTextField.typeText(username)
+        
+        let passwordSecureTextField = app.secureTextFields["password"]
+        passwordSecureTextField.tap()
+        passwordSecureTextField.typeText(password)
+        app.buttons["Submit"].tap()
     }
     
+    func testInvalidEmail() {
+        let app = XCUIApplication()
+        let emailTextField = app.textFields["email"]
+        emailTextField.tap()
+        emailTextField.typeText("wrong")
+        
+        let passwordSecureTextField = app.secureTextFields["password"]
+        passwordSecureTextField.tap()
+        passwordSecureTextField.typeText("password")
+        app.buttons["Submit"].tap()
+        XCTAssert(app.staticTexts["Invalid email"].exists, "problem testing incorrect email error message")
+    }
+    
+    func testShortPassword() {
+        let app = XCUIApplication()
+        let emailTextField = app.textFields["email"]
+        emailTextField.tap()
+        emailTextField.typeText(username)
+        
+        let passwordSecureTextField = app.secureTextFields["password"]
+        passwordSecureTextField.tap()
+        passwordSecureTextField.typeText("hi")
+        app.buttons["Submit"].tap()
+        XCTAssert(app.staticTexts["Password must be at least 6 characters long"].exists, "problem testing short password error message")
+    }
+    
+    func testIncorrectPassword() {
+        let app = XCUIApplication()
+        let emailTextField = app.textFields["email"]
+        emailTextField.tap()
+        emailTextField.typeText(username)
+        
+        let passwordSecureTextField = app.secureTextFields["password"]
+        passwordSecureTextField.tap()
+        passwordSecureTextField.typeText("wrong_password")
+        app.buttons["Submit"].tap()
+        XCTAssert(app.staticTexts["Invalid login"].exists, "problem testing incorrect password error message")
+    }
+    
+    func testIncorrectEmail() {
+        let app = XCUIApplication()
+        let emailTextField = app.textFields["email"]
+        emailTextField.tap()
+        emailTextField.typeText("username@gmail.com")
+        
+        let passwordSecureTextField = app.secureTextFields["password"]
+        passwordSecureTextField.tap()
+        passwordSecureTextField.typeText("password")
+        app.buttons["Submit"].tap()
+        XCTAssert(app.staticTexts["Invalid login"].exists, "problem testing incorrect email error message")
+    }
+    
+    func testBlankEmail() {
+        let app = XCUIApplication()
+        
+        let passwordSecureTextField = app.secureTextFields["password"]
+        passwordSecureTextField.tap()
+        passwordSecureTextField.typeText("password")
+        app.buttons["Submit"].tap()
+        XCTAssert(app.staticTexts["Fields cannot be empty"].exists, "problem testing blank email error message")
+    }
+    
+    func testBlankPassword() {
+        let app = XCUIApplication()
+        
+        let emailTextField = app.textFields["email"]
+        emailTextField.tap()
+        emailTextField.typeText(username)
+        app.buttons["Submit"].tap()
+        XCTAssert(app.staticTexts["Fields cannot be empty"].exists, "problem testing blank password error message")
+    }
 }
