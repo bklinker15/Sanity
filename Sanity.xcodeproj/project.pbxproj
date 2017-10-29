@@ -39,6 +39,7 @@
 		D09BD9041F9F16A40013274B /* SanityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09BD9031F9F16A40013274B /* SanityUITests.swift */; };
 		D09BD9121F9F16C20013274B /* SanityUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09BD9111F9F16C20013274B /* SanityUnitTests.swift */; };
 		D09BD91A1F9F17000013274B /* LoginUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09BD9191F9F17000013274B /* LoginUITests.swift */; };
+		D09BD9221FA5595B0013274B /* AddBudgetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09BD9211FA5595B0013274B /* AddBudgetUITests.swift */; };
 		D0EA5BAC1F8B1B2A00D5F99E /* AddBudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA5BAB1F8B1B2A00D5F99E /* AddBudgetViewController.swift */; };
 		D0EA5BB01F8B24A200D5F99E /* AddTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA5BAF1F8B24A200D5F99E /* AddTransactionViewController.swift */; };
 		D0EA5BB41F8C372500D5F99E /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA5BB31F8C372500D5F99E /* CategoryCell.swift */; };
@@ -120,6 +121,7 @@
 		D09BD9111F9F16C20013274B /* SanityUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanityUnitTests.swift; sourceTree = "<group>"; };
 		D09BD9131F9F16C20013274B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D09BD9191F9F17000013274B /* LoginUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUITests.swift; sourceTree = "<group>"; };
+		D09BD9211FA5595B0013274B /* AddBudgetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetUITests.swift; sourceTree = "<group>"; };
 		D0EA5BAB1F8B1B2A00D5F99E /* AddBudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetViewController.swift; sourceTree = "<group>"; };
 		D0EA5BAF1F8B24A200D5F99E /* AddTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewController.swift; sourceTree = "<group>"; };
 		D0EA5BB31F8C372500D5F99E /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				010BFA981FA53500004A4D33 /* SignUpUITests.swift */,
 				010BFA941FA51B54004A4D33 /* SettingsUITests.swift */,
 				010BFA961FA52111004A4D33 /* BudgetHistoryUITests.swift */,
+				D09BD9211FA5595B0013274B /* AddBudgetUITests.swift */,
 			);
 			path = SanityUITests;
 			sourceTree = "<group>";
@@ -635,6 +638,7 @@
 				010BFA951FA51B54004A4D33 /* SettingsUITests.swift in Sources */,
 				D09BD91A1F9F17000013274B /* LoginUITests.swift in Sources */,
 				010BFA991FA53500004A4D33 /* SignUpUITests.swift in Sources */,
+				D09BD9221FA5595B0013274B /* AddBudgetUITests.swift in Sources */,
 				010BFA971FA52111004A4D33 /* BudgetHistoryUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
