@@ -64,14 +64,21 @@ class SettingsUITests: XCTestCase {
         
         //enter password and update
         let textField = app.textFields["newPassword"]
+        textField.tap()
         textField.typeText("testing")
         let updatePasswordButton = app.buttons["update password"]
         updatePasswordButton.tap()
         
-        //check confirmation field
+        //check confirmation field, must wait a few second for label to appear
+        let predicate = NSPredicate(format: "exists == true")
+        let query = app.staticTexts["password updated"]
+        expectation(for: predicate, evaluatedWith: query, handler: nil)
+        waitForExpectations(timeout: 3, handler: nil)
+        
         XCTAssert(app.staticTexts["password updated"].exists, "problem testing update password confirmation message")
         
         //change password back to initial value
+        textField.tap()
         textField.typeText(password)
         updatePasswordButton.tap()
     }
@@ -91,7 +98,8 @@ class SettingsUITests: XCTestCase {
         app.navigationBars["Budgets"].children(matching: .button).element(boundBy: 0).tap()
         
         //enter password and try to update
-        let textField = app.textFields.element(boundBy: 0)
+        let textField = app.textFields["newPassword"]
+        textField.tap()
         textField.typeText("hi")
         let updatePasswordButton = app.buttons["update password"]
         updatePasswordButton.tap()
@@ -117,9 +125,11 @@ class SettingsUITests: XCTestCase {
         //tap logout button
         app.buttons["Logout"].tap()
 
-        //check that we are back at login view
-        let window = app.windows.element(boundBy: 0)
-        let currentViewElement = app.buttons["On"]
-        XCTAssert(window.frame.contains(currentViewElement.frame))
+        //check that we are back at login view after delay
+        let predicate = NSPredicate(format: "exists == true")
+        let query = app.staticTexts["sanity"]
+        expectation(for: predicate, evaluatedWith: query, handler: nil)
+        waitForExpectations(timeout: 3, handler: nil)
+        XCTAssert(app.staticTexts["sanity"].exists, "problem logging out from settings page")
     }
 }
