@@ -7,31 +7,48 @@
 //
 
 import XCTest
+import Firebase
 @testable import Sanity
 
 class BudgetHistoryUITests: XCTestCase {
-        
+    var app: XCUIApplication!
+    let username:String = "coppert@usc.edu"
+    let password:String = "tester"
+    
     override func setUp() {
         super.setUp()
-        
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        app = XCUIApplication()
+        app.launch()
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func login(){
+        let emailTextField = app.textFields["email"]
+        emailTextField.tap()
+        emailTextField.typeText(username)
+        
+        let passwordSecureTextField = app.secureTextFields["password"]
+        passwordSecureTextField.tap()
+        passwordSecureTextField.typeText(password)
+        app.buttons["Submit"].tap()
     }
     
+    func testBudgetHistoryDisplay() {
+        login()
+        
+        //navigate to budget detail view
+        let table = app.tables.element
+        let cell = table.cells.element(boundBy: 0)
+        cell.tap()
+        
+        //navigate to budget history view
+        app.buttons["History"].tap()
+        
+        //check that table view of budget histories exists
+        XCTAssert(app.tables.element.exists, "table view for budget history does not exist")
+    }
 }

@@ -20,7 +20,7 @@ class LoginUITests: XCTestCase {
         app = XCUIApplication()
         // We send a command line argument to our app,
         // to enable it to reset its state
-        app.launchArguments.append("--uitesting")
+        //app.launchArguments.append("--uitesting")
         app.launch()
     }
     
@@ -28,7 +28,7 @@ class LoginUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testCorrectLogin(){
+    func login(){
         let emailTextField = app.textFields["email"]
         emailTextField.tap()
         emailTextField.typeText(username)
@@ -39,8 +39,11 @@ class LoginUITests: XCTestCase {
         app.buttons["Submit"].tap()
     }
     
+    func testCorrectLogin(){
+       login()
+    }
+    
     func testInvalidEmail() {
-        let app = XCUIApplication()
         let emailTextField = app.textFields["email"]
         emailTextField.tap()
         emailTextField.typeText("wrong")
@@ -53,7 +56,6 @@ class LoginUITests: XCTestCase {
     }
     
     func testShortPassword() {
-        let app = XCUIApplication()
         let emailTextField = app.textFields["email"]
         emailTextField.tap()
         emailTextField.typeText(username)
@@ -66,7 +68,6 @@ class LoginUITests: XCTestCase {
     }
     
     func testIncorrectPassword() {
-        let app = XCUIApplication()
         let emailTextField = app.textFields["email"]
         emailTextField.tap()
         emailTextField.typeText(username)
@@ -79,7 +80,6 @@ class LoginUITests: XCTestCase {
     }
     
     func testIncorrectEmail() {
-        let app = XCUIApplication()
         let emailTextField = app.textFields["email"]
         emailTextField.tap()
         emailTextField.typeText("username@gmail.com")
@@ -92,8 +92,6 @@ class LoginUITests: XCTestCase {
     }
     
     func testBlankEmail() {
-        let app = XCUIApplication()
-        
         let passwordSecureTextField = app.secureTextFields["password"]
         passwordSecureTextField.tap()
         passwordSecureTextField.typeText("password")
@@ -102,8 +100,6 @@ class LoginUITests: XCTestCase {
     }
     
     func testBlankPassword() {
-        let app = XCUIApplication()
-        
         let emailTextField = app.textFields["email"]
         emailTextField.tap()
         emailTextField.typeText(username)
