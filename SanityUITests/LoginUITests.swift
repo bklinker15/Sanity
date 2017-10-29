@@ -28,7 +28,7 @@ class LoginUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testCorrectLogin(){
+    func login(){
         let emailTextField = app.textFields["email"]
         emailTextField.tap()
         emailTextField.typeText(username)
@@ -37,6 +37,10 @@ class LoginUITests: XCTestCase {
         passwordSecureTextField.tap()
         passwordSecureTextField.typeText(password)
         app.buttons["Submit"].tap()
+    }
+    
+    func testCorrectLogin(){
+       login()
     }
     
     func testInvalidEmail() {

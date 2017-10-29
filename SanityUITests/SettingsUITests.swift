@@ -25,8 +25,7 @@ class SettingsUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testUpdateNotificationSettings() {
-        //login
+    func login(){
         let emailTextField = app.textFields["email"]
         emailTextField.tap()
         emailTextField.typeText(username)
@@ -35,6 +34,10 @@ class SettingsUITests: XCTestCase {
         passwordSecureTextField.tap()
         passwordSecureTextField.typeText(password)
         app.buttons["Submit"].tap()
+    }
+    
+    func testUpdateNotificationSettings() {
+        login()
         
         //navigate to settings view
         app.navigationBars["Budgets"].children(matching: .button).element(boundBy: 0).tap()
@@ -49,15 +52,7 @@ class SettingsUITests: XCTestCase {
     }
     
     func testUpdatePassword() {
-        //log in
-        let emailTextField = app.textFields["email"]
-        emailTextField.tap()
-        emailTextField.typeText(username)
-        
-        let passwordSecureTextField = app.secureTextFields["password"]
-        passwordSecureTextField.tap()
-        passwordSecureTextField.typeText(password)
-        app.buttons["Submit"].tap()
+        login()
         
         //navigate to settings view
         app.navigationBars["Budgets"].children(matching: .button).element(boundBy: 0).tap()
@@ -84,15 +79,7 @@ class SettingsUITests: XCTestCase {
     }
     
     func testInvalidPasswordUpdate() {
-        //log in
-        let emailTextField = app.textFields["email"]
-        emailTextField.tap()
-        emailTextField.typeText(username)
-        
-        let passwordSecureTextField = app.secureTextFields["password"]
-        passwordSecureTextField.tap()
-        passwordSecureTextField.typeText(password)
-        app.buttons["Submit"].tap()
+        login()
         
         //navigate to settings view
         app.navigationBars["Budgets"].children(matching: .button).element(boundBy: 0).tap()
@@ -109,15 +96,7 @@ class SettingsUITests: XCTestCase {
     }
     
     func testLogout() {
-        //login
-        let emailTextField = app.textFields["email"]
-        emailTextField.tap()
-        emailTextField.typeText(username)
-        
-        let passwordSecureTextField = app.secureTextFields["password"]
-        passwordSecureTextField.tap()
-        passwordSecureTextField.typeText(password)
-        app.buttons["Submit"].tap()
+        login()
         
         //navigate to settings view
         app.navigationBars["Budgets"].children(matching: .button).element(boundBy: 0).tap()

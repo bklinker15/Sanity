@@ -26,8 +26,7 @@ class BudgetHistoryUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testBudgetHistoryDisplay() {
-        //login
+    func login(){
         let emailTextField = app.textFields["email"]
         emailTextField.tap()
         emailTextField.typeText(username)
@@ -36,6 +35,10 @@ class BudgetHistoryUITests: XCTestCase {
         passwordSecureTextField.tap()
         passwordSecureTextField.typeText(password)
         app.buttons["Submit"].tap()
+    }
+    
+    func testBudgetHistoryDisplay() {
+        login()
         
         //navigate to budget detail view
         let table = app.tables.element
