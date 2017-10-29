@@ -101,6 +101,48 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
         return 150
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setFonts()
+        
+        budgetNameLabel.text = budget?.name
+        
+        let budgetLimit:Double = (budget?.totalBudget)!
+        let remainingFunds:Double = (budget?.budgetRemaining)!
+        var fundsSpent:Double = budgetLimit-remainingFunds
+        if (fundsSpent < 0){
+            fundsSpent = fundsSpent * -1
+        }
+        
+        let budgetLimitString:String = String(format:"%.2f", budgetLimit )
+        let remainingFundsString:String = String(format:"%.2f", remainingFunds )
+        
+        categoryTableView.delegate = self
+        categoryTableView.dataSource = self
+        budgetLeftLabel.text = remainingFundsString + " remaining of " + budgetLimitString
+        
+        //days reset
+        let calendar = NSCalendar.current
+        
+        // Replace the hour (time) of both dates with 00:00
+        let date1 = calendar.startOfDay(for: Date())
+        let date2 = calendar.startOfDay(for: (budget?.getResetDate())!)
+        
+        let components = calendar.dateComponents([.day], from: date1, to: date2)
+        
+        let days:String = (String(describing: components.day!))
+        if (Int(days)! > 0){
+            daysLeftLabel.text = days + " days until reset"
+        } else{
+            daysLeftLabel.text = "last day before reset"
+        }
+        
+        fetchCategories()
+        print(categories.count)
+        pieChartUpdate()
+    }
+    
+    
     func setFonts(){
         budgetLeftLabel.font = UIFont(name: "DidactGothic-Regular", size: 15)
         daysLeftLabel.font = UIFont(name: "DidactGothic-Regular", size: 15)
