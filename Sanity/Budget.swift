@@ -62,10 +62,14 @@ struct Budget {
     
     /* Returns last six budget limits starting with the least recent */
     func getPreviousSixBudgetLimits() ->  [Double] {
-        let n = min(6, previousBudgetLimits.count)
+        if previousBudgetLimits.count <= 6{
+            return previousBudgetLimits
+        }
+        
+        let n = previousBudgetLimits.count
         var ret = [Double]()
         
-        for i in (n-6)...n{
+        for i in (n-6)...(n-1){
             ret.append(previousBudgetLimits[i])
         }
         
@@ -74,10 +78,14 @@ struct Budget {
     
     /* Returns last six budget remains starting with the least recent */
     func getPreviousSixBudgetRemains() -> [Double] {
-        let n = min(6, previousBudgetRemains.count)
+        if previousBudgetRemains.count <= 6{
+            return previousBudgetRemains
+        }
+        
+        let n = previousBudgetRemains.count
         var ret = [Double]()
         
-        for i in (n-6)...n{
+        for i in (n-6)...(n-1){
             ret.append(previousBudgetRemains[i])
         }
         
