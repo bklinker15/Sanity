@@ -36,8 +36,6 @@
 		D043DE241F8764ED00E9A870 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D043DE231F8764ED00E9A870 /* GoogleService-Info.plist */; };
 		D09BD8EF1F9F070F0013274B /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09BD8ED1F9F070D0013274B /* HistoryTableViewCell.swift */; };
 		D09BD8F01F9F070F0013274B /* DidactGothic-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D09BD8EE1F9F070E0013274B /* DidactGothic-Regular.ttf */; };
-		D09BD9041F9F16A40013274B /* SanityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09BD9031F9F16A40013274B /* SanityUITests.swift */; };
-		D09BD9121F9F16C20013274B /* SanityUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09BD9111F9F16C20013274B /* SanityUnitTests.swift */; };
 		D09BD91A1F9F17000013274B /* LoginUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09BD9191F9F17000013274B /* LoginUITests.swift */; };
 		D09BD9221FA5595B0013274B /* AddBudgetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09BD9211FA5595B0013274B /* AddBudgetUITests.swift */; };
 		D09BD92B1FA6D09C0013274B /* BudgetUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09BD9291FA6D0970013274B /* BudgetUnitTests.swift */; };
@@ -116,10 +114,8 @@
 		D09BD8EE1F9F070E0013274B /* DidactGothic-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DidactGothic-Regular.ttf"; sourceTree = "<group>"; };
 		D09BD8F91F9F16250013274B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D09BD9011F9F16A40013274B /* SanityUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SanityUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D09BD9031F9F16A40013274B /* SanityUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanityUITests.swift; sourceTree = "<group>"; };
 		D09BD9051F9F16A40013274B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D09BD90F1F9F16C20013274B /* SanityUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SanityUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D09BD9111F9F16C20013274B /* SanityUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanityUnitTests.swift; sourceTree = "<group>"; };
 		D09BD9131F9F16C20013274B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D09BD9191F9F17000013274B /* LoginUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUITests.swift; sourceTree = "<group>"; };
 		D09BD9211FA5595B0013274B /* AddBudgetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetUITests.swift; sourceTree = "<group>"; };
@@ -251,7 +247,6 @@
 		D09BD9021F9F16A40013274B /* SanityUITests */ = {
 			isa = PBXGroup;
 			children = (
-				D09BD9031F9F16A40013274B /* SanityUITests.swift */,
 				D09BD9051F9F16A40013274B /* Info.plist */,
 				D09BD9191F9F17000013274B /* LoginUITests.swift */,
 				010BFA981FA53500004A4D33 /* SignUpUITests.swift */,
@@ -266,7 +261,6 @@
 			isa = PBXGroup;
 			children = (
 				D09BD9291FA6D0970013274B /* BudgetUnitTests.swift */,
-				D09BD9111F9F16C20013274B /* SanityUnitTests.swift */,
 				D09BD9131F9F16C20013274B /* Info.plist */,
 			);
 			path = SanityUnitTests;
@@ -637,7 +631,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D09BD9041F9F16A40013274B /* SanityUITests.swift in Sources */,
 				010BFA951FA51B54004A4D33 /* SettingsUITests.swift in Sources */,
 				D09BD91A1F9F17000013274B /* LoginUITests.swift in Sources */,
 				010BFA991FA53500004A4D33 /* SignUpUITests.swift in Sources */,
@@ -650,7 +643,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D09BD9121F9F16C20013274B /* SanityUnitTests.swift in Sources */,
 				D09BD92B1FA6D09C0013274B /* BudgetUnitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
