@@ -11,3 +11,13 @@ target 'Sanity' do
   pod 'Firebase/Firestore'
   pod 'Charts'
 end
+
+target ‘SanityUnitTests' do
+    inherit! :search_paths
+    pod 'Firebase'
+end
+
+target ‘SanityUITests' do
+    inherit! :search_paths
+    pod 'Firebase'
+end

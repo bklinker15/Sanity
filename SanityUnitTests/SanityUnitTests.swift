@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import Sanity
 
 class SanityUnitTests: XCTestCase {
     
@@ -31,5 +32,4 @@ class SanityUnitTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-    
 }

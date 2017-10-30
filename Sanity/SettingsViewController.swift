@@ -95,6 +95,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         // Connect data:
         self.picker.delegate = self
         self.picker.dataSource = self
+        newPassword.delegate = self
         // populate fields with default values
         pickerData = ["budget and threshold","budget only","none"]
         self.passwordErrorLabel.text = ""
