@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -640,17 +640,6 @@
                                     <action selector="removeCategoryButtonPress:" destination="aC4-xr-Muu" eventType="touchUpInside" id="fZ3-Rs-xAh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHf-x0-FoY">
-                                <rect key="frame" x="81" y="495" width="159" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="Create Budget">
-                                    <color key="titleColor" white="0.25915178570000003" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="createBudgetButtonPress:" destination="aC4-xr-Muu" eventType="touchUpInside" id="krg-MU-rNV"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mD1-QR-9Ar">
                                 <rect key="frame" x="199" y="355" width="105" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -691,6 +680,31 @@
                                 <color key="textColor" white="0.25915178570000003" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notification Threshold (in dollars)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GaE-kH-h4d">
+                                <rect key="frame" x="59" y="520" width="272" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QIS-7H-IF2">
+                                <rect key="frame" x="139" y="548" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHf-x0-FoY">
+                                <rect key="frame" x="108" y="586" width="159" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Create Budget">
+                                    <color key="titleColor" white="0.25915178570000003" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="createBudgetButtonPress:" destination="aC4-xr-Muu" eventType="touchUpInside" id="krg-MU-rNV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.80169546339999997" green="0.97353053919999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="RFG-HE-Ykh"/>
@@ -699,11 +713,12 @@
                         <outlet property="budgetNameTextField" destination="Fuy-7Q-l8C" id="YU0-nM-Nn3"/>
                         <outlet property="categoryTableView" destination="xNF-0l-3Fm" id="4Td-Tr-XAy"/>
                         <outlet property="datePicker" destination="5jp-mP-SoD" id="BZu-Ra-edQ"/>
+                        <outlet property="notificationThresholdField" destination="QIS-7H-IF2" id="4fP-AL-cPj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i87-tB-1NE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1456.875" y="-694.0140845070423"/>
+            <point key="canvasLocation" x="1456.8" y="-694.90254872563719"/>
         </scene>
         <!--Add a Transaction-->
         <scene sceneID="Nyk-8i-deB">
@@ -714,14 +729,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WZw-d8-Qkl">
-                                <rect key="frame" x="0.0" y="160" width="414" height="372"/>
+                                <rect key="frame" x="0.0" y="160" width="375" height="372"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="transactionCell" rowHeight="183" id="zGP-vY-5rJ" customClass="AddTransactionCell" customModule="Sanity" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="435" height="183"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="183"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zGP-vY-5rJ" id="YJk-ws-2x4">
-                                            <rect key="frame" x="0.0" y="0.0" width="435" height="182.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="182.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7vF-da-2Ci">
@@ -787,7 +802,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEX-1X-WPv">
-                                <rect key="frame" x="286" y="540" width="112" height="30"/>
+                                <rect key="frame" x="247" y="540" width="112" height="30"/>
                                 <state key="normal" title="Add Transaction"/>
                                 <connections>
                                     <action selector="addTransactionButtonPress:" destination="ShU-31-v0c" eventType="touchUpInside" id="Jxy-vH-pk2"/>
@@ -801,7 +816,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4mk-oE-j77">
-                                <rect key="frame" x="95" y="617" width="224" height="30"/>
+                                <rect key="frame" x="95" y="617" width="185" height="30"/>
                                 <state key="normal" title="Add Transaction(s)"/>
                                 <connections>
                                     <action selector="addTransactionsButtonPress:" destination="ShU-31-v0c" eventType="touchUpInside" id="VLb-cM-5So"/>
@@ -818,7 +833,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DGk-Sl-llr">
-                                <rect key="frame" x="95" y="74" width="299" height="75"/>
+                                <rect key="frame" x="95" y="74" width="260" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="Z3c-XJ-inC"/>
                                     <constraint firstAttribute="width" constant="299" id="nwt-31-o2Z"/>
