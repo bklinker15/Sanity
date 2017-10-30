@@ -42,13 +42,18 @@ class SettingsUITests: XCTestCase {
         //navigate to settings view
         app.navigationBars["Budgets"].children(matching: .button).element(boundBy: 0).tap()
         
-        //change notification settings
+        //change notification settings and save current setting
+        let currentSetting:String = app.pickerWheels.element.value as! String
         app.pickerWheels.element.adjust(toPickerWheelValue: "none")
         app.buttons["update notification frequency"].tap()
         
         //then verify picker view index and confirmation field
         XCTAssert(app.staticTexts["settings saved"].exists, "problem testing update settings confirmation message")
         XCTAssertEqual(app.pickerWheels.element.value as! String, "none", "problem testing update settings picker view value")
+        
+        //change settings back to old value
+        app.pickerWheels.element.adjust(toPickerWheelValue: currentSetting)
+        app.buttons["update notification frequency"].tap()
     }
     
     func testUpdatePassword() {
