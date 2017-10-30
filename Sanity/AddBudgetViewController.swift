@@ -14,9 +14,13 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITextFi
     var resetPeriods = ["Never", "Daily", "Weekly", "Bi-Weekly", "Monthly", "Semi-Annually", "Annually"]
     var numRows = 1
     var resetInterval = 0
+    var notificationThreshold: Double?
     
     
     @IBOutlet weak var datePicker: UIDatePicker!
+    
+    @IBOutlet weak var notificationThresholdField: UITextField!
+    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -49,8 +53,6 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITextFi
             resetInterval = 356
         }
     }
-    
-    
     
     @IBOutlet weak var categoryTableView: UITableView!
     @IBOutlet weak var budgetNameTextField: UITextField!
@@ -93,6 +95,15 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITextFi
             showErrorAlert(message: "Budget must have a name")
             return
         }
+        if (notificationThresholdField.text == ""){
+            showErrorAlert(message: "Budget must have a notification threshold")
+            return
+        }
+        notificationThreshold = Double(notificationThresholdField.text!)
+        if notificationThreshold == nil {
+            showErrorAlert(message: "Notification Threshold must be a number")
+            return
+        }
         
         for cell in cells{
             if cell.categoryNameTextField?.text == "" || cell.limitTextField?.text == ""{
@@ -111,10 +122,10 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITextFi
             }
         }
         
-        createBudget(budgetName: budgetNameTextField.text!, categories: categories)
+        createBudget(budgetName: budgetNameTextField.text!, categories: categories, threshold: notificationThreshold!)
     }
     
-    func createBudget(budgetName: String, categories:[String: Double]){
+    func createBudget(budgetName: String, categories:[String: Double], threshold: Double){
         var sum = 0.00
         
         let budgetRef = Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document(budgetName)
@@ -129,7 +140,7 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITextFi
                 }
                 
                 let budget = Budget(name: budgetName, resetDate: self.datePicker.date, lastReset: Date(), resetInterval: self.resetInterval,
-                                    totalBudget: sum, budgetRemaining: sum, previousBudgetRemains: [Double](), previousBudgetLimits: [Double]())
+                                    totalBudget: sum, budgetRemaining: sum, previousBudgetRemains: [Double](), previousBudgetLimits: [Double](), notificationThreshold: threshold)
                 
                 Firestore.firestore().collection("Users").document(self.userEmail!).collection("Budgets").document(budgetName).setData(budget.dictionary)
                 

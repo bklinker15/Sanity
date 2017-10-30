@@ -17,6 +17,7 @@ struct Budget {
     var budgetRemaining:Double
     var previousBudgetRemains:[Double]
     var previousBudgetLimits:[Double]
+    var notificationThreshold:Double
     
     var dictionary:[String:Any] {
         return [
@@ -27,7 +28,8 @@ struct Budget {
             "resetDate":resetDate,
             "resetInterval":resetInterval,
             "previousBudgetRemains" : previousBudgetRemains,
-            "previousBudgetLimits": previousBudgetLimits
+            "previousBudgetLimits": previousBudgetLimits,
+            "notificationThreshold": notificationThreshold
         ]
     }
     
@@ -54,13 +56,20 @@ struct Budget {
     func getBudgetRemaining() -> Double {
         return budgetRemaining
     }
+    func getNotificationThreshold() -> Double {
+        return notificationThreshold
+    }
     
     /* Returns last six budget limits starting with the least recent */
     func getPreviousSixBudgetLimits() ->  [Double] {
-        let n = min(6, previousBudgetLimits.count)
+        if previousBudgetLimits.count <= 6{
+            return previousBudgetLimits
+        }
+        
+        let n = previousBudgetLimits.count
         var ret = [Double]()
         
-        for i in (n-6)...n{
+        for i in (n-6)...(n-1){
             ret.append(previousBudgetLimits[i])
         }
         
@@ -69,10 +78,14 @@ struct Budget {
     
     /* Returns last six budget remains starting with the least recent */
     func getPreviousSixBudgetRemains() -> [Double] {
-        let n = min(6, previousBudgetRemains.count)
+        if previousBudgetRemains.count <= 6{
+            return previousBudgetRemains
+        }
+        
+        let n = previousBudgetRemains.count
         var ret = [Double]()
         
-        for i in (n-6)...n{
+        for i in (n-6)...(n-1){
             ret.append(previousBudgetRemains[i])
         }
         
@@ -88,11 +101,12 @@ extension Budget : FirestoreSerializable {
             let lastReset = dictionary["lastReset"]  as? Date,
             let resetDate = dictionary["resetDate"]  as? Date,
             let resetInterval = dictionary["resetInterval"] as? Int,
+            let notificationThreshold = dictionary["notificationThreshold"]  as? Double,
             let previousBudgetRemains = dictionary["previousBudgetRemains"] as? [Double],
             let previousBudgetLimits = dictionary["previousBudgetLimits"] as? [Double] else {return nil}
         
         self.init(name: name, resetDate: resetDate, lastReset: lastReset,
                   resetInterval: resetInterval,
-                  totalBudget: totalBudget, budgetRemaining: budgetRemaining, previousBudgetRemains: previousBudgetRemains, previousBudgetLimits: previousBudgetLimits)
+                  totalBudget: totalBudget, budgetRemaining: budgetRemaining, previousBudgetRemains: previousBudgetRemains, previousBudgetLimits: previousBudgetLimits, notificationThreshold: notificationThreshold)
     }
 }

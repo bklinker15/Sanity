@@ -17,6 +17,7 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate, UIPic
     var numRows = 1
     var selectedBudgetIndex = 0
     var selectedCategoryIndex = 0
+    var lastCategory: String = "no category"
     
     
     @IBOutlet weak var transactionTableView: UITableView!
@@ -126,6 +127,7 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate, UIPic
                                           amount: Double(amountSpent)!, timestamp: Date())
             let mCategory = Category(name: chosenCategory.getName(), paymentMethods: chosenCategory.getPaymentMethods(), spendingLimit: chosenCategory.getSpendingLimit(), amountSpent: (chosenCategory.getAmountSpent() + Double(amountSpent)!))
             
+            lastCategory = chosenCategory.getName()
             //Mirror database update locally so we're working with correct values for subsequent updates
             categories[cell.categoryPicker.selectedRow(inComponent: 0)] = Category(name: chosenCategory.getName(), paymentMethods: chosenCategory.getPaymentMethods(), spendingLimit: chosenCategory.getSpendingLimit(), amountSpent:(chosenCategory.getAmountSpent() + Double(amountSpent)!))
             amountAdded += Double(amountSpent)!
@@ -143,8 +145,19 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate, UIPic
                 let budgetRemainingDouble = self.budgets[self.selectedBudgetIndex].getBudgetRemaining() - amountAdded
                 
                 if budgetRemainingDouble <= 0 {
-                    self.createAlert(title: "Budget Alert", message: "Budget has been exceeded! Balance is at or below zero")
+                    self.createAlert(title: "Budget Alert", message: "Budget total has been exceeded! You exceeded this threshold in the " + self.lastCategory + " category")
                 }
+                else if budgetRemainingDouble < self.budgets[self.selectedBudgetIndex].getNotificationThreshold() {
+                    self.createAlert(title: "Threshold Exceeded!", message: ("Your set threshold of $" + String(self.budgets[self.selectedBudgetIndex].getNotificationThreshold()) + " out of your total budget of $" + String(self.budgets[self.selectedBudgetIndex].getTotalBudget()) + " has been exceeded!  You exceeded this threshold in the " + self.lastCategory + " category"))
+                }
+                
+                for i in 0 ..< self.categories.count {
+                    if self.categories[i].getAmountSpent() >= self.categories[i].getSpendingLimit() {
+                        self.createAlert(title: "Category Exceeded!", message: "You have exceeded your limit of $" + String(self.categories[i].getSpendingLimit()) + " in the " + self.categories[i].getName() + " category!  Current category balance is now $" + String(self.categories[i].getSpendingLimit() - self.categories[i].getAmountSpent()))
+                    }
+                }
+                
+                
                 
             }else{
                 print("Error updating budget remaining amount")
