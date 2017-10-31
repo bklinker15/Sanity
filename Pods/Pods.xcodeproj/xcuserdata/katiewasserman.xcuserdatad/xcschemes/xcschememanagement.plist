@@ -46,6 +46,11 @@
 			<key>orderHint</key>
 			<integer>13</integer>
 		</dict>
+		<key>Pods-SanityUITests 2.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>18</integer>
+		</dict>
 		<key>Pods-SanityUITests.xcscheme</key>
 		<dict>
 			<key>isShown</key>

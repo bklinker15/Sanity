@@ -18,6 +18,8 @@
 		1C958C5BDD903A8BFF9E2E5D /* Pods_Sanity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C772DE7D2F5C4DC837699DC2 /* Pods_Sanity.framework */; };
 		36FDFE211FA7EE26005CF2A2 /* NotificationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FDFE201FA7EE26005CF2A2 /* NotificationUITests.swift */; };
 		547A34A11D2513C17CAE2E05 /* libPods-SanityUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 039EBFE0C1B4FC664717C7FC /* libPods-SanityUITests.a */; };
+		740309161FA81B36008A68FA /* BudgetDetailUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740309151FA81B36008A68FA /* BudgetDetailUITests.swift */; };
+		740E5FB61FA8278F00582007 /* EditBudgetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740E5FB51FA8278F00582007 /* EditBudgetUITests.swift */; };
 		741C852A1F97FDB800539B6C /* EditCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741C85291F97FDB800539B6C /* EditCategoryCell.swift */; };
 		747AB9F21F955A2E004E3C7D /* CategoryBudgetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747AB9F11F955A2E004E3C7D /* CategoryBudgetCell.swift */; };
 		747E37B91F97E8F900B5ABF8 /* EditBudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747E37B81F97E8F900B5ABF8 /* EditBudgetViewController.swift */; };
@@ -89,6 +91,8 @@
 		2212A0E97760CF0CFB1FD377 /* libPods-SanityUnitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SanityUnitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36FDFE201FA7EE26005CF2A2 /* NotificationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationUITests.swift; sourceTree = "<group>"; };
 		3A42C019EE578672D608AB5E /* Pods-SanityUnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SanityUnitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SanityUnitTests/Pods-SanityUnitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		740309151FA81B36008A68FA /* BudgetDetailUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDetailUITests.swift; sourceTree = "<group>"; };
+		740E5FB51FA8278F00582007 /* EditBudgetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBudgetUITests.swift; sourceTree = "<group>"; };
 		741C85291F97FDB800539B6C /* EditCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryCell.swift; sourceTree = "<group>"; };
 		747AB9F11F955A2E004E3C7D /* CategoryBudgetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBudgetCell.swift; sourceTree = "<group>"; };
 		747E37B81F97E8F900B5ABF8 /* EditBudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBudgetViewController.swift; sourceTree = "<group>"; };
@@ -256,6 +260,8 @@
 				010BFA961FA52111004A4D33 /* BudgetHistoryUITests.swift */,
 				D09BD9211FA5595B0013274B /* AddBudgetUITests.swift */,
 				36FDFE201FA7EE26005CF2A2 /* NotificationUITests.swift */,
+				740309151FA81B36008A68FA /* BudgetDetailUITests.swift */,
+				740E5FB51FA8278F00582007 /* EditBudgetUITests.swift */,
 			);
 			path = SanityUITests;
 			sourceTree = "<group>";
@@ -635,8 +641,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				010BFA951FA51B54004A4D33 /* SettingsUITests.swift in Sources */,
+				740309161FA81B36008A68FA /* BudgetDetailUITests.swift in Sources */,
 				D09BD91A1F9F17000013274B /* LoginUITests.swift in Sources */,
 				36FDFE211FA7EE26005CF2A2 /* NotificationUITests.swift in Sources */,
+				740E5FB61FA8278F00582007 /* EditBudgetUITests.swift in Sources */,
 				010BFA991FA53500004A4D33 /* SignUpUITests.swift in Sources */,
 				D09BD9221FA5595B0013274B /* AddBudgetUITests.swift in Sources */,
 				010BFA971FA52111004A4D33 /* BudgetHistoryUITests.swift in Sources */,
@@ -854,11 +862,12 @@
 			baseConfigurationReference = BF72D0E266F18F8C493D5C27 /* Pods-SanityUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RWH7EX4QP6;
+				DEVELOPMENT_TEAM = VNPFXH73M5;
 				INFOPLIST_FILE = SanityUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = BK.SanityUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = SanityUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Sanity;
@@ -870,11 +879,12 @@
 			baseConfigurationReference = 7C055D9FD657506CB6624C8F /* Pods-SanityUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RWH7EX4QP6;
+				DEVELOPMENT_TEAM = VNPFXH73M5;
 				INFOPLIST_FILE = SanityUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = BK.SanityUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = SanityUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Sanity;

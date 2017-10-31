@@ -110,7 +110,7 @@ class EditBudgetViewController: UIViewController, UITextFieldDelegate, UITableVi
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete{
             print (indexPath.row)
-            if indexPath.row >= numRows-1{
+            if indexPath.row > numRows-1{
                 numRows = numRows - 1
                 categoryTableView.reloadData()
             }
