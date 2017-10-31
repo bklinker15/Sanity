@@ -57,6 +57,36 @@ class AddBudgetUITests: XCTestCase {
     }
     
     func testCategoryNameConflict(){
+        app.navigationBars["Budgets"].children(matching: .button).element(boundBy: 1).tap()
+        app.sheets["Add"].buttons["Budget"].tap()
+        
+        let createBudgetButton = app.buttons["Create Budget"]
+
+        let nameField = app.textFields["budgetNameField"]
+        nameField.tap()
+        nameField.typeText("name")
+        
+        let tablesQuery = app.tables
+        let categoryTextField = tablesQuery/*@START_MENU_TOKEN@*/.textFields["Category"]/*[[".cells.textFields[\"Category\"]",".textFields[\"Category\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        categoryTextField.tap()
+        categoryTextField.tap()
+        
+        let cellsQuery = tablesQuery.cells
+        cellsQuery.children(matching: .textField).element(boundBy: 0).typeText("c")
+        
+        let limitTextField = tablesQuery/*@START_MENU_TOKEN@*/.textFields["Limit"]/*[[".cells.textFields[\"Limit\"]",".textFields[\"Limit\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        limitTextField.tap()
+        cellsQuery.children(matching: .textField).element(boundBy: 1).typeText("1")
+        app.buttons["Add Category"].tap()
+        categoryTextField.tap()
+        tablesQuery.cells.containing(.textField, identifier:"Limit").children(matching: .textField).element(boundBy: 0).typeText("c")
+        limitTextField.tap()
+        tablesQuery.children(matching: .cell).element(boundBy: 1).children(matching: .textField).element(boundBy: 1).typeText("2")
+       
+        createBudgetButton.tap()
+        
+        let dismissButton = app.alerts["Oops!"].buttons["Dismiss"]
+        XCTAssert(dismissButton.exists)
         
     }
     
@@ -64,7 +94,6 @@ class AddBudgetUITests: XCTestCase {
         let randomNum = (Int(arc4random_uniform(10000)))
         let budgetName = "UItest\(randomNum)"
         
-        let app = XCUIApplication()
         app.navigationBars["Budgets"].children(matching: .button).element(boundBy: 1).tap()
         app.sheets["Add"].buttons["Budget"].tap()
         
@@ -76,10 +105,9 @@ class AddBudgetUITests: XCTestCase {
         dismissButton.tap()
         
         //Blank category and limit
-        let element = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element
-        let textField = element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textField).element
-        textField.tap()
-        textField.typeText(budgetName)
+        let nameField = app.textFields["budgetNameField"]
+        nameField.tap()
+        nameField.typeText(budgetName)
         createBudgetButton.tap()
         XCTAssert(dismissButton.exists)
         dismissButton.tap()
@@ -95,12 +123,19 @@ class AddBudgetUITests: XCTestCase {
         createBudgetButton.tap()
         XCTAssert(dismissButton.exists)
         dismissButton.tap()
-
-        //No blanks
-        textField2.tap()
-        element.tap()
+    
+        //Blank notification threshold
         textField2.tap()
         textField2.typeText("20")
+        createBudgetButton.tap()
+        XCTAssert(dismissButton.exists)
+        dismissButton.tap()
+        
+        //No Blanks
+        let notifField = app.textFields["thresholdField"]
+        notifField.tap()
+        notifField.typeText("10")
+        
         createBudgetButton.tap()
         
         XCTAssert(!dismissButton.exists)
