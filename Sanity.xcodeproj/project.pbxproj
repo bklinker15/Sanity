@@ -35,6 +35,11 @@
 		A0765C601F8A02B2002C603E /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0765C5F1F8A02B2002C603E /* DashboardViewController.swift */; };
 		A0851DDD1F8C657B003357F7 /* FirestoreSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0851DDC1F8C657B003357F7 /* FirestoreSerializable.swift */; };
 		A087801A1F8B045800F6AB15 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08780191F8B045800F6AB15 /* Budget.swift */; };
+		A0C5C7861FA8141C000AB2FB /* BudgetClassUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C5C7851FA8141C000AB2FB /* BudgetClassUnitTests.swift */; };
+		A0C5C7881FA81BD1000AB2FB /* CategoryClassUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C5C7871FA81BD1000AB2FB /* CategoryClassUnitTests.swift */; };
+		A0C5C78A1FA81FEE000AB2FB /* TransactionClassUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C5C7891FA81FEE000AB2FB /* TransactionClassUnitTests.swift */; };
+		A0C5C78C1FA82359000AB2FB /* AuthenticationVCUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C5C78B1FA82359000AB2FB /* AuthenticationVCUnitTests.swift */; };
+		A0C5C78E1FA8282C000AB2FB /* AddTransactionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C5C78D1FA8282C000AB2FB /* AddTransactionUITests.swift */; };
 		D043DE221F8753D900E9A870 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D043DE211F8753D900E9A870 /* AuthViewController.swift */; };
 		D043DE241F8764ED00E9A870 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D043DE231F8764ED00E9A870 /* GoogleService-Info.plist */; };
 		D09BD8EF1F9F070F0013274B /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09BD8ED1F9F070D0013274B /* HistoryTableViewCell.swift */; };
@@ -111,6 +116,11 @@
 		A0765C5F1F8A02B2002C603E /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		A0851DDC1F8C657B003357F7 /* FirestoreSerializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreSerializable.swift; sourceTree = "<group>"; };
 		A08780191F8B045800F6AB15 /* Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
+		A0C5C7851FA8141C000AB2FB /* BudgetClassUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetClassUnitTests.swift; sourceTree = "<group>"; };
+		A0C5C7871FA81BD1000AB2FB /* CategoryClassUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryClassUnitTests.swift; sourceTree = "<group>"; };
+		A0C5C7891FA81FEE000AB2FB /* TransactionClassUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionClassUnitTests.swift; sourceTree = "<group>"; };
+		A0C5C78B1FA82359000AB2FB /* AuthenticationVCUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationVCUnitTests.swift; sourceTree = "<group>"; };
+		A0C5C78D1FA8282C000AB2FB /* AddTransactionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionUITests.swift; sourceTree = "<group>"; };
 		A24FA7795AFF7911DF790849 /* Pods-SanityUnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SanityUnitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SanityUnitTests/Pods-SanityUnitTests.release.xcconfig"; sourceTree = "<group>"; };
 		BF72D0E266F18F8C493D5C27 /* Pods-SanityUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SanityUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SanityUITests/Pods-SanityUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C772DE7D2F5C4DC837699DC2 /* Pods_Sanity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sanity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -253,6 +263,7 @@
 		D09BD9021F9F16A40013274B /* SanityUITests */ = {
 			isa = PBXGroup;
 			children = (
+				A0C5C78D1FA8282C000AB2FB /* AddTransactionUITests.swift */,
 				D09BD9051F9F16A40013274B /* Info.plist */,
 				D09BD9191F9F17000013274B /* LoginUITests.swift */,
 				010BFA981FA53500004A4D33 /* SignUpUITests.swift */,
@@ -269,6 +280,10 @@
 		D09BD9101F9F16C20013274B /* SanityUnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				A0C5C78B1FA82359000AB2FB /* AuthenticationVCUnitTests.swift */,
+				A0C5C7891FA81FEE000AB2FB /* TransactionClassUnitTests.swift */,
+				A0C5C7871FA81BD1000AB2FB /* CategoryClassUnitTests.swift */,
+				A0C5C7851FA8141C000AB2FB /* BudgetClassUnitTests.swift */,
 				D09BD9291FA6D0970013274B /* BudgetUnitTests.swift */,
 				D09BD9131F9F16C20013274B /* Info.plist */,
 			);
@@ -646,6 +661,7 @@
 				36FDFE211FA7EE26005CF2A2 /* NotificationUITests.swift in Sources */,
 				740E5FB61FA8278F00582007 /* EditBudgetUITests.swift in Sources */,
 				010BFA991FA53500004A4D33 /* SignUpUITests.swift in Sources */,
+				A0C5C78E1FA8282C000AB2FB /* AddTransactionUITests.swift in Sources */,
 				D09BD9221FA5595B0013274B /* AddBudgetUITests.swift in Sources */,
 				010BFA971FA52111004A4D33 /* BudgetHistoryUITests.swift in Sources */,
 			);
@@ -656,6 +672,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D09BD92B1FA6D09C0013274B /* BudgetUnitTests.swift in Sources */,
+				A0C5C78C1FA82359000AB2FB /* AuthenticationVCUnitTests.swift in Sources */,
+				A0C5C78A1FA81FEE000AB2FB /* TransactionClassUnitTests.swift in Sources */,
+				A0C5C7881FA81BD1000AB2FB /* CategoryClassUnitTests.swift in Sources */,
+				A0C5C7861FA8141C000AB2FB /* BudgetClassUnitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
