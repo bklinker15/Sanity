@@ -31,7 +31,7 @@ class TransactionClassUnitTests: XCTestCase {
     
     func testFirestoreSerializablBadDataExpectedField() {
         let transactionData: [String : Any] = ["memo":"Milk", "linkedBudgets": ["Spending"],
-                                               "paymentMethodzxfzxfzxfs": "cash", "amount": 25.00,
+                                               "paymentMethod": "cash", "amount": 25,
                                                "timestamp":Date()]
         let newTransaction = Transaction(dictionary: transactionData)
         XCTAssertNil(newTransaction)
