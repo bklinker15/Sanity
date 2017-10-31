@@ -32,7 +32,7 @@ extension Transaction : FirestoreSerializable {
     init?(dictionary: [String:Any]){
         guard let memo = dictionary["memo"] as? String,
             let linkedBudgets = dictionary["linkedBudgets"] as? [String],
-            let paymentMethods = dictionary["paymenthMethods"] as? String,
+            let paymentMethods = dictionary["paymentMethods"] as? String,
             let amount = dictionary["amount"] as? Double,
             let timestamp = dictionary["timestamp"] as? Date else {return nil}
         
