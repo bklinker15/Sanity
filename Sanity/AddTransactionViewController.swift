@@ -145,10 +145,10 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate, UIPic
                 let budgetRemainingDouble = self.budgets[self.selectedBudgetIndex].getBudgetRemaining() - amountAdded
                 
                 if budgetRemainingDouble <= 0 {
-                    self.createAlert(title: "Budget Alert", message: "Budget total has been exceeded! You exceeded this threshold in the " + self.lastCategory + " category")
+                    self.createAlert(title: "Budget Exceeded!", message: "Budget total has been exceeded! Your budget balance is $" + String(budgetRemainingDouble) + " and you exceeded this limit in the " + self.lastCategory + " category")
                 }
                 else if budgetRemainingDouble < self.budgets[self.selectedBudgetIndex].getNotificationThreshold() {
-                    self.createAlert(title: "Threshold Exceeded!", message: ("Your set threshold of $" + String(self.budgets[self.selectedBudgetIndex].getNotificationThreshold()) + " out of your total budget of $" + String(self.budgets[self.selectedBudgetIndex].getTotalBudget()) + " has been exceeded!  You exceeded this threshold in the " + self.lastCategory + " category"))
+                    self.createAlert(title: "Threshold Exceeded!", message: ("Your set threshold of $" + String(self.budgets[self.selectedBudgetIndex].getNotificationThreshold()) + " out of your total budget of $" + String(self.budgets[self.selectedBudgetIndex].getTotalBudget()) + " has been exceeded!  You exceeded this threshold in the " + self.lastCategory + " category.  Your current balance is now $" + String(budgetRemainingDouble)))
                 }
                 
                 for i in 0 ..< self.categories.count {
