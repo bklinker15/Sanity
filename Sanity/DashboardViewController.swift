@@ -38,6 +38,8 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 101
         fetchBudgets()
         tableView.reloadData()
         tableView.refreshControl = self.refreshControl
