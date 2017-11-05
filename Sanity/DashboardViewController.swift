@@ -73,20 +73,18 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let dequeued = tableView.dequeueReusableCell(withIdentifier: "budget", for: indexPath)
         if let cell = dequeued as? BudgetOverviewCell {
+            cell.backgroundColor = UIColor(red: 204.0/255.0, green: 248.0/255.0, blue: 255.0/255.0, alpha: 1.0)
             let currentBudget = budgets[indexPath.row]
             cell.budgetName.text = currentBudget.getName()
             
             cell.budgetRemaining.text = "$" + String(format: "%.2f", currentBudget.getBudgetRemaining());
          
             cell.budgetRemaining.textColor = UIColor.green
-            
             if currentBudget.getBudgetRemaining() > 0.0 {
                 cell.budgetRemaining.textColor = UIColor.green
-                cell.backgroundColor = UIColor(red: 212, green: 255, blue: 212, alpha: 1)
             }
             else {
                 cell.budgetRemaining.textColor = UIColor.red
-                cell.backgroundColor = UIColor(red: 255, green: 196, blue: 196, alpha: 1)
             }
             var floatBudgetRemaining = Float(currentBudget.getBudgetRemaining())
             floatBudgetRemaining = floatBudgetRemaining / Float(currentBudget.getTotalBudget())
@@ -110,7 +108,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     //Trigger segue to budget detail view once a budget row is tapped in the table
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //performSegue(withIdentifier: "budgetDetail", sender: tableView.cellForRow(at: indexPath))
-        
+        tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "budgetDet", sender: budgets[indexPath.row])
     }
     
