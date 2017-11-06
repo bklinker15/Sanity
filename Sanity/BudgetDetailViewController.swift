@@ -17,7 +17,6 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
     
     var budget:Budget?
     
-    @IBOutlet weak var budgetNameLabel: UILabel!
     @IBOutlet weak var daysLeftLabel: UILabel!
     @IBOutlet weak var daysLeft: UILabel!
     @IBOutlet weak var budgetLeftLabel: UILabel!
@@ -55,8 +54,8 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         setFonts()
+        self.title = budget?.getName()
         
-        budgetNameLabel.text = budget?.name
         
         let budgetLimit:Double = (budget?.totalBudget)!
         let remainingFunds:Double = (budget?.budgetRemaining)!
@@ -106,8 +105,7 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setFonts()
-        
-        budgetNameLabel.text = budget?.name
+
         
         let budgetLimit:Double = (budget?.totalBudget)!
         let remainingFunds:Double = (budget?.budgetRemaining)!
@@ -150,7 +148,6 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
     func setFonts(){
         budgetLeftLabel.font = UIFont(name: "DidactGothic-Regular", size: 15)
         daysLeftLabel.font = UIFont(name: "DidactGothic-Regular", size: 15)
-        budgetNameLabel.font = UIFont(name: "DidactGothic-Regular", size: 20)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

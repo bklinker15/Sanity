@@ -17,7 +17,7 @@ class EditBudgetViewController: UIViewController, UITextFieldDelegate, UITableVi
     var userEmail:String?
     var categories = [Category]()
     var budget:Budget?
-    @IBOutlet weak var budgetNameLabel: UILabel!
+
     @IBOutlet weak var categoryLabel: UILabel!
     var numRows:Int!
     var resetInterval = 0
@@ -103,7 +103,6 @@ class EditBudgetViewController: UIViewController, UITextFieldDelegate, UITableVi
     }
     
     func setFont(){
-        budgetNameLabel.font = UIFont(name: "DidactGothic-Regular", size: 40)
         categoryLabel.font = UIFont(name: "DidactGothic-Regular", size: 20)
     }
     
@@ -135,9 +134,8 @@ class EditBudgetViewController: UIViewController, UITextFieldDelegate, UITableVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = budget?.getName()
         fetchCategories()
-        budgetNameLabel.text = budget?.name
         setFont()
         
     }
