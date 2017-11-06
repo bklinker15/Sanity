@@ -177,6 +177,8 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITextFi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        categoryTableView.rowHeight = UITableViewAutomaticDimension
+        categoryTableView.estimatedRowHeight = 97
         budgetNameTextField.delegate = self
         self.datePicker.minimumDate = Date()
     }

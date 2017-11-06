@@ -36,8 +36,8 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
         let remainingFunds:Double = (budget?.budgetRemaining)! < 0.0 ? 0.0 : (budget?.budgetRemaining)!
         let fundsSpent:Double = budgetLimit-remainingFunds
         
-        let spentEntry = PieChartDataEntry(value: Double(fundsSpent), label: "Total Spent")
-        let remainingEntry = PieChartDataEntry(value: Double(remainingFunds), label: "Total Remaining")
+        let spentEntry = PieChartDataEntry(value: Double(fundsSpent), label: "Dollars Spent")
+        let remainingEntry = PieChartDataEntry(value: Double(remainingFunds), label: "Dollars Remaining")
         let dataSet = PieChartDataSet(values: [spentEntry, remainingEntry], label: "")
         dataSet.colors = ChartColorTemplates.joyful()
         dataSet.valueColors = [UIColor.black]
@@ -65,8 +65,10 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
             fundsSpent = fundsSpent * -1
         }
         
-        let budgetLimitString:String = String(format:"%.2f", budgetLimit )
-        let remainingFundsString:String = String(format:"%.2f", remainingFunds )
+        let budgetLimitStringVal:String = String(format:"%.2f", budgetLimit )
+        let remainingFundsStringVal:String = String(format:"%.2f", remainingFunds )
+        let budgetLimitString = "$" + budgetLimitStringVal
+        let remainingFundsString = "$" + remainingFundsStringVal
         
         categoryTableView.delegate = self
         categoryTableView.dataSource = self
@@ -114,8 +116,10 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
             fundsSpent = fundsSpent * -1
         }
         
-        let budgetLimitString:String = String(format:"%.2f", budgetLimit )
-        let remainingFundsString:String = String(format:"%.2f", remainingFunds )
+        let budgetLimitStringVal:String = String(format:"%.2f", budgetLimit )
+        let remainingFundsStringVal:String = String(format:"%.2f", remainingFunds )
+        let budgetLimitString = "$" + budgetLimitStringVal
+        let remainingFundsString = "$" + remainingFundsStringVal
         
         categoryTableView.delegate = self
         categoryTableView.dataSource = self
