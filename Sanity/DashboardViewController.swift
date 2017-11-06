@@ -105,6 +105,22 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         return dequeued
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            deleteBudget(budgetName: budgets[indexPath.row].getName())
+        }
+    }
+    
+    func deleteBudget(budgetName: String){
+        Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document(budgetName).delete(completion: {err in
+            self.fetchBudgets()
+        })
+    }
+    
     //Trigger segue to budget detail view once a budget row is tapped in the table
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //performSegue(withIdentifier: "budgetDetail", sender: tableView.cellForRow(at: indexPath))
