@@ -11,6 +11,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     var userEmail: String!
     var budgets = [Budget]()
     
+    @IBOutlet weak var placeholder: UILabel!
     @IBAction func addButtonPress(_ sender: Any) {
         // Create the action sheet
         let myActionSheet = UIAlertController(title: "Add", message: "Add new budget or transaction?", preferredStyle: UIAlertControllerStyle.actionSheet)
@@ -137,6 +138,17 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 self.budgets = querySnapshot!.documents.flatMap({Budget(dictionary: $0.data())})
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
+                }
+                
+                //if there are no budgets to display, populate placeholder and hide table
+                if self.budgets.isEmpty{
+                    self.placeholder.isHidden = false
+                    self.placeholder.text = "You have no budgets to display! Start tracking!"
+                    self.placeholder.font = UIFont(name: "DidactGothic-Regular", size: 20)
+                    self.tableView.isHidden = true
+                } else{
+                    self.placeholder.isHidden = true
+                    self.tableView.isHidden = false
                 }
             }
         }
