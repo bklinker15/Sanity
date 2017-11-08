@@ -12,9 +12,12 @@ import Firebase
 class AddBudgetViewController: UIViewController, UITableViewDataSource, UITextFieldDelegate, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     var userEmail:String?
     var resetPeriods = ["Never", "Daily", "Weekly", "Bi-Weekly", "Monthly", "Semi-Annually", "Annually"]
-    var numRows = 1
+    var numRows = 2
     var resetInterval = 0
     var notificationThreshold: Double?
+    var populateCategoriesName: [String] = ["Credit Card", "Cash"]
+    var populateCategoriesLimit: [Int] = [100, 50]
+    var ctr = 0
     
     
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -66,6 +69,9 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITextFi
         cell.limitTextField.delegate = self
         cell.categoryNameTextField.delegate = self
         cell.setup()
+        cell.categoryNameTextField.text = populateCategoriesName[ctr]
+        cell.limitTextField.text = String(populateCategoriesLimit[ctr])
+        ctr += 1
         return cell
     }
     
@@ -181,6 +187,7 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITextFi
         categoryTableView.estimatedRowHeight = 97
         budgetNameTextField.delegate = self
         self.datePicker.minimumDate = Date()
+
     }
     
     override func didReceiveMemoryWarning() {
