@@ -43,7 +43,6 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     //function to set notification settings index in UI from firebase, creates it if DNE
     func setNotificationsIndexUI() {
         let docRef = Firestore.firestore().collection("Users").document(userEmail!)
-        print(userEmail!)
         docRef.getDocument { (document, error) in
             if let document = document {
                 if document.exists{
@@ -54,7 +53,8 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                         self.picker.selectRow(0, inComponent:0, animated: true)
                     }
                 } else {
-                    print("Document does not exist")
+                    docRef.setData(["notificationsSettingsIndex": 0])
+                    self.picker.selectRow(0, inComponent:0, animated: true)
                 }
             } else {
                 print("Document does not exist")
