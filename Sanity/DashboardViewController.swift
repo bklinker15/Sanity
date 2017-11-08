@@ -17,7 +17,13 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         let myActionSheet = UIAlertController(title: "Add", message: "Add new budget or transaction?", preferredStyle: UIAlertControllerStyle.actionSheet)
         
         let transactionAction = UIAlertAction(title: "Transaction", style: UIAlertActionStyle.default) { (action) in
-            self.performSegue(withIdentifier: "addTransactionSegue", sender: self)
+            if !self.budgets.isEmpty{
+                self.performSegue(withIdentifier: "addTransactionSegue", sender: self)
+            } else{
+                let alert = UIAlertController(title: "No Existing Budgets", message: "You must create a budget before adding a transaction!", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         }
         
         let budgetAction = UIAlertAction(title: "Budget", style: UIAlertActionStyle.default) { (action) in

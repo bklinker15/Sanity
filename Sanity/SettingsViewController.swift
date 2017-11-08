@@ -46,11 +46,15 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         print(userEmail!)
         docRef.getDocument { (document, error) in
             if let document = document {
-                if document.data()["notificationsSettingsIndex"] != nil {
-                    self.picker.selectRow(document.data()["notificationsSettingsIndex"] as! Int, inComponent:0, animated: true)
+                if document.exists{
+                    if document.data()["notificationsSettingsIndex"] != nil {
+                        self.picker.selectRow(document.data()["notificationsSettingsIndex"] as! Int, inComponent:0, animated: true)
+                    } else {
+                        docRef.setData(["notificationsSettingsIndex": 0])
+                        self.picker.selectRow(0, inComponent:0, animated: true)
+                    }
                 } else {
-                    docRef.setData(["notificationsSettingsIndex": 0])
-                    self.picker.selectRow(0, inComponent:0, animated: true)
+                    print("Document does not exist")
                 }
             } else {
                 print("Document does not exist")
@@ -83,29 +87,28 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBAction func logoutButtonPress(_ sender: Any) {
         do{
             try Auth.auth().signOut()
-        }catch{
-        }
+        }catch{}
         self.navigationController?.popViewController(animated: false)
         performSegue(withIdentifier: "logoutSegue", sender: self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        newPassword.delegate = self
+        
         // Connect data:
+        newPassword.delegate = self
         self.picker.delegate = self
         self.picker.dataSource = self
         newPassword.delegate = self
+        
         // populate fields with default values
         pickerData = ["budget and threshold","budget only","none"]
         self.passwordErrorLabel.text = ""
         self.notificationsErrorLabel.text = ""
         self.newPassword.text = ""
         
-        //set notifications index to the setting stored in FB
         setNotificationsIndexUI()
         setFont()
-        
     }
     
     func setFont(){
@@ -129,7 +132,6 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // The number of columns of data
