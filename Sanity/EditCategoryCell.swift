@@ -31,7 +31,7 @@ class EditCategoryCell: UITableViewCell {
     }
     
     @IBOutlet weak var editButton: UIButton!
-    public func setup(catName:String, catLimit: String, budName:String, email:String, cat:Category){
+    public func setup(catName:String, catLimit: String, budName:String, email:String, cat:Category, editBudg: UIViewController){
         catNameField.text = catName
         catLimitField.text = catLimit
         catLimitField.keyboardType = UIKeyboardType.decimalPad

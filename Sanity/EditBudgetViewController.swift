@@ -21,6 +21,7 @@ class EditBudgetViewController: UIViewController, UITextFieldDelegate, UITableVi
     @IBOutlet weak var categoryLabel: UILabel!
     var numRows:Int!
     var resetInterval = 0
+    var myParent: UIViewController?
     
     
     @IBOutlet weak var categoryTableView: UITableView!
@@ -91,12 +92,12 @@ class EditBudgetViewController: UIViewController, UITextFieldDelegate, UITableVi
             let catName:String = categories[indexPath.row].name
             let catLimit:Double = categories[indexPath.row].spendingLimit
             let catLimitString:String = String(format:"%.2f", catLimit)
-            cell.setup(catName: catName, catLimit: catLimitString,budName:(budget?.name)!, email:userEmail!, cat: categories[indexPath.row])
+            cell.setup(catName: catName, catLimit: catLimitString,budName:(budget?.name)!, email:userEmail!, cat: categories[indexPath.row], editBudg: self)
         } else {
             let p = [String]()
             let category = Category(name: "", paymentMethods: p, spendingLimit: 0.0, amountSpent: 0.0)
             
-            cell.setup(catName:"", catLimit:"", budName:(budget?.name)!, email:userEmail!, cat: category)
+            cell.setup(catName:"", catLimit:"", budName:(budget?.name)!, email:userEmail!, cat: category, editBudg: self)
         }
 
         return cell
@@ -108,9 +109,10 @@ class EditBudgetViewController: UIViewController, UITextFieldDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        let cell = categoryTableView.dequeueReusableCell(withIdentifier: "editCell") as! EditCategoryCell
         if editingStyle == UITableViewCellEditingStyle.delete{
             print (indexPath.row)
-            if indexPath.row > numRows-1{
+            if cell.editButton.currentImage == UIImage(named:"edit.png"){
                 numRows = numRows - 1
                 categoryTableView.reloadData()
             }
@@ -173,6 +175,7 @@ class EditBudgetViewController: UIViewController, UITextFieldDelegate, UITableVi
     
     @IBAction func addCategory(_ sender: Any) {
         numRows = numRows + 1
+        fetchCategories()
         categoryTableView.reloadData()
         
     }
