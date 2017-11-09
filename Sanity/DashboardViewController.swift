@@ -11,12 +11,19 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     var userEmail: String!
     var budgets = [Budget]()
     
+    @IBOutlet weak var placeholder: UILabel!
     @IBAction func addButtonPress(_ sender: Any) {
         // Create the action sheet
         let myActionSheet = UIAlertController(title: "Add", message: "Add new budget or transaction?", preferredStyle: UIAlertControllerStyle.actionSheet)
         
         let transactionAction = UIAlertAction(title: "Transaction", style: UIAlertActionStyle.default) { (action) in
-            self.performSegue(withIdentifier: "addTransactionSegue", sender: self)
+            if !self.budgets.isEmpty{
+                self.performSegue(withIdentifier: "addTransactionSegue", sender: self)
+            } else{
+                let alert = UIAlertController(title: "No Existing Budgets", message: "You must create a budget before adding a transaction!", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         }
         
         let budgetAction = UIAlertAction(title: "Budget", style: UIAlertActionStyle.default) { (action) in
@@ -38,6 +45,8 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 101
         fetchBudgets()
         tableView.reloadData()
         tableView.refreshControl = self.refreshControl
@@ -71,20 +80,18 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let dequeued = tableView.dequeueReusableCell(withIdentifier: "budget", for: indexPath)
         if let cell = dequeued as? BudgetOverviewCell {
+            cell.backgroundColor = UIColor(red: 204.0/255.0, green: 248.0/255.0, blue: 255.0/255.0, alpha: 1.0)
             let currentBudget = budgets[indexPath.row]
             cell.budgetName.text = currentBudget.getName()
             
             cell.budgetRemaining.text = "$" + String(format: "%.2f", currentBudget.getBudgetRemaining());
          
             cell.budgetRemaining.textColor = UIColor.green
-            
             if currentBudget.getBudgetRemaining() > 0.0 {
                 cell.budgetRemaining.textColor = UIColor.green
-                cell.backgroundColor = UIColor(red: 212, green: 255, blue: 212, alpha: 1)
             }
             else {
                 cell.budgetRemaining.textColor = UIColor.red
-                cell.backgroundColor = UIColor(red: 255, green: 196, blue: 196, alpha: 1)
             }
             var floatBudgetRemaining = Float(currentBudget.getBudgetRemaining())
             floatBudgetRemaining = floatBudgetRemaining / Float(currentBudget.getTotalBudget())
@@ -105,10 +112,26 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         return dequeued
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            deleteBudget(budgetName: budgets[indexPath.row].getName())
+        }
+    }
+    
+    func deleteBudget(budgetName: String){
+        Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document(budgetName).delete(completion: {err in
+            self.fetchBudgets()
+        })
+    }
+    
     //Trigger segue to budget detail view once a budget row is tapped in the table
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //performSegue(withIdentifier: "budgetDetail", sender: tableView.cellForRow(at: indexPath))
-        
+        tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "budgetDet", sender: budgets[indexPath.row])
     }
     
@@ -121,6 +144,17 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 self.budgets = querySnapshot!.documents.flatMap({Budget(dictionary: $0.data())})
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
+                }
+                
+                //if there are no budgets to display, populate placeholder and hide table
+                if self.budgets.isEmpty{
+                    self.placeholder.isHidden = false
+                    self.placeholder.text = "You have no budgets to display! Start tracking!"
+                    self.placeholder.font = UIFont(name: "DidactGothic-Regular", size: 20)
+                    self.tableView.isHidden = true
+                } else{
+                    self.placeholder.isHidden = true
+                    self.tableView.isHidden = false
                 }
             }
         }

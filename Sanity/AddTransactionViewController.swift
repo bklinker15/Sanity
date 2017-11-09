@@ -115,9 +115,6 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate, UIPic
     @IBAction func addTransactionsButtonPress(_ sender: Any) {
         let cells = self.transactionTableView.visibleCells as! Array<AddTransactionCell>
         var amountAdded:Double = 0.00
-        //Unsure if I need this, don't remove -Jordan
-//        var updatedCategories = [Category]()
-//        updatedCategories = categories.map { $0 }
         for cell in cells{
             //Each component is a wheel in the picker
             let chosenCategory = categories[cell.categoryPicker.selectedRow(inComponent: 0)]
@@ -191,6 +188,8 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate, UIPic
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        transactionTableView.rowHeight = UITableViewAutomaticDimension
+        transactionTableView.estimatedRowHeight = 183
         fetchBudgets()
         // Do any additional setup after loading the view.
     }

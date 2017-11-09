@@ -17,7 +17,6 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
     
     var budget:Budget?
     
-    @IBOutlet weak var budgetNameLabel: UILabel!
     @IBOutlet weak var daysLeftLabel: UILabel!
     @IBOutlet weak var daysLeft: UILabel!
     @IBOutlet weak var budgetLeftLabel: UILabel!
@@ -36,8 +35,8 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
         let remainingFunds:Double = (budget?.budgetRemaining)! < 0.0 ? 0.0 : (budget?.budgetRemaining)!
         let fundsSpent:Double = budgetLimit-remainingFunds
         
-        let spentEntry = PieChartDataEntry(value: Double(fundsSpent), label: "Total Spent")
-        let remainingEntry = PieChartDataEntry(value: Double(remainingFunds), label: "Total Remaining")
+        let spentEntry = PieChartDataEntry(value: Double(fundsSpent), label: "Dollars Spent")
+        let remainingEntry = PieChartDataEntry(value: Double(remainingFunds), label: "Dollars Remaining")
         let dataSet = PieChartDataSet(values: [spentEntry, remainingEntry], label: "")
         dataSet.colors = ChartColorTemplates.joyful()
         dataSet.valueColors = [UIColor.black]
@@ -55,8 +54,8 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         setFonts()
+        self.title = budget?.getName()
         
-        budgetNameLabel.text = budget?.name
         
         let budgetLimit:Double = (budget?.totalBudget)!
         let remainingFunds:Double = (budget?.budgetRemaining)!
@@ -65,8 +64,10 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
             fundsSpent = fundsSpent * -1
         }
         
-        let budgetLimitString:String = String(format:"%.2f", budgetLimit )
-        let remainingFundsString:String = String(format:"%.2f", remainingFunds )
+        let budgetLimitStringVal:String = String(format:"%.2f", budgetLimit )
+        let remainingFundsStringVal:String = String(format:"%.2f", remainingFunds )
+        let budgetLimitString = "$" + budgetLimitStringVal
+        let remainingFundsString = "$" + remainingFundsStringVal
         
         categoryTableView.delegate = self
         categoryTableView.dataSource = self
@@ -104,8 +105,7 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setFonts()
-        
-        budgetNameLabel.text = budget?.name
+
         
         let budgetLimit:Double = (budget?.totalBudget)!
         let remainingFunds:Double = (budget?.budgetRemaining)!
@@ -114,8 +114,10 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
             fundsSpent = fundsSpent * -1
         }
         
-        let budgetLimitString:String = String(format:"%.2f", budgetLimit )
-        let remainingFundsString:String = String(format:"%.2f", remainingFunds )
+        let budgetLimitStringVal:String = String(format:"%.2f", budgetLimit )
+        let remainingFundsStringVal:String = String(format:"%.2f", remainingFunds )
+        let budgetLimitString = "$" + budgetLimitStringVal
+        let remainingFundsString = "$" + remainingFundsStringVal
         
         categoryTableView.delegate = self
         categoryTableView.dataSource = self
@@ -146,7 +148,6 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
     func setFonts(){
         budgetLeftLabel.font = UIFont(name: "DidactGothic-Regular", size: 15)
         daysLeftLabel.font = UIFont(name: "DidactGothic-Regular", size: 15)
-        budgetNameLabel.font = UIFont(name: "DidactGothic-Regular", size: 20)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
