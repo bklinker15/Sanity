@@ -17,6 +17,8 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
     
     var budget:Budget?
     
+    var budgets = [Budget]()
+    
     @IBOutlet weak var daysLeftLabel: UILabel!
     @IBOutlet weak var daysLeft: UILabel!
     @IBOutlet weak var budgetLeftLabel: UILabel!
@@ -56,38 +58,7 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
         setFonts()
         self.title = budget?.getName()
         
-        
-        let budgetLimit:Double = (budget?.totalBudget)!
-        let remainingFunds:Double = (budget?.budgetRemaining)!
-        var fundsSpent:Double = budgetLimit-remainingFunds
-        if (fundsSpent < 0){
-            fundsSpent = fundsSpent * -1
-        }
-        
-        let budgetLimitStringVal:String = String(format:"%.2f", budgetLimit )
-        let remainingFundsStringVal:String = String(format:"%.2f", remainingFunds )
-        let budgetLimitString = "$" + budgetLimitStringVal
-        let remainingFundsString = "$" + remainingFundsStringVal
-        
-        categoryTableView.delegate = self
-        categoryTableView.dataSource = self
-        budgetLeftLabel.text = remainingFundsString + " remaining of " + budgetLimitString
-        
-        //days reset
-        let calendar = NSCalendar.current
-        
-        // Replace the hour (time) of both dates with 00:00
-        let date1 = calendar.startOfDay(for: Date())
-        let date2 = calendar.startOfDay(for: (budget?.getResetDate())!)
-        
-        let components = calendar.dateComponents([.day], from: date1, to: date2)
-        
-        let days:String = (String(describing: components.day!))
-        if (Int(days)! > 0){
-            daysLeftLabel.text = days + " days until reset"
-        } else{
-            daysLeftLabel.text = "last day before reset"
-        }
+        reload()
 
         fetchCategories()
         print(categories.count)
@@ -105,39 +76,10 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setFonts()
+        
+        fetchBudgets()
 
-        
-        let budgetLimit:Double = (budget?.totalBudget)!
-        let remainingFunds:Double = (budget?.budgetRemaining)!
-        var fundsSpent:Double = budgetLimit-remainingFunds
-        if (fundsSpent < 0){
-            fundsSpent = fundsSpent * -1
-        }
-        
-        let budgetLimitStringVal:String = String(format:"%.2f", budgetLimit )
-        let remainingFundsStringVal:String = String(format:"%.2f", remainingFunds )
-        let budgetLimitString = "$" + budgetLimitStringVal
-        let remainingFundsString = "$" + remainingFundsStringVal
-        
-        categoryTableView.delegate = self
-        categoryTableView.dataSource = self
-        budgetLeftLabel.text = remainingFundsString + " remaining of " + budgetLimitString
-        
-        //days reset
-        let calendar = NSCalendar.current
-        
-        // Replace the hour (time) of both dates with 00:00
-        let date1 = calendar.startOfDay(for: Date())
-        let date2 = calendar.startOfDay(for: (budget?.getResetDate())!)
-        
-        let components = calendar.dateComponents([.day], from: date1, to: date2)
-        
-        let days:String = (String(describing: components.day!))
-        if (Int(days)! > 0){
-            daysLeftLabel.text = days + " days until reset"
-        } else{
-            daysLeftLabel.text = "last day before reset"
-        }
+        reload()
         
         fetchCategories()
         print(categories.count)
@@ -162,6 +104,7 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
                 vc?.budget = self.budget
                 vc?.userEmail = self.userEmail
                 vc?.numRows = self.categories.count
+                vc?.budViewController = self
             case "historySegue":
                 let backItem = UIBarButtonItem()
                 backItem.title = "Budget Detail"
@@ -210,5 +153,59 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
         }
     }
     
+    func fetchBudgets(){
+        let collRef: CollectionReference = Firestore.firestore().collection("Users/\(userEmail!)/Budgets")
+        collRef.getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print(err)
+            } else {
+                self.budgets = querySnapshot!.documents.flatMap({Budget(dictionary: $0.data())})
+                DispatchQueue.main.async {
+                    for b in self.budgets{
+                        if b.name == self.budget?.name{
+                            self.budget = b
+                        }
+                    }
+                }
+            }
+        }
+        print(budget?.totalBudget)
+        reload()
+    }
+    
+    func reload(){
+        let budgetLimit:Double = (budget?.totalBudget)!
+        let remainingFunds:Double = (budget?.budgetRemaining)!
+        var fundsSpent:Double = budgetLimit-remainingFunds
+        if (fundsSpent < 0){
+            fundsSpent = fundsSpent * -1
+        }
+        
+        let budgetLimitStringVal:String = String(format:"%.2f", budgetLimit )
+        let remainingFundsStringVal:String = String(format:"%.2f", remainingFunds )
+        let budgetLimitString = "$" + budgetLimitStringVal
+        let remainingFundsString = "$" + remainingFundsStringVal
+        
+        categoryTableView.delegate = self
+        categoryTableView.dataSource = self
+        budgetLeftLabel.text = remainingFundsString + " remaining of " + budgetLimitString
+        
+        //days reset
+        let calendar = NSCalendar.current
+        
+        // Replace the hour (time) of both dates with 00:00
+        let date1 = calendar.startOfDay(for: Date())
+        let date2 = calendar.startOfDay(for: (budget?.getResetDate())!)
+        
+        let components = calendar.dateComponents([.day], from: date1, to: date2)
+        
+        let days:String = (String(describing: components.day!))
+        if (Int(days)! > 0){
+            daysLeftLabel.text = days + " days until reset"
+        } else{
+            daysLeftLabel.text = "last day before reset"
+        }
+        
+    }
 }
 

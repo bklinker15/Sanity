@@ -18,10 +18,12 @@ class EditBudgetViewController: UIViewController, UITextFieldDelegate, UITableVi
     var categories = [Category]()
     var budget:Budget?
 
+    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     var numRows:Int!
     var resetInterval = 0
     var myParent: UIViewController?
+    var budViewController:BudgetDetailViewController!
     
     
     @IBOutlet weak var categoryTableView: UITableView!
@@ -105,24 +107,41 @@ class EditBudgetViewController: UIViewController, UITextFieldDelegate, UITableVi
     
     func setFont(){
         categoryLabel.font = UIFont(name: "DidactGothic-Regular", size: 20)
+        errorLabel.font = UIFont(name: "DidactGothic-Regular", size: 15)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        let cell = categoryTableView.dequeueReusableCell(withIdentifier: "editCell") as! EditCategoryCell
-        if editingStyle == UITableViewCellEditingStyle.delete{
-            print (indexPath.row)
-            if cell.editButton.currentImage == UIImage(named:"edit.png"){
-                numRows = numRows - 1
-                categoryTableView.reloadData()
+       let cell = categoryTableView.cellForRow(at: indexPath) as? EditCategoryCell!
+            if editingStyle == UITableViewCellEditingStyle.delete{
+                if cell?.catNameField.isUserInteractionEnabled==true{
+                        errorLabel.text = "Opps, you need to save this category!"
+                        return
+                } else if cell?.catLimitField.isUserInteractionEnabled == true{
+                        errorLabel.text = "Opps, you need to save this category!"
+                } else{
+                    let li:String = (cell?.catLimitField.text)!
+                    let lim:Double = Double(li)!
+                    saveLimitInDatabase(amount: lim)
+                    deleteCat(catName:categories[indexPath.row].name)
+                    categories.remove(at: indexPath.row)
+                    numRows = numRows - 1
+                    categoryTableView.reloadData()
+                }
             }
-            else{
-                deleteCat(catName:categories[indexPath.row].name)
-                categories.remove(at: indexPath.row)
-                tableView.reloadData()
-            }
-        }
-
     }
+    
+    
+    func saveLimitInDatabase(amount:Double){
+        let old = budget?.totalBudget
+        budget?.totalBudget = old! - amount
+    Firestore.firestore().collection("Users").document(self.userEmail!).collection("Budgets").document((budget?.name)!).setData((budget?.dictionary)!)
+        
+        let total:String = String(format:"%.2f", (budget?.totalBudget)!)
+        editTotal(t: total)
+    }
+
+    
+    
     
     func deleteCat(catName:String){
         //var ref: DocumentReference?? = nil
@@ -172,7 +191,14 @@ class EditBudgetViewController: UIViewController, UITextFieldDelegate, UITableVi
     }
     
     @IBAction func addCategory(_ sender: Any) {
+        if (numRows >= 15){
+            errorLabel.text = "Oops! You can't add more than 15 categories."
+            return
+        }
         numRows = numRows + 1
+//        let indexPath = IndexPath(row: numRows-1, section: 0)
+//        let cell = categoryTableView.cellForRow(at: indexPath) as? EditCategoryCell!
+//        cell?.edit = true
         fetchCategories()
         categoryTableView.reloadData()
         
@@ -182,11 +208,21 @@ class EditBudgetViewController: UIViewController, UITextFieldDelegate, UITableVi
         self.view.endEditing(true)
         return true
     }
+    func setLabel(){
+        errorLabel.text = "Oops! Make sure catogry name and label is filled in."
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     
+    func editTotal(t:String){
+         DispatchQueue.main.async {
+            self.budViewController.budgetLeftLabel.text = t
+            self.budViewController.budgetLeftLabel.reloadInputViews()
+            
+        }
+    }
     
     // delete budget button
     // edit categories (add or delete)
