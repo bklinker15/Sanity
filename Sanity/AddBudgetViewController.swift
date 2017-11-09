@@ -69,9 +69,11 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITextFi
         cell.limitTextField.delegate = self
         cell.categoryNameTextField.delegate = self
         cell.setup()
-        cell.categoryNameTextField.text = populateCategoriesName[ctr]
-        cell.limitTextField.text = String(populateCategoriesLimit[ctr])
-        ctr += 1
+        if ctr < 2 {
+            cell.categoryNameTextField.text = populateCategoriesName[ctr]
+            cell.limitTextField.text = String(populateCategoriesLimit[ctr])
+            ctr += 1
+        }
         return cell
     }
     
