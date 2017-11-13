@@ -17,6 +17,7 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var sanity: UILabel!
+    var currentUser:User!
     
     @IBAction func submitButton(_ sender: UIButton) {
         if emailTextField.text != "" && passwordTextField.text != ""{
@@ -70,10 +71,22 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
                     if let vc = destination?.topViewController as? DashboardViewController {
                         vc.userEmail = emailTextField.text!.lowercased()
                     }
+                case "alreadyLoggedInSegue":
+                    let destination = segue.destination as? UINavigationController
+                    if let vc = destination?.topViewController as? DashboardViewController {
+                        vc.userEmail = currentUser.email
+                    }
                 default: break
             }
         }
 
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        currentUser = Auth.auth().currentUser
+        if currentUser != nil {
+            performSegue(withIdentifier: "alreadyLoggedInSegue", sender: self)
+        }
     }
     
     override func viewDidLoad() {
