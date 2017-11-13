@@ -133,7 +133,9 @@ class EditBudgetViewController: UIViewController, UITextFieldDelegate, UITableVi
     
     func saveLimitInDatabase(amount:Double){
         let old = budget?.totalBudget
+        let oldR = budget?.budgetRemaining
         budget?.totalBudget = old! - amount
+        budget?.budgetRemaining = oldR! - amount
     Firestore.firestore().collection("Users").document(self.userEmail!).collection("Budgets").document((budget?.name)!).setData((budget?.dictionary)!)
         
         let total:String = String(format:"%.2f", (budget?.totalBudget)!)

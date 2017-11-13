@@ -164,13 +164,15 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
                     for b in self.budgets{
                         if b.name == self.budget?.name{
                             self.budget = b
+                            self.reload()
+                            self.pieChartUpdate()
                         }
                     }
                 }
             }
         }
         print(budget?.totalBudget)
-        reload()
+        //reload()
     }
     
     func reload(){

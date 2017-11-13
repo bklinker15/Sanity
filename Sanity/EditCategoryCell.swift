@@ -109,8 +109,9 @@ class EditCategoryCell: UITableViewCell {
     
     func saveLimitInDatabase(amount:Double){
         let oldBudget = editBudget.budget
+        let newremaining = ((oldBudget?.budgetRemaining)!) + amount
         let budget = Budget(name: (oldBudget?.name)!, resetDate: (oldBudget?.resetDate)!, lastReset: (oldBudget?.lastReset)!, resetInterval: (oldBudget?.resetInterval)!,
-                            totalBudget: (oldBudget?.totalBudget)! + amount, budgetRemaining: (oldBudget?.budgetRemaining)!, previousBudgetRemains: (oldBudget?.previousBudgetLimits)!, previousBudgetLimits: (oldBudget?.previousBudgetLimits)!, notificationThreshold: (oldBudget?.notificationThreshold)!)
+                            totalBudget: (oldBudget?.totalBudget)! + amount, budgetRemaining: newremaining, previousBudgetRemains: (oldBudget?.previousBudgetLimits)!, previousBudgetLimits: (oldBudget?.previousBudgetLimits)!, notificationThreshold: (oldBudget?.notificationThreshold)!)
         
         Firestore.firestore().collection("Users").document(self.userEmail!).collection("Budgets").document(budgetName).setData(budget.dictionary)
         
