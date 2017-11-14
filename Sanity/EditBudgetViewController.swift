@@ -18,6 +18,16 @@ class EditBudgetViewController: UIViewController, UITextFieldDelegate, UITableVi
     var categories = [Category]()
     var budget:Budget?
 
+    @IBAction func saveThreshold(_ sender: Any) {
+        let tresh:String = thresholdLabel.text!
+    
+        budget?.notificationThreshold = Double(tresh)!
+    Firestore.firestore().collection("Users").document(self.userEmail!).collection("Budgets").document((budget?.name)!).setData((budget?.dictionary)!)
+        
+        
+    }
+    
+    @IBOutlet weak var thresholdLabel: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     var numRows:Int!
@@ -48,17 +58,7 @@ class EditBudgetViewController: UIViewController, UITextFieldDelegate, UITableVi
     }
     
     @IBAction func resetPeriod(_ sender: Any) {
-        var df:DocumentReference
-        
-        let budg = Budget(name: (budget?.name)!, resetDate: (budget?.resetDate)!, lastReset: (budget?.lastReset)!, resetInterval: self.resetInterval,
-                          totalBudget: (budget?.totalBudget)!, budgetRemaining: (budget?.budgetRemaining)!, previousBudgetRemains: (budget?.previousBudgetRemains)!, previousBudgetLimits:(budget?.previousBudgetLimits)!, notificationThreshold: (budget?.notificationThreshold)!)
-        
-        
-        df = Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document((budget?.name)!)
-        
-        df.delete()
-        
-        Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document(budg.name).setData(budg.dictionary)
+    
         
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -108,6 +108,8 @@ class EditBudgetViewController: UIViewController, UITextFieldDelegate, UITableVi
     func setFont(){
         categoryLabel.font = UIFont(name: "DidactGothic-Regular", size: 20)
         errorLabel.font = UIFont(name: "DidactGothic-Regular", size: 15)
+        resetBudgetPeriod.titleLabel?.font = UIFont(name: "DidactGothic-Regular", size: 20)!
+        thresholdLabel.font = UIFont(name: "DidactGothic-Regular", size: 20)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -160,9 +162,25 @@ class EditBudgetViewController: UIViewController, UITextFieldDelegate, UITableVi
         self.title = budget?.getName()
         fetchCategories()
         setFont()
+        thresholdLabel.text = String (format:"%.2f", (budget?.notificationThreshold)!)
         
     }
     
+    @IBAction func saveReset(_ sender: Any) {
+        var df:DocumentReference
+        
+        let budg = Budget(name: (budget?.name)!, resetDate: (budget?.resetDate)!, lastReset: (budget?.lastReset)!, resetInterval: self.resetInterval,
+                          totalBudget: (budget?.totalBudget)!, budgetRemaining: (budget?.budgetRemaining)!, previousBudgetRemains: (budget?.previousBudgetRemains)!, previousBudgetLimits:(budget?.previousBudgetLimits)!, notificationThreshold: (budget?.notificationThreshold)!)
+        
+        
+        df = Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document((budget?.name)!)
+        
+        df.delete()
+        
+        Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document(budg.name).setData(budg.dictionary)
+        
+        
+    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         var rowHeight:CGFloat
         if (indexPath.row >= numRows){
