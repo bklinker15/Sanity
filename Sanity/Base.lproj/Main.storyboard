@@ -139,8 +139,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="88A-pa-bMB">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="88A-pa-bMB">
+                                <rect key="frame" x="0.0" y="64" width="375" height="564"/>
                                 <color key="backgroundColor" red="0.80169546339999997" green="0.97353053919999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="budget" rowHeight="101" id="wZu-7D-nA2" customClass="BudgetOverviewCell" customModule="Sanity" customModuleProvider="target">
@@ -205,6 +205,17 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="G4h-0V-vlh"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcU-mM-Hfe">
+                                <rect key="frame" x="100" y="636" width="175" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="View Transaction History ">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="viewTransactionHistory:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xme-Ob-HQX"/>
+                                    <segue destination="yoj-Tw-5Sa" kind="show" identifier="transactionSegue" id="ec6-iK-nMq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.80169546339999997" green="0.97353053919999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -235,6 +246,7 @@
                     <connections>
                         <outlet property="placeholder" destination="lVS-d2-hT8" id="1ra-HV-08l"/>
                         <outlet property="tableView" destination="88A-pa-bMB" id="32Y-4H-3IN"/>
+                        <outlet property="viewTransactionButton" destination="fcU-mM-Hfe" id="L5L-U6-o9r"/>
                         <segue destination="aC4-xr-Muu" kind="show" identifier="addBudgetSegue" id="PUx-t1-1SJ"/>
                         <segue destination="ShU-31-v0c" kind="show" identifier="addTransactionSegue" id="5TS-hj-mCZ"/>
                         <segue destination="p2S-Lx-lbW" kind="show" identifier="budgetDet" id="uod-08-VXQ"/>
@@ -242,7 +254,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1504" y="115"/>
+            <point key="canvasLocation" x="1503.2" y="114.69265367316342"/>
         </scene>
         <!--Edit Budget View Controller-->
         <scene sceneID="zqj-AV-NyO">
@@ -623,6 +635,84 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZNW-Ln-MOv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1503.2" y="1097.001499250375"/>
+        </scene>
+        <!--Transaction View Controller-->
+        <scene sceneID="deU-p5-UtK">
+            <objects>
+                <viewController id="yoj-Tw-5Sa" customClass="TransactionViewController" customModule="Sanity" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sEK-SL-6Vb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="54b-gz-EGX">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="0.80169546339999997" green="0.97353053919999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="sectionIndexBackgroundColor" red="0.80169546339999997" green="0.97353053919999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="transCell" rowHeight="75" id="YzI-6T-L6L" customClass="TransactionCell" customModule="Sanity" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="75"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YzI-6T-L6L" id="Rl8-qw-Eyh">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdH-nE-eUD">
+                                                    <rect key="frame" x="157" y="34" width="60" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gqd-01-C48">
+                                                    <rect key="frame" x="324" y="33" width="36" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Memo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tt-Vb-7Q4">
+                                                    <rect key="frame" x="166" y="0.0" width="48" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Budget" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fC-6k-XXG">
+                                                    <rect key="frame" x="15" y="34" width="56" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.80169546339999997" green="0.97353053919999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="amountLabel" destination="gdH-nE-eUD" id="sVG-4t-gma"/>
+                                            <outlet property="budgetLabel" destination="1fC-6k-XXG" id="3AZ-Jl-w0a"/>
+                                            <outlet property="dateLabel" destination="Gqd-01-C48" id="cDM-m4-mAi"/>
+                                            <outlet property="memoLabel" destination="8tt-Vb-7Q4" id="5Dy-RY-CmP"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="yoj-Tw-5Sa" id="5dO-LX-jQ2"/>
+                                    <outlet property="delegate" destination="yoj-Tw-5Sa" id="hQf-nC-Ddl"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.80169546339999997" green="0.97353053919999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="jlN-FY-IwY"/>
+                    </view>
+                    <connections>
+                        <outlet property="transactionTableView" destination="54b-gz-EGX" id="UfE-fn-XSo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5jR-oG-5kQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2341.5999999999999" y="1123.9880059970017"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pFG-fy-Au9">
@@ -1054,7 +1144,7 @@
                                 <rect key="frame" x="0.0" y="69" width="375" height="593"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="250" axis="vertical" distribution="fillProportionally" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="kZY-bz-lka">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="425"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="425.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="notification frequency:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIR-VB-SYo">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="22"/>
@@ -1067,10 +1157,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="9hi-RF-bV7">
-                                                <rect key="frame" x="0.0" y="23" width="375" height="217.5"/>
+                                                <rect key="frame" x="0.0" y="23" width="375" height="217"/>
                                             </pickerView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vAe-ML-1cx">
-                                                <rect key="frame" x="0.0" y="241.5" width="375" height="34.5"/>
+                                                <rect key="frame" x="0.0" y="241" width="375" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <state key="normal" title="update notification frequency"/>
                                                 <connections>
@@ -1078,7 +1168,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmk-Z0-KWF">
-                                                <rect key="frame" x="0.0" y="277" width="375" height="148"/>
+                                                <rect key="frame" x="0.0" y="276" width="375" height="149.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1086,7 +1176,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Dq1-MD-CN8">
-                                        <rect key="frame" x="0.0" y="426" width="375" height="136.5"/>
+                                        <rect key="frame" x="0.0" y="426.5" width="375" height="136"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="new password:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18w-zq-vAU">
                                                 <rect key="frame" x="127" y="0.0" width="121" height="21.5"/>
@@ -1105,7 +1195,7 @@
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LV7-uL-u7m">
-                                                <rect key="frame" x="118" y="53.5" width="139" height="33.5"/>
+                                                <rect key="frame" x="118" y="53.5" width="139" height="33"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <state key="normal" title="update password"/>
                                                 <connections>
@@ -1113,7 +1203,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itc-e9-ksh">
-                                                <rect key="frame" x="20" y="88" width="335" height="48.5"/>
+                                                <rect key="frame" x="20" y="87.5" width="335" height="48.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>

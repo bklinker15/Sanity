@@ -20,6 +20,8 @@
 		547A34A11D2513C17CAE2E05 /* libPods-SanityUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 039EBFE0C1B4FC664717C7FC /* libPods-SanityUITests.a */; };
 		740309161FA81B36008A68FA /* BudgetDetailUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740309151FA81B36008A68FA /* BudgetDetailUITests.swift */; };
 		740E5FB61FA8278F00582007 /* EditBudgetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740E5FB51FA8278F00582007 /* EditBudgetUITests.swift */; };
+		740EEA4D1FBCC0F900C7CFD4 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740EEA4C1FBCC0F900C7CFD4 /* TransactionViewController.swift */; };
+		740EEA4F1FBCCD8300C7CFD4 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740EEA4E1FBCCD8300C7CFD4 /* TransactionCell.swift */; };
 		741C852A1F97FDB800539B6C /* EditCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741C85291F97FDB800539B6C /* EditCategoryCell.swift */; };
 		747AB9F21F955A2E004E3C7D /* CategoryBudgetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747AB9F11F955A2E004E3C7D /* CategoryBudgetCell.swift */; };
 		747E37B91F97E8F900B5ABF8 /* EditBudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747E37B81F97E8F900B5ABF8 /* EditBudgetViewController.swift */; };
@@ -98,6 +100,8 @@
 		3A42C019EE578672D608AB5E /* Pods-SanityUnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SanityUnitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SanityUnitTests/Pods-SanityUnitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		740309151FA81B36008A68FA /* BudgetDetailUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDetailUITests.swift; sourceTree = "<group>"; };
 		740E5FB51FA8278F00582007 /* EditBudgetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBudgetUITests.swift; sourceTree = "<group>"; };
+		740EEA4C1FBCC0F900C7CFD4 /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
+		740EEA4E1FBCCD8300C7CFD4 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		741C85291F97FDB800539B6C /* EditCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryCell.swift; sourceTree = "<group>"; };
 		747AB9F11F955A2E004E3C7D /* CategoryBudgetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBudgetCell.swift; sourceTree = "<group>"; };
 		747E37B81F97E8F900B5ABF8 /* EditBudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBudgetViewController.swift; sourceTree = "<group>"; };
@@ -240,6 +244,8 @@
 				A037A9DB1F81BE2E00D2FA55 /* Info.plist */,
 				A037A9D81F81BE2E00D2FA55 /* LaunchScreen.storyboard */,
 				A037A9D31F81BE2E00D2FA55 /* Main.storyboard */,
+				740EEA4E1FBCCD8300C7CFD4 /* TransactionCell.swift */,
+				740EEA4C1FBCC0F900C7CFD4 /* TransactionViewController.swift */,
 				0126E55C1F95204700F64EBB /* ResetEnums.swift */,
 				01AA355B1F91C1F600F23B37 /* SettingsViewController.swift */,
 				A056C4E31F9185410071E242 /* Transaction.swift */,
@@ -629,6 +635,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0765C601F8A02B2002C603E /* DashboardViewController.swift in Sources */,
+				740EEA4D1FBCC0F900C7CFD4 /* TransactionViewController.swift in Sources */,
 				A0033F291F93D67100BB728F /* BudgetDetailViewController.swift in Sources */,
 				A087801A1F8B045800F6AB15 /* Budget.swift in Sources */,
 				741C852A1F97FDB800539B6C /* EditCategoryCell.swift in Sources */,
@@ -639,6 +646,7 @@
 				D0EA5BB01F8B24A200D5F99E /* AddTransactionViewController.swift in Sources */,
 				A037A9D01F81BE2E00D2FA55 /* AppDelegate.swift in Sources */,
 				D0EA5BAC1F8B1B2A00D5F99E /* AddBudgetViewController.swift in Sources */,
+				740EEA4F1FBCCD8300C7CFD4 /* TransactionCell.swift in Sources */,
 				D0EA5BB41F8C372500D5F99E /* CategoryCell.swift in Sources */,
 				01B5FF411F9D3236001F4E70 /* BudgetHistoryViewController.swift in Sources */,
 				A0851DDD1F8C657B003357F7 /* FirestoreSerializable.swift in Sources */,
