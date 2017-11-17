@@ -84,16 +84,9 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
     }
     
-    @IBAction func logoutButtonPress(_ sender: Any) {
-        do{
-            try Auth.auth().signOut()
-        }catch{}
-        self.navigationController?.popViewController(animated: false)
-        performSegue(withIdentifier: "logoutSegue", sender: self)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        userEmail = Auth.auth().currentUser?.email
         
         // Connect data:
         newPassword.delegate = self

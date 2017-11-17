@@ -8,8 +8,10 @@
 
 import UIKit
 import FirebaseAuth
+import GoogleSignIn
 
-class AuthViewController: UIViewController, UITextFieldDelegate {
+class AuthViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate {
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -91,6 +93,16 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        GIDSignIn.sharedInstance().uiDelegate = self
+        
+        let googleSignInButton = GIDSignInButton()
+        googleSignInButton.center.x = self.view.center.x
+        googleSignInButton.center.y = forgotPasswordButton.center.y + 120
+
+        self.view.addSubview(googleSignInButton)
+        
+        
         passwordTextField.delegate = self
         emailTextField.delegate = self
         self.resetTextFields()

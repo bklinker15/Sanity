@@ -7,6 +7,8 @@
 //
 import UIKit
 import Firebase
+import FirebaseAuth
+
 class DashboardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var userEmail: String!
     var budgets = [Budget]()
@@ -46,10 +48,11 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     @IBAction func viewTransactionHistory(_ sender: Any) {
     }
     
-    
     @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        userEmail = Auth.auth().currentUser?.email!
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 101
         fetchBudgets()
@@ -169,6 +172,18 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 }
             }
         }
+    }
+    
+    @IBAction func logoutButtonPress(_ sender: Any) {
+        //print("LOGGING OUT USER: \(String(describing: Auth.auth().currentUser?.email))")
+        do{
+            try Auth.auth().signOut()
+            
+        }catch{
+            
+        }
+        self.dismiss(animated: true, completion: nil)
+        self.parent?.navigationController?.dismiss(animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
