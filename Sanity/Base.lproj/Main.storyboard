@@ -10,6 +10,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="DidactGothic-Regular.ttf">
+            <string>DidactGothic-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--AuthViewController-->
         <scene sceneID="JzX-de-7nh">
@@ -118,6 +123,7 @@
                         <outlet property="submitButton" destination="dKR-gP-pNF" id="iFu-sB-ctI"/>
                         <segue destination="QEw-Oi-P1e" kind="presentation" identifier="loginSegue" id="E1N-z8-Oim"/>
                         <segue destination="QEw-Oi-P1e" kind="presentation" identifier="alreadyLoggedInSegue" id="Kcf-l1-Amd"/>
+                        <segue destination="MyU-M2-9u6" kind="show" identifier="signUpSegue" id="oUl-ir-9uD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yIy-9S-miQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1132,6 +1138,50 @@
             </objects>
             <point key="canvasLocation" x="2536.8000000000002" y="-694.90254872563719"/>
         </scene>
+        <!--Onboarding View Controller-->
+        <scene sceneID="saU-Zf-oBm">
+            <objects>
+                <viewController id="MyU-M2-9u6" customClass="OnboardingViewController" customModule="Sanity" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ikn-Jo-ZLQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gxZ-Sq-2O5" customClass="OnboardingView" customModule="Sanity" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lb8-r2-ta7">
+                                <rect key="frame" x="129" y="478" width="117" height="44"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="DidactGothic-Regular" family="Didact Gothic" pointSize="24"/>
+                                <state key="normal" title="Get started!">
+                                    <color key="titleColor" red="0.25882352941176467" green="0.95686274509803915" blue="0.63137254901960782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="QEw-Oi-P1e" kind="show" identifier="onboardingComplete" id="ctU-Oz-WKT"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="DOP-9Y-QiG" firstAttribute="bottom" secondItem="Lb8-r2-ta7" secondAttribute="bottom" constant="101" id="5e7-Kp-gkj"/>
+                            <constraint firstItem="gxZ-Sq-2O5" firstAttribute="leading" secondItem="DOP-9Y-QiG" secondAttribute="leading" id="BW0-qk-daS"/>
+                            <constraint firstItem="DOP-9Y-QiG" firstAttribute="top" secondItem="gxZ-Sq-2O5" secondAttribute="top" constant="20" id="M5L-rM-hVi"/>
+                            <constraint firstItem="DOP-9Y-QiG" firstAttribute="trailing" secondItem="gxZ-Sq-2O5" secondAttribute="trailing" id="qki-ww-aFj"/>
+                            <constraint firstItem="DOP-9Y-QiG" firstAttribute="bottom" secondItem="gxZ-Sq-2O5" secondAttribute="bottom" id="rV5-ry-A2L"/>
+                            <constraint firstItem="Lb8-r2-ta7" firstAttribute="centerX" secondItem="Ikn-Jo-ZLQ" secondAttribute="centerX" id="yPy-tJ-gSV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DOP-9Y-QiG"/>
+                    </view>
+                    <connections>
+                        <outlet property="completeOnboardingButton" destination="Lb8-r2-ta7" id="LaF-8S-7aX"/>
+                        <outlet property="onboardingView" destination="gxZ-Sq-2O5" id="ysN-5J-oeK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IO4-5S-MsA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-695.20000000000005" y="-710.19490254872574"/>
+        </scene>
         <!--Settings-->
         <scene sceneID="wcI-WZ-kaB">
             <objects>
@@ -1260,6 +1310,6 @@
         <image name="plus " width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Kcf-l1-Amd"/>
+        <segue reference="ctU-Oz-WKT"/>
     </inferredMetricsTieBreakers>
 </document>

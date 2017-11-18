@@ -35,6 +35,9 @@
 		A056C4E61F91854F0071E242 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A056C4E51F91854F0071E242 /* Category.swift */; };
 		A0688C711F89A01500E4EA14 /* BudgetOverviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0688C701F89A01500E4EA14 /* BudgetOverviewCell.swift */; };
 		A0765C601F8A02B2002C603E /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0765C5F1F8A02B2002C603E /* DashboardViewController.swift */; };
+		A07663871FBEB76E00EA02C2 /* paper_onboarding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07663881FBEB76E00EA02C2 /* paper_onboarding.framework */; };
+		A076638A1FBFBC1D00EA02C2 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07663891FBFBC1D00EA02C2 /* OnboardingViewController.swift */; };
+		A076638E1FBFBC7600EA02C2 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A076638D1FBFBC7600EA02C2 /* OnboardingView.swift */; };
 		A0851DDD1F8C657B003357F7 /* FirestoreSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0851DDC1F8C657B003357F7 /* FirestoreSerializable.swift */; };
 		A087801A1F8B045800F6AB15 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08780191F8B045800F6AB15 /* Budget.swift */; };
 		A0C5C7861FA8141C000AB2FB /* BudgetClassUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C5C7851FA8141C000AB2FB /* BudgetClassUnitTests.swift */; };
@@ -118,6 +121,10 @@
 		A056C4E51F91854F0071E242 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		A0688C701F89A01500E4EA14 /* BudgetOverviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetOverviewCell.swift; sourceTree = "<group>"; };
 		A0765C5F1F8A02B2002C603E /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		A076637E1FBEB65F00EA02C2 /* paper_onboarding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = paper_onboarding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A07663881FBEB76E00EA02C2 /* paper_onboarding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = paper_onboarding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A07663891FBFBC1D00EA02C2 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		A076638D1FBFBC7600EA02C2 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		A0851DDC1F8C657B003357F7 /* FirestoreSerializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreSerializable.swift; sourceTree = "<group>"; };
 		A08780191F8B045800F6AB15 /* Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
 		A0C5C7851FA8141C000AB2FB /* BudgetClassUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetClassUnitTests.swift; sourceTree = "<group>"; };
@@ -151,6 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A07663871FBEB76E00EA02C2 /* paper_onboarding.framework in Frameworks */,
 				01DE4F2C1F988197006575AF /* Charts.framework in Frameworks */,
 				1C958C5BDD903A8BFF9E2E5D /* Pods_Sanity.framework in Frameworks */,
 			);
@@ -187,6 +195,8 @@
 		05F1D0F25378F50DE09A2011 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A07663881FBEB76E00EA02C2 /* paper_onboarding.framework */,
+				A076637E1FBEB65F00EA02C2 /* paper_onboarding.framework */,
 				D09BD8F91F9F16250013274B /* XCTest.framework */,
 				01DE4F211F988106006575AF /* Charts.xcodeproj */,
 				C772DE7D2F5C4DC837699DC2 /* Pods_Sanity.framework */,
@@ -221,6 +231,8 @@
 		A037A9CE1F81BE2E00D2FA55 /* Sanity */ = {
 			isa = PBXGroup;
 			children = (
+				A076638D1FBFBC7600EA02C2 /* OnboardingView.swift */,
+				A07663891FBFBC1D00EA02C2 /* OnboardingViewController.swift */,
 				D0EA5BAB1F8B1B2A00D5F99E /* AddBudgetViewController.swift */,
 				A0033F2A1F94204900BB728F /* AddTransactionCell.swift */,
 				D0EA5BAF1F8B24A200D5F99E /* AddTransactionViewController.swift */,
@@ -511,6 +523,7 @@
 				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb-framework/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/paper-onboarding/paper_onboarding.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -525,6 +538,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/paper_onboarding.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -652,8 +666,10 @@
 				A0851DDD1F8C657B003357F7 /* FirestoreSerializable.swift in Sources */,
 				D09BD8EF1F9F070F0013274B /* HistoryTableViewCell.swift in Sources */,
 				747AB9F21F955A2E004E3C7D /* CategoryBudgetCell.swift in Sources */,
+				A076638A1FBFBC1D00EA02C2 /* OnboardingViewController.swift in Sources */,
 				0126E55D1F95204700F64EBB /* ResetEnums.swift in Sources */,
 				A056C4E61F91854F0071E242 /* Category.swift in Sources */,
+				A076638E1FBFBC7600EA02C2 /* OnboardingView.swift in Sources */,
 				747E37B91F97E8F900B5ABF8 /* EditBudgetViewController.swift in Sources */,
 				01AA355C1F91C1F600F23B37 /* SettingsViewController.swift in Sources */,
 			);

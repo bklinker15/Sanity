@@ -10,6 +10,7 @@ target 'Sanity' do
   pod 'FirebaseAuth'
   pod 'Firebase/Firestore'
   pod 'Charts'
+  pod 'paper-onboarding'
 end
 
 target ‘SanityUnitTests' do
