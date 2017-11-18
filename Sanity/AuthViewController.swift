@@ -9,8 +9,9 @@
 import UIKit
 import FirebaseAuth
 import GoogleSignIn
+import FBSDKLoginKit
 
-class AuthViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate {
+class AuthViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, FBSDKLoginButtonDelegate {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var forgotPasswordButton: UIButton!
@@ -102,11 +103,36 @@ class AuthViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDele
 
         self.view.addSubview(googleSignInButton)
         
+        let fbSignInButton = FBSDKLoginButton()
+        fbSignInButton.center.x = self.view.center.x
+        fbSignInButton.center.y = googleSignInButton.center.y + 55
+        fbSignInButton.delegate = self
+        
+        self.view.addSubview(fbSignInButton)
         
         passwordTextField.delegate = self
         emailTextField.delegate = self
         self.resetTextFields()
         setFonts()
+    }
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+        
+        let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+
+        Auth.auth().signIn(with: credential) { (user, error) in
+            if error != nil {
+                return
+            }
+            self.performSegue(withIdentifier: "googleLoginSegue", sender: self)
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
