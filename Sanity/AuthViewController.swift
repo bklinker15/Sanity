@@ -46,7 +46,7 @@ class AuthViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDele
             else if segmentControl.selectedSegmentIndex == 1{
                 Auth.auth().createUser(withEmail: emailText, password: passwordTextField.text!, completion: { (user, error) in
                     if user != nil{
-                        self.performSegue(withIdentifier: "loginSegue", sender: self)
+                        self.performSegue(withIdentifier: "signUpSegue", sender: self)
                         self.resetTextFields()
                     }else{
                         self.errorLabel.text = "Email is taken"
@@ -79,6 +79,9 @@ class AuthViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDele
                     if let vc = destination?.topViewController as? DashboardViewController {
                         vc.userEmail = currentUser.email
                     }
+                case "signUpSegue":
+                    let destination = segue.destination as? OnboardingViewController
+                    destination?.userEmail = emailTextField.text!.lowercased()
                 default: break
             }
         }
