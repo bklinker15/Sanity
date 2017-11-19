@@ -32,6 +32,8 @@
 		A037A9DA1F81BE2E00D2FA55 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A037A9D81F81BE2E00D2FA55 /* LaunchScreen.storyboard */; };
 		A056C4E41F9185410071E242 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A056C4E31F9185410071E242 /* Transaction.swift */; };
 		A056C4E61F91854F0071E242 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A056C4E51F91854F0071E242 /* Category.swift */; };
+		A05AE9AB1FC21F0200AD9728 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05AE9AA1FC21F0200AD9728 /* OnboardingView.swift */; };
+		A05AE9AD1FC21F3D00AD9728 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05AE9AC1FC21F3D00AD9728 /* OnboardingViewController.swift */; };
 		A0688C711F89A01500E4EA14 /* BudgetOverviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0688C701F89A01500E4EA14 /* BudgetOverviewCell.swift */; };
 		A0765C601F8A02B2002C603E /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0765C5F1F8A02B2002C603E /* DashboardViewController.swift */; };
 		A0851DDD1F8C657B003357F7 /* FirestoreSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0851DDC1F8C657B003357F7 /* FirestoreSerializable.swift */; };
@@ -115,6 +117,8 @@
 		A037A9DB1F81BE2E00D2FA55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A056C4E31F9185410071E242 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		A056C4E51F91854F0071E242 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		A05AE9AA1FC21F0200AD9728 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		A05AE9AC1FC21F3D00AD9728 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		A0688C701F89A01500E4EA14 /* BudgetOverviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetOverviewCell.swift; sourceTree = "<group>"; };
 		A0765C5F1F8A02B2002C603E /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		A0851DDC1F8C657B003357F7 /* FirestoreSerializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreSerializable.swift; sourceTree = "<group>"; };
@@ -242,6 +246,8 @@
 				A037A9DB1F81BE2E00D2FA55 /* Info.plist */,
 				A037A9D81F81BE2E00D2FA55 /* LaunchScreen.storyboard */,
 				A037A9D31F81BE2E00D2FA55 /* Main.storyboard */,
+				A05AE9AA1FC21F0200AD9728 /* OnboardingView.swift */,
+				A05AE9AC1FC21F3D00AD9728 /* OnboardingViewController.swift */,
 				740EEA4E1FBCCD8300C7CFD4 /* TransactionCell.swift */,
 				740EEA4C1FBCC0F900C7CFD4 /* TransactionViewController.swift */,
 				0126E55C1F95204700F64EBB /* ResetEnums.swift */,
@@ -513,6 +519,7 @@
 				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb-framework/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/paper-onboarding/paper_onboarding.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -531,6 +538,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/paper_onboarding.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -662,8 +670,10 @@
 				D09BD8EF1F9F070F0013274B /* HistoryTableViewCell.swift in Sources */,
 				747AB9F21F955A2E004E3C7D /* CategoryBudgetCell.swift in Sources */,
 				0126E55D1F95204700F64EBB /* ResetEnums.swift in Sources */,
+				A05AE9AD1FC21F3D00AD9728 /* OnboardingViewController.swift in Sources */,
 				A056C4E61F91854F0071E242 /* Category.swift in Sources */,
 				747E37B91F97E8F900B5ABF8 /* EditBudgetViewController.swift in Sources */,
+				A05AE9AB1FC21F0200AD9728 /* OnboardingView.swift in Sources */,
 				01AA355C1F91C1F600F23B37 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -845,7 +855,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RWH7EX4QP6;
+				DEVELOPMENT_TEAM = A2PH6V2VJ2;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -873,7 +883,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RWH7EX4QP6;
+				DEVELOPMENT_TEAM = A2PH6V2VJ2;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

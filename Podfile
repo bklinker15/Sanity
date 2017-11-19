@@ -7,7 +7,7 @@ target 'Sanity' do
 
   pod ‘FBSDKCoreKit’
   pod ‘FBSDKLoginKit’
-  
+
   pod ‘GoogleSignIn’
 
   # Pods for Sanity
@@ -15,6 +15,7 @@ target 'Sanity' do
   pod 'FirebaseAuth'
   pod 'Firebase/Firestore'
   pod 'Charts'
+  pod 'paper-onboarding'
 end
 
 target ‘SanityUnitTests' do
