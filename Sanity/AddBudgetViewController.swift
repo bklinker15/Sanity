@@ -189,7 +189,7 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITextFi
         categoryTableView.estimatedRowHeight = 97
         budgetNameTextField.delegate = self
         self.datePicker.minimumDate = Date()
-
+        self.notificationThresholdField.text = "100"
     }
     
     override func didReceiveMemoryWarning() {
