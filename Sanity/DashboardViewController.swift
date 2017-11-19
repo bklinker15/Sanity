@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FBSDKLoginKit
+import GoogleSignIn
 
 class DashboardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var userEmail: String!
@@ -185,6 +186,8 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         }
         let loginManager = FBSDKLoginManager()
         loginManager.logOut()
+        
+        GIDSignIn.sharedInstance().signOut()
         self.dismiss(animated: true, completion: nil)
         self.parent?.navigationController?.dismiss(animated: true, completion: nil)
     }
