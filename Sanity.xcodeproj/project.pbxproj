@@ -13,7 +13,6 @@
 		0126E55D1F95204700F64EBB /* ResetEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0126E55C1F95204700F64EBB /* ResetEnums.swift */; };
 		01AA355C1F91C1F600F23B37 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AA355B1F91C1F600F23B37 /* SettingsViewController.swift */; };
 		01B5FF411F9D3236001F4E70 /* BudgetHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B5FF401F9D3236001F4E70 /* BudgetHistoryViewController.swift */; };
-		01DE4F2C1F988197006575AF /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE4F271F988107006575AF /* Charts.framework */; };
 		0DCA261C6C097F98ACCB575B /* libPods-SanityUnitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2212A0E97760CF0CFB1FD377 /* libPods-SanityUnitTests.a */; };
 		1C958C5BDD903A8BFF9E2E5D /* Pods_Sanity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C772DE7D2F5C4DC837699DC2 /* Pods_Sanity.framework */; };
 		36FDFE211FA7EE26005CF2A2 /* NotificationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FDFE201FA7EE26005CF2A2 /* NotificationUITests.swift */; };
@@ -55,18 +54,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		01DE4F261F988107006575AF /* PBXContainerItemProxy */ = {
+		016513961FC12E45004BA9AE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 01DE4F211F988106006575AF /* Charts.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
+			remoteGlobalIDString = 016513921FC12DC8004BA9AE;
 			remoteInfo = Charts;
 		};
-		01DE4F281F988107006575AF /* PBXContainerItemProxy */ = {
+		016513981FC12E45004BA9AE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 01DE4F211F988106006575AF /* Charts.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
+			remoteGlobalIDString = 016513931FC12DC8004BA9AE;
 			remoteInfo = ChartsTests;
 		};
 		D09BD9061F9F16A40013274B /* PBXContainerItemProxy */ = {
@@ -151,7 +150,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01DE4F2C1F988197006575AF /* Charts.framework in Frameworks */,
 				1C958C5BDD903A8BFF9E2E5D /* Pods_Sanity.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -178,8 +176,8 @@
 		01DE4F221F988106006575AF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				01DE4F271F988107006575AF /* Charts.framework */,
-				01DE4F291F988107006575AF /* ChartsTests.xctest */,
+				016513971FC12E45004BA9AE /* Charts.framework */,
+				016513991FC12E45004BA9AE /* ChartsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -414,18 +412,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		01DE4F271F988107006575AF /* Charts.framework */ = {
+		016513971FC12E45004BA9AE /* Charts.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Charts.framework;
-			remoteRef = 01DE4F261F988107006575AF /* PBXContainerItemProxy */;
+			remoteRef = 016513961FC12E45004BA9AE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		01DE4F291F988107006575AF /* ChartsTests.xctest */ = {
+		016513991FC12E45004BA9AE /* ChartsTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = ChartsTests.xctest;
-			remoteRef = 01DE4F281F988107006575AF /* PBXContainerItemProxy */;
+			remoteRef = 016513981FC12E45004BA9AE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

@@ -208,7 +208,6 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 let vc = segue.destination as? BudgetDetailViewController
                 //                let cell = sender as? BudgetOverviewCell
                 //                vc?.budgetName = cell?.budgetName.text!
-                //                vc?.userEmail = userEmail
                 let budget = sender as? Budget
                 vc?.budget = budget
                 vc?.userEmail = userEmail
