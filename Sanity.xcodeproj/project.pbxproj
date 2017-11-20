@@ -13,6 +13,7 @@
 		0126E55D1F95204700F64EBB /* ResetEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0126E55C1F95204700F64EBB /* ResetEnums.swift */; };
 		01AA355C1F91C1F600F23B37 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AA355B1F91C1F600F23B37 /* SettingsViewController.swift */; };
 		01B5FF411F9D3236001F4E70 /* BudgetHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B5FF401F9D3236001F4E70 /* BudgetHistoryViewController.swift */; };
+		01F46BD11FC282FD008847E2 /* CategoryHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F46BD01FC282FD008847E2 /* CategoryHistoryViewController.swift */; };
 		0DCA261C6C097F98ACCB575B /* libPods-SanityUnitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2212A0E97760CF0CFB1FD377 /* libPods-SanityUnitTests.a */; };
 		1C958C5BDD903A8BFF9E2E5D /* Pods_Sanity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C772DE7D2F5C4DC837699DC2 /* Pods_Sanity.framework */; };
 		36FDFE211FA7EE26005CF2A2 /* NotificationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FDFE201FA7EE26005CF2A2 /* NotificationUITests.swift */; };
@@ -94,6 +95,7 @@
 		01AA355B1F91C1F600F23B37 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		01B5FF401F9D3236001F4E70 /* BudgetHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetHistoryViewController.swift; sourceTree = "<group>"; };
 		01DE4F211F988106006575AF /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../../../Downloads/Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
+		01F46BD01FC282FD008847E2 /* CategoryHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHistoryViewController.swift; sourceTree = "<group>"; };
 		039EBFE0C1B4FC664717C7FC /* libPods-SanityUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SanityUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		083E82D98C88E70BD3D26AAE /* Pods-Sanity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sanity.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sanity/Pods-Sanity.release.xcconfig"; sourceTree = "<group>"; };
 		2212A0E97760CF0CFB1FD377 /* libPods-SanityUnitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SanityUnitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -230,6 +232,7 @@
 				A037A9D61F81BE2E00D2FA55 /* Assets.xcassets */,
 				D043DE211F8753D900E9A870 /* AuthViewController.swift */,
 				A08780191F8B045800F6AB15 /* Budget.swift */,
+				01F46BD01FC282FD008847E2 /* CategoryHistoryViewController.swift */,
 				A0033F281F93D67100BB728F /* BudgetDetailViewController.swift */,
 				01B5FF401F9D3236001F4E70 /* BudgetHistoryViewController.swift */,
 				A0688C701F89A01500E4EA14 /* BudgetOverviewCell.swift */,
@@ -669,6 +672,7 @@
 				A0851DDD1F8C657B003357F7 /* FirestoreSerializable.swift in Sources */,
 				D09BD8EF1F9F070F0013274B /* HistoryTableViewCell.swift in Sources */,
 				747AB9F21F955A2E004E3C7D /* CategoryBudgetCell.swift in Sources */,
+				01F46BD11FC282FD008847E2 /* CategoryHistoryViewController.swift in Sources */,
 				0126E55D1F95204700F64EBB /* ResetEnums.swift in Sources */,
 				A05AE9AD1FC21F3D00AD9728 /* OnboardingViewController.swift in Sources */,
 				A056C4E61F91854F0071E242 /* Category.swift in Sources */,

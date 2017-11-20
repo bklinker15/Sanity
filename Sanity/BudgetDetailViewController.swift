@@ -72,6 +72,11 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
+    //Trigger segue to category history view once a category row is tapped in the table
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "categoryHistorySegue", sender: categories[indexPath.row])
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -114,6 +119,16 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
                 vc?.budget = self.budget
                 vc?.budgetName = self.budget?.name
                 vc?.userEmail = self.userEmail
+            case "categoryHistorySegue":
+                let backItem = UIBarButtonItem()
+                backItem.title = "Budget Detail"
+                navigationItem.backBarButtonItem = backItem
+                
+                let vc = segue.destination as? CategoryHistoryViewController
+                vc?.budget = self.budget
+                vc?.budgetName = self.budget?.name
+                vc?.userEmail = self.userEmail
+                vc?.category = sender as! Category
             default:
                 break
             }
