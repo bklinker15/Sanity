@@ -107,11 +107,14 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITextFi
             showErrorAlert(message: "Budget must have a notification threshold")
             return
         }
+        
         notificationThreshold = Double(notificationThresholdField.text!)
         if notificationThreshold == nil {
             showErrorAlert(message: "Notification Threshold must be a number")
             return
         }
+        
+        var sumCategoryLimits:Double = 0
         
         for cell in cells{
             if cell.categoryNameTextField?.text == "" || cell.limitTextField?.text == ""{
@@ -120,6 +123,7 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITextFi
             }else{
                 let catKey = cell.categoryNameTextField.text!
                 let limitVal = Double(cell.limitTextField.text!)
+                sumCategoryLimits += limitVal!
                 
                 if categories[catKey] != nil {
                     showErrorAlert(message: "Category names must be unique")
@@ -128,6 +132,11 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITextFi
                 
                 categories[catKey] = limitVal
             }
+        }
+        
+        if (notificationThreshold! >= sumCategoryLimits){
+            showErrorAlert(message: "Notification Threshold must be less than budget limit")
+            return
         }
         
         createBudget(budgetName: budgetNameTextField.text!, categories: categories, threshold: notificationThreshold!)
@@ -189,7 +198,7 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITextFi
         categoryTableView.estimatedRowHeight = 97
         budgetNameTextField.delegate = self
         self.datePicker.minimumDate = Date()
-        self.notificationThresholdField.text = "100"
+        self.notificationThresholdField.text = "10"
     }
     
     override func didReceiveMemoryWarning() {
