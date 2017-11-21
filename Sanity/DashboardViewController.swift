@@ -15,7 +15,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     var userEmail: String!
     var budgets = [Budget]()
     
-    @IBOutlet weak var viewTransactionButton: UIButton!
+    
     @IBOutlet weak var placeholder: UILabel!
     @IBAction func addButtonPress(_ sender: Any) {
         // Create the action sheet
@@ -46,9 +46,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         // present the action sheet
         self.present(myActionSheet, animated: true, completion: nil)
     }
-    
-    @IBAction func viewTransactionHistory(_ sender: Any) {
-    }
+
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -129,7 +127,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     
     func setFont(){
         
-        viewTransactionButton.titleLabel?.font = UIFont(name: "DidactGothic-Regular", size: 20)!
+//        viewTransactionButton.titleLabel?.font = UIFont(name: "DidpreactGothic-Regular", size: 20)!
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -212,12 +210,6 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 //                vc?.budgetName = cell?.budgetName.text!
                 let budget = sender as? Budget
                 vc?.budget = budget
-                vc?.userEmail = userEmail
-            case "transactionSegue":
-                let backItem = UIBarButtonItem()
-                backItem.title = "Budgets"
-                navigationItem.backBarButtonItem = backItem
-                let vc = segue.destination as? TransactionViewController
                 vc?.userEmail = userEmail
             default: break
             }

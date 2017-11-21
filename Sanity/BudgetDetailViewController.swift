@@ -95,6 +95,7 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
     func setFonts(){
         budgetLeftLabel.font = UIFont(name: "DidactGothic-Regular", size: 15)
         daysLeftLabel.font = UIFont(name: "DidactGothic-Regular", size: 15)
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -129,6 +130,13 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
                 vc?.budgetName = self.budget?.name
                 vc?.userEmail = self.userEmail
                 vc?.category = sender as! Category
+            case "transactionSegue":
+                let backItem = UIBarButtonItem()
+                backItem.title = "Budget Detail"
+               navigationItem.backBarButtonItem = backItem
+                let vc = segue.destination as? TransactionViewController
+                vc?.userEmail = self.userEmail
+                vc?.budgetName = self.budget?.name
             default:
                 break
             }

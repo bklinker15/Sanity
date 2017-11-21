@@ -11,8 +11,7 @@ import Foundation
 struct Transaction {
     //In their requirements they said they wanted an optional memo I believe
     var memo:String?
-    var linkedBudgets:[String]
-    var paymentMethod:String
+    var linkedBudget:String
     var amount:Double
     var timestamp:Date
     
@@ -20,8 +19,7 @@ struct Transaction {
         print("in transaction dict")
         return [
             "memo":memo,
-            "linkedBudgets":linkedBudgets,
-            "paymentMethod":paymentMethod,
+            "linkedBudget":linkedBudget,
             "amount":amount,
             "timestamp":timestamp
         ]
@@ -31,12 +29,10 @@ struct Transaction {
 extension Transaction : FirestoreSerializable {
     init?(dictionary: [String:Any]){
         guard let memo = dictionary["memo"] as? String,
-            let linkedBudgets = dictionary["linkedBudgets"] as? [String],
-            let paymentMethods = dictionary["paymentMethods"] as? String,
+            let linkedBudget = dictionary["linkedBudgets"] as? String,
             let amount = dictionary["amount"] as? Double,
             let timestamp = dictionary["timestamp"] as? Date else {return nil}
         
-        self.init(memo: memo, linkedBudgets: linkedBudgets, paymentMethod:
-            paymentMethods, amount: amount, timestamp: timestamp)
+        self.init(memo: memo, linkedBudget: linkedBudget, amount: amount, timestamp: timestamp)
     }
 }

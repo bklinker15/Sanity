@@ -12,7 +12,7 @@ import Firebase
 class TransactionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     var userEmail:String!
-    var budgets = [Budget]()
+    var budgetName:String!
     var transactions = [Transaction]()
     
     @IBOutlet weak var transactionTableView: UITableView!
@@ -23,15 +23,8 @@ class TransactionViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = transactionTableView.dequeueReusableCell(withIdentifier: "transCell") as! TransactionCell
         let am:String = String(format:"%.2f", transactions[indexPath.row].amount)
-        let budg:String
-        if transactions[indexPath.row].linkedBudgets.count > 0{
-            budg = transactions[indexPath.row].linkedBudgets[0]
-        }
-        else{
-            budg = ""
-        }
-        
-        cell.setUp(date:transactions[indexPath.row].timestamp.description, amount:am, budget:budg, memo:transactions[indexPath.row].memo!)
+       
+        cell.setUp(date:transactions[indexPath.row].timestamp.description, amount:am, memo:transactions[indexPath.row].memo!)
         return cell
     }
     
@@ -39,7 +32,7 @@ class TransactionViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchBudgets()
+        fetchCategories()
         
     }
     override func didReceiveMemoryWarning() {
@@ -52,47 +45,33 @@ class TransactionViewController: UIViewController, UITableViewDelegate, UITableV
         return 75
     }
     
-    
-    func fetchBudgets(){
-    Firestore.firestore().collection("Users").document(self.userEmail).collection("Budgets").getDocuments(){ (querySnapshot, err) in
+
+    func fetchCategories(){
+        var categories = [Category]()
+    Firestore.firestore().collection("Users").document(self.userEmail).collection("Budgets").document(budgetName).collection("Categories").getDocuments(){ (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
-                self.budgets = querySnapshot!.documents.flatMap({Budget(dictionary: $0.data())})
+                categories = querySnapshot!.documents.flatMap({Category(dictionary: $0.data())})
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
                 }
-                self.fetchCategories()
-            }
-        }
-        
-    }
-    func fetchCategories(){
-        for budget in budgets{
-            var categories = [Category]()
-        Firestore.firestore().collection("Users").document(self.userEmail).collection("Budgets").document(budget.name).collection("Categories").getDocuments(){ (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    categories = querySnapshot!.documents.flatMap({Category(dictionary: $0.data())})
-                    for document in querySnapshot!.documents {
-                        print("\(document.documentID) => \(document.data())")
-                    }
-                    self.fetchTransactions(bud:budget.name, cat:categories)
-                }
+                self.fetchTransactions(cat:categories)
+            
             }
         }
     }
     
-    func fetchTransactions(bud:String, cat:[Category]){
+    func fetchTransactions( cat:[Category]){
         for cats in cat{
-                Firestore.firestore().collection("Users").document(self.userEmail).collection("Budgets").document(bud).collection("Categories").document(cats.name).collection("Transactions").getDocuments(){ (querySnapshot, err) in
+                Firestore.firestore().collection("Users").document(self.userEmail).collection("Budgets").document(budgetName).collection("Categories").document(cats.name).collection("Transactions").getDocuments(){ (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
                     var trans = [Transaction]()
                     trans = querySnapshot!.documents.flatMap({Transaction(dictionary: $0.data())})
                     for document in querySnapshot!.documents {
+                        print("TRANSACTION")
                         print("\(document.documentID) => \(document.data())")
                     }
                     self.transactions.append(contentsOf: trans)
