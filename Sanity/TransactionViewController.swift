@@ -23,8 +23,11 @@ class TransactionViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = transactionTableView.dequeueReusableCell(withIdentifier: "transCell") as! TransactionCell
         let am:String = String(format:"%.2f", transactions[indexPath.row].amount)
-       
-        cell.setUp(date:transactions[indexPath.row].timestamp.description, amount:am, memo:transactions[indexPath.row].memo!)
+        let d = transactions[indexPath.row].timestamp.description
+        let index = d.index(d.startIndex, offsetBy: 10)
+        let mySubstring = String (d.prefix(upTo: index))
+        
+        cell.setUp(date:mySubstring, amount:am, memo:transactions[indexPath.row].memo!)
         return cell
     }
     
