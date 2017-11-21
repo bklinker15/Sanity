@@ -1,21 +1,19 @@
 //
-//  HistoryTableViewCell.swift
+//  CategoryHistoryTableViewCell.swift
 //  
 //
-//  Created by Nicholas Kaimakis on 10/22/17.
+//  Created by Nicholas Kaimakis on 11/20/17.
 //
 
 import UIKit
 import Charts
 
-class HistoryTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var periodLabel: UILabel!
+class CategoryHistoryTableViewCell: UITableViewCell {
     @IBOutlet weak var pieChart: PieChartView!
+    @IBOutlet weak var periodLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

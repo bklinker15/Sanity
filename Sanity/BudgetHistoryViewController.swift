@@ -9,13 +9,6 @@
 import UIKit
 import Charts
 
-struct cellData{
-    let period: String?
-    let limit: Double?
-    let remaining: Double?
-}
-
-
 class BudgetHistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var budgetName:String?
