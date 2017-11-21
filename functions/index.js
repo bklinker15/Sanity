@@ -14,55 +14,66 @@ exports.checkBudget = functions.https.onRequest((req, res) => {
         snapshot.forEach((doc) => {
             var username = doc.id;
             //console.log(username);
+            //console.log("1: " + username);
             var userBudgetsRef = db.collection('Users').doc(username).collection('Budgets');
             const now = Date.now();
             var budgetQuery = userBudgetsRef.get()
               .then(snapshot => {
-                  snapshot.forEach(doc2 => {
-                      var budgetName = doc2.id;
+                  snapshot.forEach(budgetdoc => {
+                      var budgetName = budgetdoc.id;
                       var budgetRef = userBudgetsRef.doc(budgetName);
                       //console.log(budgetName);
-                      var doc3 = doc2.data();
-                        var resetInterval = doc3.resetInterval;
-                        var resetDate = doc3.resetDate;
-                        var budgetRemaining = doc3.budgetRemaining;
-                        var totalBudget = doc3.totalBudget;
-                        var totalHistory;
-                        var remainingHistory;
-                        totalHistory = doc3.previousBudgetLimit;
-                        remainingHistory = doc3.previousBudgetRemains;
+                      let currbudgetdoc = budgetdoc.data();
+                      //console.log(currbudgetdoc);
+                      var resetInterval = currbudgetdoc.resetInterval;
+                      var resetDate = currbudgetdoc.resetDate;
+                      var budgetRemaining = currbudgetdoc.budgetRemaining;
+                      var totalBudget = currbudgetdoc.totalBudget;
+                      var totalHistory;
+                      var remainingHistory;
+                      totalHistory = currbudgetdoc.previousBudgetLimits;
+                      remainingHistory = currbudgetdoc.previousBudgetRemains;
+                      //console.log("2: " + username + "  " + budgetName);
 
-
-                      if (resetDate < now) {
+                      if ((resetDate < now) && (resetInterval > 0)) {
                         console.log(username + "  " + budgetName);
                         console.log("resetInterval " + resetInterval);
                         console.log("resetDate: " + resetDate);
                         console.log("budgetRemaining: " + budgetRemaining);
                         console.log("totalBudget: " + totalBudget);
+                        console.log("totalHistory: " + totalHistory);
+                        console.log("remainingHistory: " + remainingHistory);
+
                         var millisecondOffset = resetInterval * 24 * 60 * 60 * 1000;
                         var newDate = new Date();
                         newDate.setTime( now + millisecondOffset);
                         //need to update lastReset, resetDate, budgetRemaining, and budgetHistory stuff
 
-                        if (totalHistory === undefined) {
-                          totalHistory = [totalBudget];
-                          remainingHistory = [budgetRemaining];
-                        }
-                        else {
+                        //check array length
+                        if(remainingHistory && remainingHistory.length){
+                          // not empty
                           totalHistory.push(totalBudget);
                           remainingHistory.push(budgetRemaining);
                         }
-                        console.log("remainingHistory: " + remainingHistory);
+                        else {
+                          // empty
+                          totalHistory = [totalBudget];
+                          remainingHistory = [budgetRemaining];
+                        }
 
+                        totalBudget = totalBudget + budgetRemaining;
 
-                        var budgetUpdate = budgetRef.update({
-                          lastReset: now,
-                          resetDate: newDate,
-                          budgetRemaining: totalBudget,
-                          previousBudgetLimit: totalHistory,
-                          previousBudgetRemains: remainingHistory,
-                        });
-                        
+                        if (resetInterval > 0) {
+                          var budgetUpdate = budgetRef.update({
+                            lastReset: resetDate,
+                            resetDate: newDate,
+                            budgetRemaining: totalBudget,
+                            previousBudgetLimits: totalHistory,
+                            previousBudgetRemains: remainingHistory,
+                          });
+                          console.log("UPDATED " + budgetName);
+                        }
+
                       }
                   });
               })
