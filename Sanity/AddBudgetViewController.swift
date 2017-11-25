@@ -151,13 +151,13 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITextFi
             if  document?.exists ?? true{
                 self.showErrorAlert(message: "Budget with name \(self.budgetNameTextField.text!) already exists")
                 return
-            }else{
+            } else {
                 for (_, limit) in categories{
                     sum = sum + limit
                 }
                 
                 let budget = Budget(name: budgetName, resetDate: self.datePicker.date, lastReset: Date(), resetInterval: self.resetInterval,
-                                    totalBudget: sum, budgetRemaining: sum, previousBudgetRemains: [Double](), previousBudgetLimits: [Double](), notificationThreshold: threshold)
+                                    totalBudget: sum, budgetRemaining: sum, previousBudgetRemains: [Double](), previousBudgetLimits: [Double](), notificationThreshold: threshold, thresholdEmailSent: false)
                 
                 Firestore.firestore().collection("Users").document(self.userEmail!).collection("Budgets").document(budgetName).setData(budget.dictionary)
                 

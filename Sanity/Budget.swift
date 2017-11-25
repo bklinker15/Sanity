@@ -18,6 +18,7 @@ struct Budget {
     var previousBudgetRemains:[Double]
     var previousBudgetLimits:[Double]
     var notificationThreshold:Double
+    var thresholdEmailSent:Bool
     
     var dictionary:[String:Any] {
         return [
@@ -29,7 +30,8 @@ struct Budget {
             "resetInterval":resetInterval,
             "previousBudgetRemains" : previousBudgetRemains,
             "previousBudgetLimits": previousBudgetLimits,
-            "notificationThreshold": notificationThreshold
+            "notificationThreshold": notificationThreshold,
+            "thresholdEmailSent": thresholdEmailSent
         ]
     }
     
@@ -103,10 +105,11 @@ extension Budget : FirestoreSerializable {
             let resetInterval = dictionary["resetInterval"] as? Int,
             let notificationThreshold = dictionary["notificationThreshold"]  as? Double,
             let previousBudgetRemains = dictionary["previousBudgetRemains"] as? [Double],
-            let previousBudgetLimits = dictionary["previousBudgetLimits"] as? [Double] else {return nil}
+            let previousBudgetLimits = dictionary["previousBudgetLimits"] as? [Double],
+            let thresholdEmailSent = dictionary["thresholdEmailSent"] as? Bool else {return nil}
         
         self.init(name: name, resetDate: resetDate, lastReset: lastReset,
                   resetInterval: resetInterval,
-                  totalBudget: totalBudget, budgetRemaining: budgetRemaining, previousBudgetRemains: previousBudgetRemains, previousBudgetLimits: previousBudgetLimits, notificationThreshold: notificationThreshold)
+                  totalBudget: totalBudget, budgetRemaining: budgetRemaining, previousBudgetRemains: previousBudgetRemains, previousBudgetLimits: previousBudgetLimits, notificationThreshold: notificationThreshold, thresholdEmailSent: thresholdEmailSent)
     }
 }
