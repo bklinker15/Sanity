@@ -166,12 +166,6 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate, UIPic
                     
                     self.navigationController?.topViewController?.present(alertController, animated: true, completion: nil)
                 }
-                
-//                for i in 0 ..< self.categories.count {
-//                    if self.categories[i].getAmountSpent() >= self.categories[i].getSpendingLimit() {
-//                        self.createAlert(title: "Category Exceeded!", message: "You have exceeded your limit of $" + String(self.categories[i].getSpendingLimit()) + " in the " + self.categories[i].getName() + " category!  Current category balance is now $" + String(self.categories[i].getSpendingLimit() - self.categories[i].getAmountSpent()))
-//                    }
-//                }
             }else{
                 print("Error updating budget remaining amount")
             }
