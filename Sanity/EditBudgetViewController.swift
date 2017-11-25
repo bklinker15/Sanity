@@ -170,7 +170,7 @@ class EditBudgetViewController: UIViewController, UITextFieldDelegate, UITableVi
         var df:DocumentReference
         
         let budg = Budget(name: (budget?.name)!, resetDate: (budget?.resetDate)!, lastReset: (budget?.lastReset)!, resetInterval: self.resetInterval,
-                          totalBudget: (budget?.totalBudget)!, budgetRemaining: (budget?.budgetRemaining)!, previousBudgetRemains: (budget?.previousBudgetRemains)!, previousBudgetLimits:(budget?.previousBudgetLimits)!, notificationThreshold: (budget?.notificationThreshold)!)
+                          totalBudget: (budget?.totalBudget)!, budgetRemaining: (budget?.budgetRemaining)!, previousBudgetRemains: (budget?.previousBudgetRemains)!, previousBudgetLimits:(budget?.previousBudgetLimits)!, notificationThreshold: (budget?.notificationThreshold)!, thresholdEmailSent: (budget?.thresholdEmailSent)!)
         
         
         df = Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document((budget?.name)!)
