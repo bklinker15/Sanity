@@ -20,6 +20,7 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITextFi
     var ctr = 0
     
     
+    @IBOutlet weak var firstResetDateText: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
     
     @IBOutlet weak var notificationThresholdField: UITextField!
@@ -42,18 +43,32 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITextFi
         switch reset {
         case .Never:
             resetInterval = 0
+            datePicker.isHidden = true
+            firstResetDateText.isHidden = true
         case .Daily:
             resetInterval = 1
+            datePicker.isHidden = false
+            firstResetDateText.isHidden = false
         case .Weekly:
             resetInterval = 7
+            datePicker.isHidden = false
+            firstResetDateText.isHidden = false
         case .BiWeekly:
             resetInterval = 14
+            datePicker.isHidden = false
+            firstResetDateText.isHidden = false
         case .Monthly:
             resetInterval = 31
+            datePicker.isHidden = false
+            firstResetDateText.isHidden = false
         case .SemiAnnually:
             resetInterval = 178
+            datePicker.isHidden = false
+            firstResetDateText.isHidden = false
         case .Annually:
             resetInterval = 356
+            datePicker.isHidden = false
+            firstResetDateText.isHidden = false
         }
     }
     
@@ -198,6 +213,8 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITextFi
         categoryTableView.estimatedRowHeight = 97
         budgetNameTextField.delegate = self
         self.datePicker.minimumDate = Date()
+        self.datePicker.isHidden = true
+        self.firstResetDateText.isHidden = true
         self.notificationThresholdField.text = "10"
     }
     
