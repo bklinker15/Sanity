@@ -68,8 +68,8 @@ class CategoryHistoryViewController: UITableViewController {
         self.title = category?.getName()
         self.categoryHistoryTableView.delegate = self
         self.categoryHistoryTableView.dataSource = self
-        self.prevLimits = [100,100,100,100,100] //(self.budget?.previousBudgetLimits)!
-        self.prevRemaining = [22,26,64,30,20] //(self.budget?.previousBudgetRemains)!
+        self.prevLimits = (self.category?.previousLimits)!
+        self.prevRemaining = (self.category?.previousRemainings)!
         self.categoryHistoryTableView.rowHeight = 200
 
         setHistory()

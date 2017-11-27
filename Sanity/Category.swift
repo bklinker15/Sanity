@@ -43,6 +43,13 @@ struct Category {
         return amountSpent
     }
     
+    func getPrevLimits() -> [Double] {
+        return previousLimits
+    }
+    
+    func getPrevRemainings() -> [Double] {
+        return previousRemainings
+    }
 }
 
 extension Category : FirestoreSerializable {
@@ -51,8 +58,8 @@ extension Category : FirestoreSerializable {
             //let paymentMethods = dictionary["paymenthMethods"] as? [String]
             let spendingLimit = dictionary["spendingLimit"] as? Double,
             let amountSpent = dictionary["amountSpent"] as? Double,
-            let previousLimits = dictionary["previousLimit"] as? [Double],
-            let previousRemainings = dictionary["previousRemaining"] as? [Double]
+            let previousLimits = dictionary["previousLimits"] as? [Double],
+            let previousRemainings = dictionary["previousRemainings"] as? [Double]
             else {
                 print("failed to deserialize category")
                 return nil

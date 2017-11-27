@@ -169,9 +169,9 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
                 print(err)
             } else {
                 print("In categories flatMap")
+                print(querySnapshot!.documents)
                 self.categories = querySnapshot!.documents.flatMap({Category(dictionary: $0.data())})
                 self.categoryTableView.reloadData()
-                print(self.categories.count)
             }
         }
     }
