@@ -122,11 +122,11 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate, UIPic
             let optionalMemo = cell.optionalMemo.text
             let mTransaction = Transaction(memo: optionalMemo, linkedBudget:budgets[selectedBudgetIndex].getName(),
                                           amount: Double(amountSpent)!, timestamp: Date())
-            let mCategory = Category(name: chosenCategory.getName(), paymentMethods: chosenCategory.getPaymentMethods(), spendingLimit: chosenCategory.getSpendingLimit(), amountSpent: (chosenCategory.getAmountSpent() + Double(amountSpent)!))
+            let mCategory = Category(name: chosenCategory.getName(), paymentMethods: chosenCategory.getPaymentMethods(), spendingLimit: chosenCategory.getSpendingLimit(), amountSpent: (chosenCategory.getAmountSpent() + Double(amountSpent)!), previousLimits: [], previousRemainings: [])
             
             lastCategory = chosenCategory.getName()
             //Mirror database update locally so we're working with correct values for subsequent updates
-            categories[cell.categoryPicker.selectedRow(inComponent: 0)] = Category(name: chosenCategory.getName(), paymentMethods: chosenCategory.getPaymentMethods(), spendingLimit: chosenCategory.getSpendingLimit(), amountSpent:(chosenCategory.getAmountSpent() + Double(amountSpent)!))
+            categories[cell.categoryPicker.selectedRow(inComponent: 0)] = Category(name: chosenCategory.getName(), paymentMethods: chosenCategory.getPaymentMethods(), spendingLimit: chosenCategory.getSpendingLimit(), amountSpent:(chosenCategory.getAmountSpent() + Double(amountSpent)!), previousLimits: [], previousRemainings: [])
             amountAdded += Double(amountSpent)!
             
             //Add Transaction

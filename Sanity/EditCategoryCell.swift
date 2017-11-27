@@ -77,7 +77,7 @@ class EditCategoryCell: UITableViewCell {
                     let li:String = catLimitField.text!
                     let lim:Double = Double(li)!
                     let p = [String]()
-                    let category = Category(name: catNameField.text!, paymentMethods: p, spendingLimit: lim, amountSpent: 0.00)
+                let category = Category(name: catNameField.text!, paymentMethods: p, spendingLimit: lim, amountSpent: 0.00, previousLimits: [], previousRemainings: [])
                 Firestore.firestore().collection("Users").document(userEmail).collection("Budgets").document(budgetName).collection("Categories").document(catNameField.text!).setData(category.dictionary)
                     catNameField.isUserInteractionEnabled = false
                     catLimitField.isUserInteractionEnabled = false
@@ -89,7 +89,7 @@ class EditCategoryCell: UITableViewCell {
                 let lim:Double = Double(li)!
                 let old = category.spendingLimit
                 amount = lim - old
-                let categor = Category(name: catNameField.text!, paymentMethods: category.paymentMethods, spendingLimit: lim, amountSpent: category.amountSpent)
+                let categor = Category(name: catNameField.text!, paymentMethods: category.paymentMethods, spendingLimit: lim, amountSpent: category.amountSpent, previousLimits: [], previousRemainings: [])
     //            Firestore.firestore().collection("Users/\(userEmail!)/Budgets/\(budgetName)/Categories").document(category.name).setData(categor.dictionary)
                 
                 let docRef:DocumentReference = Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document(budgetName).collection("Categories").document(category.name)

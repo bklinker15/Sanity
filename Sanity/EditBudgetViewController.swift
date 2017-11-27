@@ -97,7 +97,7 @@ class EditBudgetViewController: UIViewController, UITextFieldDelegate, UITableVi
             cell.setup(catName: catName, catLimit: catLimitString,budName:(budget?.name)!, email:userEmail!, cat: categories[indexPath.row], editBudg: self)
         } else {
             let p = [String]()
-            let category = Category(name: "", paymentMethods: p, spendingLimit: 0.0, amountSpent: 0.0)
+            let category = Category(name: "", paymentMethods: p, spendingLimit: 0.0, amountSpent: 0.0, previousLimits: [], previousRemainings: [])
             
             cell.setup(catName:"", catLimit:"", budName:(budget?.name)!, email:userEmail!, cat: category, editBudg: self)
         }

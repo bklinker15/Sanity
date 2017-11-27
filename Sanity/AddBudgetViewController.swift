@@ -177,7 +177,7 @@ class AddBudgetViewController: UIViewController, UITableViewDataSource, UITextFi
                 Firestore.firestore().collection("Users").document(self.userEmail!).collection("Budgets").document(budgetName).setData(budget.dictionary)
                 
                 for (name, limit) in categories{
-                    let category = Category(name: name, paymentMethods: [], spendingLimit: limit, amountSpent: 0.00)
+                    let category = Category(name: name, paymentMethods: [], spendingLimit: limit, amountSpent: 0.00, previousLimits: [], previousRemainings: [])
                     Firestore.firestore().collection("Users").document(self.userEmail!).collection("Budgets").document(budgetName).collection("Categories").document(name).setData(category.dictionary)
                 }
                 

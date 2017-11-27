@@ -13,13 +13,17 @@ struct Category {
     var paymentMethods:[String]
     var spendingLimit: Double
     var amountSpent: Double
+    var previousLimits:[Double]
+    var previousRemainings:[Double]
     
     var dictionary:[String:Any] {
         return [
             "name":name,
             "paymentMethods":paymentMethods,
             "spendingLimit":spendingLimit,
-            "amountSpent":amountSpent
+            "amountSpent":amountSpent,
+            "previousLimits":previousLimits,
+            "previousRemainings":previousRemainings
         ]
     }
     
@@ -46,12 +50,15 @@ extension Category : FirestoreSerializable {
         guard let name = dictionary["name"] as? String,
             //let paymentMethods = dictionary["paymenthMethods"] as? [String]
             let spendingLimit = dictionary["spendingLimit"] as? Double,
-            let amountSpent = dictionary["amountSpent"] as? Double
+            let amountSpent = dictionary["amountSpent"] as? Double,
+            let previousLimits = dictionary["previousLimit"] as? [Double],
+            let previousRemainings = dictionary["previousRemaining"] as? [Double]
             else {
                 print("failed to deserialize category")
                 return nil
-            }
+        }
         
-        self.init(name: name, paymentMethods: [""], spendingLimit: spendingLimit, amountSpent: amountSpent)
+        self.init(name: name, paymentMethods: [""], spendingLimit: spendingLimit, amountSpent: amountSpent, previousLimits: previousLimits, previousRemainings: previousRemainings)
     }
 }
+
