@@ -15,6 +15,9 @@ class TransactionViewController: UIViewController, UITableViewDelegate, UITableV
     var budgetName:String!
     var transactions = [Transaction]()
     var transactionIDs = [String]()
+    var budget:Budget!
+    var budgets=[Budget]()
+    
     
     @IBOutlet weak var transactionTableView: UITableView!
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -28,15 +31,30 @@ class TransactionViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
-            deleteTransaction(index:indexPath.row, catName: transactions[indexPath.row].linkedCategory)
+            deleteTransaction(index:indexPath.row, catName: transactions[indexPath.row].linkedCategory, amount:transactions[indexPath.row].amount)
         }
     }
-    func deleteTransaction(index:Int, catName:String){
+    func deleteTransaction(index:Int, catName:String, amount:Double){
         
         var docRef:DocumentReference
+        var df:DocumentReference
         docRef = Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document((budgetName)!).collection("Categories").document(catName).collection("Transactions").document(transactionIDs[index])
         
+        
         docRef.delete()
+        
+        var total = (budget?.budgetRemaining)! + amount
+        
+        let budg = Budget(name: (budget?.name)!, resetDate: (budget?.resetDate)!, lastReset: (budget?.lastReset)!, resetInterval:(budget?.resetInterval)!,
+                          totalBudget: (budget?.totalBudget)!, budgetRemaining: total, previousBudgetRemains: (budget?.previousBudgetRemains)!, previousBudgetLimits:(budget?.previousBudgetLimits)!, notificationThreshold: (budget?.notificationThreshold)!, thresholdEmailSent: (budget?.thresholdEmailSent)!)
+        
+        
+        df = Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document((budget?.name)!)
+        
+        df.delete()
+        
+    Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document(budg.name).setData(budg.dictionary)
+        
         
         
         
@@ -63,6 +81,7 @@ class TransactionViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         
         fetchCategories()
+        fetchBudgets()
         
     }
     override func didReceiveMemoryWarning() {
@@ -90,6 +109,26 @@ class TransactionViewController: UIViewController, UITableViewDelegate, UITableV
             
             }
         }
+    }
+    
+    func fetchBudgets(){
+        let collRef: CollectionReference = Firestore.firestore().collection("Users/\(userEmail!)/Budgets")
+        collRef.getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print(err)
+            } else {
+                self.budgets = querySnapshot!.documents.flatMap({Budget(dictionary: $0.data())})
+                DispatchQueue.main.async {
+                    for b in self.budgets{
+                        if b.name == self.budgetName{
+                            self.budget = b
+                        }
+                    }
+                }
+            }
+        }
+        print(budget?.totalBudget)
+        //reload()
     }
     
     func fetchTransactions( cat:[Category]){
