@@ -120,7 +120,8 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate, UIPic
             let chosenCategory = categories[cell.categoryPicker.selectedRow(inComponent: 0)]
             let amountSpent = cell.amountSpent.text!
             let optionalMemo = cell.optionalMemo.text
-            let mTransaction = Transaction(memo: optionalMemo, linkedBudget:budgets[selectedBudgetIndex].getName(),
+            fetchCategories()
+            let mTransaction = Transaction(memo: optionalMemo, linkedBudget:budgets[selectedBudgetIndex].getName(), linkedCategory:categories[selectedCategoryIndex].getName(),
                                           amount: Double(amountSpent)!, timestamp: Date())
             let mCategory = Category(name: chosenCategory.getName(), paymentMethods: chosenCategory.getPaymentMethods(), spendingLimit: chosenCategory.getSpendingLimit(), amountSpent: (chosenCategory.getAmountSpent() + Double(amountSpent)!), previousLimits: [], previousRemainings: [])
             

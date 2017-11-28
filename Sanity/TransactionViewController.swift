@@ -14,10 +14,37 @@ class TransactionViewController: UIViewController, UITableViewDelegate, UITableV
     var userEmail:String!
     var budgetName:String!
     var transactions = [Transaction]()
+    var transactionIDs = [String]()
     
     @IBOutlet weak var transactionTableView: UITableView!
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return transactions.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            deleteTransaction(index:indexPath.row, catName: transactions[indexPath.row].linkedCategory)
+        }
+    }
+    func deleteTransaction(index:Int, catName:String){
+        
+        var docRef:DocumentReference
+        docRef = Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document((budgetName)!).collection("Categories").document(catName).collection("Transactions").document(transactionIDs[index])
+        
+        docRef.delete()
+        
+        
+        
+        
+        transactions.removeAll()
+        transactionIDs.removeAll()
+        fetchCategories()
+        transactionTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -73,11 +100,15 @@ class TransactionViewController: UIViewController, UITableViewDelegate, UITableV
                 } else {
                     var trans = [Transaction]()
                     trans = querySnapshot!.documents.flatMap({Transaction(dictionary: $0.data())})
+                    var transId = [String]()
                     for document in querySnapshot!.documents {
+                        print(document.documentID)
+                        transId.append(document.documentID)
                         print("TRANSACTION")
                         print("\(document.documentID) => \(document.data())")
                     }
                     self.transactions.append(contentsOf: trans)
+                    self.transactionIDs.append(contentsOf: transId)
                     self.transactionTableView.reloadData()
                 }
             }
