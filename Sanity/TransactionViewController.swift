@@ -72,7 +72,7 @@ class TransactionViewController: UIViewController, UITableViewDelegate, UITableV
         let index = d.index(d.startIndex, offsetBy: 10)
         let mySubstring = String (d.prefix(upTo: index))
         
-        cell.setUp(date:mySubstring, amount:am, memo:transactions[indexPath.row].memo!)
+        cell.setUp(date:mySubstring, amount:am, memo:transactions[indexPath.row].memo!, trans: transactions[indexPath.row], transid: transactionIDs[indexPath.row], userE: userEmail, bud:budget)
         return cell
     }
     
