@@ -132,7 +132,8 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
             case "transactionSegue":
                 let backItem = UIBarButtonItem()
                 backItem.title = "Budget Detail"
-               navigationItem.backBarButtonItem = backItem
+                navigationItem.backBarButtonItem = backItem
+                
                 let vc = segue.destination as? TransactionViewController
                 vc?.userEmail = self.userEmail
                 vc?.budgetName = self.budget?.name

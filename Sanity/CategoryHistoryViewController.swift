@@ -42,6 +42,7 @@ class CategoryHistoryViewController: UITableViewController {
         return UITableViewAutomaticDimension
     }
     
+    
     func setHistory(){
         var currentPeriod: String
         var cellToAdd: cellData
@@ -64,14 +65,17 @@ class CategoryHistoryViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //setFonts()
-        self.title = category?.getName()
+        
         self.categoryHistoryTableView.delegate = self
         self.categoryHistoryTableView.dataSource = self
+        self.categoryHistoryTableView.cellLayoutMarginsFollowReadableWidth = true
         self.prevLimits = (self.category?.previousLimits)!
         self.prevRemaining = (self.category?.previousRemainings)!
         self.categoryHistoryTableView.rowHeight = 200
-
+        self.categoryHistoryTableView.backgroundColor = UIColor(red: 204.0/255.0, green: 248.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+        
+        self.title = category?.getName()
+ 
         setHistory()
     }
     

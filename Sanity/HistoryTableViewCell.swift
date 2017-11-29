@@ -23,6 +23,7 @@ class HistoryTableViewCell: UITableViewCell {
     }
     
     public func setup(period:String, spent:Double, remaining:Double){
+        self.backgroundColor = UIColor(red: 204.0/255.0, green: 248.0/255.0, blue: 255.0/255.0, alpha: 1.0)
         periodLabel.text = period
         let spentEntry = PieChartDataEntry(value: Double(spent), label: "Spent")
         let remainingEntry = PieChartDataEntry(value: Double(remaining), label: "Remaining")

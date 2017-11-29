@@ -27,6 +27,7 @@ class CategoryBudgetCell: UITableViewCell {
     
     
     public func setup(name:String, spent:Double, remaining:Double){
+        self.backgroundColor = UIColor(red: 204.0/255.0, green: 248.0/255.0, blue: 255.0/255.0, alpha: 1.0)
         catLabel.text = name
         catLabel.font = UIFont(name: "DidactGothic-Regular", size: 15)
         let spentEntry = PieChartDataEntry(value: Double(spent), label: "Dollars Spent")
