@@ -21,9 +21,10 @@ class TransactionCell: UITableViewCell{
     var transactionID:String!
     var userEmail:String!
     var budget:Budget!
+    var category:Category!
     var amount:Double!
 
-    func setUp(date:String, amount:String, memo:String, trans:Transaction, transid:String, userE:String, bud:Budget){
+    func setUp(date:String, amount:String, memo:String, trans:Transaction, transid:String, userE:String, bud:Budget, cat:Category){
 
         setFont()
         dateLabel.text = date
@@ -40,6 +41,7 @@ class TransactionCell: UITableViewCell{
         transactionID = transid
         userEmail = userE
         budget = bud
+        category = cat
     }
     
     @IBAction func editTrans(_ sender: Any) {
@@ -66,16 +68,32 @@ class TransactionCell: UITableViewCell{
         Firestore.firestore().collection("Users").document(userEmail).collection("Budgets").document(transaction.linkedBudget).collection("Categories").document(transaction.linkedCategory).collection("Transactions").document(transactionID).setData(mTransaction.dictionary)
             
             
-            self.amount = Double(self.amount) - Double(a!)
+            var difference = Double(self.amount) - Double(a!)
+            self.amount = a
             
             let bu = Budget(name: budget.name, resetDate: budget.resetDate, lastReset: budget.lastReset, resetInterval: budget.resetInterval,
                             totalBudget: budget.totalBudget, budgetRemaining: budget.budgetRemaining + amount, previousBudgetRemains: budget.previousBudgetRemains, previousBudgetLimits: budget.previousBudgetRemains, notificationThreshold: budget.notificationThreshold, thresholdEmailSent: budget.thresholdEmailSent)
             var df:DocumentReference
+            var dff:DocumentReference
             df = Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document((budget?.name)!)
             
             df.delete()
             
         Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document(bu.name).setData(bu.dictionary)
+            
+            let mCategory = Category(name: category.name, paymentMethods: category.paymentMethods, spendingLimit: category.spendingLimit, amountSpent: category.amountSpent - difference, previousLimits: category.previousLimits, previousRemainings: category.previousRemainings)
+            
+            
+            dff = Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document((budget?.name)!).collection("Categories").document(category.name)
+            
+            dff.delete()
+            
+            Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document(budget.name).collection("Categories").document(category.name).setData(mCategory.dictionary)
+            
+            
+            
+            
+            
             
             
             amountLabel.isUserInteractionEnabled = false

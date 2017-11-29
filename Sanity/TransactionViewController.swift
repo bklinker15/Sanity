@@ -17,6 +17,7 @@ class TransactionViewController: UIViewController, UITableViewDelegate, UITableV
     var transactionIDs = [String]()
     var budget:Budget!
     var budgets=[Budget]()
+    var categories = [Category]()
     
     
     @IBOutlet weak var transactionTableView: UITableView!
@@ -38,6 +39,7 @@ class TransactionViewController: UIViewController, UITableViewDelegate, UITableV
         
         var docRef:DocumentReference
         var df:DocumentReference
+        var dff:DocumentReference
         docRef = Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document((budgetName)!).collection("Categories").document(catName).collection("Transactions").document(transactionIDs[index])
         
         
@@ -55,6 +57,24 @@ class TransactionViewController: UIViewController, UITableViewDelegate, UITableV
         
     Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document(budg.name).setData(budg.dictionary)
         
+
+        var category = Category(name: "", paymentMethods: [], spendingLimit: 0.0, amountSpent: 0.0, previousLimits: [], previousRemainings: [])
+        for cat in categories{
+            if cat.name == catName{
+                category = cat
+            }
+        }
+
+         var categoryTotal = category.amountSpent - amount
+
+        let mCategory = Category(name: catName, paymentMethods: category.paymentMethods, spendingLimit: category.spendingLimit, amountSpent: categoryTotal, previousLimits: category.previousLimits, previousRemainings: category.previousRemainings)
+
+
+        dff = Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document((budget?.name)!).collection("Categories").document(catName)
+
+        dff.delete()
+
+        Firestore.firestore().collection("Users").document(userEmail!).collection("Budgets").document(budg.name).collection("Categories").document(catName).setData(mCategory.dictionary)
         
         
         
@@ -72,7 +92,15 @@ class TransactionViewController: UIViewController, UITableViewDelegate, UITableV
         let index = d.index(d.startIndex, offsetBy: 10)
         let mySubstring = String (d.prefix(upTo: index))
         
-        cell.setUp(date:mySubstring, amount:am, memo:transactions[indexPath.row].memo!, trans: transactions[indexPath.row], transid: transactionIDs[indexPath.row], userE: userEmail, bud:budget)
+        var category = Category(name: "", paymentMethods: [], spendingLimit: 0.0, amountSpent: 0.0, previousLimits: [], previousRemainings: [])
+        for cat in categories{
+            if cat.name == transactions[indexPath.row].linkedCategory{
+                category = cat
+            }
+        }
+
+        
+        cell.setUp(date:mySubstring, amount:am, memo:transactions[indexPath.row].memo!, trans: transactions[indexPath.row], transid: transactionIDs[indexPath.row], userE: userEmail, bud:budget, cat:category)
         return cell
     }
     
@@ -96,16 +124,16 @@ class TransactionViewController: UIViewController, UITableViewDelegate, UITableV
     
 
     func fetchCategories(){
-        var categories = [Category]()
+        //var categories = [Category]()
     Firestore.firestore().collection("Users").document(self.userEmail).collection("Budgets").document(budgetName).collection("Categories").getDocuments(){ (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
-                categories = querySnapshot!.documents.flatMap({Category(dictionary: $0.data())})
+                self.categories = querySnapshot!.documents.flatMap({Category(dictionary: $0.data())})
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
                 }
-                self.fetchTransactions(cat:categories)
+                self.fetchTransactions()
             
             }
         }
@@ -131,8 +159,8 @@ class TransactionViewController: UIViewController, UITableViewDelegate, UITableV
         //reload()
     }
     
-    func fetchTransactions( cat:[Category]){
-        for cats in cat{
+    func fetchTransactions(){
+        for cats in categories{
                 Firestore.firestore().collection("Users").document(self.userEmail).collection("Budgets").document(budgetName).collection("Categories").document(cats.name).collection("Transactions").getDocuments(){ (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")

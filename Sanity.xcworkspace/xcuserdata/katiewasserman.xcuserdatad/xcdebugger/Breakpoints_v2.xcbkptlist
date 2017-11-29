@@ -314,7 +314,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sanity/EditBudgetViewController.swift"
-            timestampString = "533616006.623342"
+            timestampString = "533620407.113334"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "219"
@@ -458,12 +458,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sanity/TransactionViewController.swift"
-            timestampString = "533616006.623489"
+            timestampString = "533620407.113491"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
-            landmarkName = "fetchTransactions(cat:)"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
+            landmarkName = "fetchTransactions()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -490,11 +490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sanity/TransactionViewController.swift"
-            timestampString = "533616006.623553"
+            timestampString = "533620407.11356"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "deleteTransaction(index:catName:amount:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -506,11 +506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sanity/TransactionViewController.swift"
-            timestampString = "533616006.623601"
+            timestampString = "533620407.113612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "fetchCategories()"
             landmarkType = "7">
             <Locations>
@@ -554,11 +554,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sanity/TransactionViewController.swift"
-            timestampString = "533616006.623643"
+            timestampString = "533620407.113661"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "fetchCategories()"
             landmarkType = "7">
          </BreakpointContent>
