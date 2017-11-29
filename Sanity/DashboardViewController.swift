@@ -101,10 +101,9 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         
         //set text
         self.barChart.xAxis.drawLabelsEnabled = false
-        self.barChart.legend.entries = legendEntries
-        self.barChart.chartDescription?.text = "" //period
+        self.barChart.legend.entries = legendEntries //not working, trying to label entry legends by category title
         self.barChart.noDataText = "No data to display."
-        self.barChart.chartDescription?.text = ""
+        self.barChart.chartDescription?.text = "" //clear description in bottom right
         self.barChart.chartDescription?.font = UIFont(name: "DidactGothic-Regular", size: 16)!
         self.barChart.chartDescription?.textColor = UIColor.black
         
