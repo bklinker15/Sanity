@@ -10,11 +10,13 @@ import Firebase
 import FirebaseAuth
 import FBSDKLoginKit
 import GoogleSignIn
+import Charts
 
 class DashboardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var userEmail: String!
     var budgets = [Budget]()
     
+    @IBOutlet weak var barChart: BarChartView!
     
     @IBOutlet weak var placeholder: UILabel!
     @IBAction func addButtonPress(_ sender: Any) {
@@ -60,6 +62,55 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.refreshControl = self.refreshControl
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.barChartUpdate()
+    }
+    
+    
+    func barChartUpdate(){
+        var dataEntries: [BarChartDataEntry] = []
+        var legendEntries: [LegendEntry] = []
+        var budgetNames: [String] = []
+        
+        //get data for graph from budgets
+        for i in 0..<self.budgets.count {
+            let remaining:Double = self.budgets[i].getBudgetRemaining()
+            let spent:Double = self.budgets[i].getTotalBudget() - remaining
+            let dataEntry = BarChartDataEntry(x: Double(i), y: spent)
+            dataEntries.append(dataEntry)
+            let currentEntry:LegendEntry = LegendEntry(label: self.budgets[i].getName(), form: .default, formSize: CGFloat.nan, formLineWidth: CGFloat.nan, formLineDashPhase: CGFloat.nan, formLineDashLengths: [CGFloat.nan], formColor: UIColor.black)
+            legendEntries.append(currentEntry)
+            budgetNames.append(self.budgets[i].getName())
+        }
+        
+        let chartDataSet = BarChartDataSet(values: dataEntries, label: "Current Period Spending")
+        chartDataSet.stackLabels = budgetNames
+        let chartData = BarChartData(dataSet: chartDataSet)    //(xVals: budgetNames, dataSet: chartDataSet)
+        chartData.setDrawValues(true)
+        chartData.setValueFont(UIFont(name: "DidactGothic-Regular", size: 10)!)
+        self.barChart.data = chartData
+        
+        //disable grid lines
+        self.barChart.xAxis.drawGridLinesEnabled = false
+        self.barChart.leftAxis.drawGridLinesEnabled = false
+        
+        //customize UI
+        chartDataSet.colors = ChartColorTemplates.vordiplom()
+        self.barChart.backgroundColor = UIColor(red: 204.0/255.0, green: 248.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+        self.barChart.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
+        
+        //set text
+        self.barChart.xAxis.drawLabelsEnabled = false
+        self.barChart.legend.entries = legendEntries
+        self.barChart.chartDescription?.text = "" //period
+        self.barChart.noDataText = "No data to display."
+        self.barChart.chartDescription?.text = ""
+        self.barChart.chartDescription?.font = UIFont(name: "DidactGothic-Regular", size: 16)!
+        self.barChart.chartDescription?.textColor = UIColor.black
+        
+        self.barChart.notifyDataSetChanged()
+    }
+    
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefresh), for: UIControlEvents.valueChanged)
@@ -84,6 +135,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return budgets.count
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let dequeued = tableView.dequeueReusableCell(withIdentifier: "budget", for: indexPath)
@@ -168,6 +220,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 } else{
                     self.placeholder.isHidden = true
                     self.tableView.isHidden = false
+                    self.barChartUpdate()
                 }
             }
         }

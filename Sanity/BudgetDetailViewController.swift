@@ -87,7 +87,6 @@ class BudgetDetailViewController: UIViewController, UITableViewDataSource, UITab
         reload()
         
         fetchCategories()
-        print(categories.count)
         pieChartUpdate()
     }
     

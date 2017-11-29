@@ -27,7 +27,7 @@ class HistoryTableViewCell: UITableViewCell {
         let spentEntry = PieChartDataEntry(value: Double(spent), label: "Spent")
         let remainingEntry = PieChartDataEntry(value: Double(remaining), label: "Remaining")
         let dataSet = PieChartDataSet(values: [spentEntry, remainingEntry], label: "")
-        dataSet.colors = ChartColorTemplates.joyful()
+        dataSet.colors = ChartColorTemplates.liberty()
         dataSet.valueColors = [UIColor.black]
         dataSet.entryLabelFont = UIFont(name: "DidactGothic-Regular", size: 10)!
         dataSet.valueFont = UIFont(name: "DidactGothic-Regular", size: 10)!
